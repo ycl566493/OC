@@ -4,7 +4,7 @@
 //
 //  Created by 杨成龙MAC on 2018/3/19.
 //  Copyright © 2018年 CKJY. All rights reserved.
-//
+//  接龙支付成功
 
 #import "BaseViewController.h"
 

@@ -11,6 +11,7 @@
 #import "ShangPinLieBiao_JL_V.h"//商品列表
 #import "PeiSongFangShi_V.h"//配送方式
 #import "ZhiFuFangShi_V.h"//支付方式
+#import "ZhiFuChengGong_JL_VC.h"//支付成功接龙
 
 @interface QueRenDingDan_JL_VC (){
     UIScrollView    *scrollV;
@@ -132,5 +133,9 @@
     return _DZ;
 }
 
+- (IBAction)btn_QD:(id)sender {
+    ZhiFuChengGong_JL_VC    *VC = [[ZhiFuChengGong_JL_VC alloc]init];
+    [self.navigationController pushViewController:VC animated:YES];
+}
 
 @end

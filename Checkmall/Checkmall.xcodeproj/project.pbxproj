@@ -238,6 +238,17 @@
 		74DE775C205FDA21006846FC /* ShangPinLieBiao_JL_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DE775B205FDA21006846FC /* ShangPinLieBiao_JL_V.m */; };
 		74DE775E205FDA43006846FC /* ShangPinLieBiao_JL_V.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74DE775D205FDA43006846FC /* ShangPinLieBiao_JL_V.xib */; };
 		74DE7761205FE370006846FC /* ZhiFuChengGong_JL_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DE7760205FE370006846FC /* ZhiFuChengGong_JL_VC.m */; };
+		74ECFA822060D29600CC018B /* JL_ZFCG_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74ECFA812060D29600CC018B /* JL_ZFCG_V.m */; };
+		74ECFA842060D2B500CC018B /* JL_ZFCG_V.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74ECFA832060D2B500CC018B /* JL_ZFCG_V.xib */; };
+		74ECFA8B2060E30E00CC018B /* JL_SPXX_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74ECFA8A2060E30E00CC018B /* JL_SPXX_V.m */; };
+		74ECFA8D2060E32B00CC018B /* JL_SPXX_V.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74ECFA8C2060E32B00CC018B /* JL_SPXX_V.xib */; };
+		74ECFA912060F0CD00CC018B /* SouSuo_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74ECFA8F2060F0CD00CC018B /* SouSuo_VC.m */; };
+		74ECFA922060F0CD00CC018B /* SouSuo_VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74ECFA902060F0CD00CC018B /* SouSuo_VC.xib */; };
+		74ECFA952060F5D400CC018B /* SS_Top_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74ECFA942060F5D400CC018B /* SS_Top_V.m */; };
+		74ECFA972060F5F800CC018B /* SS_Top_V.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74ECFA962060F5F800CC018B /* SS_Top_V.xib */; };
+		74ECFA9A2061091100CC018B /* SS_SJ_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74ECFA992061091100CC018B /* SS_SJ_V.m */; };
+		74ECFA9C2061092100CC018B /* SS_SJ_V.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74ECFA9B2061092100CC018B /* SS_SJ_V.xib */; };
+		74ECFAA020612C8100CC018B /* SouSuoJieGuo_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74ECFA9E20612C8100CC018B /* SouSuoJieGuo_VC.m */; };
 		74F3EB4F2053B728002BDD8B /* ShangPin_TuPian_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F3EB4E2053B728002BDD8B /* ShangPin_TuPian_V.m */; };
 /* End PBXBuildFile section */
 
@@ -681,6 +692,23 @@
 		74DE775D205FDA43006846FC /* ShangPinLieBiao_JL_V.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShangPinLieBiao_JL_V.xib; sourceTree = "<group>"; };
 		74DE775F205FE370006846FC /* ZhiFuChengGong_JL_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhiFuChengGong_JL_VC.h; sourceTree = "<group>"; };
 		74DE7760205FE370006846FC /* ZhiFuChengGong_JL_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhiFuChengGong_JL_VC.m; sourceTree = "<group>"; };
+		74ECFA802060D29600CC018B /* JL_ZFCG_V.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JL_ZFCG_V.h; sourceTree = "<group>"; };
+		74ECFA812060D29600CC018B /* JL_ZFCG_V.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JL_ZFCG_V.m; sourceTree = "<group>"; };
+		74ECFA832060D2B500CC018B /* JL_ZFCG_V.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JL_ZFCG_V.xib; sourceTree = "<group>"; };
+		74ECFA892060E30E00CC018B /* JL_SPXX_V.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JL_SPXX_V.h; sourceTree = "<group>"; };
+		74ECFA8A2060E30E00CC018B /* JL_SPXX_V.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JL_SPXX_V.m; sourceTree = "<group>"; };
+		74ECFA8C2060E32B00CC018B /* JL_SPXX_V.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JL_SPXX_V.xib; sourceTree = "<group>"; };
+		74ECFA8E2060F0CD00CC018B /* SouSuo_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SouSuo_VC.h; sourceTree = "<group>"; };
+		74ECFA8F2060F0CD00CC018B /* SouSuo_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SouSuo_VC.m; sourceTree = "<group>"; };
+		74ECFA902060F0CD00CC018B /* SouSuo_VC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SouSuo_VC.xib; sourceTree = "<group>"; };
+		74ECFA932060F5D400CC018B /* SS_Top_V.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SS_Top_V.h; sourceTree = "<group>"; };
+		74ECFA942060F5D400CC018B /* SS_Top_V.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SS_Top_V.m; sourceTree = "<group>"; };
+		74ECFA962060F5F800CC018B /* SS_Top_V.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SS_Top_V.xib; sourceTree = "<group>"; };
+		74ECFA982061091100CC018B /* SS_SJ_V.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SS_SJ_V.h; sourceTree = "<group>"; };
+		74ECFA992061091100CC018B /* SS_SJ_V.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SS_SJ_V.m; sourceTree = "<group>"; };
+		74ECFA9B2061092100CC018B /* SS_SJ_V.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SS_SJ_V.xib; sourceTree = "<group>"; };
+		74ECFA9D20612C8100CC018B /* SouSuoJieGuo_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SouSuoJieGuo_VC.h; sourceTree = "<group>"; };
+		74ECFA9E20612C8100CC018B /* SouSuoJieGuo_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SouSuoJieGuo_VC.m; sourceTree = "<group>"; };
 		74F3EB4D2053B728002BDD8B /* ShangPin_TuPian_V.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShangPin_TuPian_V.h; sourceTree = "<group>"; };
 		74F3EB4E2053B728002BDD8B /* ShangPin_TuPian_V.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShangPin_TuPian_V.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1077,6 +1105,12 @@
 				74785872205B6C4900674310 /* PinTuan_ZFCG_V.h */,
 				74785873205B6C4900674310 /* PinTuan_ZFCG_V.m */,
 				74785875205B6D4B00674310 /* PinTuan_ZFCG_V.xib */,
+				74ECFA802060D29600CC018B /* JL_ZFCG_V.h */,
+				74ECFA812060D29600CC018B /* JL_ZFCG_V.m */,
+				74ECFA832060D2B500CC018B /* JL_ZFCG_V.xib */,
+				74ECFA892060E30E00CC018B /* JL_SPXX_V.h */,
+				74ECFA8A2060E30E00CC018B /* JL_SPXX_V.m */,
+				74ECFA8C2060E32B00CC018B /* JL_SPXX_V.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1215,6 +1249,7 @@
 		74D7473B204E395000DB65FD /* class */ = {
 			isa = PBXGroup;
 			children = (
+				74ECFA852060DB3C00CC018B /* SearchFor_SouSuo */,
 				74DE773A205F7FCA006846FC /* Solitaire_JieLong */,
 				7465374C2057A1C400CF0D6B /* ConfirmOrder_QueRenDingDan */,
 				746527AA2053B26E0074CA10 /* Commodity_ShangPin */,
@@ -1816,6 +1851,48 @@
 			path = V;
 			sourceTree = "<group>";
 		};
+		74ECFA852060DB3C00CC018B /* SearchFor_SouSuo */ = {
+			isa = PBXGroup;
+			children = (
+				74ECFA862060DB3C00CC018B /* M */,
+				74ECFA872060DB3C00CC018B /* C */,
+				74ECFA882060DB3C00CC018B /* V */,
+			);
+			path = SearchFor_SouSuo;
+			sourceTree = "<group>";
+		};
+		74ECFA862060DB3C00CC018B /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		74ECFA872060DB3C00CC018B /* C */ = {
+			isa = PBXGroup;
+			children = (
+				74ECFA8E2060F0CD00CC018B /* SouSuo_VC.h */,
+				74ECFA8F2060F0CD00CC018B /* SouSuo_VC.m */,
+				74ECFA902060F0CD00CC018B /* SouSuo_VC.xib */,
+				74ECFA9D20612C8100CC018B /* SouSuoJieGuo_VC.h */,
+				74ECFA9E20612C8100CC018B /* SouSuoJieGuo_VC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		74ECFA882060DB3C00CC018B /* V */ = {
+			isa = PBXGroup;
+			children = (
+				74ECFA932060F5D400CC018B /* SS_Top_V.h */,
+				74ECFA942060F5D400CC018B /* SS_Top_V.m */,
+				74ECFA962060F5F800CC018B /* SS_Top_V.xib */,
+				74ECFA982061091100CC018B /* SS_SJ_V.h */,
+				74ECFA992061091100CC018B /* SS_SJ_V.m */,
+				74ECFA9B2061092100CC018B /* SS_SJ_V.xib */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1874,6 +1951,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74ECFA8D2060E32B00CC018B /* JL_SPXX_V.xib in Resources */,
 				741543AA205913F8002C1972 /* QueRenDingDan_PT_VC.xib in Resources */,
 				746537482057995800CF0D6B /* SongHuoDiZhi_Cell.xib in Resources */,
 				749CB009205CE3BB00A16260 /* TC_TJDZ_V.xib in Resources */,
@@ -1892,6 +1970,7 @@
 				746537542057A5BF00CF0D6B /* QueRenDingDan_VC.xib in Resources */,
 				74780F982054050000E85CCD /* full_screen@2x.png in Resources */,
 				749CAFFF205CAFC200A16260 /* TC_PTXZ_V.xib in Resources */,
+				74ECFA842060D2B500CC018B /* JL_ZFCG_V.xib in Resources */,
 				746537722057F2D100CF0D6B /* ZhiFuFangShi_V.xib in Resources */,
 				749CB00E205D0F9F00A16260 /* My_PickerView.xib in Resources */,
 				74DE7739205F61B3006846FC /* TC_KDDZ.xib in Resources */,
@@ -1906,6 +1985,9 @@
 				74DE774F205FA377006846FC /* TC_JL_Cell.xib in Resources */,
 				74D74728204E37C800DB65FD /* Assets.xcassets in Resources */,
 				741543B420594D8C002C1972 /* ShangPinLieBiao_QRDD_V.xib in Resources */,
+				74ECFA922060F0CD00CC018B /* SouSuo_VC.xib in Resources */,
+				74ECFA9C2061092100CC018B /* SS_SJ_V.xib in Resources */,
+				74ECFA972060F5F800CC018B /* SS_Top_V.xib in Resources */,
 				746537682057E5C100CF0D6B /* ShangPinJiaJian_V.xib in Resources */,
 				74780F992054050000E85CCD /* play.png in Resources */,
 				74D7481E204E39E400DB65FD /* MJRefresh.bundle in Resources */,
@@ -1948,6 +2030,7 @@
 				74D74836204E39E400DB65FD /* UIImage+MultiFormat.m in Sources */,
 				74D7481D204E39E400DB65FD /* MJRefreshConst.m in Sources */,
 				746537662057E5AE00CF0D6B /* ShangPinJiaJian_V.m in Sources */,
+				74ECFA822060D29600CC018B /* JL_ZFCG_V.m in Sources */,
 				74A3B526204E479A004017DA /* MyUIScrollView.m in Sources */,
 				74A3B52F204E6D12004017DA /* WoDe_FuWo_V.m in Sources */,
 				74D7483B204E39E400DB65FD /* NSData+ImageContentType.m in Sources */,
@@ -2013,6 +2096,8 @@
 				74D74888204E3A4700DB65FD /* BaseCollectionViewController.m in Sources */,
 				74A3B53E204EAAA5004017DA /* FenLei_ShangPin_Cell.m in Sources */,
 				74D74824204E39E400DB65FD /* MJRefreshAutoStateFooter.m in Sources */,
+				74ECFA912060F0CD00CC018B /* SouSuo_VC.m in Sources */,
+				74ECFA9A2061091100CC018B /* SS_SJ_V.m in Sources */,
 				746537572057AE9100CF0D6B /* DiZhiXinXi_V.m in Sources */,
 				74D74768204E39B800DB65FD /* MyUITextView.m in Sources */,
 				74D7489F204E3BD800DB65FD /* FenLei_VC.m in Sources */,
@@ -2071,6 +2156,7 @@
 				74D74881204E3A4700DB65FD /* MyUIView.m in Sources */,
 				743EEACB204FB42A00B7555B /* ZhuanXiang_Title_V.m in Sources */,
 				74D74859204E39E400DB65FD /* AFURLSessionManager.m in Sources */,
+				74ECFA952060F5D400CC018B /* SS_Top_V.m in Sources */,
 				749CB007205CE3AD00A16260 /* TC_TJDZ_V.m in Sources */,
 				74A3B532204E6F89004017DA /* WoDe_ELeMa_V.m in Sources */,
 				74D74883204E3A4700DB65FD /* BaseTableViewController.m in Sources */,
@@ -2103,6 +2189,7 @@
 				74D74766204E39B800DB65FD /* MyButton.m in Sources */,
 				743EEACE204FB66C00B7555B /* ZhuanXiang_Cell.m in Sources */,
 				74D74882204E3A4700DB65FD /* BaseTableViewCell.m in Sources */,
+				74ECFA8B2060E30E00CC018B /* JL_SPXX_V.m in Sources */,
 				74D7485C204E39E400DB65FD /* AFSecurityPolicy.m in Sources */,
 				74D748BD204E3C3F00DB65FD /* GouWuChe_VC.m in Sources */,
 				74D7485B204E39E400DB65FD /* AFNetworkReachabilityManager.m in Sources */,
@@ -2115,6 +2202,7 @@
 				74D7476D204E39B800DB65FD /* NK_Base64.m in Sources */,
 				74D7485E204E39E400DB65FD /* Reachability.m in Sources */,
 				74D74842204E39E400DB65FD /* IQNSArray+Sort.m in Sources */,
+				74ECFAA020612C8100CC018B /* SouSuoJieGuo_VC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,7 @@
 #import "ShangPinXiangQing_VC.h"//商品详情
 #import "CollectionReusableView_H.h"
 #import "JieLong_VC.h"//接龙
+#import "SouSuo_VC.h"//搜索页面
 
 @interface ShouYe_VC ()<ShouYe_H_PTTJ_V_delegate>{
     UIView          *view_Nav;//顶部视图
@@ -94,6 +95,7 @@
     //搜索
     UIButton    *btn_SS = [[UIButton alloc]initWithFrame:CGRectMake( btn_DW.right + 27, 20 + 6, btn_XX.left  - 27*2 - btn_DW.right , 30)];
     [btn_SS setImage:[UIImage imageNamed:@"ShouHuoDiZhi"] forState:UIControlStateNormal];
+    [btn_SS addTarget:self action:@selector(btn_SS_Action) forControlEvents:UIControlEventTouchUpInside];
     [view_Nav addSubview:btn_SS];
     
     LB = [[Image_Lunbo alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 155)];
@@ -137,6 +139,11 @@
     }
 }
 
+#pragma mark- 搜索
+- (void)btn_SS_Action{
+    SouSuo_VC *vc = [[SouSuo_VC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 #pragma mark- collectionviewcollection代理
