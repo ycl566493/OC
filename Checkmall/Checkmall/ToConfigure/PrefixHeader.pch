@@ -1,0 +1,37 @@
+//
+//  PrefixHeader.pch
+//  车客生鲜
+//
+//  Created by 杨成龙MAC on 2018/3/3.
+//  Copyright © 2018年 YCL. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "URL_Connect.h"
+#import "HongDingYi.h"//常用的宏定义
+#import "PeiZhiWenJian_H.h"//配置文件 网络请求 背景颜色‘’
+#import "UIImage+Extension.h"//UIImage扩展
+#import "NSString+Extension.h"//字符串扩展
+#import "UIViewExt.h"//扩展uiview
+
+#import "MJRefresh.h"//MJ
+#import "NetRequest.h"//网络请求
+
+#import "AFNetworking.h"
+#import "MBProgressHUD.h"
+#import "MBProgressHUD+Add.h"
+#import "UIImageView+WebCache.h"//sdwebimage
+
+#import "MyHelper.h"//自定义工具
+#import "BaseCollectionViewCell.h"
+#import "BaseCollectionViewController.h"
+#import "BaseTabBarController.h"
+#import "BaseTableViewCell.h"
+#import "BaseTableViewController.h"
+#import "BaseNavigationController.h"
+#import "MyUIView.h"//自定义view
+#import "MyUIScrollView.h"
+
+#endif /* PrefixHeader_pch */

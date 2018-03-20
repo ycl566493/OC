@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="169" id="KGk-i7-Jjw" customClass="YouHuiJuanCell">
+            <rect key="frame" x="0.0" y="0.0" width="299" height="169"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="299" height="168.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WeiDuiHuan" translatesAutoresizingMaskIntoConstraints="NO" id="Wbx-AX-ILR">
+                        <rect key="frame" x="0.0" y="0.0" width="299" height="99"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="99" id="E8u-87-y5N"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cy0-Jb-lFU">
+                        <rect key="frame" x="221" y="0.0" width="77.5" height="168.5"/>
+                        <connections>
+                            <action selector="btn_Action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pD5-4y-AUs"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="鸡蛋兑换券鸡蛋兑换券鸡蛋兑换券" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGC-m1-2Dq">
+                        <rect key="frame" x="99" y="20" width="112" height="38.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="250" constant="40" id="fgi-Rf-Q4z"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="1" green="0.47058823529411764" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有效期 2018-03-32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acn-vj-44C">
+                        <rect key="frame" x="97" y="64" width="107" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Oc9-RH-3YL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kWj-Li-RxE">
+                        <rect key="frame" x="20" y="15" width="69" height="69"/>
+                        <color key="backgroundColor" red="1" green="0.47058823529999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="69" id="1ie-ek-VO0"/>
+                            <constraint firstAttribute="width" constant="69" id="7li-gq-Djk"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Cy0-Jb-lFU" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.26" id="6kU-eQ-xGE"/>
+                    <constraint firstAttribute="trailing" secondItem="Cy0-Jb-lFU" secondAttribute="trailing" id="9MN-yP-ITK"/>
+                    <constraint firstItem="Cy0-Jb-lFU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KCX-3u-qlP"/>
+                    <constraint firstAttribute="trailing" secondItem="Wbx-AX-ILR" secondAttribute="trailing" id="Ks2-DD-aTy"/>
+                    <constraint firstItem="Acn-vj-44C" firstAttribute="bottom" secondItem="kWj-Li-RxE" secondAttribute="bottom" id="Mqx-Gp-uGH"/>
+                    <constraint firstItem="wGC-m1-2Dq" firstAttribute="top" secondItem="kWj-Li-RxE" secondAttribute="top" constant="5" id="Nhj-Z5-IxK"/>
+                    <constraint firstItem="Acn-vj-44C" firstAttribute="leading" secondItem="kWj-Li-RxE" secondAttribute="trailing" constant="8" id="PLG-gD-DXn"/>
+                    <constraint firstItem="kWj-Li-RxE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="UuU-lC-YBx"/>
+                    <constraint firstItem="Cy0-Jb-lFU" firstAttribute="leading" secondItem="Acn-vj-44C" secondAttribute="trailing" constant="17" id="WlQ-ZI-UKx"/>
+                    <constraint firstItem="kWj-Li-RxE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="XTg-AQ-f6F"/>
+                    <constraint firstAttribute="bottom" secondItem="Cy0-Jb-lFU" secondAttribute="bottom" id="YzY-QO-HtD"/>
+                    <constraint firstItem="Cy0-Jb-lFU" firstAttribute="leading" secondItem="wGC-m1-2Dq" secondAttribute="trailing" constant="10" id="dd1-fh-kzp"/>
+                    <constraint firstItem="Wbx-AX-ILR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gZG-Ix-NZb"/>
+                    <constraint firstItem="Wbx-AX-ILR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="h1s-l6-z5V"/>
+                    <constraint firstItem="wGC-m1-2Dq" firstAttribute="leading" secondItem="kWj-Li-RxE" secondAttribute="trailing" constant="10" id="xPh-8W-e9b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="btn_DH" destination="Cy0-Jb-lFU" id="APs-LD-Kaf"/>
+                <outlet property="imageV_TP" destination="kWj-Li-RxE" id="ALN-33-0jO"/>
+                <outlet property="lbl_Name" destination="wGC-m1-2Dq" id="zGH-wU-X6K"/>
+                <outlet property="lbl_YXQ" destination="Acn-vj-44C" id="AHf-iH-XCQ"/>
+            </connections>
+            <point key="canvasLocation" x="23.5" y="116.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="WeiDuiHuan" width="375" height="100"/>
+    </resources>
+</document>

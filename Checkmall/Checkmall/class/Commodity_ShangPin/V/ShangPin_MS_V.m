@@ -1,0 +1,67 @@
+//
+//  ShangPin_MS_V.m
+//  Checkmall
+//
+//  Created by 杨成龙MAC on 2018/3/12.
+//  Copyright © 2018年 CKJY. All rights reserved.
+//
+
+#import "ShangPin_MS_V.h"
+
+@interface ShangPin_MS_V(){
+    UILabel     *lbl_MSXX;//描述信息
+    UIView      *view_FGX;//分割线
+}
+@end
+
+@implementation ShangPin_MS_V
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self init_UI];
+    }
+    return self;
+}
+
+-(void)init_UI{
+    
+    UILabel * lbl_MS = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, ScreenWidth - 15 * 2, 44)];
+    lbl_MS.text = @"商品描述";
+    lbl_MS.font = font15;
+    [self addSubview:lbl_MS];
+    
+    UIView  *view_FFF = [[UIView alloc]initWithFrame:CGRectMake(0, 44, ScreenWidth, .5)];
+    view_FFF.backgroundColor = UIColorFromHex(0xeeeeee);
+    [self addSubview:view_FFF];
+    
+    lbl_MSXX = [[UILabel alloc]initWithFrame:CGRectMake(15, view_FFF.bottom + 15, ScreenWidth - 15 * 2, 19)];
+    lbl_MSXX.numberOfLines = 0;
+    lbl_MSXX.font = font12;
+    lbl_MSXX.textColor = UIColorFromHex(0x666666);
+    [self addSubview:lbl_MSXX];
+    
+    view_FGX = [[UIView alloc]initWithFrame:CGRectMake(0, lbl_MSXX.bottom + 15, ScreenWidth - 15 *2, .5)];
+    view_FGX.backgroundColor = UIColorFromHex(0xeeeeee);
+    [self addSubview:view_FGX];
+    
+}
+
+-(void)setStr_Title:(NSString *)str_Title{
+    _str_Title = str_Title;
+    lbl_MSXX.text = str_Title;
+    lbl_MSXX.height = [MyHelper getSpaceLabelHeight:lbl_MSXX.text withFont:lbl_MSXX.font withWidth:lbl_MSXX.width Spacing:5];
+    [MyHelper setLabelSpace:lbl_MSXX withValue:lbl_MSXX.text withFont:lbl_MSXX.font Spacing:4];
+    view_FGX.top = lbl_MSXX.bottom + 15;
+}
+
++(CGFloat)get_H:(id)data{
+    
+    CGFloat fff = 45;
+    NSString *str_T = data;
+    
+    return fff + [MyHelper getSpaceLabelHeight:str_T withFont:font12 withWidth:ScreenWidth - 30 Spacing:5];
+}
+
+@end

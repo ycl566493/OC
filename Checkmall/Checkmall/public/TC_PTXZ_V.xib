@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TC_PTXZ_V">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinTuanBeiJing" translatesAutoresizingMaskIntoConstraints="NO" id="Ywd-sB-Cuo">
+                    <rect key="frame" x="25" y="156.5" width="325" height="414"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拼团须知" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7q-xb-Wyw">
+                    <rect key="frame" x="25" y="156.5" width="325" height="54"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZd-X3-0Kr">
+                    <rect key="frame" x="310" y="106.5" width="40" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="EUL-Kj-lq6"/>
+                        <constraint firstAttribute="width" constant="40" id="c6H-Aj-Oz9"/>
+                    </constraints>
+                    <state key="normal" image="CuoHao"/>
+                    <connections>
+                        <action selector="btn_GB_Action:" destination="iN0-l3-epB" eventType="touchUpInside" id="1F2-lm-dCA"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PTXZBD" translatesAutoresizingMaskIntoConstraints="NO" id="5w8-RN-MvC">
+                    <rect key="frame" x="35" y="210.5" width="305" height="345"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拼团新玩法" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhK-yr-0ym">
+                    <rect key="frame" x="35" y="216.5" width="305" height="41.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGh-u7-1Z8">
+                    <rect key="frame" x="45" y="268" width="285" height="277.5"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.4005779109589041" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="5w8-RN-MvC" firstAttribute="trailing" secondItem="Ywd-sB-Cuo" secondAttribute="trailing" constant="-10" id="0gZ-7b-8BO"/>
+                <constraint firstItem="Ywd-sB-Cuo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="3zh-x7-oFN"/>
+                <constraint firstItem="yhK-yr-0ym" firstAttribute="top" secondItem="5w8-RN-MvC" secondAttribute="top" constant="6" id="8Rx-Jx-R1f"/>
+                <constraint firstItem="B7q-xb-Wyw" firstAttribute="height" secondItem="Ywd-sB-Cuo" secondAttribute="height" multiplier="0.13" id="9X3-XB-mOT"/>
+                <constraint firstItem="B7q-xb-Wyw" firstAttribute="trailing" secondItem="Ywd-sB-Cuo" secondAttribute="trailing" id="FeB-8L-dPg"/>
+                <constraint firstItem="5w8-RN-MvC" firstAttribute="bottom" secondItem="Ywd-sB-Cuo" secondAttribute="bottom" constant="-15" id="Fm2-V9-mzJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ywd-sB-Cuo" secondAttribute="trailing" constant="25" id="Gce-SO-pzt"/>
+                <constraint firstItem="yhK-yr-0ym" firstAttribute="trailing" secondItem="5w8-RN-MvC" secondAttribute="trailing" id="Gvq-0H-44n"/>
+                <constraint firstItem="xGh-u7-1Z8" firstAttribute="trailing" secondItem="5w8-RN-MvC" secondAttribute="trailing" constant="-10" id="JR0-aB-EpN"/>
+                <constraint firstItem="yhK-yr-0ym" firstAttribute="height" secondItem="5w8-RN-MvC" secondAttribute="height" multiplier="0.12" id="Lq3-mU-ICH"/>
+                <constraint firstItem="Ywd-sB-Cuo" firstAttribute="top" secondItem="yZd-X3-0Kr" secondAttribute="bottom" id="P9w-1t-nD3"/>
+                <constraint firstItem="xGh-u7-1Z8" firstAttribute="leading" secondItem="5w8-RN-MvC" secondAttribute="leading" constant="10" id="X0d-IG-VRW"/>
+                <constraint firstItem="B7q-xb-Wyw" firstAttribute="leading" secondItem="Ywd-sB-Cuo" secondAttribute="leading" id="Ygv-1Q-0kl"/>
+                <constraint firstItem="xGh-u7-1Z8" firstAttribute="top" secondItem="yhK-yr-0ym" secondAttribute="bottom" constant="10" id="aMx-Pk-o8D"/>
+                <constraint firstItem="B7q-xb-Wyw" firstAttribute="top" secondItem="Ywd-sB-Cuo" secondAttribute="top" id="eYg-yE-G90"/>
+                <constraint firstItem="xGh-u7-1Z8" firstAttribute="bottom" secondItem="5w8-RN-MvC" secondAttribute="bottom" constant="-10" id="i76-gT-NrK"/>
+                <constraint firstItem="yZd-X3-0Kr" firstAttribute="trailing" secondItem="Ywd-sB-Cuo" secondAttribute="trailing" id="lfv-0m-2yN"/>
+                <constraint firstItem="Ywd-sB-Cuo" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.62" id="mRB-eB-nHa"/>
+                <constraint firstItem="5w8-RN-MvC" firstAttribute="top" secondItem="B7q-xb-Wyw" secondAttribute="bottom" id="rHx-wP-ZnD"/>
+                <constraint firstItem="Ywd-sB-Cuo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="30" id="ytu-Xp-Z8l"/>
+                <constraint firstItem="5w8-RN-MvC" firstAttribute="leading" secondItem="Ywd-sB-Cuo" secondAttribute="leading" constant="10" id="zPq-Z6-hwC"/>
+                <constraint firstItem="yhK-yr-0ym" firstAttribute="leading" secondItem="5w8-RN-MvC" secondAttribute="leading" id="zub-ob-K3M"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="btn_GB" destination="yZd-X3-0Kr" id="EFe-SB-NXp"/>
+                <outlet property="lbl_Name" destination="yhK-yr-0ym" id="xdH-P6-VGr"/>
+                <outlet property="scrollV" destination="xGh-u7-1Z8" id="Wrs-ww-U0U"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="75.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="CuoHao" width="35" height="49"/>
+        <image name="PTXZBD" width="305" height="308"/>
+        <image name="PinTuanBeiJing" width="325" height="375"/>
+    </resources>
+</document>

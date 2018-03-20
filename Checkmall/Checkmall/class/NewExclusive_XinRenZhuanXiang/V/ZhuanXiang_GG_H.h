@@ -1,0 +1,13 @@
+//
+//  ZhuanXiang_GG_H.h
+//  Checkmall
+//
+//  Created by 杨成龙MAC on 2018/3/7.
+//  Copyright © 2018年 CKJY. All rights reserved.
+//
+
+#import "MyUIView.h"
+
+@interface ZhuanXiang_GG_H : MyUIView
+
+@end

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ShangPinLieBiao_QRDD_V">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品清单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxR-QQ-aqk">
+                    <rect key="frame" x="15" y="20" width="345" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="KWZ-tT-ewa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JvN-va-4hg">
+                    <rect key="frame" x="15" y="64" width="360" height="0.5"/>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="QUR-qX-aTA"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f4I-nZ-emS">
+                    <rect key="frame" x="0.0" y="64.5" width="375" height="241"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="241" id="y49-6l-9oG"/>
+                    </constraints>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iM-kH-ELu">
+                    <rect key="frame" x="0.0" y="305.5" width="375" height="10"/>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="9Xv-Yj-iEY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="5iM-kH-ELu" firstAttribute="top" secondItem="f4I-nZ-emS" secondAttribute="bottom" id="8vW-UA-hwP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5iM-kH-ELu" secondAttribute="trailing" id="9pY-qH-g4I"/>
+                <constraint firstItem="JxR-QQ-aqk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="cyo-6k-vch"/>
+                <constraint firstItem="JxR-QQ-aqk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="eER-is-8E0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="JxR-QQ-aqk" secondAttribute="trailing" constant="15" id="fkZ-Te-bG4"/>
+                <constraint firstItem="5iM-kH-ELu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hRB-WS-Q4q"/>
+                <constraint firstItem="f4I-nZ-emS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iOq-Qk-Th1"/>
+                <constraint firstItem="f4I-nZ-emS" firstAttribute="top" secondItem="JvN-va-4hg" secondAttribute="bottom" id="jzp-wq-6FR"/>
+                <constraint firstItem="JvN-va-4hg" firstAttribute="top" secondItem="JxR-QQ-aqk" secondAttribute="bottom" id="oxN-wy-Imw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="f4I-nZ-emS" secondAttribute="trailing" id="v7H-Jo-BCG"/>
+                <constraint firstItem="JvN-va-4hg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="xZu-oZ-eBd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="JvN-va-4hg" secondAttribute="trailing" id="ztl-cG-TgD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="tableV" destination="f4I-nZ-emS" id="uVs-9v-23K"/>
+                <outlet property="tableV_H" destination="y49-6l-9oG" id="nCq-GD-Yzu"/>
+            </connections>
+        </view>
+    </objects>
+</document>
