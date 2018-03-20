@@ -17,8 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"支付成功";
     [self init_UI];
 
+    
+    
 }
 
 -(void)init_UI{
