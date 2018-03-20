@@ -67,6 +67,8 @@
         NSLog(@"搜索 ==  %li  = = = %@",tag,str);
 
     }
+    SouSuoJieGuo_VC *vvv =[[SouSuoJieGuo_VC alloc]init];
+    [self.navigationController pushViewController:vvv animated:YES];
 }
 
 #pragma mark- 搜索按钮
