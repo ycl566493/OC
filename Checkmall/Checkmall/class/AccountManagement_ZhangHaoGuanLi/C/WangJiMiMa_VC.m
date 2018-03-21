@@ -28,8 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.title = @"提交";
+    bool_MM_KJ = YES;
+    
+    self.title = @"忘记密码";
     [self init_UI];
     
 }
@@ -136,11 +137,34 @@
     [btn_ZC setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn_ZC addTarget:self action:@selector(btn_ZC_Action) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn_ZC];
+    
+    [self if_MMKJ];
 }
 
-#pragma mark- 提价
+#pragma mark- 提交
 -(void)btn_ZC_Action{
-    
+    if (![MyHelper isPhone:txt_SJH.text]){
+        [MyHelper showMessage:@"请输入正确的手机号！"];
+    }else if(txt_YZM.text.length == 0){
+        [MyHelper showMessage:@"请输入验证码！"];
+    }else if(txt_MM.text.length < 6 || txt_MM.text.length > 15){
+        [MyHelper showMessage:@"密码长度6~15位！"];
+    }else{
+        NSDictionary *dic_encryptData = @{@"code":txt_YZM.text,@"tel":txt_SJH.text,@"password":txt_MM.text};
+        NSString * str_encryptData = [RSA encryptString:[MyHelper toJson:dic_encryptData] publicKey:RSA_public_key];
+        
+        NSDictionary *dic = @{@"encryptData":str_encryptData,@"act":@"forget"};
+        [NetRequest postWithUrl:login_getUserInfo params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+            if ([dict[@"code"] integerValue] == 1) {
+                [kUserDefaults setObject:txt_SJH.text forKey:YongHuMing];
+                [kUserDefaults setObject:@"" forKey:MiMa];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            NSLog(@"找回密码 == %@",dict);
+        } fail:^(id error) {
+            
+        }];
+    }
 }
 
 -(void)dealloc{
@@ -159,9 +183,20 @@
 #pragma mark- 判断密码是否可见
 - (void)if_MMKJ{
     if (bool_MM_KJ) {
-        right_Image_MM.image = [UIImage imageNamed:@"KaiYan"];
-    }else{
         right_Image_MM.image = [UIImage imageNamed:@"BiYan"];
+        
+        NSString *tempPwdStr = txt_MM.text;
+        txt_MM.text = @""; // 这句代码可以防止切换的时候光标偏移
+        txt_MM.secureTextEntry = YES;
+        txt_MM.text = tempPwdStr;
+        
+    }else{
+        right_Image_MM.image = [UIImage imageNamed:@"KaiYan"];
+        
+        NSString *tempPwdStr = txt_MM.text;
+        txt_MM.text = @""; // 这句代码可以防止切换的时候光标偏移
+        txt_MM.secureTextEntry = NO;
+        txt_MM.text = tempPwdStr;
     }
     
 }
@@ -169,11 +204,22 @@
 
 #pragma mark- 获取验证码
 - (void)btn_YZM_Action{
-    [btn_YZM setEnabled:NO];
-    int_DJS = 60;
-    
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action:) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    if (![MyHelper isPhone:txt_SJH.text]){
+        [MyHelper showMessage:@"请输入正确的手机号！"];
+    }else{
+        NSString * str_JM = [RSA encryptString:txt_SJH.text publicKey:RSA_public_key];
+        [NetRequest postWithUrl:message_getIphone params:@{@"iphone":str_JM,@"type":@"forget"} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+            
+            NSLog(@"发送验证码===  %@ \n%@",dict,[MyHelper toJson:dict]);
+            if ([dict[@"code"] integerValue] == 1) {
+                [btn_YZM setEnabled:NO];
+                int_DJS = 60;
+                timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action:) userInfo:nil repeats:YES];
+                [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+            }
+        } fail:^(id error) {
+        }];
+    }
 }
 
 - (void)action:(NSTimer *)sender {

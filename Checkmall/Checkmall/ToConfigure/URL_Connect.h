@@ -11,6 +11,8 @@
 
 //首页
 #define product_getRecommendProduct [NSString stringWithFormat:@"%@%@",URL_LJ,@"product/getRecommendProduct"]//首页
+#define message_getIphone [NSString stringWithFormat:@"%@%@",URL_LJ,@"message/getIphone"]//发送验证码
+#define login_getUserInfo [NSString stringWithFormat:@"%@%@",URL_LJ,@"login/getUserInfo"]//账号操作
 
 
 

@@ -269,19 +269,21 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self FGX:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"yinchangtabbarviewcontroller" object:@"3" userInfo:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self FGX:NO];
 
-    [super viewWillDisappear:animated];
 
 }
 

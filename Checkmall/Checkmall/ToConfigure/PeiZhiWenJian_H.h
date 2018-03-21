@@ -15,7 +15,7 @@
 
 //https://api.jingchengcaidian.com/api/product/getRecommendProduct
 //路径选择
-#define LuJing @"/api/"
+#define LuJing @"/app/"
 
 //最后的请求路径
 #define URL_LJ [NSString stringWithFormat:@"%@%@",FuWuQi,LuJing]

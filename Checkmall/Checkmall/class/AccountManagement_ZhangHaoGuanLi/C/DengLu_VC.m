@@ -45,6 +45,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    bool_MM_KJ = YES;
     self.title = @"登录";
     [self init_UI];
     
@@ -112,6 +114,8 @@
     txt_SJH.leftView = leftView_SJH;
     txt_SJH.leftViewMode = UITextFieldViewModeAlways;
     txt_SJH.placeholder = @"请输入手机号";
+    txt_SJH.text = [kUserDefaults objectForKey:YongHuMing];
+
     [self.view addSubview:txt_SJH];
     
     //密码
@@ -123,6 +127,7 @@
     txt_MM.backgroundColor = [UIColor whiteColor];
     txt_MM.clearButtonMode=UITextFieldViewModeWhileEditing;
     txt_MM.font = font15;
+    txt_MM.text = [kUserDefaults objectForKey:MiMa];
     UIView *leftView_MM = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
     leftView_MM.backgroundColor = [UIColor whiteColor];
     txt_MM.leftView = leftView_MM;
@@ -189,6 +194,7 @@
     [btn_DL setTitle:@"登录" forState:UIControlStateNormal];
     btn_DL.titleLabel.font = [UIFont systemFontOfSize:18];
     [btn_DL setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn_DL addTarget:self action:@selector(btn_DL_Action) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn_DL];
     
     //协议
@@ -228,6 +234,8 @@
     lbl_WXDL.textAlignment = 1;
     [self.view addSubview:lbl_WXDL];
     
+    
+    [self if_MMKJ];
 }
 
 #pragma mark- 微信登录
@@ -243,6 +251,13 @@
         return NO;
     }
     return YES;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    txt_SJH.text = [kUserDefaults objectForKey:YongHuMing];
+    txt_MM.text = [kUserDefaults objectForKey:MiMa];
+
 }
 
 #pragma mark- 忘记密码
@@ -292,9 +307,46 @@
 #pragma mark- 判断密码是否可见
 - (void)if_MMKJ{
     if (bool_MM_KJ) {
-        right_Image_MM.image = [UIImage imageNamed:@"KaiYan"];
-    }else{
         right_Image_MM.image = [UIImage imageNamed:@"BiYan"];
+        NSString *tempPwdStr = txt_MM.text;
+        txt_MM.text = @""; // 这句代码可以防止切换的时候光标偏移
+        txt_MM.secureTextEntry = YES;
+        txt_MM.text = tempPwdStr;
+        
+    }else{
+        right_Image_MM.image = [UIImage imageNamed:@"KaiYan"];
+       
+        NSString *tempPwdStr = txt_MM.text;
+        txt_MM.text = @""; // 这句代码可以防止切换的时候光标偏移
+        txt_MM.secureTextEntry = NO;
+        txt_MM.text = tempPwdStr;
+    }
+    
+
+    
+}
+
+#pragma mark- 登录
+- (void)btn_DL_Action{
+    if (![MyHelper isPhone:txt_SJH.text]){
+        [MyHelper showMessage:@"请输入正确的手机号！"];
+    }else if(txt_MM.text.length < 6 || txt_MM.text.length > 15){
+        [MyHelper showMessage:@"密码长度为6~15位！"];
+    }else{
+        
+        NSDictionary *dic_encryptData = @{@"tel":txt_SJH.text,@"password":txt_MM.text};
+        NSString * str_encryptData = [RSA encryptString:[MyHelper toJson:dic_encryptData] publicKey:RSA_public_key];
+        
+        NSDictionary *dic = @{@"encryptData":str_encryptData,@"act":@"login"};
+        [NetRequest postWithUrl:login_getUserInfo params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+            if ([dict[@"code"] integerValue] == 1) {
+                [kUserDefaults setObject:txt_SJH.text forKey:YongHuMing];
+                [kUserDefaults setObject:txt_MM.text forKey:MiMa];
+            }
+            NSLog(@"登录 == %@ ==  %@",dict,[MyHelper toJson:dict]);
+        } fail:^(id error) {
+            
+        }];
     }
     
 }

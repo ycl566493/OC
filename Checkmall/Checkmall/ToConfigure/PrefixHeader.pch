@@ -34,4 +34,6 @@
 #import "MyUIView.h"//自定义view
 #import "MyUIScrollView.h"
 
+#import "RSA.h"
+
 #endif /* PrefixHeader_pch */

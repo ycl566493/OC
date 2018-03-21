@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.CeHua = YES;
+    self.CeHua = NO;
     self.window = [[UIApplication sharedApplication].delegate window];
 
     [self showBack];
