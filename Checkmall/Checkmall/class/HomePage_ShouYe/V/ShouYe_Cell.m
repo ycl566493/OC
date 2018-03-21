@@ -34,22 +34,23 @@
     self.backgroundColor = [UIColor whiteColor];
     
     imageV_DT = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.width, self.width)];
-    imageV_DT.backgroundColor = [UIColor orangeColor];
+    imageV_DT.contentMode = UIViewContentModeScaleAspectFill;
+    imageV_DT.clipsToBounds = YES;
     [self addSubview:imageV_DT];
     
     lbl_Title = [[UILabel alloc]initWithFrame:CGRectMake(10, imageV_DT.bottom +10 , self.width- 10*2, 20)];
     lbl_Title.font = font14;
     lbl_Title.textColor = UIColorFromHex(0x333333);
-    lbl_Title.text = @"橘子橘子";
+    lbl_Title.text = @"";
     [self addSubview:lbl_Title];
     
     lbl_NR = [[UILabel alloc]initWithFrame:CGRectMake(lbl_Title.left, lbl_Title.bottom , lbl_Title.width, 15)];
     lbl_NR.font = font12;
     lbl_NR.textColor = UIColorFromHex(0x666666);
-    lbl_NR.text = @"又大又甜的橘子";
+    lbl_NR.text = @"";
     [self addSubview:lbl_NR];
     
-    btn_GWC = [[UIButton alloc]initWithFrame:CGRectMake(self.width - 30 - 15, self.height - 30 - 15, 30, 30)];
+    btn_GWC = [[UIButton alloc]initWithFrame:CGRectMake(self.width - 30 - 10, self.height - 30 - 10, 30, 30)];
     [btn_GWC setImage:[UIImage imageNamed:@"GouWuCheHong"] forState:UIControlStateNormal];
     [btn_GWC addTarget:self action:@selector(btn_GWC_Action:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn_GWC];
@@ -70,6 +71,23 @@
 
     
     [self addSubview:lbl_JG];
+    
+}
+
+-(void)setShouYe_Model:(ShouYe_Model_Data *)ShouYe_Model{
+    _ShouYe_Model = ShouYe_Model;
+    lbl_Title.text = ShouYe_Model.productName;
+    [imageV_DT sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",ShouYe_Model.productImage,imageV_DT.width]] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    lbl_NR.text = ShouYe_Model.productDesc;
+    
+    lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%@",ShouYe_Model.productPrice,ShouYe_Model.productMarketPrice];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     lbl_JG.text];
+    NSRange range = NSMakeRange(ShouYe_Model.productPrice.length+1, ShouYe_Model.productMarketPrice.length + 1);
+    // 设置颜色
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0x999999) range:range];
+    // 设置字体大小
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:11] range:range];
+    lbl_JG.attributedText = attributedStr;
     
 }
 

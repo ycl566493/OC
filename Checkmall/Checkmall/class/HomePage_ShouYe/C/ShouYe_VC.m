@@ -20,6 +20,7 @@
 #import "CollectionReusableView_H.h"
 #import "JieLong_VC.h"//接龙
 #import "SouSuo_VC.h"//搜索页面
+#import "ShouYe_Model_RootClass.h"//首页model
 
 @interface ShouYe_VC ()<ShouYe_H_PTTJ_V_delegate>{
     UIView          *view_Nav;//顶部视图
@@ -29,6 +30,8 @@
     ShouYe_H_KB_V   *KB;//快报
     ShouYe_H_PTTJ_V *PTTJ;//拼团推荐
     ShouYe_H_RX_V   *RX;//热销
+    
+    ShouYe_Model_RootClass  *model;//首页model
 }
 
 @end
@@ -37,25 +40,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.title = @"首页";
     self.view.backgroundColor = [UIColor whiteColor];
     self.view.mj_y = -kStatusBarHeight;
     [self init_UI];
 
     //注册重用View
-//    [self.collectionView registerNib: headerNib
-//          forSupplementaryViewOfKind: UICollectionElementKindSectionHeader
-//                 withReuseIdentifier: @"CollectionHeaderReusableView"];
-//    [self.collectionView registerNib: footerNib
-//          forSupplementaryViewOfKind: UICollectionElementKindSectionFooter
-//                 withReuseIdentifier: @"CollectionFooterReusableView"];
-    
     [self.collectionView registerClass:[ShouYe_Cell class] forCellWithReuseIdentifier:@"cell"];
     [self.collectionView registerClass:[CollectionReusableView_H class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"Footer"];
 
-//    [self init_Data];
+    [self init_Data];
     
 //    DengLu_VC *vc = [[DengLu_VC alloc]init];
 //    BaseNavigationController    *nVc = [[BaseNavigationController alloc]initWithRootViewController:vc];
@@ -67,8 +63,10 @@
 
 #pragma mark- 请求数据
 -(void)init_Data{
-    [NetRequest postWithUrl:Book_rqcordBook params:@{} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+    [NetRequest postWithUrl:product_getRecommendProduct params:@{@"page":@"1"} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"%@",dict);
+        model = [[ShouYe_Model_RootClass alloc]initWithDictionary:dict];
+        [self.collectionView reloadData];
         
     } fail:^(id error) {
         
@@ -152,7 +150,7 @@
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (section == 3) {
-        return 10;
+        return model.data.count;
     }
     return 0;
 }
@@ -161,6 +159,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * CellIdentifier = @"cell";
     ShouYe_Cell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    ShouYe_Model_Data *MMMM = model.data[indexPath.row];
+    cell.ShouYe_Model = MMMM;
     return cell;
 }
 

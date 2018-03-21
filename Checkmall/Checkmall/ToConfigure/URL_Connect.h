@@ -10,7 +10,7 @@
 #define URL_Connect_h
 
 //首页
-#define Book_rqcordBook [NSString stringWithFormat:@"%@%@",URL_LJ,@"getRecommendProduct"]
+#define product_getRecommendProduct [NSString stringWithFormat:@"%@%@",URL_LJ,@"product/getRecommendProduct"]//首页
 
 
 

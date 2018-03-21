@@ -10,9 +10,10 @@
 #import "BaseNavigationController.h"
 #import "ShouYe_VC.h"//首页
 #import "WoDe_VC.h"//个人中心
-#import "GouWuChe_VC.h"//消息列表
-#import "FenLei_VC.h"//搜索
-#import "ZhuanXiang_VC.h"//登录
+#import "GouWuChe_VC.h"//购物车
+#import "FenLei_VC.h"//分类
+#import "ZhuanXiang_VC.h"//团购
+#import "DengLu_VC.h"//登录
 
 @interface BaseTabBarController ()<UITabBarControllerDelegate,UINavigationControllerDelegate>{
     UIButton *btn_1;//第1个按钮
@@ -232,18 +233,19 @@
         }
             break;
         case 905:{
-//            if ([kUserDefaults boolForKey:DengLuZhuangTai]) {
+            if ([kUserDefaults boolForKey:DengLuZhuangTai]) {
                 btn_1.selected = NO;
                 btn_2.selected = NO;
                 btn_4.selected = NO;
                 btn_5.selected = YES;
                 self.selectedIndex = 3;
-//            }else{
-//                UIViewController *vc = [[UIViewController alloc]init];
-////                vc.delegate = self;
-//                BaseNavigationController *nav = [[BaseNavigationController alloc]initWithRootViewController:vc];
-//                [self presentViewController:nav animated:YES completion:nil];
-//            }
+            }else{
+                    DengLu_VC *vc = [[DengLu_VC alloc]init];
+                    BaseNavigationController    *nVc = [[BaseNavigationController alloc]initWithRootViewController:vc];
+                    [self presentViewController:nVc animated:YES completion:^{
+                
+                    }];
+            }
         }
             break;
             

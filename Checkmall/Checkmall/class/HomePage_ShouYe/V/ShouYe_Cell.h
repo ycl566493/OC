@@ -7,7 +7,10 @@
 //  首页商品cell
 
 #import "BaseCollectionViewCell.h"
+#import "ShouYe_Model_Data.h"//model
 
 @interface ShouYe_Cell : BaseCollectionViewCell
+
+@property (nonatomic,strong)ShouYe_Model_Data   *ShouYe_Model;
 
 @end

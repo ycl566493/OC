@@ -11,11 +11,11 @@
 
 //服务器选择
 //#define FuWuQi @"" //正式
-#define FuWuQi @"https://api.jingchengcaidian.com"  //测试地址：
+#define FuWuQi @"http://www.jingchengcaidian.com"  //测试地址：
 
 //https://api.jingchengcaidian.com/api/product/getRecommendProduct
 //路径选择
-#define LuJing @"/api/product/"
+#define LuJing @"/api/"
 
 //最后的请求路径
 #define URL_LJ [NSString stringWithFormat:@"%@%@",FuWuQi,LuJing]
