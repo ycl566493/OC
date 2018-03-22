@@ -15,13 +15,14 @@
 #import "DiZhiLieBiao_VC.h"//地址
 #import "DingDanLieBiao_VC.h"//订单列表
 #import "YouHuiJuan_VC.h"//优惠券
+#import "WoDe_Model_RootClass.h"//modle
 
 @interface WoDe_VC ()<WoDe_TouBu_V_Delegate,WoDe_FuWo_V_Delegate,WoDe_DD_V_Delegate>{
     WoDe_TouBu_V    *TouBu;//头部
     WoDe_DD_V       *DD;//我的订单模块
     WoDe_FuWo_V     *FW;//服务模块
     WoDe_ELeMa_V    *GGW;//广告位
-    
+    WoDe_Model_RootClass    *model_WD;//我的modle
 }
 
 @end
@@ -36,7 +37,19 @@
     self.view.mj_y = -kStatusBarHeight;
 
     [self init_UI];
-    
+ 
+    [self init_Data];
+}
+
+-(void)init_Data{
+    [NetRequest postWithUrl:user_getUserInfo params:@{@"token":[MyHelper toToken]} showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        NSLog(@"个人信息 == = %@",dict);
+        model_WD = [[WoDe_Model_RootClass alloc]initWithDictionary:dict];
+        
+    } fail:^(id error) {
+        
+    }];
 }
 
 -(void)init_UI{

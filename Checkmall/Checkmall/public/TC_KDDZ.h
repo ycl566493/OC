@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_BC;//保存
 
 @property (weak, nonatomic) IBOutlet UITextField *txtV_DZ;//详细地址
+@property (weak, nonatomic) IBOutlet UILabel *lbl_SSQ;//省市区
 
 @end

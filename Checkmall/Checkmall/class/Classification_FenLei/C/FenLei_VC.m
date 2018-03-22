@@ -11,6 +11,7 @@
 #import "FenLei_ShangPin_Cell.h"//商品列表
 #import "FenLei_H_GG_V.h"//分类广告
 #import "FenLei_H_Title_V.h"//分类标题
+#import "FenLeiLieBiao_Model_RootClass.h"//分类列表
 
 @interface FenLei_VC ()<UITableViewDelegate,UITableViewDataSource>{
     UITableView *table_V_FL;//分类列表
@@ -20,7 +21,9 @@
     
     NSInteger           Select_Index;//选中的分类
 
+    FenLeiLieBiao_Model_RootClass       *model_FLLB;//分类列表
 }
+
 
 @end
 
@@ -33,6 +36,18 @@
 
     self.title = @"分类";
     [self init_UI];
+    [self init_Data_FL];
+}
+
+#pragma mark- 分类列表
+-(void)init_Data_FL{
+    [NetRequest postWithUrl:Category_getCatelist params:@{} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        model_FLLB = [[FenLeiLieBiao_Model_RootClass alloc]initWithDictionary:dict];
+        NSLog(@"分类列表 ==  %@",dict);
+        
+    } fail:^(id error) {
+        
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

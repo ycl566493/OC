@@ -32,12 +32,15 @@ typedef void (^UploadProgress)(int64_t bytesProgress,int64_t totalBytesProgress)
  *  success 成功返回数据
  *  fail    失败
  *  showAnimate 是否显示HUD
+  *  showMsg 是否显示返回提示
  */
 +(void )getWithUrl:(NSString *)url
             params:(NSDictionary *)params
            success:(SuccessBlock)success
               fail:(ErrorBlock)fail
-       showAnimate:(BOOL)show;
+       showAnimate:(BOOL)show
+           showMsg:(BOOL)showMsg;
+
 
 /**
  *  post请求方法

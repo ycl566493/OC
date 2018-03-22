@@ -7,6 +7,7 @@
 //  我的信息头部
 
 #import "MyUIView.h"
+#import "WoDe_Model_RootClass.h"
 
 @protocol WoDe_TouBu_V_Delegate <NSObject>
 
@@ -20,5 +21,7 @@
 @interface WoDe_TouBu_V : MyUIView
 
 @property(nonatomic,assign)id<WoDe_TouBu_V_Delegate>    delegate;
+
+@property (nonatomic,strong) WoDe_Model_RootClass   *model;
 
 @end

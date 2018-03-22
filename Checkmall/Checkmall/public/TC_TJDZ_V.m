@@ -8,8 +8,20 @@
 
 #import "TC_TJDZ_V.h"
 #import "My_PickerView.h"//地区
+#import "DiQu_Model_RootClass.h"//地区列表
+#import "MenDian_Model_RootClass.h"//门店
 
-@interface TC_TJDZ_V()
+@interface TC_TJDZ_V()<My_PickerView_Delegate,My_PickerView_DataSource>{
+    DiQu_Model_RootClass *model_DQ;//地区modle
+    NSInteger           int_slect;//地区
+    NSInteger            str_DQ_ID;//地区id
+    NSInteger            str_MD_ID;//门店id
+    NSString            *str_Q;//区的名称
+
+    MenDian_Model_RootClass     *model_MD;//门店model
+    BOOL                    bool_DQ;//是否是地区
+    
+}
 
 @property(nonatomic,weak)My_PickerView *pickerV;
 
@@ -19,31 +31,119 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+}
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
     [self init_UI];
 
 }
 -(void)init_UI{
-    self.lbl_MDDZ.text = @"九分裤圣诞节疯狂拉丝机";
+    str_Q = @"";
+    str_DQ_ID = 0;
+    str_MD_ID = 0;
+    self.lbl_MDDZ.text = @" ";
     self.view_H.constant = self.btn_BC.bottom +15;
+    
+    [self init_data_DQ];
+}
+#pragma mark- 获取门店地址
+- (void)init_data_MD:(NSInteger)code_id{
+    [NetRequest postWithUrl:address_getStoreInfo params:@{@"code":[NSString stringWithFormat:@"%li",code_id]} showAnimate:YES showMsg:YES vc:nil success:^(NSDictionary *dict) {
+        NSLog(@"获取门店 = = %@",dict);
+        model_MD  = [[MenDian_Model_RootClass alloc]initWithDictionary:dict];
+        
+    } fail:^(id error) {
+        
+    }];
+}
+
+#pragma mark- 提交
+- (IBAction)btn_BC_Action:(id)sender {
+    NSLog(@"提交");
+    if (![MyHelper isPhone:self.txtF_SJH.text]){
+        [MyHelper showMessage:@"请输入正确的手机号！"];
+    }else if(self.txtF_XM.text.length == 0){
+        [MyHelper showMessage:@"请输入收货姓名！"];
+    }else if(!str_DQ_ID){
+        [MyHelper showMessage:@"请选着地区！"];
+    }else if(!str_MD_ID){
+        [MyHelper showMessage:@"请选着门店！"];
+    }else{
+        NSDictionary *dic = @{
+                              @"username":self.txtF_XM.text,//姓名
+                              @"phone":self.txtF_SJH.text,//手机号
+                              @"addr":self.lbl_MDDZ.text,//详细地址
+                              @"merchanid":[NSString stringWithFormat:@"%li",str_MD_ID],//门店id
+                              @"provincecode":@"110000",//省id
+                              @"citycode":@"110100",//市id
+                              @"countycode":[NSString stringWithFormat:@"%li",str_DQ_ID],//geo_code唯一码
+                              @"province":@"北京市",//省的名称
+                              @"city":@"市辖区",//市的名称
+                              @"county":str_Q,//区的名称
+                              @"token":[kUserDefaults objectForKey:MYtoken]//用户token
+                              };
+        [NetRequest postWithUrl:address_addAdderssByNameId params:dic showAnimate:YES showMsg:YES vc:nil success:^(NSDictionary *dict) {
+            
+            NSLog(@"添加 == %@",dict);
+            
+        } fail:^(id error) {
+            
+        }];
+    }
+}
+
+
+#pragma mark- 获取地区
+- (void)init_data_DQ{
+    [NetRequest postWithUrl:address_getArea params:@{} showAnimate:YES showMsg:YES vc:nil success:^(NSDictionary *dict) {
+        NSLog(@"获取地区");
+        model_DQ = [[DiQu_Model_RootClass alloc]initWithDictionary:dict];
+        
+        
+    } fail:^(id error) {
+        
+    }];
 }
 
 #pragma mark- 门店点击
 - (IBAction)MD_Action:(id)sender {
     NSLog(@"门店点击");
+    if (!str_DQ_ID) {
+        [MyHelper showMessage:@"请先选着地区"];
+    }else{
+        bool_DQ = NO;
+        int_slect= 0;
+        [self.pickerV UP_PickerView:0];
+    }
 
 }
 #pragma mark- 地区点击
-
 - (IBAction)btn_DQ:(id)sender {
-    NSArray *arr = @[@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"8"],@[@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h"],@[@"A",@"B",@"C",@"D",@"F"],@[@"99",@"98",@"97",@"96"]];
-    self.pickerV.Lie_H = arr.count;
-    self.pickerV.arr_Data = arr;
-}
-- (IBAction)DQ_Action:(id)sender {
     NSLog(@"地区点击");
-    NSArray *arr = @[@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"8"],@[@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h"],@[@"A",@"B",@"C",@"D",@"F"],@[@"99",@"98",@"97",@"96"]];
+    bool_DQ = YES;
+    int_slect= 0;
+    [self.pickerV UP_PickerView:0];
+    
+}
 
-    self.pickerV.arr_Data = arr;
+#pragma mark- 地区选中
+-(void)My_PickerView_Delegate_QD{
+    if (bool_DQ) {
+        DiQu_Model_Data *model = model_DQ.data[int_slect];
+        self.lbl_DZ.text = [NSString stringWithFormat:@"北京市 市辖区 %@",model.geoName];
+        str_Q = model.geoName;
+        str_DQ_ID = model.geoId;
+        [self init_data_MD:str_DQ_ID];
+    }else{
+        MenDian_Model_Data *model = model_MD.data[int_slect];
+        self.lbl_MD.text = model.name;
+        self.lbl_MDDZ.text = model.address;
+        str_MD_ID = model.idField;
+        [self layoutIfNeeded];
+        self.view_H.constant = self.btn_BC.bottom +15;
+
+    }
 }
 
 -(My_PickerView *)pickerV{
@@ -52,10 +152,62 @@
         _pickerV = picker;
         _pickerV.Lie_H = 46;
         _pickerV.frame = self.bounds;
+        _pickerV.delegate = self;
+        _pickerV.dataSource = self;
         [self addSubview:_pickerV];
     }
     return _pickerV;
 }
+
+-(void)My_PickerView_DelegateRow:(NSInteger)row inComponent:(NSInteger)component{
+    if (bool_DQ) {
+        if (component == 2) {
+            int_slect = row;
+        }
+    }else{
+        int_slect = row;
+    }
+  
+    NSLog(@"点击 ==  %li",int_slect);
+}
+-(NSInteger)My_PickerView_DataSource_Lie{
+    if (bool_DQ) {
+        return 3;
+    }else{
+        return 1;
+    }
+}
+-(NSInteger)My_PickerView_DataSource_Hang:(NSInteger)component{
+    if (bool_DQ) {
+        if (component == 2) {
+            return model_DQ.data.count;
+        }
+        return 1;
+    }else{
+        return model_MD.data.count;
+    }
+
+}
+-(NSString *)My_PickerView_DataSource_titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    if (bool_DQ) {
+        if (component == 0) {
+            return @"北京市";
+        }
+        if (component == 1) {
+            return @"市辖区";
+        }
+        if (component == 2) {
+            DiQu_Model_Data *model = model_DQ.data[row];
+            return model.geoName;
+        }
+    }else{
+        MenDian_Model_Data *model = model_MD.data[row];
+        return model.name;
+    }
+
+    return @"";
+}
+
 
 #pragma mark- 关闭
 - (IBAction)btn_GB:(UIButton *)sender {

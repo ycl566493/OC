@@ -31,6 +31,11 @@
     return self;
 }
 
+-(void)setModel:(WoDe_Model_RootClass *)model{
+    _model = model;
+    
+}
+
 -(void)init_UI{
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 284)];
     imageV.image = [UIImage imageNamed:@"WoDeBeiJing"];

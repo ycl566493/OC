@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DiZhi_Cell_Delegate <NSObject>
+
+@optional
+- (void)DiZhi_Cell_Delegate_BJ;//编辑
+- (void)DiZhi_Cell_Delegate_SC;//删除
+- (void)DiZhi_Cell_Delegate_MR;//默认
+
+@end
+
 @interface DiZhi_Cell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Name;//姓名
 
@@ -23,6 +32,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_SC;//删除
 
+@property (nonatomic,assign) id<DiZhi_Cell_Delegate>    delegete;
 
 -(void)set_title:(NSString*)str_Title;
 

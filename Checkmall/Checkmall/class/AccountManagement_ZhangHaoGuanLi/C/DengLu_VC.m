@@ -106,6 +106,7 @@
     txt_SJH.layer.cornerRadius = txt_SJH.height / 2;
     txt_SJH.layer.borderColor = UIColorFromHex(0xff7800).CGColor;
     txt_SJH.layer.borderWidth = .5;
+    txt_SJH.keyboardType = UIKeyboardTypeNumberPad;
     txt_SJH.backgroundColor = [UIColor whiteColor];
     txt_SJH.clearButtonMode=UITextFieldViewModeWhileEditing;
     txt_SJH.font = font15;
@@ -336,12 +337,20 @@
         
         NSDictionary *dic_encryptData = @{@"tel":txt_SJH.text,@"password":txt_MM.text};
         NSString * str_encryptData = [RSA encryptString:[MyHelper toJson:dic_encryptData] publicKey:RSA_public_key];
-        
-        NSDictionary *dic = @{@"encryptData":str_encryptData,@"act":@"login"};
+        NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+
+        NSDictionary *dic = @{@"encryptData":str_encryptData,@"act":@"login",@"type":@"4",@"facility":deviceUUID};
         [NetRequest postWithUrl:login_getUserInfo params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             if ([dict[@"code"] integerValue] == 1) {
+                NSDictionary *dic_data = dict[@"data"];
                 [kUserDefaults setObject:txt_SJH.text forKey:YongHuMing];
                 [kUserDefaults setObject:txt_MM.text forKey:MiMa];
+                [kUserDefaults setBool:YES forKey:DengLuZhuangTai];
+                [kUserDefaults setObject:dic_data[@"token"] forKey:MYtoken];
+
+                [self dismissViewControllerAnimated:YES completion:^{
+                    
+                }];
             }
             NSLog(@"登录 == %@ ==  %@",dict,[MyHelper toJson:dict]);
         } fail:^(id error) {

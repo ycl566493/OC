@@ -33,18 +33,6 @@
                             <constraint firstAttribute="height" constant="0.5" id="2tK-OF-t1r"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkY-WO-59l">
-                        <rect key="frame" x="15" y="135.5" width="90" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="Cud-KD-cYk"/>
-                            <constraint firstAttribute="width" constant="90" id="zWv-1A-nuc"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <state key="normal" title=" 已设为默认" image="WeiXuanZhong">
-                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <state key="selected" title=" 已设为默认" image="XuanZhong"/>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqq-DG-SEB">
                         <rect key="frame" x="15" y="35" width="238" height="40"/>
                         <constraints>
@@ -54,46 +42,7 @@
                             <fragment content="辣时代、书法的房间辣时代、辣时代、书法的房间辣时代、">
                                 <attributes>
                                     <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                        <tabStops>
-                                            <textTab alignment="left" location="28">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="56">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="84">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="112">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="140">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="168">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="196">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="224">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="252">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="280">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="308">
-                                                <options/>
-                                            </textTab>
-                                            <textTab alignment="left" location="336">
-                                                <options/>
-                                            </textTab>
-                                        </tabStops>
-                                    </paragraphStyle>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.5" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
@@ -114,7 +63,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SO5-3j-NRN">
-                        <rect key="frame" x="263" y="135.5" width="50" height="30"/>
+                        <rect key="frame" x="263" y="135" width="50" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="9ud-KT-nSa"/>
                             <constraint firstAttribute="height" constant="30" id="R1e-8r-DRT"/>
@@ -122,6 +71,9 @@
                         <state key="normal" image="ShanChu">
                             <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="btn_SC:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dut-6P-r6b"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6j-br-chT">
                         <rect key="frame" x="268" y="30" width="45" height="25"/>
@@ -139,6 +91,24 @@
                             <constraint firstAttribute="width" constant="50" id="c5o-es-UoJ"/>
                         </constraints>
                         <state key="normal" image="BianJi"/>
+                        <connections>
+                            <action selector="btn_BJ:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1Hq-XJ-HhO"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkY-WO-59l">
+                        <rect key="frame" x="15" y="135" width="90" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Cud-KD-cYk"/>
+                            <constraint firstAttribute="width" constant="90" id="zWv-1A-nuc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title=" 已设为默认" image="WeiXuanZhong">
+                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="selected" title=" 已设为默认" image="XuanZhong"/>
+                        <connections>
+                            <action selector="btn_MR:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oXX-At-npz"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

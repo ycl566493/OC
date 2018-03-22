@@ -90,16 +90,6 @@
                                 <constraint firstAttribute="height" constant="0.5" id="5ja-Xc-ATe"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择门店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyq-U0-EU6">
-                            <rect key="frame" x="15" y="136.5" width="60" height="45"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="45" id="HUp-1m-SZ6"/>
-                                <constraint firstAttribute="width" constant="60" id="Po9-R8-1th"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HzF-wz-iaa">
                             <rect key="frame" x="0.0" y="181.5" width="291" height="0.5"/>
                             <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -126,6 +116,9 @@
                             <state key="normal" title="保存">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="btn_TJ_Action:" destination="iN0-l3-epB" eventType="touchUpInside" id="D2c-gq-ALk"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="电话" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wSL-4g-GVw">
                             <rect key="frame" x="146" y="45.5" width="145" height="45"/>
@@ -157,6 +150,16 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="填写地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyq-U0-EU6">
+                            <rect key="frame" x="15" y="136" width="60" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="HUp-1m-SZ6"/>
+                                <constraint firstAttribute="width" constant="60" id="Po9-R8-1th"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
@@ -216,6 +219,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="btn_BC" destination="JNS-ph-iTC" id="cbe-sK-pfi"/>
+                <outlet property="lbl_SSQ" destination="bGL-Hi-fo0" id="qMp-5Q-E6h"/>
                 <outlet property="txtF_SJH" destination="wSL-4g-GVw" id="xsu-ej-5bs"/>
                 <outlet property="txtF_XM" destination="o6M-Go-ozL" id="2sf-oe-3YO"/>
                 <outlet property="txtV_DZ" destination="yC5-ro-jAD" id="jz0-Ga-01G"/>

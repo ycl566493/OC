@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQm-Pf-Ldw">
-                    <rect key="frame" x="293" y="114.5" width="40" height="50"/>
+                    <rect key="frame" x="293" y="104.5" width="40" height="50"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="JE1-KL-XwQ"/>
@@ -30,7 +30,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vz-nb-dpJ">
-                    <rect key="frame" x="42" y="163.5" width="291" height="400"/>
+                    <rect key="frame" x="42" y="153.5" width="291" height="420"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增地址" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15f-dW-Wsf">
                             <rect key="frame" x="0.0" y="0.0" width="291" height="45"/>
@@ -92,18 +92,6 @@
                                 <action selector="btn_DQ:" destination="iN0-l3-epB" eventType="touchUpInside" id="uxB-IF-Z07"/>
                             </connections>
                         </button>
-                        <label opaque="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地区信息(请选择)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbt-k7-ApN">
-                            <rect key="frame" x="85" y="90" width="158" height="43"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="43" id="yHH-cS-HZU"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="LpV-sn-4iC" appends="YES" id="kgw-DQ-3ZF"/>
-                            </connections>
-                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hT1-eG-qwb">
                             <rect key="frame" x="0.0" y="135" width="291" height="0.5"/>
                             <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -161,14 +149,14 @@
                             </connections>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6eJ-fW-YOh">
-                            <rect key="frame" x="0.0" y="222.5" width="291" height="0.5"/>
+                            <rect key="frame" x="0.0" y="227.5" width="291" height="0.5"/>
                             <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="eI5-2z-XNG"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEh-QT-w5t">
-                            <rect key="frame" x="15" y="238" width="261" height="40"/>
+                            <rect key="frame" x="15" y="243" width="261" height="40"/>
                             <color key="backgroundColor" red="1" green="0.47058823529411764" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="Vp3-E1-nld"/>
@@ -176,6 +164,9 @@
                             <state key="normal" title="保存">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="btn_BC_Action:" destination="iN0-l3-epB" eventType="touchUpInside" id="LAu-QR-92b"/>
+                            </connections>
                         </button>
                         <label opaque="NO" tag="22" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择门店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWN-tl-8RV">
                             <rect key="frame" x="85" y="135" width="206" height="43"/>
@@ -187,6 +178,18 @@
                             <nil key="highlightedColor"/>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="U1x-jc-0Wh" appends="YES" id="7LV-AY-tYd"/>
+                            </connections>
+                        </label>
+                        <label opaque="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地区信息(请选择)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbt-k7-ApN">
+                            <rect key="frame" x="85" y="90" width="158" height="43"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="43" id="yHH-cS-HZU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="LpV-sn-4iC" appends="YES" id="kgw-DQ-3ZF"/>
                             </connections>
                         </label>
                     </subviews>
@@ -201,7 +204,7 @@
                         <constraint firstItem="V1g-w0-phn" firstAttribute="top" secondItem="K1g-nW-N72" secondAttribute="bottom" id="5Gf-WR-Jj9"/>
                         <constraint firstItem="6eJ-fW-YOh" firstAttribute="leading" secondItem="9vz-nb-dpJ" secondAttribute="leading" id="717-kB-0Oo"/>
                         <constraint firstItem="15f-dW-Wsf" firstAttribute="top" secondItem="9vz-nb-dpJ" secondAttribute="top" id="87R-Qm-AB6"/>
-                        <constraint firstAttribute="height" constant="400" id="93N-fO-yJJ"/>
+                        <constraint firstAttribute="height" constant="420" id="93N-fO-yJJ"/>
                         <constraint firstItem="rV1-aE-5d0" firstAttribute="top" secondItem="mWN-tl-8RV" secondAttribute="bottom" constant="15" id="96B-wQ-GWM"/>
                         <constraint firstItem="8se-0G-Xqc" firstAttribute="top" secondItem="15f-dW-Wsf" secondAttribute="bottom" id="9as-pQ-nBs"/>
                         <constraint firstItem="3tK-Yc-u7l" firstAttribute="leading" secondItem="9vz-nb-dpJ" secondAttribute="leading" id="B7Z-xp-esz"/>
@@ -222,7 +225,7 @@
                         <constraint firstItem="rV1-aE-5d0" firstAttribute="leading" secondItem="32E-mk-RlC" secondAttribute="trailing" constant="10" id="XGO-ex-sPV"/>
                         <constraint firstItem="sgG-Zt-8yr" firstAttribute="leading" secondItem="3tK-Yc-u7l" secondAttribute="trailing" id="c1n-GY-phg"/>
                         <constraint firstAttribute="trailing" secondItem="HEh-QT-w5t" secondAttribute="trailing" constant="15" id="ccr-qj-Yoe"/>
-                        <constraint firstItem="6eJ-fW-YOh" firstAttribute="top" secondItem="rV1-aE-5d0" secondAttribute="bottom" constant="15" id="eA7-eL-06n"/>
+                        <constraint firstItem="6eJ-fW-YOh" firstAttribute="top" secondItem="rV1-aE-5d0" secondAttribute="bottom" constant="20" id="eA7-eL-06n"/>
                         <constraint firstItem="32E-mk-RlC" firstAttribute="leading" secondItem="9vz-nb-dpJ" secondAttribute="leading" constant="15" id="ehf-Bp-ZUp"/>
                         <constraint firstAttribute="trailing" secondItem="t4g-g7-PbA" secondAttribute="trailing" id="hOy-QS-WWJ"/>
                         <constraint firstAttribute="trailing" secondItem="6eJ-fW-YOh" secondAttribute="trailing" id="hXf-th-avT"/>
@@ -267,7 +270,7 @@
         </view>
         <tapGestureRecognizer id="LpV-sn-4iC">
             <connections>
-                <action selector="DQ_Action:" destination="iN0-l3-epB" id="gAb-PP-kId"/>
+                <action selector="btn_DQ:" destination="iN0-l3-epB" id="WW6-RD-M5o"/>
                 <outlet property="delegate" destination="Tbt-k7-ApN" id="AEn-oZ-tFn"/>
             </connections>
         </tapGestureRecognizer>

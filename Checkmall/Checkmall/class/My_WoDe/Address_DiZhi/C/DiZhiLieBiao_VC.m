@@ -14,9 +14,10 @@
 #import "TC_TJDZ_V.h"//自提地址
 #import "TC_KDDZ.h"//快递地址
 
-@interface DiZhiLieBiao_VC ()<SlideButtonViewDelegate,DiZhi_Add_V_Delegate>{
+@interface DiZhiLieBiao_VC ()<SlideButtonViewDelegate,DiZhi_Add_V_Delegate,DiZhi_Cell_Delegate,SongHuoDiZhi_Cell_Delegate>{
     SlideButtonView     *slide;//利用其tag来区分第一第二列
     DiZhi_Add_V         *TJ;//添加地址
+    BOOL                bool_MD;//是否是门店
     
 }
 
@@ -29,10 +30,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    bool_MD = YES;
     
     self.title = @"管理收货地址";
     [self init_UI];
+    [self init_Data];
+}
 
+#pragma mark-data
+-(void)init_Data{
+    [NetRequest postWithUrl:address_getAddressList params:@{@"token":[MyHelper toToken],@"type":bool_MD?@"1":@"2"} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"获取地址列表 == = %@",dict);
+    } fail:^(id error) {
+        
+    }];
 }
 
 -(void)init_UI{
@@ -69,6 +80,28 @@
     TJ = [[DiZhi_Add_V alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [DiZhi_Add_V get_H:nil])];
     TJ.delegate = self;
     
+}
+
+#pragma mark- 门店cell代理
+-(void)DiZhi_Cell_Delegate_SC{
+    //删除
+}
+-(void)DiZhi_Cell_Delegate_BJ{
+    //编辑
+}
+-(void)DiZhi_Cell_Delegate_MR{
+    //默认
+}
+
+#pragma mark- 快递地址代理
+-(void)SongHuoDiZhi_Cell_Delegate_SC{
+    //删除
+}
+-(void)SongHuoDiZhi_Cell_Delegate_BJ{
+    //编辑
+}
+-(void)SongHuoDiZhi_Cell_Delegate_MR{
+    //默认
 }
 
 -(TC_TJDZ_V *)TJDZ{
@@ -134,7 +167,7 @@
         }
         [cell set_title:ssssss];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        cell.delegete = self;
         return cell;
     }else{
         SongHuoDiZhi_Cell *cell = (SongHuoDiZhi_Cell *)[tableView dequeueReusableCellWithIdentifier:@"SongHuoDiZhi_Cell"];
@@ -143,7 +176,7 @@
         }
         [cell set_title:ssssss];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        cell.delegete = self;
         return cell;
     }
 }

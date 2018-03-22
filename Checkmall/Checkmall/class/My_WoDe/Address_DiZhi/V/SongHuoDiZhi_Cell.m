@@ -20,7 +20,26 @@
 
     // Configure the view for the selected state
 }
+//删除
+- (IBAction)btn_SC:(id)sender {
+    if (self.delegete && [self.delegete respondsToSelector:@selector(SongHuoDiZhi_Cell_Delegate_SC)]) {
+        [self.delegete SongHuoDiZhi_Cell_Delegate_SC];
+    }
+}
 
+//编辑
+- (IBAction)btn_BJ:(id)sender {
+    if (self.delegete && [self.delegete respondsToSelector:@selector(SongHuoDiZhi_Cell_Delegate_BJ)]) {
+        [self.delegete SongHuoDiZhi_Cell_Delegate_BJ];
+    }
+}
+
+//默认
+- (IBAction)btn_MR:(id)sender {
+    if (self.delegete && [self.delegete respondsToSelector:@selector(SongHuoDiZhi_Cell_Delegate_MR)]) {
+        [self.delegete SongHuoDiZhi_Cell_Delegate_MR];
+    }
+}
 
 
 -(void)set_title:(NSString *)str_Title{

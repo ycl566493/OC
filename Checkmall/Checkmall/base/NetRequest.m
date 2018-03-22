@@ -105,44 +105,24 @@ static NetRequest * netequest;
     [netequest.manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
         //返回的数据判断
-        if ([[responseObject objectForKey:@"ret"] integerValue] == 1) {
+        if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
 
-            NSDictionary *dicData;
-            if ([responseObject  isKindOfClass:[NSArray class]]) {
-                NSLog(@"数据格式是数组");
-                dicData  = [NSDictionary dictionaryWithObject:responseObject forKey:@"data"];
-            }else
-                dicData = responseObject;
 
-        }else if ([[responseObject objectForKey:@"ret"]integerValue] == 3){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                            message:[responseObject objectForKey:@"msg"]
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"知道了"
-                                                  otherButtonTitles:nil,nil];
-            //显示AlertView
-            [alert show];
-        }else if ([[responseObject objectForKey:@"ret"] integerValue] == -99) {
+        }else if ([[responseObject objectForKey:@"code"] integerValue] == -99) {
             NSLog(@"重新登录");
-//            [MyHelper showMessage:@"登陆超时，请重新登录"];
             [kUserDefaults setBool:0 forKey:DengLuZhuangTai];
-//            [(BaseViewController*)viewcontroller QuDeLu];
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"dengluchaoshi" object:nil];
             
-        }else if ([[responseObject objectForKey:@"ret"] integerValue] == 1000) {
-            NSLog(@"书豆不足");
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"ShuDouBuZhu" object:nil];
         }else{
-            NSLog(@"dictdata === %@",[responseObject objectForKey:@"msg"]);
-            if ([responseObject[@"msg"] length]>0) {
-                [MyHelper showMessage:responseObject[@"msg"]];
+            NSLog(@"dictdata === %@",[responseObject objectForKey:@"Msg"]);
+            if ([responseObject[@"Msg"] length]>0) {
+                [MyHelper showMessage:responseObject[@"Msg"]];
             }
          
         }
         success(responseObject);
         if (showMsg) {
-            if ([responseObject[@"msg"] length]>0) {
-                [MyHelper showMessage:responseObject[@"msg"]];
+            if ([responseObject[@"Msg"] length]>0) {
+                [MyHelper showMessage:responseObject[@"Msg"]];
             }
         }
 
@@ -160,23 +140,21 @@ static NetRequest * netequest;
     }];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-
-}
 #pragma mark --- get
 
-+(void )getWithUrl:(NSString *)url params:(NSDictionary *)params success:(SuccessBlock)success fail:(ErrorBlock)fail showAnimate:(BOOL)show{
++(void )getWithUrl:(NSString *)url params:(NSDictionary *)params success:(SuccessBlock)success fail:(ErrorBlock)fail showAnimate:(BOOL)show showMsg:(BOOL)showMsg{
+
 
 
     if (url==nil) {
         return;
     }
-
-    if (show==YES) {
-        //[MBProgressHUD showHUD];
-    }
     if (params==nil) {
         params = @{};
+    };
+    dongHua *DH = [dongHua addDongHua];
+    if (show==YES) {
+        [DH xianShi:nil];
     }
 
     //检查地址中是否有中文
@@ -187,23 +165,39 @@ static NetRequest * netequest;
     [netequest.manager GET:urlStr parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (success) {
-            success(responseObject);
+        //返回的数据判断
+        if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
+            
+            
+        }else if ([[responseObject objectForKey:@"code"] integerValue] == -99) {
+            NSLog(@"重新登录");
+            [kUserDefaults setBool:0 forKey:DengLuZhuangTai];
+            
+        }else{
+            NSLog(@"dictdata === %@",[responseObject objectForKey:@"Msg"]);
+            if ([responseObject[@"Msg"] length]>0) {
+                [MyHelper showMessage:responseObject[@"Msg"]];
+            }
+            
         }
-
+        success(responseObject);
+        if (showMsg) {
+            if ([responseObject[@"Msg"] length]>0) {
+                [MyHelper showMessage:responseObject[@"Msg"]];
+            }
+        }
+        
         if (show==YES) {
-            [MBProgressHUD dissmiss];
+            [DH yinChang];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
         NSLog(@"error=%@",error);
-
         if (fail) {
             NSLog(@"网络请求失败");
         }
-
         if (show==YES) {
-            [MBProgressHUD dissmiss];
+            [DH yinChang];
         }
     }];
 }
