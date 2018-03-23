@@ -10,4 +10,6 @@
 
 @interface ShangPinXiangQing_VC : BaseViewController
 
+@property (nonatomic,copy)  NSString *Str_ID;//商品id
+
 @end

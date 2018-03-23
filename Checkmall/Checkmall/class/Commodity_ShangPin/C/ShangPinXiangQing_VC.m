@@ -15,6 +15,7 @@
 #import "QueRenDingDan_VC.h"//确认订单
 #import "QueRenDingDan_PT_VC.h"//确认订单拼团
 #import "TC_PTXZ_V.h"//拼团须知
+#import "ShangPin_Model_RootClass.h"
 
 @interface ShangPinXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate>{
     ShangPin_TuPian_V       *TuPian;
@@ -31,7 +32,7 @@
     UILabel                 *lbl_PT;//购买文字
     UIButton                *btn_GWC;//购物车按钮
     
-    
+    ShangPin_Model_RootClass    *model_SPXQ;//商品详情model
 }
 
 @property(weak,nonatomic)TC_PTXZ_V          *PTXZ;//拼团须知
@@ -45,9 +46,27 @@
     self.title = @"商品详情";
     [self init_UI];
 
-    
+    [self init_Data];
 }
 
+-(void)init_Data{
+    [NetRequest postWithUrl:product_bulkDetail params:@{@"goods_id":self.Str_ID} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        
+        NSLog(@"商品详情= ==  =%@",dict);
+        model_SPXQ = [[ShangPin_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_SPXQ.code == 1) {
+            [self UP_UI];
+        }
+        
+    } fail:^(id error) {
+        
+    }];
+}
+
+#pragma mark- 更新视图
+-(void)UP_UI{
+    TuPian.model = model_SPXQ;
+}
 
 -(TC_PTXZ_V *)PTXZ{
     if (!_PTXZ) {

@@ -12,38 +12,49 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-
-
 }
 //删除
 - (IBAction)btn_SC:(id)sender {
-    if (self.delegete && [self.delegete respondsToSelector:@selector(DiZhi_Cell_Delegate_SC)]) {
-        [self.delegete DiZhi_Cell_Delegate_SC];
+    if (self.delegete && [self.delegete respondsToSelector:@selector(DiZhi_Cell_Delegate_SC:)]) {
+        [self.delegete DiZhi_Cell_Delegate_SC:self.tag];
     }
 }
 //编辑
 - (IBAction)btn_BJ:(id)sender {
-    if (self.delegete && [self.delegete respondsToSelector:@selector(DiZhi_Cell_Delegate_BJ)]) {
-        [self.delegete DiZhi_Cell_Delegate_BJ];
+    if (self.delegete && [self.delegete respondsToSelector:@selector(DiZhi_Cell_Delegate_BJ:)]) {
+        [self.delegete DiZhi_Cell_Delegate_BJ:self.tag];
     }
 }
 //默认
 - (IBAction)btn_MR:(id)sender {
-    if (self.delegete && [self.delegete respondsToSelector:@selector(DiZhi_Cell_Delegate_MR)]) {
-        [self.delegete DiZhi_Cell_Delegate_MR];
+    if (self.delegete && [self.delegete respondsToSelector:@selector(DiZhi_Cell_Delegate_MR:)]) {
+        [self.delegete DiZhi_Cell_Delegate_MR:self.tag];
     }
 }
 
--(void)set_title:(NSString *)str_Title{
-    self.lbl_DZ.text = str_Title;
-    self.lbl_DZ.height = [MyHelper getSpaceLabelHeight:str_Title withFont:font13 withWidth:ScreenWidth - 75- 15 Spacing:5];
+-(void)setModel:(DiZhiLieBiao_Model_Data *)model{
+    _model = model;
+  //详细地址
+    
+    self.lbl_DZ.text = [NSString stringWithFormat:@"%@ %@",model.addressto,model.address];
+    self.lbl_DZ.height = [MyHelper getSpaceLabelHeight:self.lbl_DZ.text withFont:font13 withWidth:ScreenWidth - 75- 15 Spacing:5];
     [MyHelper setLabelSpace:self.lbl_DZ withValue:self.lbl_DZ.text withFont:self.lbl_DZ.font Spacing:5];
+    
+    self.lbl_Name.text = [NSString stringWithFormat:@"%@，%@",model.username,model.phone];
+    self.lbl_FW.text = model.name;
+
+    if (model.isfirst) {
+        self.btn_MZ.selected = YES;
+    }else{
+        self.btn_MZ.selected = NO;
+    }
+    
 }
 
 + (CGFloat)get_H:(NSString*)str{

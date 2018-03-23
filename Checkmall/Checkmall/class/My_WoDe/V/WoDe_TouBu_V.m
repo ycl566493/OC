@@ -34,6 +34,11 @@
 -(void)setModel:(WoDe_Model_RootClass *)model{
     _model = model;
     
+    [imageV_TX sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@""]] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    lbl_Name.text = model.data.username;
+    lbl_JF.text = [NSString stringWithFormat:@"%li",(long)model.data.score];
+    lbl_YHJ.text = [NSString stringWithFormat:@"%li",(long)model.data.coupon];
+    lbl_JE.text = [NSString stringWithFormat:@"%@",model.data.creditCardBalance];
 }
 
 -(void)init_UI{
@@ -44,7 +49,6 @@
     imageV_TX = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth - 68) / 2, 39, 68, 68)];
     imageV_TX.contentMode = UIViewContentModeScaleAspectFill;
     imageV_TX.clipsToBounds = YES;
-    imageV_TX.backgroundColor = [UIColor redColor];
     imageV_TX.layer.masksToBounds = YES;
     imageV_TX.layer.borderColor = [UIColor whiteColor].CGColor;
     imageV_TX.layer.borderWidth =  .5;
@@ -90,7 +94,7 @@
     lbl_JE.textAlignment = 1;
     lbl_JE.font = [UIFont systemFontOfSize:25];
     lbl_JE.textColor = UIColorFromHex(0x333333);
-    lbl_JE.text = @"999.99";
+    lbl_JE.text = @"0.0";
     [view_BJ addSubview:lbl_JE];
     //金额提示
     UILabel *lbl_JETS = [[UILabel alloc]initWithFrame:CGRectMake(0, lbl_JE.bottom , lbl_JE.width, 20)];
@@ -105,7 +109,7 @@
     lbl_JF.textAlignment = 1;
     lbl_JF.font = [UIFont systemFontOfSize:25];
     lbl_JF.textColor = UIColorFromHex(0x333333);
-    lbl_JF.text = @"999";
+    lbl_JF.text = @"0";
     [view_BJ addSubview:lbl_JF];
     //积分提示
     UILabel *lbl_JFTS = [[UILabel alloc]initWithFrame:CGRectMake(lbl_JF.left, lbl_JF.bottom , lbl_JF.width, 20)];
@@ -120,7 +124,7 @@
     lbl_YHJ.textAlignment = 1;
     lbl_YHJ.font = [UIFont systemFontOfSize:25];
     lbl_YHJ.textColor = UIColorFromHex(0x333333);
-    lbl_YHJ.text = @"99";
+    lbl_YHJ.text = @"0";
     lbl_YHJ.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap)];
     [lbl_YHJ addGestureRecognizer:singleTap];

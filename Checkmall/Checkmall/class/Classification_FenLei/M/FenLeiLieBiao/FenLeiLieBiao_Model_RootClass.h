@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSArray * data;
 @property (nonatomic, strong) NSString * message;
-@property (nonatomic, assign) NSInteger status;
+@property (nonatomic, assign) NSInteger code;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

@@ -150,7 +150,7 @@
     }else{
         NSLog(@"注册");
         NSDictionary *dic_encryptData = @{@"code":txt_YZM.text,@"tel":txt_SJH.text,@"password":txt_MM.text};
-        NSString * str_encryptData = [RSA encryptString:[MyHelper toJson:dic_encryptData] publicKey:RSA_public_key];
+        NSString * str_encryptData = [RSA_Object encryptString:[MyHelper toJson:dic_encryptData] publicKey:RSA_public_key];
 
         NSDictionary *dic = @{@"encryptData":str_encryptData,@"act":@"register"};
         [NetRequest postWithUrl:login_getUserInfo params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
@@ -205,7 +205,7 @@
     if (![MyHelper isPhone:txt_SJH.text]){
         [MyHelper showMessage:@"请输入正确的手机号！"];
     }else{
-        NSString * str_JM = [RSA encryptString:txt_SJH.text publicKey:RSA_public_key];
+        NSString * str_JM = [RSA_Object encryptString:txt_SJH.text publicKey:RSA_public_key];
         [NetRequest postWithUrl:message_getIphone params:@{@"iphone":str_JM,@"type":@"register"} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
            
             NSLog(@"发送验证码===  %@ \n%@",dict,[MyHelper toJson:dict]);

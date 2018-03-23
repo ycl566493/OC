@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DiZhiLieBiao_Model_Data.h"
+
 
 @protocol SongHuoDiZhi_Cell_Delegate <NSObject>
 
 @optional
-- (void)SongHuoDiZhi_Cell_Delegate_BJ;//编辑
-- (void)SongHuoDiZhi_Cell_Delegate_SC;//删除
-- (void)SongHuoDiZhi_Cell_Delegate_MR;//默认
+- (void)SongHuoDiZhi_Cell_Delegate_BJ:(NSInteger)tag;//编辑
+- (void)SongHuoDiZhi_Cell_Delegate_SC:(NSInteger)tag;//删除
+- (void)SongHuoDiZhi_Cell_Delegate_MR:(NSInteger)tag;//默认
 
 @end
 
@@ -33,8 +35,7 @@
 
 @property (nonatomic,assign) id<SongHuoDiZhi_Cell_Delegate>    delegete;
 
-
--(void)set_title:(NSString*)str_Title;
+@property (nonatomic, strong)DiZhiLieBiao_Model_Data    *model;
 
 
 +(CGFloat)get_H:(NSString*)str;

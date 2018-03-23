@@ -7,7 +7,10 @@
 //  分类商品数据
 
 #import "BaseTableViewCell.h"
+#import "FenLeiShangPin_Model_Data.h"
 
 @interface FenLei_ShangPin_Cell : BaseTableViewCell
+
+@property (nonatomic,strong)FenLeiShangPin_Model_Data   *model;
 
 @end

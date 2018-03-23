@@ -55,15 +55,6 @@
                             <constraint firstAttribute="height" constant="10" id="o9P-8z-kF3"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLm-CR-bHZ">
-                        <rect key="frame" x="260" y="29" width="45" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="25" id="eyU-Ne-xo7" userLabel="height = 25"/>
-                            <constraint firstAttribute="width" constant="45" id="hla-v3-wUA"/>
-                        </constraints>
-                        <state key="normal" image="ShiYong_No"/>
-                        <state key="selected" image="ShiYong_Yes"/>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OyR-8v-GZL">
                         <rect key="frame" x="15" y="136" width="90" height="30"/>
                         <constraints>
@@ -144,11 +135,9 @@
                     <constraint firstItem="w9a-7f-die" firstAttribute="top" secondItem="FjQ-LM-zu9" secondAttribute="bottom" id="Wag-ax-HF4"/>
                     <constraint firstItem="w9a-7f-die" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZLl-XE-CHt"/>
                     <constraint firstAttribute="trailing" secondItem="set-pp-hcH" secondAttribute="trailing" id="au3-lZ-K3Z"/>
-                    <constraint firstAttribute="trailing" secondItem="WLm-CR-bHZ" secondAttribute="trailing" constant="15" id="dlh-ag-xaP"/>
                     <constraint firstItem="6q2-wf-UvD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="fFK-YD-HAK"/>
                     <constraint firstItem="6q2-wf-UvD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="fSz-s9-10v"/>
                     <constraint firstItem="w9a-7f-die" firstAttribute="top" secondItem="OyR-8v-GZL" secondAttribute="bottom" id="oOZ-JY-Njd"/>
-                    <constraint firstItem="WLm-CR-bHZ" firstAttribute="top" secondItem="6q2-wf-UvD" secondAttribute="bottom" constant="-2" id="uPl-1Q-hz0"/>
                     <constraint firstItem="w9a-7f-die" firstAttribute="top" secondItem="9x2-o0-qxT" secondAttribute="bottom" id="vZK-md-9MT"/>
                 </constraints>
             </tableViewCellContentView>
@@ -157,7 +146,6 @@
                 <outlet property="btn_BJ" destination="FjQ-LM-zu9" id="K43-Kk-4Ud"/>
                 <outlet property="btn_MZ" destination="OyR-8v-GZL" id="GtK-gy-mqN"/>
                 <outlet property="btn_SC" destination="9x2-o0-qxT" id="x7q-XT-7Wc"/>
-                <outlet property="btn_XZ" destination="WLm-CR-bHZ" id="Q1X-1u-1zr"/>
                 <outlet property="lbl_DZ" destination="4UG-1B-By6" id="sfh-DR-kzx"/>
                 <outlet property="lbl_FW" destination="l7O-4r-PT2" id="eZd-82-ptM"/>
                 <outlet property="lbl_Name" destination="6q2-wf-UvD" id="8Td-Ew-4SS"/>
@@ -168,8 +156,6 @@
     <resources>
         <image name="BianJi" width="48" height="13"/>
         <image name="ShanChu" width="50" height="14"/>
-        <image name="ShiYong_No" width="45" height="25"/>
-        <image name="ShiYong_Yes" width="21" height="15"/>
         <image name="WeiXuanZhong" width="17" height="17"/>
         <image name="XuanZhong" width="17" height="17"/>
     </resources>

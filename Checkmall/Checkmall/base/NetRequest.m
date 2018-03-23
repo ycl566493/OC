@@ -9,6 +9,7 @@
 #import "NetRequest.h"
 #import "dongHua.h"
 #import "BaseNavigationController.h"
+#import "HWProgressHUD.h"
 
 @interface NetRequest ()
 
@@ -95,9 +96,10 @@ static NetRequest * netequest;
     if (params==nil) {
         params = @{};
     };
-    dongHua *DH = [dongHua addDongHua];
+//    dongHua *DH = [dongHua addDongHua];
     if (showAnimate==YES) {
-        [DH xianShi:nil];
+//        [DH xianShi:nil];
+        [HWProgressHUD show];
     }
 
     netequest = [NetRequest sharedNetworking];
@@ -127,7 +129,8 @@ static NetRequest * netequest;
         }
 
         if (showAnimate==YES) {
-            [DH yinChang];
+//            [DH yinChang];
+            [HWProgressHUD dismiss];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"error=%@",error);
@@ -135,7 +138,8 @@ static NetRequest * netequest;
             NSLog(@"网络请求失败");
         }
         if (showAnimate==YES) {
-            [DH yinChang];
+//            [DH yinChang];
+            [HWProgressHUD dismiss];
         }
     }];
 }

@@ -1,6 +1,5 @@
 //
 //	WoDe_Model_Data.h
- on 22/3/2018
 //	Copyright © 2018. All rights reserved.
 //
 
@@ -14,7 +13,7 @@
 @property (nonatomic, strong) NSString * creditCardBalance;
 @property (nonatomic, assign) NSInteger idField;
 @property (nonatomic, assign) NSInteger score;
-@property (nonatomic, strong) NSObject * username;
+@property (nonatomic, strong) NSString * username;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

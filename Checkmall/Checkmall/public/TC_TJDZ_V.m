@@ -49,9 +49,25 @@
 }
 #pragma mark- 获取门店地址
 - (void)init_data_MD:(NSInteger)code_id{
-    [NetRequest postWithUrl:address_getStoreInfo params:@{@"code":[NSString stringWithFormat:@"%li",code_id]} showAnimate:YES showMsg:YES vc:nil success:^(NSDictionary *dict) {
+    [NetRequest postWithUrl:address_getStoreInfo params:@{@"code":[NSString stringWithFormat:@"%li",(long)code_id]} showAnimate:YES showMsg:YES vc:nil success:^(NSDictionary *dict) {
         NSLog(@"获取门店 = = %@",dict);
         model_MD  = [[MenDian_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_MD.code == 1) {
+            if (self.model) {
+                for (NSInteger i = 0; i< model_MD.data.count; i ++) {
+                    MenDian_Model_Data *MMMM  = model_MD.data[i];
+                    
+                    if (MMMM.idField == self.model.merchantId ) {
+                        
+                        self.lbl_MD.text = MMMM.name;
+                        self.lbl_MDDZ.text = MMMM.address;
+                        str_MD_ID = MMMM.idField;
+                        [self layoutIfNeeded];
+                        self.view_H.constant = self.btn_BC.bottom +15;
+                    }
+                }
+            }
+        }
         
     } fail:^(id error) {
         
@@ -70,27 +86,48 @@
     }else if(!str_MD_ID){
         [MyHelper showMessage:@"请选着门店！"];
     }else{
-        NSDictionary *dic = @{
-                              @"username":self.txtF_XM.text,//姓名
-                              @"phone":self.txtF_SJH.text,//手机号
-                              @"addr":self.lbl_MDDZ.text,//详细地址
-                              @"merchanid":[NSString stringWithFormat:@"%li",str_MD_ID],//门店id
-                              @"provincecode":@"110000",//省id
-                              @"citycode":@"110100",//市id
-                              @"countycode":[NSString stringWithFormat:@"%li",str_DQ_ID],//geo_code唯一码
-                              @"province":@"北京市",//省的名称
-                              @"city":@"市辖区",//市的名称
-                              @"county":str_Q,//区的名称
-                              @"token":[kUserDefaults objectForKey:MYtoken]//用户token
-                              };
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithDictionary:@{
+                                                                                    @"username":self.txtF_XM.text,//姓名
+                                                                                    @"phone":self.txtF_SJH.text,//手机号
+                                                                                    @"addr":self.lbl_MDDZ.text,//详细地址
+                                                                                    @"merchanid":[NSString stringWithFormat:@"%li",(long)str_MD_ID],//门店id
+                                                                                    @"provincecode":@"110000",//省id
+                                                                                    @"citycode":@"110100",//市id
+                                                                                    @"countycode":[NSString stringWithFormat:@"%li",(long)str_DQ_ID],//geo_code唯一码
+                                                                                    @"province":@"北京市",//省的名称
+                                                                                    @"city":@"市辖区",//市的名称
+                                                                                    @"county":str_Q,//区的名称
+                                                                                    @"token":[kUserDefaults objectForKey:MYtoken]//用户token
+                                                                                    }];
+        
+        if (self.model) {
+            [dic setObject:[NSString stringWithFormat:@"%li",self.model.idField] forKey:@"id"];
+        }
         [NetRequest postWithUrl:address_addAdderssByNameId params:dic showAnimate:YES showMsg:YES vc:nil success:^(NSDictionary *dict) {
             
             NSLog(@"添加 == %@",dict);
+            if ([dict[@"code"] integerValue] == 1) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(TC_TJDZ_V_Delegate_CG)]) {
+                    [self.delegate TC_TJDZ_V_Delegate_CG];
+        
+                }
+                self.hidden = YES;
+                [self removeFromSuperview];
+            }
             
         } fail:^(id error) {
             
         }];
     }
+}
+
+#pragma mark- 编辑
+-(void)setModel:(DiZhiLieBiao_Model_Data *)model{
+    _model = model;
+    self.txtF_XM.text = model.username;
+    self.txtF_SJH.text = model.phone;
+    [self init_data_DQ];
+//    self init_data_MD:<#(NSInteger)#>
 }
 
 
@@ -99,7 +136,21 @@
     [NetRequest postWithUrl:address_getArea params:@{} showAnimate:YES showMsg:YES vc:nil success:^(NSDictionary *dict) {
         NSLog(@"获取地区");
         model_DQ = [[DiQu_Model_RootClass alloc]initWithDictionary:dict];
-        
+        if (model_DQ.code == 1) {
+            if (self.model) {
+                for (NSInteger i = 0; i< model_DQ.data.count; i ++) {
+                    DiQu_Model_Data *MMMM  = model_DQ.data[i];
+                    
+                    if (MMMM.geoId == [self.model.geoCode integerValue]) {
+                        self.lbl_DZ.text = [NSString stringWithFormat:@"北京市 市辖区 %@",MMMM.geoName];
+                        str_Q = MMMM.geoName;
+                        str_DQ_ID = MMMM.geoId;
+                        [self init_data_MD:str_DQ_ID];
+                    }
+                }
+            }
+        }
+    
         
     } fail:^(id error) {
         
@@ -108,6 +159,9 @@
 
 #pragma mark- 门店点击
 - (IBAction)MD_Action:(id)sender {
+    [self.txtF_XM resignFirstResponder];
+    [self.txtF_SJH resignFirstResponder];
+    
     NSLog(@"门店点击");
     if (!str_DQ_ID) {
         [MyHelper showMessage:@"请先选着地区"];
@@ -120,6 +174,9 @@
 }
 #pragma mark- 地区点击
 - (IBAction)btn_DQ:(id)sender {
+    [self.txtF_XM resignFirstResponder];
+    [self.txtF_SJH resignFirstResponder];
+    
     NSLog(@"地区点击");
     bool_DQ = YES;
     int_slect= 0;
@@ -135,6 +192,10 @@
         str_Q = model.geoName;
         str_DQ_ID = model.geoId;
         [self init_data_MD:str_DQ_ID];
+        
+        str_MD_ID = 0;
+        self.lbl_MD.text = @"";
+        self.lbl_MDDZ.text = @"";
     }else{
         MenDian_Model_Data *model = model_MD.data[int_slect];
         self.lbl_MD.text = model.name;
@@ -168,7 +229,7 @@
         int_slect = row;
     }
   
-    NSLog(@"点击 ==  %li",int_slect);
+    NSLog(@"点击 ==  %li",(long)int_slect);
 }
 -(NSInteger)My_PickerView_DataSource_Lie{
     if (bool_DQ) {

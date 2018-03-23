@@ -1,6 +1,5 @@
 //
 //	WoDe_Model_Data.m
- on 22/3/2018
 //	Copyright © 2018. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 

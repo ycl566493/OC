@@ -38,15 +38,15 @@
 
     [self init_UI];
  
-    [self init_Data];
 }
+
 
 -(void)init_Data{
     [NetRequest postWithUrl:user_getUserInfo params:@{@"token":[MyHelper toToken]} showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
         
         NSLog(@"个人信息 == = %@",dict);
         model_WD = [[WoDe_Model_RootClass alloc]initWithDictionary:dict];
-        
+        TouBu.model = model_WD;
     } fail:^(id error) {
         
     }];
@@ -112,6 +112,8 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"yinchangtabbarviewcontroller" object:@"3" userInfo:nil];
+    [self init_Data];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

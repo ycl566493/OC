@@ -12,6 +12,8 @@
 #import "FenLei_H_GG_V.h"//分类广告
 #import "FenLei_H_Title_V.h"//分类标题
 #import "FenLeiLieBiao_Model_RootClass.h"//分类列表
+#import "FenLeiShangPin_Model_RootClass.h"//分类商品数据
+
 
 @interface FenLei_VC ()<UITableViewDelegate,UITableViewDataSource>{
     UITableView *table_V_FL;//分类列表
@@ -22,6 +24,7 @@
     NSInteger           Select_Index;//选中的分类
 
     FenLeiLieBiao_Model_RootClass       *model_FLLB;//分类列表
+    FenLeiShangPin_Model_RootClass      *model_FLSP;//分类商品数据
 }
 
 
@@ -31,7 +34,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    Select_Index = 0;
+    self.pageIndex = 1;
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.title = @"分类";
@@ -41,9 +45,35 @@
 
 #pragma mark- 分类列表
 -(void)init_Data_FL{
-    [NetRequest postWithUrl:Category_getCatelist params:@{} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+    [NetRequest postWithUrl:Category_getCatelist params:@{} showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
         model_FLLB = [[FenLeiLieBiao_Model_RootClass alloc]initWithDictionary:dict];
         NSLog(@"分类列表 ==  %@",dict);
+        if (model_FLLB.code == 1) {
+            [table_V_FL reloadData];
+            [self init_data_SP:YES];
+        }
+        
+    } fail:^(id error) {
+        
+    }];
+}
+
+
+-(void)init_data_SP:(BOOL)Y_N{
+    
+    FenLeiLieBiao_Model_Data *MMMM = model_FLLB.data[Select_Index];
+    [NetRequest postWithUrl:Category_getCategoryName params:@{@"page":[NSString stringWithFormat:@"%li",self.pageIndex],@"pid":[NSString stringWithFormat:@"%li",MMMM.idField]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        
+        NSLog(@"商品 == %@",dict);
+        if (Y_N) {
+            model_FLSP = [[FenLeiShangPin_Model_RootClass alloc]initWithDictionary:dict];
+        }else{
+            [model_FLSP Add_Dictionary:dict];
+        }
+        
+        if (model_FLSP.code == 1) {
+            [table_V_SP reloadData];
+        }
         
     } fail:^(id error) {
         
@@ -73,6 +103,23 @@
     if (@available(iOS 11.0, *)){
         table_V_SP.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
+    
+//    tableV下拉刷新
+    table_V_SP.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        //  结束刷新
+        self.pageIndex =1;
+        [self init_data_SP:YES];
+        [table_V_SP.mj_header endRefreshing];
+    }];
+    // 设置自动切换透明度(在导航栏下面自动隐藏)
+    table_V_SP.mj_header.automaticallyChangeAlpha = YES;
+    // tableV上拉加载
+    table_V_SP.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        self.pageIndex += 1;
+        [self init_data_SP:NO];
+        [table_V_SP.mj_footer endRefreshing];
+    }];
+
     [self.view addSubview:table_V_SP];
     
     GG = [[FenLei_H_GG_V alloc]initWithFrame:CGRectMake(0, 0, table_V_SP.width, [FenLei_H_GG_V get_H:nil])];
@@ -87,8 +134,12 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if ((section == 1 &&table_V_SP == tableView) || tableView == table_V_FL) {
-        return 30;
+    
+    if (tableView == table_V_FL) {
+        return model_FLLB.data.count;
+    }
+    if ((section == 1 &&table_V_SP == tableView)) {
+        return model_FLSP.data.count;
     }
     return 0;
 }
@@ -109,6 +160,8 @@
             cell = [[FenLei_Cell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_FL"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+        FenLeiLieBiao_Model_Data *mmm = model_FLLB.data[indexPath.row];
+        cell.model = mmm;
         [cell iF_Select:indexPath.row == Select_Index ? YES : NO];
         
         return cell;
@@ -118,6 +171,8 @@
             cell = [[FenLei_ShangPin_Cell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_SP"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+        FenLeiShangPin_Model_Data   *MMm = model_FLSP.data[indexPath.row];
+        cell.model = MMm;
         return cell;
     }
 }
@@ -149,6 +204,7 @@
     if (tableView == table_V_FL) {
         Select_Index = indexPath.row;
         [table_V_FL reloadData];
+        [self init_data_SP:YES];
     }
 }
 

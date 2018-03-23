@@ -255,6 +255,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     ShangPinXiangQing_VC    *vc = [[ShangPinXiangQing_VC alloc]init];
+    
+    ShouYe_Model_Data *MMMM = model.data[indexPath.row];
+    vc.Str_ID = [NSString stringWithFormat:@"%li",MMMM.productId];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

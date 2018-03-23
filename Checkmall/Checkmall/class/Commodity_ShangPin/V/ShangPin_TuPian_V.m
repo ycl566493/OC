@@ -77,8 +77,13 @@
     [self addSubview:lbl_Index];
     
     [self if_SPTP];
-    [self init_Data];
+//    [self init_Data];
 
+}
+
+-(void)setModel:(ShangPin_Model_RootClass *)model{
+    _model = model;
+    [self init_Data];
 }
 
 -(void)if_SP{
@@ -124,16 +129,18 @@
 
 
 -(void)init_Data{
-    for (NSInteger i = 0; i < 10; i ++) {
+    view_SPTP.hidden = YES;
+
+    for (NSInteger i = 0; i < self.model.data.slidsUrlList.count; i ++) {
+        
+        ShangPin_Model_SlidsUrlList *MMMM = self.model.data.slidsUrlList[i];
         UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake(i*scrollV.width, 0, scrollV.width, scrollV.height)];
         imageV.userInteractionEnabled = YES;
 
-        if (i % 2 == 0) {
-            imageV.backgroundColor = [UIColor redColor];
-        }else{
-            imageV.backgroundColor = [UIColor yellowColor];
-        }
-        if (i == 0) {
+        [imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",MMMM.path,imageV.width*2]] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+ 
+        
+        if (i == 0 &&![self.model.data.video isEqualToString:@""]) {
             UIImageView *image_BF = [[UIImageView alloc]initWithFrame:CGRectMake((imageV.width - 65) / 2, (imageV.height - 65) / 2, 65, 65)];
             image_BF.image = [UIImage imageNamed:@"ShiPinBoFang"];
             image_BF.userInteractionEnabled = YES;
@@ -142,8 +149,7 @@
             
             [imageV addSubview:image_BF];
             
-
-
+            view_SPTP.hidden = NO;
         }
         [scrollV addSubview:imageV];
     }

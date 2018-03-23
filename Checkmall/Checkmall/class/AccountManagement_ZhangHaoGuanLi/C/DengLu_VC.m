@@ -336,7 +336,7 @@
     }else{
         
         NSDictionary *dic_encryptData = @{@"tel":txt_SJH.text,@"password":txt_MM.text};
-        NSString * str_encryptData = [RSA encryptString:[MyHelper toJson:dic_encryptData] publicKey:RSA_public_key];
+        NSString * str_encryptData = [RSA_Object encryptString:[MyHelper toJson:dic_encryptData] publicKey:RSA_public_key];
         NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 
         NSDictionary *dic = @{@"encryptData":str_encryptData,@"act":@"login",@"type":@"4",@"facility":deviceUUID};

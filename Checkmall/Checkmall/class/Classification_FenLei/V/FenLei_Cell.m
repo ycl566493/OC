@@ -37,13 +37,17 @@
     lbl_Title = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 40)];
     lbl_Title.font = font14;
     lbl_Title.textColor = UIColorFromHex(0x333333);
-    lbl_Title.text = @"鸡蛋";
+    lbl_Title.text = @"";
     lbl_Title.textAlignment = 1;
     [self addSubview:lbl_Title];
     
     View_XZ = [[UIView alloc]initWithFrame:CGRectMake(0, 12, 2.5, self.height - 12 *  2)];
     View_XZ.backgroundColor = RGBA(74, 168, 60, 1);
     [self addSubview:View_XZ];
+}
+
+-(void)setModel:(FenLeiLieBiao_Model_Data *)model{
+    lbl_Title.text = model.name;
 }
 
 -(void)iF_Select:(BOOL)select{

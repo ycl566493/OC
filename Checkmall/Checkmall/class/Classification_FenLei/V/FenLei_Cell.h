@@ -7,10 +7,15 @@
 //  分类cell
 
 #import "BaseTableViewCell.h"
+#import "FenLeiLieBiao_Model_Data.h"
 
 @interface FenLei_Cell : BaseTableViewCell
 
+@property (nonatomic,strong)FenLeiLieBiao_Model_Data    *model;
+
 - (void)iF_Select:(BOOL)select;//判断选中
+
+
 
 
 @end

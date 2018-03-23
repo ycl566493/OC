@@ -13,11 +13,14 @@
 #import "DiZhi_Add_V.h"//添加地址
 #import "TC_TJDZ_V.h"//自提地址
 #import "TC_KDDZ.h"//快递地址
+#import "DiZhiLieBiao_Model_RootClass.h"//地址列表
 
-@interface DiZhiLieBiao_VC ()<SlideButtonViewDelegate,DiZhi_Add_V_Delegate,DiZhi_Cell_Delegate,SongHuoDiZhi_Cell_Delegate>{
+@interface DiZhiLieBiao_VC ()<SlideButtonViewDelegate,DiZhi_Add_V_Delegate,DiZhi_Cell_Delegate,SongHuoDiZhi_Cell_Delegate,TC_TJDZ_V_Delegate,TC_KDDZ_Delegate>{
     SlideButtonView     *slide;//利用其tag来区分第一第二列
     DiZhi_Add_V         *TJ;//添加地址
     BOOL                bool_MD;//是否是门店
+    
+    DiZhiLieBiao_Model_RootClass    *model;
     
 }
 
@@ -30,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    bool_MD = YES;
+
     
     self.title = @"管理收货地址";
     [self init_UI];
@@ -39,8 +42,13 @@
 
 #pragma mark-data
 -(void)init_Data{
-    [NetRequest postWithUrl:address_getAddressList params:@{@"token":[MyHelper toToken],@"type":bool_MD?@"1":@"2"} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+    NSDictionary *dic =@{@"token":[MyHelper toToken],@"type":slide.tag == 0?@"1":@"2"};
+    [NetRequest postWithUrl:address_getAddressList params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"获取地址列表 == = %@",dict);
+        model = [[DiZhiLieBiao_Model_RootClass alloc]initWithDictionary:dict];
+        if (model.code == 1) {
+            [self.tableview reloadData];
+        }
     } fail:^(id error) {
         
     }];
@@ -67,47 +75,89 @@
     self.tableview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     self.tableview.top = slide.bottom;
     self.tableview.height = ScreenHeight - slide.height  - kTabbarSafeBottomMargin ;
-    
+    [self removedRefreshing];
     if (!iOS11) {
     self.tableview.height = ScreenHeight ;
         
     }
     
-    
-//    [self.tableview registerNib:[UINib nibWithNibName:@"DiZhi_Cell" bundle:nil] forCellReuseIdentifier:@"DiZhi_Cell"];
-//    [self.tableview registerNib:[UINib nibWithNibName:@"DiZhi_Cell"bundle:[NSBundlemainBundle]]forCellReuseIdentifier:@"DiZhi_Cell"];
-//    NewTableViewCell *newcell = [tableViewdequeueReusableCellWithIdentifier:@"DiZhi_Cell"];
     TJ = [[DiZhi_Add_V alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [DiZhi_Add_V get_H:nil])];
     TJ.delegate = self;
     
 }
 
 #pragma mark- 门店cell代理
--(void)DiZhi_Cell_Delegate_SC{
+-(void)DiZhi_Cell_Delegate_SC:(NSInteger)tag{
     //删除
+    [self data_SC:tag];
 }
--(void)DiZhi_Cell_Delegate_BJ{
+-(void)DiZhi_Cell_Delegate_BJ:(NSInteger)tag{
     //编辑
+    
+    [self.window addSubview:self.TJDZ];
+    
+    DiZhiLieBiao_Model_Data *MMMM = model.data[tag];
+
+    self.TJDZ.model = MMMM;
 }
--(void)DiZhi_Cell_Delegate_MR{
+-(void)DiZhi_Cell_Delegate_MR:(NSInteger)tag{
     //默认
+    [self data_MR:tag];
 }
 
 #pragma mark- 快递地址代理
--(void)SongHuoDiZhi_Cell_Delegate_SC{
+-(void)SongHuoDiZhi_Cell_Delegate_SC:(NSInteger)tag{
     //删除
+    [self data_SC:tag];
 }
--(void)SongHuoDiZhi_Cell_Delegate_BJ{
+
+-(void)SongHuoDiZhi_Cell_Delegate_BJ:(NSInteger)tag{
     //编辑
+    [self.window addSubview:self.KDDZ];
+    
+    DiZhiLieBiao_Model_Data *MMMM = model.data[tag];
+    
+    self.KDDZ.model = MMMM;
 }
--(void)SongHuoDiZhi_Cell_Delegate_MR{
+-(void)SongHuoDiZhi_Cell_Delegate_MR:(NSInteger)tag{
     //默认
+    [self data_MR:tag];
+
+}
+
+#pragma mark- 删除接口
+- (void)data_SC:(NSInteger)tag{
+    //删除
+    DiZhiLieBiao_Model_Data *MMMM = model.data[tag];
+    [NetRequest postWithUrl:address_delAddress params:@{@"id":[NSString stringWithFormat:@"%li",(long)MMMM.idField]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        
+        NSLog(@"删除接口 ==  %@",dict);
+        if ([dict[@"code"] integerValue] == 1) {
+            [self init_Data];
+        }
+        
+    } fail:^(id error) {
+        
+    }];
+}
+
+#pragma mark- 默认地址
+- (void)data_MR:(NSInteger)tag{
+    DiZhiLieBiao_Model_Data *MMMM = model.data[tag];
+    [NetRequest postWithUrl:address_updateAddressIsFirst params:@{@"id":[NSString stringWithFormat:@"%li",(long)MMMM.idField]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        if ([dict[@"code"] integerValue] == 1) {
+            [self init_Data];
+        }
+    } fail:^(id error) {
+        
+    }];
 }
 
 -(TC_TJDZ_V *)TJDZ{
     if (!_TJDZ) {
         TC_TJDZ_V * TJDZ = [TC_TJDZ_V init_Xib];
         _TJDZ = TJDZ;
+        _TJDZ.delegate = self;
         _TJDZ.frame = self.window.bounds;
     }
     return _TJDZ;
@@ -117,9 +167,19 @@
     if (!_KDDZ) {
         TC_KDDZ * KDDZ = [TC_KDDZ init_Xib];
         _KDDZ = KDDZ;
+        _KDDZ.delegate = self;
         _KDDZ.frame = self.window.bounds;
     }
     return _KDDZ;
+}
+
+#pragma mark- 添加地址成功
+- (void)TC_TJDZ_V_Delegate_CG{
+    [self init_Data];
+}
+
+-(void)TC_KDDZ_Delegate_CG{
+    [self init_Data];
 }
 
 #pragma mark- 添加地址
@@ -135,7 +195,8 @@
 -(void)SlideButtonViewDelegate_Acion:(NSInteger)btn_Tag{
     if (slide.tag != btn_Tag) {
         slide.tag = btn_Tag;
-        [self.tableview reloadData];
+        
+        [self init_Data];
     }
 }
 
@@ -145,17 +206,17 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return model.data.count;
 }
-
-#define ssssss @"阿凡达了解啦可视对讲弗兰克斯剪短发垃圾收代理费卡吉林省打飞机阿拉山口"
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
    if (slide.tag == 0) {
-       return [DiZhi_Cell get_H:ssssss];
+       DiZhiLieBiao_Model_Data *MMMM = model.data[indexPath.row];
+       return [DiZhi_Cell get_H:MMMM.address];
        
    }else{
-       return [SongHuoDiZhi_Cell get_H:ssssss];
+       DiZhiLieBiao_Model_Data *MMMM = model.data[indexPath.row];
 
+       return [SongHuoDiZhi_Cell get_H:MMMM.address];
    }
     
 }
@@ -165,8 +226,10 @@
         if (cell == nil) {
             cell= (DiZhi_Cell *)[[[NSBundle  mainBundle]  loadNibNamed:@"DiZhi_Cell" owner:self options:nil]  lastObject];
         }
-        [cell set_title:ssssss];
+        DiZhiLieBiao_Model_Data *MMMM = model.data[indexPath.row];
+        cell.model = MMMM;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.tag = indexPath.row;
         cell.delegete = self;
         return cell;
     }else{
@@ -174,7 +237,10 @@
         if (cell == nil) {
             cell= (SongHuoDiZhi_Cell *)[[[NSBundle  mainBundle]  loadNibNamed:@"SongHuoDiZhi_Cell" owner:self options:nil]  lastObject];
         }
-        [cell set_title:ssssss];
+        DiZhiLieBiao_Model_Data *MMMM = model.data[indexPath.row];
+        cell.model = MMMM;
+
+        cell.tag = indexPath.row;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.delegete = self;
         return cell;
@@ -193,7 +259,10 @@
     return TJ;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(DiZhiLieBiao_VC_Delegate_DZ:)]) {
+        DiZhiLieBiao_Model_Data *MMMM = model.data[indexPath.row];
+        [self.delegate DiZhiLieBiao_VC_Delegate_DZ:MMMM];
+    }
 }
 
 

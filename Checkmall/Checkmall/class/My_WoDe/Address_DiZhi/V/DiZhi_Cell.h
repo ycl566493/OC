@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DiZhiLieBiao_Model_Data.h"
 
 @protocol DiZhi_Cell_Delegate <NSObject>
 
 @optional
-- (void)DiZhi_Cell_Delegate_BJ;//编辑
-- (void)DiZhi_Cell_Delegate_SC;//删除
-- (void)DiZhi_Cell_Delegate_MR;//默认
+- (void)DiZhi_Cell_Delegate_BJ:(NSInteger)tag;//编辑
+- (void)DiZhi_Cell_Delegate_SC:(NSInteger)tag;//删除
+- (void)DiZhi_Cell_Delegate_MR:(NSInteger)tag;//默认
 
 @end
 
@@ -24,8 +25,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_DZ;//地址信息
 
-@property (weak, nonatomic) IBOutlet UIButton *btn_XZ;//选中
-
 @property (weak, nonatomic) IBOutlet UIButton *btn_MZ;//默认
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_BJ;//编辑按钮
@@ -34,8 +33,7 @@
 
 @property (nonatomic,assign) id<DiZhi_Cell_Delegate>    delegete;
 
--(void)set_title:(NSString*)str_Title;
-
+@property (nonatomic, strong)DiZhiLieBiao_Model_Data    *model;
 
 +(CGFloat)get_H:(NSString*)str;
 

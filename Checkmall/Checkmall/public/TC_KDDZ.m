@@ -45,10 +45,16 @@
     str_Sheng = @"";//省市区名称
     str_Shi = @"";
     str_Qu = @"";
+    [self init_UI];
 }
 
 -(void)init_UI{
-    
+    //1 获得json文件的全路径
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"area.json" ofType:nil];
+    //2 加载json文件到data中
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    //3 解析json数据//json数据中的[] 对应OC中的NSArray//json数据中的{} 对应OC中的
+    arr_data =  [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
 #pragma mark- 提交按钮
 - (IBAction)btn_TJ_Action:(id)sender {
@@ -62,22 +68,34 @@
     }else if([self.txtV_DZ.text isEqualToString:@""]){
         [MyHelper showMessage:@"请输入详细地址！"];
     }else{
-        NSDictionary *dic = @{
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:@{
                               @"username":self.txtF_XM.text,//姓名
                               @"phone":self.txtF_SJH.text,//手机号
                               @"addr":self.txtV_DZ.text,//详细地址
                               @"merchanid":@"0",//门店id
-                              @"provincecode":[NSString stringWithFormat:@"%li",int_Sheng],//省id
-                              @"citycode":[NSString stringWithFormat:@"%li",int_Shi],//市id
-                              @"countycode":[NSString stringWithFormat:@"%li",int_Qu],//geo_code唯一码
+                              @"provincecode":[NSString stringWithFormat:@"%li",(long)int_Sheng],//省id
+                              @"citycode":[NSString stringWithFormat:@"%li",(long)int_Shi],//市id
+                              @"countycode":[NSString stringWithFormat:@"%li",(long)int_Qu],//geo_code唯一码
                               @"province":str_Sheng,//省的名称
                               @"city":str_Shi,//市的名称
                               @"county":str_Qu,//区的名称
                               @"token":[kUserDefaults objectForKey:MYtoken]//用户token
-                              };
+                              }];
+        
+        if (self.model) {
+            [dic setObject:[NSString stringWithFormat:@"%li",self.model.idField] forKey:@"id"];
+        }
         [NetRequest postWithUrl:address_addAdderssByNameId params:dic showAnimate:YES showMsg:YES vc:nil success:^(NSDictionary *dict) {
             
             NSLog(@"添加 == %@",dict);
+            if ([dict[@"code"] integerValue] == 1) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(TC_KDDZ_Delegate_CG)]) {
+                    [self.delegate TC_KDDZ_Delegate_CG];
+            
+                }
+                self.hidden = YES;
+                [self removeFromSuperview];
+            }
             
         } fail:^(id error) {
             
@@ -85,6 +103,33 @@
     }
 }
 
+#pragma mark- 编辑
+-(void)setModel:(DiZhiLieBiao_Model_Data *)model{
+    _model = model;
+    self.txtF_XM.text = model.username;
+    self.txtF_SJH.text = model.phone;
+//    [self init_data_DQ];
+    //    self init_data_MD:<#(NSInteger)#>
+    
+    self.lbl_SSQ.text= [NSString stringWithFormat:@"%@",model.addressto];
+    int_Sheng = model.province;
+    int_Shi = model.city;
+    int_Qu = [model.geoCode integerValue];
+    self.txtV_DZ.text = model.address;
+    
+    for (NSDictionary *dic in arr_data) {
+        if ([dic[@"code"] integerValue] == int_Sheng) {
+            str_Sheng = dic[@"name"];
+        }
+        if ([dic[@"code"] integerValue] == int_Shi) {
+            str_Shi = dic[@"name"];
+        }
+        if ([dic[@"code"] integerValue] == int_Qu) {
+            str_Qu = dic[@"name"];
+        }
+    }
+    
+}
 
 #pragma mark- 确认地址
 -(void)My_PickerView_Delegate_QD{
@@ -104,18 +149,16 @@
 }
 
 - (IBAction)DQ_Action:(id)sender {
+    
+    [self.txtF_XM resignFirstResponder];
+    [self.txtF_SJH resignFirstResponder];
+    [self.txtV_DZ resignFirstResponder];
     NSLog(@"地区点击");
     
     int_1 = 0;
     int_2 = 0;
     int_3 = 0;
     
-    //1 获得json文件的全路径
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"area.json" ofType:nil];
-    //2 加载json文件到data中
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    //3 解析json数据//json数据中的[] 对应OC中的NSArray//json数据中的{} 对应OC中的
-    arr_data =  [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     
     arr_1 = [[NSMutableArray alloc]init];
     arr_2 = [[NSMutableArray alloc]init];

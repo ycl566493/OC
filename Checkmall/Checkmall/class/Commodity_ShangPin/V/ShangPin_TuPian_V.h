@@ -7,9 +7,12 @@
 //  商品图片
 
 #import "MyUIView.h"
+#import "ShangPin_Model_RootClass.h"
 
 @interface ShangPin_TuPian_V : MyUIView
 
 @property (nonatomic,assign)BOOL        bool_SP;//是否包含视频
+
+@property (nonatomic,strong)ShangPin_Model_RootClass    *model;
 
 @end

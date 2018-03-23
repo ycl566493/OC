@@ -19,7 +19,10 @@
 #define address_addAdderssByNameId [NSString stringWithFormat:@"%@%@",URL_LJ,@"address/addAdderssByNameId"]//获取门店
 #define address_getAddressList [NSString stringWithFormat:@"%@%@",URL_LJ,@"address/getAddressList"]//获取地址列表
 #define user_getUserInfo [NSString stringWithFormat:@"%@%@",URL_LJ,@"user/getUserInfo"]//个人中心
-
+#define address_delAddress [NSString stringWithFormat:@"%@%@",URL_LJ,@"address/delAddress"]//删除地址
+#define address_updateAddressIsFirst [NSString stringWithFormat:@"%@%@",URL_LJ,@"address/updateAddressIsFirst"]//默认地址
+#define Category_getCategoryName [NSString stringWithFormat:@"%@%@",URL_LJ,@"Category/getCategoryName"]//分类商品列表
+#define product_bulkDetail [NSString stringWithFormat:@"%@%@",URL_LJ,@"product/bulkDetail"]//分类商品列表
 
 
 #endif /* URL_Connect_h */

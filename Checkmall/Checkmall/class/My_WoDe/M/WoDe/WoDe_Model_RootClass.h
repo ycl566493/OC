@@ -1,6 +1,5 @@
 //
 //	WoDe_Model_RootClass.h
- on 22/3/2018
 //	Copyright © 2018. All rights reserved.
 //
 

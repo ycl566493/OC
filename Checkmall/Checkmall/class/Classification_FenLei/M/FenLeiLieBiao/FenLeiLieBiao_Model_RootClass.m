@@ -9,7 +9,7 @@
 
 NSString *const kFenLeiLieBiao_Model_RootClassData = @"data";
 NSString *const kFenLeiLieBiao_Model_RootClassMessage = @"message";
-NSString *const kFenLeiLieBiao_Model_RootClassStatus = @"status";
+NSString *const kFenLeiLieBiao_Model_RootClassCode = @"code";
 
 @interface FenLeiLieBiao_Model_RootClass ()
 @end
@@ -37,8 +37,8 @@ NSString *const kFenLeiLieBiao_Model_RootClassStatus = @"status";
 	if(![dictionary[kFenLeiLieBiao_Model_RootClassMessage] isKindOfClass:[NSNull class]]){
 		self.message = dictionary[kFenLeiLieBiao_Model_RootClassMessage];
 	}	
-	if(![dictionary[kFenLeiLieBiao_Model_RootClassStatus] isKindOfClass:[NSNull class]]){
-		self.status = [dictionary[kFenLeiLieBiao_Model_RootClassStatus] integerValue];
+	if(![dictionary[kFenLeiLieBiao_Model_RootClassCode] isKindOfClass:[NSNull class]]){
+		self.code = [dictionary[kFenLeiLieBiao_Model_RootClassCode] integerValue];
 	}
 
 	return self;
