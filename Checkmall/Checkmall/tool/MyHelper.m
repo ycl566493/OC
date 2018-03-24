@@ -16,6 +16,25 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 
 @implementation MyHelper
 
++(NSURL *)imaeg_URL:(NSString*)image_url view:(UIView *)view{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",image_url,view.width * 2]];
+}
+
+#pragma mark- 把秒速转换为
++(NSString *)time_SFM:(NSString *)str{
+    NSInteger sj = [str integerValue];
+    NSInteger SSS = sj / 60 /60;
+    NSInteger FFF = sj % (60 * 60) / 60;
+    NSInteger MMM = sj % 60;
+    if (SSS == 0) {
+        if (FFF == 0) {
+            return [NSString stringWithFormat:@"%li",MMM];
+        }
+        return [NSString stringWithFormat:@"%li:%li",FFF,MMM];
+    }
+    return [NSString stringWithFormat:@"%li:%li:%li",SSS,FFF,MMM];
+}
+
 #pragma mark- 图片变灰
 +(UIImage *)Image_Hui:(UIImage *)sourceImage
 {

@@ -7,9 +7,9 @@
 //  商品描述模块
 
 #import "MyUIView.h"
-
+#import "ShangPin_Model_RootClass.h"
 @interface ShangPin_MS_V : MyUIView
 
-@property (nonatomic,copy)NSString  *str_Title;
+@property (nonatomic,strong)ShangPin_Model_RootClass    *model;
 
 @end

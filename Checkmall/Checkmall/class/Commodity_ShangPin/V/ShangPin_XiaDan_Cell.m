@@ -39,13 +39,13 @@
     
     lbl_Name = [[UILabel alloc]initWithFrame:CGRectMake(imageV_TX.right + 10,  imageV_TX.top,200, imageV_TX.height  )];
     lbl_Name.font = font15;
-    lbl_Name.text = @"苍老师苍老师";
+    lbl_Name.text = @"";
     [self addSubview:lbl_Name];
     
     lbl_XDSJ = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth - 15 - 200, imageV_TX.top+4, 200, 20)];
     lbl_XDSJ.font = font13;
     lbl_XDSJ.textAlignment = 2;
-    lbl_XDSJ.text = @"2月14日14:00下单";
+    lbl_XDSJ.text = @"2月14日";
     [self addSubview:lbl_XDSJ];
     
     lbl_XDSL = [[UILabel alloc]initWithFrame:CGRectMake(lbl_XDSJ.left, lbl_XDSJ.bottom, lbl_XDSJ.width, lbl_XDSJ.height)];
@@ -57,6 +57,16 @@
     view_FGX = [[UIView alloc]initWithFrame:CGRectMake(0, 62.5 , ScreenWidth, .5)];
     view_FGX.backgroundColor = UIColorFromHex(0xeeeeee);
     [self addSubview:view_FGX];
+    
+}
+
+-(void)setModel:(ShangPin_Model_GroupUserInfo *)model{
+    _model = model;
+    [imageV_TX sd_setImageWithURL:[MyHelper imaeg_URL:model.bulkImageUrl view:imageV_TX] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    
+    lbl_Name.text = model.bulkNickname;
+    lbl_XDSJ.text = [NSString stringWithFormat:@"%@下单",model.orderTime];
+
     
 }
 

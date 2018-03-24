@@ -13,7 +13,7 @@
 #import "FenLei_H_Title_V.h"//分类标题
 #import "FenLeiLieBiao_Model_RootClass.h"//分类列表
 #import "FenLeiShangPin_Model_RootClass.h"//分类商品数据
-
+#import "ShangPinXiangQing_VC.h"//商品详情
 
 @interface FenLei_VC ()<UITableViewDelegate,UITableViewDataSource>{
     UITableView *table_V_FL;//分类列表
@@ -205,6 +205,13 @@
         Select_Index = indexPath.row;
         [table_V_FL reloadData];
         [self init_data_SP:YES];
+    }else if (tableView == table_V_SP){
+        ShangPinXiangQing_VC *vc = [[ShangPinXiangQing_VC alloc]init];
+        FenLeiShangPin_Model_Data   *MMm = model_FLSP.data[indexPath.row];
+
+        vc.Str_ID = [NSString stringWithFormat:@"%li",MMm.idField];
+        [self.navigationController pushViewController:vc animated:YES];
+
     }
 }
 

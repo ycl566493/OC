@@ -14,6 +14,12 @@
 
 @interface MyHelper : NSObject
 
+#pragma mark- 拼接图片服务器连接
++(NSURL *)imaeg_URL:(NSString*)image_url view:(UIView *)view;
+
+//秒转换为时分秒
++(NSString *)time_SFM:(NSString *)str;
+
 //图片变灰
 +(UIImage *)Image_Hui:(UIImage *)sourceImage;
 

@@ -96,13 +96,13 @@
 }   
 
 -(void)btn_GWC_Action:(UIButton*)btn{
-//    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-//    CGRect rect=[btn convertRect: btn.bounds toView:window];
-//    [MyHelper addToShoppingCartWithGoodsImage:btn.imageView.image startPoint:CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2) endPoint:CGPointMake([[kUserDefaults objectForKey:GWC_X] floatValue], [[kUserDefaults objectForKey:GWC_Y] floatValue]) completion:^(BOOL finished) {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"GouWuCheShuLiang" object:nil];
-//    }];
-//
-//    NSLog(@"%@",NSStringFromCGRect(rect));
+    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+    CGRect rect=[btn convertRect: btn.bounds toView:window];
+    [MyHelper addToShoppingCartWithGoodsImage:btn.imageView.image startPoint:CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2) endPoint:CGPointMake([[kUserDefaults objectForKey:GWC_X] floatValue], [[kUserDefaults objectForKey:GWC_Y] floatValue]) completion:^(BOOL finished) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GouWuCheShuLiang" object:nil];
+    }];
+
+    NSLog(@"%@",NSStringFromCGRect(rect));
 }
 
 @end

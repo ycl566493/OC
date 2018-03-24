@@ -33,7 +33,7 @@
 -(void)init_UI{
     lbl_XDR = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, 250, 45)];
     lbl_XDR.font = font15;
-    lbl_XDR.text = @"已有9999人下单,可以直接参与";
+    lbl_XDR.text = @"已有0人下单,可以直接参与";
     [self addSubview:lbl_XDR];
     
     lbl_JSSJ = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth - 215, 0, 200, 45)];
@@ -67,12 +67,28 @@
     [self addSubview:tableV];
 }
 
+-(void)setModel:(ShangPin_Model_RootClass *)model{
+    _model = model;
+    lbl_XDR.text = [NSString stringWithFormat:@"已有%ld人下单,可以直接参与",(long)model.data.groupSum];
+    
+    lbl_JSSJ.text = [NSString stringWithFormat:@"距离结束 %@",[MyHelper time_SFM:[NSString stringWithFormat:@"%li",model.data.surplusTime]]];
+    
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     lbl_JSSJ.text];
+    NSRange range = NSMakeRange(4, [MyHelper time_SFM:[NSString stringWithFormat:@"%li",model.data.surplusTime]].length + 1);
+    // 设置颜色
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0xff7800) range:range];
+    lbl_JSSJ.attributedText = attributedStr;
+    
+
+    [tableV reloadData];
+}
+
 #pragma mark- tableview代理
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.model.data.groupUserInfo.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [ShangPin_XiaDan_Cell get_H:nil];
@@ -83,6 +99,8 @@
         cell = [[ShangPin_XiaDan_Cell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    ShangPin_Model_GroupUserInfo *mmm = self.model.data.groupUserInfo[indexPath.row];
+    cell.model = mmm;
     cell.tag = indexPath.row;
     return cell;
 }
@@ -103,7 +121,8 @@
 }
 
 +(CGFloat)get_H:(id)data{
-    return [ShangPin_XiaDan_Cell get_H:nil] * 2 + 45 + .5;
+    
+    return [ShangPin_XiaDan_Cell get_H:nil] * ([data integerValue] > 2 ? 2 : [data integerValue]) + 45 + .5;
 }
 
 

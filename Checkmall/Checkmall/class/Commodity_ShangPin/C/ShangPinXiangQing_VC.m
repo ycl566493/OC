@@ -30,7 +30,7 @@
     
     UILabel                 *lbl_GM;//购买文字
     UILabel                 *lbl_PT;//购买文字
-    UIButton                *btn_GWC;//购物车按钮
+//    UIButton                *btn_GWC;//购物车按钮
     
     ShangPin_Model_RootClass    *model_SPXQ;//商品详情model
 }
@@ -66,6 +66,18 @@
 #pragma mark- 更新视图
 -(void)UP_UI{
     TuPian.model = model_SPXQ;
+    XinXi.model = model_SPXQ;
+    XinXi.height = [ShangPin_XinXi_V get_H:model_SPXQ.data.productName];
+    XiaDan.top = XinXi.bottom;
+    XiaDan.model = model_SPXQ;
+    XiaDan.height = [ShangPin_XiaDan_V get_H:[NSString stringWithFormat:@"%li",model_SPXQ.data.groupUserInfo.count]];
+    
+    MS.top = XiaDan.bottom;
+    MS.model = model_SPXQ;
+    MS.height = [ShangPin_MS_V get_H:model_SPXQ.data.productDesc];
+
+    PinTuan.top = MS.bottom;
+    scrollV.contentSize = CGSizeMake(0, PinTuan.bottom);
 }
 
 -(TC_PTXZ_V *)PTXZ{
@@ -107,8 +119,6 @@
     
     NSString    *str_MS = @"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈";
     MS = [[ShangPin_MS_V alloc]initWithFrame:CGRectMake(0, XiaDan.bottom, ScreenWidth, [ShangPin_MS_V get_H:str_MS])];
-    MS.str_Title = str_MS;
-    MS.height = [ShangPin_MS_V get_H:str_MS];
     [scrollV addSubview:MS];
     
     PinTuan = [[ShangPin_PinTuanXuZhi_V alloc]initWithFrame:CGRectMake(0, MS.bottom, ScreenWidth, [ShangPin_PinTuanXuZhi_V get_H:nil])];
@@ -141,9 +151,9 @@
     lbl_PT.font = [UIFont systemFontOfSize:17];
     [btn_PT addSubview:lbl_PT];
 
-    btn_GWC = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 50 - 15, btn_GM.top - 5 - 50, 50, 50)];
-    [btn_GWC setImage:[UIImage imageNamed:@"GouWuCheYuan"] forState:UIControlStateNormal];
-    [self.view addSubview:btn_GWC];
+//    btn_GWC = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 50 - 15, btn_GM.top - 5 - 50, 50, 50)];
+//    [btn_GWC setImage:[UIImage imageNamed:@"GouWuCheYuan"] forState:UIControlStateNormal];
+//    [self.view addSubview:btn_GWC];
     
     if (!iOS11) {
         scrollV.height = ScreenHeight - kStatusBarAndNavigationBarHeight ;

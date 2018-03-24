@@ -7,7 +7,10 @@
 //  商品下单模块
 
 #import "MyUIView.h"
+#import "ShangPin_Model_RootClass.h"
 
 @interface ShangPin_XiaDan_V : MyUIView
+
+@property (nonatomic,strong)ShangPin_Model_RootClass    *model;
 
 @end

@@ -160,29 +160,29 @@
     [tabBarView addSubview:btn_4];
     
 //    //购物车坐标点
-//    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-//    CGRect rect=[btn_4 convertRect: btn_4.bounds toView:window];
-//
-//    [kUserDefaults setObject:[NSString stringWithFormat:@"%f",rect.origin.x + rect.size.width / 2] forKey:@"GWCRECT_X"];
-//    [kUserDefaults setObject:[NSString stringWithFormat:@"%f",rect.origin.y + rect.size.height / 2] forKey:@"GWCRECT_Y"];
-//
-//    lbl_GWSL = [[UILabel alloc]initWithFrame:CGRectMake(btn_4.width - 40, 0, 50, 15)];
-//    lbl_GWSL.font = font12;
-//    lbl_GWSL.backgroundColor = [UIColor redColor];
-//    lbl_GWSL.textColor = [UIColor whiteColor];
-//    lbl_GWSL.layer.masksToBounds = YES;
-//    lbl_GWSL.layer.cornerRadius = 15 / 2;
-//    lbl_GWSL.textAlignment = 1;
-//    NSInteger SL = [[kUserDefaults objectForKey:GWC_SL] integerValue];
-//    if (SL == 0) {
-//        lbl_GWSL.hidden = YES;
-//    }else{
-//        lbl_GWSL.hidden = NO;
-//    }
-//    lbl_GWSL.text = SL < 100 ? [NSString stringWithFormat:@"%li",SL] : @"99+";
-//    lbl_GWSL.width = [MyHelper strWidth:lbl_GWSL.text andFont:lbl_GWSL.font andHeight:lbl_GWSL.height] + 10;
-//    lbl_GWSL.mj_x = btn_4.width - lbl_GWSL.width ;
-//    [btn_4 addSubview:lbl_GWSL];
+    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+    CGRect rect=[btn_4 convertRect: btn_4.bounds toView:window];
+
+    [kUserDefaults setObject:[NSString stringWithFormat:@"%f",rect.origin.x + rect.size.width / 2] forKey:@"GWCRECT_X"];
+    [kUserDefaults setObject:[NSString stringWithFormat:@"%f",rect.origin.y + rect.size.height / 2] forKey:@"GWCRECT_Y"];
+
+    lbl_GWSL = [[UILabel alloc]initWithFrame:CGRectMake(btn_4.width - 40, 0, 50, 15)];
+    lbl_GWSL.font = font12;
+    lbl_GWSL.backgroundColor = [UIColor redColor];
+    lbl_GWSL.textColor = [UIColor whiteColor];
+    lbl_GWSL.layer.masksToBounds = YES;
+    lbl_GWSL.layer.cornerRadius = 15 / 2;
+    lbl_GWSL.textAlignment = 1;
+    NSInteger SL = [[kUserDefaults objectForKey:GWC_SL] integerValue];
+    if (SL == 0) {
+        lbl_GWSL.hidden = YES;
+    }else{
+        lbl_GWSL.hidden = NO;
+    }
+    lbl_GWSL.text = SL < 100 ? [NSString stringWithFormat:@"%li",SL] : @"99+";
+    lbl_GWSL.width = [MyHelper strWidth:lbl_GWSL.text andFont:lbl_GWSL.font andHeight:lbl_GWSL.height] + 10;
+    lbl_GWSL.mj_x = btn_4.width - lbl_GWSL.width ;
+    [btn_4 addSubview:lbl_GWSL];
     
     btn_5 = [UIButton buttonWithType:UIButtonTypeCustom];
     btn_5.frame = CGRectMake(btn_4.right, btn_1.top, btn_width, btn_1.height);

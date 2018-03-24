@@ -48,9 +48,9 @@
     
 }
 
--(void)setStr_Title:(NSString *)str_Title{
-    _str_Title = str_Title;
-    lbl_MSXX.text = str_Title;
+-(void)setModel:(ShangPin_Model_RootClass *)model{
+    _model = model;
+    lbl_MSXX.text = model.data.productDesc;
     lbl_MSXX.height = [MyHelper getSpaceLabelHeight:lbl_MSXX.text withFont:lbl_MSXX.font withWidth:lbl_MSXX.width Spacing:5];
     [MyHelper setLabelSpace:lbl_MSXX withValue:lbl_MSXX.text withFont:lbl_MSXX.font Spacing:4];
     view_FGX.top = lbl_MSXX.bottom + 15;
@@ -58,7 +58,7 @@
 
 +(CGFloat)get_H:(id)data{
     
-    CGFloat fff = 45;
+    CGFloat fff = 45 + 15;
     NSString *str_T = data;
     
     return fff + [MyHelper getSpaceLabelHeight:str_T withFont:font12 withWidth:ScreenWidth - 30 Spacing:5];

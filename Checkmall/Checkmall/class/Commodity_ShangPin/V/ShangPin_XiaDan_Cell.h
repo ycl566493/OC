@@ -7,7 +7,10 @@
 //  商品下单cell
 
 #import "BaseTableViewCell.h"
+#import "ShangPin_Model_GroupUserInfo.h"
 
 @interface ShangPin_XiaDan_Cell : BaseTableViewCell
+
+@property (nonatomic,strong)ShangPin_Model_GroupUserInfo    *model;
 
 @end
