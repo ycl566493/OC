@@ -36,7 +36,7 @@
     self.backgroundColor = [UIColor whiteColor];
     
     btn_GM = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 100,  0, 100, 54)];
-    [btn_GM setTitle:@"结算(99)" forState:UIControlStateNormal];
+    [btn_GM setTitle:@"结算(0)" forState:UIControlStateNormal];
     btn_GM.titleLabel.font = font15;
     btn_GM.backgroundColor = RGBA(253, 98, 6, 1);
     [btn_GM addTarget:self action:@selector(btn_GM_Action) forControlEvents:UIControlEventTouchUpInside];
@@ -57,15 +57,15 @@
     lbl_HJ.font = font12;
     lbl_HJ.textAlignment = 2;
     lbl_HJ.textColor = [UIColor blackColor];
-    lbl_HJ.text = @"合计：￥999.99";
+    lbl_HJ.text = @"合计：￥0.00";
     [self addSubview:lbl_HJ];
     
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     lbl_HJ.text];
-    NSRange range = NSMakeRange(3, 7);
+    NSRange range = NSMakeRange(3, 5);
     // 设置颜色
     [attributedStr addAttribute:NSForegroundColorAttributeName value:RGBA(253, 98, 6, 1) range:range];
     // 设置字体大小
-    range = NSMakeRange(4, 6);
+//    range = NSMakeRange(4, 6);
     [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:range];
     lbl_HJ.attributedText = attributedStr;
     
@@ -74,9 +74,24 @@
     lbl_YH.font = [UIFont systemFontOfSize:10];
     lbl_YH.textAlignment = 2;
     lbl_YH.textColor = RGBA(83, 83, 83, 1);
-    lbl_YH.text = @"已优惠：￥99.99";
+    lbl_YH.text = @"已优惠：￥0.00";
     [self addSubview:lbl_YH];
     
+}
+
+-(void)set_JG:(CGFloat)jg YH:(CGFloat)yh SL:(NSInteger)sl{
+    lbl_HJ.text = [NSString stringWithFormat:@"合计：￥%.2f",jg];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     lbl_HJ.text];
+    NSRange range = NSMakeRange(3, lbl_HJ.text.length - 3);
+    // 设置颜色
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:RGBA(253, 98, 6, 1) range:range];
+    // 设置字体大小
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:range];
+    lbl_HJ.attributedText = attributedStr;
+    
+    lbl_YH.text = [NSString stringWithFormat:@"已优惠：￥%.2f",yh];
+    [btn_GM setTitle:[NSString stringWithFormat:@"结算(%li)",sl] forState:UIControlStateNormal];
+
 }
 
 -(void)btn_GM_Action{
@@ -87,6 +102,9 @@
 
 -(void)btn_QX_Action:(UIButton*)btn{
     btn.selected = !btn.selected;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(GouWuChe_DiBu_V_Delegate_QX:)]) {
+        [self.delegate GouWuChe_DiBu_V_Delegate_QX:btn.selected];
+    }
 }
 
 

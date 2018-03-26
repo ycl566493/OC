@@ -14,6 +14,9 @@
 
 @interface MyHelper : NSObject
 
+
++(void)UP_GWCSL;//更新购物车
+
 #pragma mark- 拼接图片服务器连接
 +(NSURL *)imaeg_URL:(NSString*)image_url view:(UIView *)view;
 

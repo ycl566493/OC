@@ -44,6 +44,18 @@
 //    [self removeTabarTopLine];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(GouWuCheShuLiang:) name:@"GouWuCheShuLiang" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ToLogIn) name:@"ToLogIn" object:nil];
+    
+    
+    [MyHelper UP_GWCSL];
+}
+
+-(void)ToLogIn{
+    DengLu_VC *vc = [[DengLu_VC alloc]init];
+    BaseNavigationController    *nVc = [[BaseNavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:nVc animated:YES completion:^{
+        
+    }];
 }
 
 - (void)removeTabarTopLine {
@@ -61,17 +73,15 @@
 #pragma mark- 购物车数量
 - (void)GouWuCheShuLiang:(NSNotification*)tion{
     
-//    NSInteger SL = [[kUserDefaults objectForKey:GWC_SL] integerValue];
-//    SL += 1;
-//    [kUserDefaults setObject:[NSString stringWithFormat:@"%li",SL] forKey:GWC_SL];
-//    if (SL == 0) {
-//        lbl_GWSL.hidden = YES;
-//    }else{
-//        lbl_GWSL.hidden = NO;
-//    }
-//    lbl_GWSL.text = SL < 100 ? [NSString stringWithFormat:@"%li",SL] : @"99+";
-//    lbl_GWSL.width = [MyHelper strWidth:lbl_GWSL.text andFont:lbl_GWSL.font andHeight:lbl_GWSL.height] + 10;
-//    lbl_GWSL.mj_x = btn_4.width - lbl_GWSL.width;
+    NSInteger SL = [[kUserDefaults objectForKey:GWC_SL] integerValue];
+    if (SL == 0) {
+        lbl_GWSL.hidden = YES;
+    }else{
+        lbl_GWSL.hidden = NO;
+    }
+    lbl_GWSL.text = SL < 100 ? [NSString stringWithFormat:@"%li",SL] : @"99+";
+    lbl_GWSL.width = [MyHelper strWidth:lbl_GWSL.text andFont:lbl_GWSL.font andHeight:lbl_GWSL.height] + 10;
+    lbl_GWSL.mj_x = btn_4.width - lbl_GWSL.width -10;
 }
     
 #pragma mark 隐藏tabbarviewcontroller
@@ -225,11 +235,16 @@
         }
             break;
         case 904:{
+            if ([kUserDefaults boolForKey:DengLuZhuangTai]) {
                 btn_1.selected = NO;
                 btn_2.selected = NO;
                 btn_4.selected = YES;
                 btn_5.selected = NO;
                 self.selectedIndex = 2;
+
+            }else{
+                [self ToLogIn];
+            }
         }
             break;
         case 905:{
@@ -240,11 +255,7 @@
                 btn_5.selected = YES;
                 self.selectedIndex = 3;
             }else{
-                    DengLu_VC *vc = [[DengLu_VC alloc]init];
-                    BaseNavigationController    *nVc = [[BaseNavigationController alloc]initWithRootViewController:vc];
-                    [self presentViewController:nVc animated:YES completion:^{
-                
-                    }];
+                [self ToLogIn];
             }
         }
             break;

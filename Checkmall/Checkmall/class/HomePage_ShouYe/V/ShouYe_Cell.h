@@ -9,7 +9,16 @@
 #import "BaseCollectionViewCell.h"
 #import "ShouYe_Model_Data.h"//model
 
+@protocol ShouYe_Cell_Delegate_GWC <NSObject>
+
+@optional
+-(void)ShouYe_Cell_Delegate_GWC:(NSInteger)tag;//购物车
+
+@end
+
 @interface ShouYe_Cell : BaseCollectionViewCell
+
+@property (nonatomic,assign)id<ShouYe_Cell_Delegate_GWC>    delegate;
 
 @property (nonatomic,strong)ShouYe_Model_Data   *ShouYe_Model;
 

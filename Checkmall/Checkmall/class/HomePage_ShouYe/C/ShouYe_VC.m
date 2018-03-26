@@ -22,7 +22,7 @@
 #import "SouSuo_VC.h"//搜索页面
 #import "ShouYe_Model_RootClass.h"//首页model
 
-@interface ShouYe_VC ()<ShouYe_H_PTTJ_V_delegate>{
+@interface ShouYe_VC ()<ShouYe_H_PTTJ_V_delegate,ShouYe_Cell_Delegate_GWC>{
     UIView          *view_Nav;//顶部视图
     Image_Lunbo     *LB;//轮播
     ShouYe_H_BZ_V   *BZ;//质量保证
@@ -72,7 +72,6 @@
         
     }];
 }
-
 
 - (void)init_UI{
     
@@ -125,6 +124,32 @@
 
 }
 
+#pragma mark- 添加商品到购物车
+- (void)add_SP:(NSInteger)tag{
+    
+    ShouYe_Model_Data *MMMM = model.data[tag];
+
+    NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",MMMM.productId],@"num":@"1"};
+    
+    [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        
+        NSLog(@"添加购物车 = = =%@",dict);
+        if ([dict[@"code"] integerValue] == 1) {
+            [MyHelper UP_GWCSL];
+        }
+    } fail:^(id error) {
+        
+        
+    }];
+}
+
+
+
+-(void)ShouYe_Cell_Delegate_GWC:(NSInteger)tag{
+    [self add_SP:tag];
+}
+
 #pragma mark- 拼团特价回调
 - (void)ShouYe_H_PTTJ_V_delegate_Action:(NSInteger)tag{
     if (tag == 1) {
@@ -162,6 +187,10 @@
     
     ShouYe_Model_Data *MMMM = model.data[indexPath.row];
     cell.ShouYe_Model = MMMM;
+    
+    cell.tag = indexPath.row;
+    cell.delegate =self;
+    
     return cell;
 }
 

@@ -23,6 +23,18 @@
 #define address_updateAddressIsFirst [NSString stringWithFormat:@"%@%@",URL_LJ,@"address/updateAddressIsFirst"]//默认地址
 #define Category_getCategoryName [NSString stringWithFormat:@"%@%@",URL_LJ,@"Category/getCategoryName"]//分类商品列表
 #define product_bulkDetail [NSString stringWithFormat:@"%@%@",URL_LJ,@"product/bulkDetail"]//分类商品列表
+#define goodscar_addGoodsToCar [NSString stringWithFormat:@"%@%@",URL_LJ,@"goodscar/addGoodsToCar"]//添加购物车
+#define goodscar_getGoodsCarData [NSString stringWithFormat:@"%@%@",URL_LJ,@"goodscar/getGoodsCarData"]//购物车列表
+
+#define goodscar_getCarCount [NSString stringWithFormat:@"%@%@",URL_LJ,@"goodscar/getCarCount"]//获取购物车数量
+#define goodscar_addAndReduce [NSString stringWithFormat:@"%@%@",URL_LJ,@"goodscar/addAndReduce"]//修改购物车数量
+#define goodscar_clearShopCar [NSString stringWithFormat:@"%@%@",URL_LJ,@"goodscar/clearShopCar"]//清空购物车
+#define order_getOrderDesc [NSString stringWithFormat:@"%@%@",URL_LJ,@"order/getOrderDesc"]//确认订单
+#define order_getMessage [NSString stringWithFormat:@"%@%@",URL_LJ,@"order/getMessage"]//下单
+#define order_orderList [NSString stringWithFormat:@"%@%@",URL_LJ,@"order/orderList"]//订单列表
+
+
+
 
 
 #endif /* URL_Connect_h */

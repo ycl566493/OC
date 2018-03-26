@@ -7,6 +7,7 @@
 //  我的订单详情
 
 #import <UIKit/UIKit.h>
+#import "DingDanLieBiao_Model_Data.h"//model
 
 @interface DingDan_Cell : UITableViewCell
 
@@ -32,7 +33,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_QX;//操作按钮2
 
-
+@property (nonatomic,strong)DingDanLieBiao_Model_Data   *model;
 
 +(CGFloat)get_H;
 

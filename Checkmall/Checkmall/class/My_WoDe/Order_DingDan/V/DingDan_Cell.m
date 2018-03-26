@@ -30,6 +30,34 @@
 
 }
 
+-(void)setModel:(DingDanLieBiao_Model_Data *)model{
+    _model = model;
+    self.lbl_BH.text = [NSString stringWithFormat:@"订单编号%@",model.orderSn];
+    [self.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.url view:self.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    self.lbl_Name.text = model.goodsName;
+    self.lbl_DH.text = [NSString stringWithFormat:@"%ld到货",(long)model.arrivalTime];
+    self.lbl_SL.text = [NSString stringWithFormat:@"%li",model.number];
+    self.lbl_XD.text = [NSString stringWithFormat:@"%@",model.created];
+
+    //    order_status   订单状态 1 待付款 2 代发货 3待收货 4 已退款 5 交易成功 6 已取消',
+    if ([model.orderStatus integerValue] == 1) {
+        self.lbl_ZT.text = @"待付款";
+    }else if ([model.orderStatus integerValue] == 2) {
+        self.lbl_ZT.text = @"代发货";
+    }else if ([model.orderStatus integerValue] == 3) {
+        self.lbl_ZT.text = @"待收货";
+    }else if ([model.orderStatus integerValue] == 4) {
+        self.lbl_ZT.text = @"已退款";
+    }else if ([model.orderStatus integerValue] == 5) {
+        self.lbl_ZT.text = @"交易成功";
+    }else if ([model.orderStatus integerValue] == 6) {
+        self.lbl_ZT.text = @"已取消";
+    }
+    
+    
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

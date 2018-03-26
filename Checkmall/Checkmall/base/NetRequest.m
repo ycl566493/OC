@@ -110,9 +110,10 @@ static NetRequest * netequest;
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
 
 
-        }else if ([[responseObject objectForKey:@"code"] integerValue] == -99) {
+        }else if ([[responseObject objectForKey:@"code"] integerValue] == 10000) {
             NSLog(@"重新登录");
             [kUserDefaults setBool:0 forKey:DengLuZhuangTai];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"ToLogIn" object:nil];
             
         }else{
             NSLog(@"dictdata === %@",[responseObject objectForKey:@"Msg"]);

@@ -101,6 +101,10 @@
     [MyHelper addToShoppingCartWithGoodsImage:btn.imageView.image startPoint:CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2) endPoint:CGPointMake([[kUserDefaults objectForKey:GWC_X] floatValue], [[kUserDefaults objectForKey:GWC_Y] floatValue]) completion:^(BOOL finished) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"GouWuCheShuLiang" object:nil];
     }];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(ShouYe_Cell_Delegate_GWC:)]) {
+        [self.delegate ShouYe_Cell_Delegate_GWC:self.tag];
+    }
 
     NSLog(@"%@",NSStringFromCGRect(rect));
 }

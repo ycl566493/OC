@@ -22,6 +22,7 @@
     self.CeHua = NO;
     self.window = [[UIApplication sharedApplication].delegate window];
 
+    self.pageIndex = 1;
     [self showBack];
 //    self.extendedLayoutIncludesOpaqueBars = YES;
     self.view.backgroundColor = kViewBackgroundColor;

@@ -12,11 +12,15 @@
 
 @optional
 -(void)GouWuChe_DiBu_V_Delegate_Action;//结算
+-(void)GouWuChe_DiBu_V_Delegate_QX:(BOOL)XZ;//结算
+
 
 @end
 
 @interface GouWuChe_DiBu_V : MyUIView
 
 @property (nonatomic,assign)id<GouWuChe_DiBu_V_Delegate>    delegate;
+
+-(void)set_JG:(CGFloat)jg YH:(CGFloat)yh SL:(NSInteger)sl;//价格 优惠 数量 
 
 @end
