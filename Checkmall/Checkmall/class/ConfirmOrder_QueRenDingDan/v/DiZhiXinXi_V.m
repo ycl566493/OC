@@ -41,6 +41,9 @@
 
 - (IBAction)DZ_Action:(UITapGestureRecognizer *)sender {
     NSLog(@"地址点击");
+    if (self.delegate && [self.delegate respondsToSelector:@selector(DiZhiXinXi_V_Delegate_Action)]) {
+        [self.delegate DiZhiXinXi_V_Delegate_Action];
+    }
 }
 
 //配送方式

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		740D239A206A0F6000666D5C /* QueRenDingDan_Model_Addres.m in Sources */ = {isa = PBXBuildFile; fileRef = 740D2396206A0F6000666D5C /* QueRenDingDan_Model_Addres.m */; };
+		740D239B206A0F6000666D5C /* QueRenDingDan_Model_Arr.m in Sources */ = {isa = PBXBuildFile; fileRef = 740D2397206A0F6000666D5C /* QueRenDingDan_Model_Arr.m */; };
+		740D239C206A0F6000666D5C /* QueRenDingDan_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 740D2398206A0F6000666D5C /* QueRenDingDan_Model_RootClass.m */; };
+		740D239D206A0F6000666D5C /* QueRenDingDan_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 740D2399206A0F6000666D5C /* QueRenDingDan_Model_Data.m */; };
 		741543A9205913F8002C1972 /* QueRenDingDan_PT_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 741543A7205913F8002C1972 /* QueRenDingDan_PT_VC.m */; };
 		741543AA205913F8002C1972 /* QueRenDingDan_PT_VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 741543A8205913F8002C1972 /* QueRenDingDan_PT_VC.xib */; };
 		741543AE205944AA002C1972 /* QueRenDingDan_GWC_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 741543AC205944AA002C1972 /* QueRenDingDan_GWC_VC.m */; };
@@ -16,6 +20,11 @@
 		7417145820623DA5000FA60D /* RSA_Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 7417145620623DA4000FA60D /* RSA_Object.m */; };
 		741E5D63206233FB0065A273 /* ShouYe_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 741E5D61206233FA0065A273 /* ShouYe_Model_RootClass.m */; };
 		741E5D64206233FB0065A273 /* ShouYe_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 741E5D62206233FB0065A273 /* ShouYe_Model_Data.m */; };
+		742F0564206A4BCE006B28F7 /* GuangGao_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 742F0560206A4BCE006B28F7 /* GuangGao_Model_RootClass.m */; };
+		742F0565206A4BCE006B28F7 /* GuangGao_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 742F0561206A4BCE006B28F7 /* GuangGao_Model_Data.m */; };
+		742F0567206A5BA5006B28F7 /* YHJ.txt in Resources */ = {isa = PBXBuildFile; fileRef = 742F0566206A5BA5006B28F7 /* YHJ.txt */; };
+		742F0574206A5E87006B28F7 /* YouHuiJuan_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 742F0572206A5E87006B28F7 /* YouHuiJuan_Model_Data.m */; };
+		742F0575206A5E87006B28F7 /* YouHuiJuan_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 742F0573206A5E87006B28F7 /* YouHuiJuan_Model_RootClass.m */; };
 		7433636A2068BDE3007E2766 /* GouWuChe_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 743363662068BDE3007E2766 /* GouWuChe_Model_RootClass.m */; };
 		7433636B2068BDE3007E2766 /* GouWuChe_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 743363672068BDE3007E2766 /* GouWuChe_Model_Data.m */; };
 		7433636E2068F9C8007E2766 /* KBY_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 7433636D2068F9C8007E2766 /* KBY_View.m */; };
@@ -311,6 +320,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		740D2392206A0F6000666D5C /* QueRenDingDan_Model_Addres.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueRenDingDan_Model_Addres.h; sourceTree = "<group>"; };
+		740D2393206A0F6000666D5C /* QueRenDingDan_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueRenDingDan_Model_Data.h; sourceTree = "<group>"; };
+		740D2394206A0F6000666D5C /* QueRenDingDan_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueRenDingDan_Model_RootClass.h; sourceTree = "<group>"; };
+		740D2395206A0F6000666D5C /* QueRenDingDan_Model_Arr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueRenDingDan_Model_Arr.h; sourceTree = "<group>"; };
+		740D2396206A0F6000666D5C /* QueRenDingDan_Model_Addres.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueRenDingDan_Model_Addres.m; sourceTree = "<group>"; };
+		740D2397206A0F6000666D5C /* QueRenDingDan_Model_Arr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueRenDingDan_Model_Arr.m; sourceTree = "<group>"; };
+		740D2398206A0F6000666D5C /* QueRenDingDan_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueRenDingDan_Model_RootClass.m; sourceTree = "<group>"; };
+		740D2399206A0F6000666D5C /* QueRenDingDan_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueRenDingDan_Model_Data.m; sourceTree = "<group>"; };
 		741543A6205913F8002C1972 /* QueRenDingDan_PT_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueRenDingDan_PT_VC.h; sourceTree = "<group>"; };
 		741543A7205913F8002C1972 /* QueRenDingDan_PT_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueRenDingDan_PT_VC.m; sourceTree = "<group>"; };
 		741543A8205913F8002C1972 /* QueRenDingDan_PT_VC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueRenDingDan_PT_VC.xib; sourceTree = "<group>"; };
@@ -326,6 +343,15 @@
 		741E5D60206233FA0065A273 /* ShouYe_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShouYe_Model_RootClass.h; sourceTree = "<group>"; };
 		741E5D61206233FA0065A273 /* ShouYe_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShouYe_Model_RootClass.m; sourceTree = "<group>"; };
 		741E5D62206233FB0065A273 /* ShouYe_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShouYe_Model_Data.m; sourceTree = "<group>"; };
+		742F0560206A4BCE006B28F7 /* GuangGao_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuangGao_Model_RootClass.m; sourceTree = "<group>"; };
+		742F0561206A4BCE006B28F7 /* GuangGao_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuangGao_Model_Data.m; sourceTree = "<group>"; };
+		742F0562206A4BCE006B28F7 /* GuangGao_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuangGao_Model_Data.h; sourceTree = "<group>"; };
+		742F0563206A4BCE006B28F7 /* GuangGao_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuangGao_Model_RootClass.h; sourceTree = "<group>"; };
+		742F0566206A5BA5006B28F7 /* YHJ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YHJ.txt; sourceTree = "<group>"; };
+		742F0570206A5E87006B28F7 /* YouHuiJuan_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouHuiJuan_Model_Data.h; sourceTree = "<group>"; };
+		742F0571206A5E87006B28F7 /* YouHuiJuan_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouHuiJuan_Model_RootClass.h; sourceTree = "<group>"; };
+		742F0572206A5E87006B28F7 /* YouHuiJuan_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouHuiJuan_Model_Data.m; sourceTree = "<group>"; };
+		742F0573206A5E87006B28F7 /* YouHuiJuan_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouHuiJuan_Model_RootClass.m; sourceTree = "<group>"; };
 		743363662068BDE3007E2766 /* GouWuChe_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GouWuChe_Model_RootClass.m; sourceTree = "<group>"; };
 		743363672068BDE3007E2766 /* GouWuChe_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GouWuChe_Model_Data.m; sourceTree = "<group>"; };
 		743363682068BDE3007E2766 /* GouWuChe_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GouWuChe_Model_RootClass.h; sourceTree = "<group>"; };
@@ -960,6 +986,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		740D2391206A0F6000666D5C /* QueRenDingDan */ = {
+			isa = PBXGroup;
+			children = (
+				740D2394206A0F6000666D5C /* QueRenDingDan_Model_RootClass.h */,
+				740D2398206A0F6000666D5C /* QueRenDingDan_Model_RootClass.m */,
+				740D2392206A0F6000666D5C /* QueRenDingDan_Model_Addres.h */,
+				740D2396206A0F6000666D5C /* QueRenDingDan_Model_Addres.m */,
+				740D2395206A0F6000666D5C /* QueRenDingDan_Model_Arr.h */,
+				740D2397206A0F6000666D5C /* QueRenDingDan_Model_Arr.m */,
+				740D2399206A0F6000666D5C /* QueRenDingDan_Model_Data.m */,
+				740D2393206A0F6000666D5C /* QueRenDingDan_Model_Data.h */,
+			);
+			path = QueRenDingDan;
+			sourceTree = "<group>";
+		};
 		741E5D58206231DB0065A273 /* ShouYeShangPin */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,6 +1010,28 @@
 				741E5D61206233FA0065A273 /* ShouYe_Model_RootClass.m */,
 			);
 			path = ShouYeShangPin;
+			sourceTree = "<group>";
+		};
+		742F055F206A4BCE006B28F7 /* GuangGao */ = {
+			isa = PBXGroup;
+			children = (
+				742F0562206A4BCE006B28F7 /* GuangGao_Model_Data.h */,
+				742F0561206A4BCE006B28F7 /* GuangGao_Model_Data.m */,
+				742F0563206A4BCE006B28F7 /* GuangGao_Model_RootClass.h */,
+				742F0560206A4BCE006B28F7 /* GuangGao_Model_RootClass.m */,
+			);
+			path = GuangGao;
+			sourceTree = "<group>";
+		};
+		742F056F206A5E87006B28F7 /* YouHuiJuan */ = {
+			isa = PBXGroup;
+			children = (
+				742F0570206A5E87006B28F7 /* YouHuiJuan_Model_Data.h */,
+				742F0572206A5E87006B28F7 /* YouHuiJuan_Model_Data.m */,
+				742F0571206A5E87006B28F7 /* YouHuiJuan_Model_RootClass.h */,
+				742F0573206A5E87006B28F7 /* YouHuiJuan_Model_RootClass.m */,
+			);
+			path = YouHuiJuan;
 			sourceTree = "<group>";
 		};
 		743363642068BDD6007E2766 /* M */ = {
@@ -1085,6 +1148,7 @@
 		74603DB12050DBF900C2381E /* M */ = {
 			isa = PBXGroup;
 			children = (
+				742F055F206A4BCE006B28F7 /* GuangGao */,
 				741E5D58206231DB0065A273 /* ShouYeShangPin */,
 			);
 			path = M;
@@ -1150,6 +1214,7 @@
 		7465374D2057A1C400CF0D6B /* M */ = {
 			isa = PBXGroup;
 			children = (
+				740D2391206A0F6000666D5C /* QueRenDingDan */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1366,6 +1431,7 @@
 		7478587B205BB49A00674310 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				742F056F206A5E87006B28F7 /* YouHuiJuan */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1375,6 +1441,7 @@
 			children = (
 				7478587E205BB51800674310 /* YouHuiJuan_VC.h */,
 				7478587F205BB51800674310 /* YouHuiJuan_VC.m */,
+				742F0566206A5BA5006B28F7 /* YHJ.txt */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -2526,6 +2593,7 @@
 				74662F1D205A2788001A224E /* DingDan_Cell.xib in Resources */,
 				74D74726204E37C800DB65FD /* Main.storyboard in Resources */,
 				74780F972054050000E85CCD /* full_screen.png in Resources */,
+				742F0567206A5BA5006B28F7 /* YHJ.txt in Resources */,
 				74D74866204E39E500DB65FD /* MBProgressHUD.bundle in Resources */,
 				74DE774A205F923F006846FC /* TC_JL_V.xib in Resources */,
 				74780F82205404EB00E85CCD /* Info.plist in Resources */,
@@ -2574,6 +2642,7 @@
 				7433636B2068BDE3007E2766 /* GouWuChe_Model_Data.m in Sources */,
 				74C890E42064F8F900898168 /* DiZhiLieBiao_Model_Data.m in Sources */,
 				74D74821204E39E400DB65FD /* MJRefreshBackGifFooter.m in Sources */,
+				742F0575206A5E87006B28F7 /* YouHuiJuan_Model_RootClass.m in Sources */,
 				74D7476B204E39B800DB65FD /* SlideButtonView.m in Sources */,
 				74603DB02050DAA200C2381E /* DengLu_VC.m in Sources */,
 				74708C3F2056A20C0029D4AE /* DiZhiLieBiao_VC.m in Sources */,
@@ -2606,7 +2675,9 @@
 				74D74850204E39E400DB65FD /* AFNetworkActivityIndicatorManager.m in Sources */,
 				74D74845204E39E400DB65FD /* IQTextView.m in Sources */,
 				74D74831204E39E400DB65FD /* SDWebImageManager.m in Sources */,
+				740D239A206A0F6000666D5C /* QueRenDingDan_Model_Addres.m in Sources */,
 				74780F7A205404EB00E85CCD /* MASCompositeConstraint.m in Sources */,
+				740D239D206A0F6000666D5C /* QueRenDingDan_Model_Data.m in Sources */,
 				74D74865204E39E500DB65FD /* MBProgressHUD+Add.m in Sources */,
 				74D748AF204E3BFB00DB65FD /* ShouYe_H_BZ_V.m in Sources */,
 				74785879205BA28C00674310 /* CollectionReusableView_H.m in Sources */,
@@ -2618,6 +2689,7 @@
 				74D74769204E39B800DB65FD /* NSString+Extension.m in Sources */,
 				74D74887204E3A4700DB65FD /* NetRequest.m in Sources */,
 				74D74851204E39E400DB65FD /* UIImageView+AFNetworking.m in Sources */,
+				742F0564206A4BCE006B28F7 /* GuangGao_Model_RootClass.m in Sources */,
 				743EEAC8204FB40B00B7555B /* ZhuanXiang_GG_H.m in Sources */,
 				74D74849204E39E400DB65FD /* IQTitleBarButtonItem.m in Sources */,
 				7437596F2063BB0D00752982 /* MenDian_Model_Data.m in Sources */,
@@ -2670,6 +2742,7 @@
 				74780F80205404EB00E85CCD /* MASViewConstraint.m in Sources */,
 				74DE7744205F8502006846FC /* JieLong_Cell.m in Sources */,
 				741543B220594D76002C1972 /* ShangPinLieBiao_QRDD_V.m in Sources */,
+				742F0565206A4BCE006B28F7 /* GuangGao_Model_Data.m in Sources */,
 				746537472057995800CF0D6B /* SongHuoDiZhi_Cell.m in Sources */,
 				74D748B1204E3BFB00DB65FD /* ShouYe_Cell.m in Sources */,
 				74A3B52C204E67DA004017DA /* WoDe_DD_V.m in Sources */,
@@ -2689,6 +2762,7 @@
 				74D74825204E39E400DB65FD /* MJRefreshAutoGifFooter.m in Sources */,
 				74D74767204E39B800DB65FD /* MYUILabel.m in Sources */,
 				74D74886204E3A4700DB65FD /* BaseTabBarController.m in Sources */,
+				740D239C206A0F6000666D5C /* QueRenDingDan_Model_RootClass.m in Sources */,
 				746527B02053B26E0074CA10 /* ShangPinXiangQing_VC.m in Sources */,
 				74D74880204E3A4700DB65FD /* BaseViewController.m in Sources */,
 				74D74837204E39E400DB65FD /* SDWebImageCompat.m in Sources */,
@@ -2701,12 +2775,14 @@
 				749CB00C205D0F9200A16260 /* My_PickerView.m in Sources */,
 				74D7483F204E39E400DB65FD /* UIView+WebCacheOperation.m in Sources */,
 				74DE7748205F9224006846FC /* TC_JL_V.m in Sources */,
+				742F0574206A5E87006B28F7 /* YouHuiJuan_Model_Data.m in Sources */,
 				74D74856204E39E400DB65FD /* AFImageDownloader.m in Sources */,
 				74C8912120651BDB00898168 /* ZhiFuWenJian.m in Sources */,
 				74DE7758205FD7DA006846FC /* ShangPin_JL_Cell.m in Sources */,
 				74A3B538204E873C004017DA /* GouWuChe_Cell.m in Sources */,
 				74D74885204E3A4700DB65FD /* BaseNavigationController.m in Sources */,
 				74D74881204E3A4700DB65FD /* MyUIView.m in Sources */,
+				740D239B206A0F6000666D5C /* QueRenDingDan_Model_Arr.m in Sources */,
 				743EEACB204FB42A00B7555B /* ZhuanXiang_Title_V.m in Sources */,
 				74D74859204E39E400DB65FD /* AFURLSessionManager.m in Sources */,
 				7433637620691ABB007E2766 /* DingDanLieBiao_Model_Data.m in Sources */,

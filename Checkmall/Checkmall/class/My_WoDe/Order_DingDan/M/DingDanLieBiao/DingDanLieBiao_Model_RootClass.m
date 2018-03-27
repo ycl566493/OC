@@ -31,7 +31,7 @@ NSString *const kDingDanLieBiao_Model_RootClassPage = @"page";
 			DingDanLieBiao_Model_Data * dataItem = [[DingDanLieBiao_Model_Data alloc] initWithDictionary:dataDictionary];
 			[dataItems addObject:dataItem];
 		}
-		[self.data addObject:dataItems];
+		[self.data addObjectsFromArray:dataItems];
 	}
 	if(![dictionary[kDingDanLieBiao_Model_RootClassMessage] isKindOfClass:[NSNull class]]){
 		self.message = dictionary[kDingDanLieBiao_Model_RootClassMessage];
@@ -55,7 +55,7 @@ NSString *const kDingDanLieBiao_Model_RootClassPage = @"page";
             DingDanLieBiao_Model_Data * dataItem = [[DingDanLieBiao_Model_Data alloc] initWithDictionary:dataDictionary];
             [dataItems addObject:dataItem];
         }
-        [self.data addObject:dataItems];
+        [self.data addObjectsFromArray:dataItems];
     }
     if(![dictionary[kDingDanLieBiao_Model_RootClassMessage] isKindOfClass:[NSNull class]]){
         self.message = dictionary[kDingDanLieBiao_Model_RootClassMessage];

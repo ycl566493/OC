@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YouHuiJuan_Model_Data.h"
+
 
 @interface YouHuiJuanCell : UITableViewCell
 
@@ -19,7 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageV_TP;//图片
 
-
+@property (nonatomic,strong) YouHuiJuan_Model_Data   *model;
 
 +(CGFloat)get_H;
 

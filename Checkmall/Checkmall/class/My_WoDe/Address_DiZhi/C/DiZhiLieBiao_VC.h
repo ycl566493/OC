@@ -12,7 +12,8 @@
 @protocol DiZhiLieBiao_VC_Delegate <NSObject>
 
 @optional
--(void)DiZhiLieBiao_VC_Delegate_DZ:(DiZhiLieBiao_Model_Data*)model;//确定回调
+//fs快递方式 0 自提 1 快递
+-(void)DiZhiLieBiao_VC_Delegate_DZ:(DiZhiLieBiao_Model_Data*)model isFS:(BOOL)fs;//确定回调
 
 
 @end
@@ -20,5 +21,7 @@
 @interface DiZhiLieBiao_VC : BaseTableViewController
 
 @property (nonatomic,assign)id<DiZhiLieBiao_VC_Delegate>    delegate;
+
+@property (nonatomic,assign)BOOL                            bool_SH;//是否可以送货 取反 yes不支持
 
 @end

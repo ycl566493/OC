@@ -32,13 +32,28 @@
 
 -(void)setModel:(DingDanLieBiao_Model_Data *)model{
     _model = model;
-    self.lbl_BH.text = [NSString stringWithFormat:@"订单编号%@",model.orderSn];
+    self.lbl_BH.text = [NSString stringWithFormat:@"订单编号:%@",model.orderSn];
     [self.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.url view:self.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
     self.lbl_Name.text = model.goodsName;
     self.lbl_DH.text = [NSString stringWithFormat:@"%ld到货",(long)model.arrivalTime];
-    self.lbl_SL.text = [NSString stringWithFormat:@"%li",model.number];
-    self.lbl_XD.text = [NSString stringWithFormat:@"%@",model.created];
-
+    self.lbl_SL.text = [NSString stringWithFormat:@"x%li",model.number];
+    self.lbl_XD.text = [NSString stringWithFormat:@"%@下单",model.created];
+    self.lbl_SFK.text = [NSString stringWithFormat:@"实付款：￥%@",model.paidAmount];
+    
+    self.lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%@",model.price,model.mprice];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     self.lbl_JG.text];
+    NSRange range = NSMakeRange(model.price.length+1, model.mprice.length+1);
+    // 设置颜色
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0x999999) range:range];
+    // 设置字体大小
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:11] range:range];
+    //删除线
+    [attributedStr addAttribute:NSStrikethroughStyleAttributeName value:@(1) range:range];
+    [attributedStr addAttribute:NSStrikethroughColorAttributeName value:UIColorFromHex(0x999999) range:range];
+    
+    self.lbl_JG.attributedText = attributedStr;
+    
+    
     //    order_status   订单状态 1 待付款 2 代发货 3待收货 4 已退款 5 交易成功 6 已取消',
     if ([model.orderStatus integerValue] == 1) {
         self.lbl_ZT.text = @"待付款";

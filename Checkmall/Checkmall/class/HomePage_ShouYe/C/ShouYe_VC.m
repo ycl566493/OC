@@ -21,8 +21,9 @@
 #import "JieLong_VC.h"//接龙
 #import "SouSuo_VC.h"//搜索页面
 #import "ShouYe_Model_RootClass.h"//首页model
+#import "GuangGao_Model_RootClass.h"
 
-@interface ShouYe_VC ()<ShouYe_H_PTTJ_V_delegate,ShouYe_Cell_Delegate_GWC>{
+@interface ShouYe_VC ()<ShouYe_H_PTTJ_V_delegate,ShouYe_Cell_Delegate_GWC,Image_Lunbo_delegate>{
     UIView          *view_Nav;//顶部视图
     Image_Lunbo     *LB;//轮播
     ShouYe_H_BZ_V   *BZ;//质量保证
@@ -32,6 +33,7 @@
     ShouYe_H_RX_V   *RX;//热销
     
     ShouYe_Model_RootClass  *model;//首页model
+    GuangGao_Model_RootClass    *model_GG;//广告接口
 }
 
 @end
@@ -58,7 +60,41 @@
 //    [self presentViewController:nVc animated:YES completion:^{
 //        
 //    }];
-    
+
+}
+
+#pragma mark- 轮播代理
+-(void)Image_Lunbo_delegate_Action:(NSInteger)tag{
+    GuangGao_Model_Data *GGGGG = model_GG.data[tag];
+    if (GGGGG.istype == 1) {
+        //商品详情
+        ShangPinXiangQing_VC    *vc = [[ShangPinXiangQing_VC alloc]init];
+        
+        vc.Str_ID = [NSString stringWithFormat:@"%li",GGGGG.goodsId];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+
+#pragma mark- 广告接口
+- (void)init_data_GG{
+//    广告位类型 1首页 2今日团购 3分类 4个人中心
+
+    [NetRequest postWithUrl:Advertisement_getBannerList params:@{@"type":@"1"} showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        NSLog(@"广告数据  == %@",dict);
+        model_GG = [[GuangGao_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_GG.code == 1) {
+            NSMutableArray *arr_Image = [[NSMutableArray alloc]init];
+            for (GuangGao_Model_Data *MMM in model_GG.data) {
+                [arr_Image addObject:MMM.adverUrl];
+            }
+            LB.arr_data =arr_Image;
+        }
+        
+    } fail:^(id error) {
+        
+    }];
 }
 
 #pragma mark- 请求数据
@@ -96,7 +132,7 @@
     [view_Nav addSubview:btn_SS];
     
     LB = [[Image_Lunbo alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 155)];
-    LB.arr_data = @[@"http://pic29.photophoto.cn/20131204/0034034499213463_b.jpg",@"http://pic29.photophoto.cn/20131204/0034034499213463_b.jpg",@"http://pic29.photophoto.cn/20131204/0034034499213463_b.jpg",@"http://pic29.photophoto.cn/20131204/0034034499213463_b.jpg"];
+    LB.delegate = self;
     
     //质量保证
     BZ = [[ShouYe_H_BZ_V alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [ShouYe_H_BZ_V get_H:nil])];
@@ -302,6 +338,8 @@
     [super viewWillAppear:animated];
     [self FGX:YES];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    [self init_data_GG];
 
 }
 -(void)viewDidAppear:(BOOL)animated{

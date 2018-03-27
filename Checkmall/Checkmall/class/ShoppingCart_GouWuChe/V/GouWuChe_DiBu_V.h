@@ -21,6 +21,8 @@
 
 @property (nonatomic,assign)id<GouWuChe_DiBu_V_Delegate>    delegate;
 
--(void)set_JG:(CGFloat)jg YH:(CGFloat)yh SL:(NSInteger)sl;//价格 优惠 数量 
+- (void)set_JG:(CGFloat)jg YH:(CGFloat)yh SL:(NSInteger)sl;//价格 优惠 数量
+
+- (void)set_Btn_Selected:(BOOL)selected;
 
 @end

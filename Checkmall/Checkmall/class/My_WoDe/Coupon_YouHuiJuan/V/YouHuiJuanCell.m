@@ -21,9 +21,20 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
 
-
-
+-(void)setModel:(YouHuiJuan_Model_Data *)model{
+    _model = model;
+    self.lbl_Name.text = model.name;
+    self.lbl_YXQ.text = model.endtime;
+    
+    __weak YouHuiJuanCell *weak_Self = self;
+    [self.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.path view:self.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+//        if (weak_Self.model.) {
+//            <#statements#>
+//        }
+//        weak_Self.imageV_TP.
+    }];
 }
 
 #pragma mark- 兑换

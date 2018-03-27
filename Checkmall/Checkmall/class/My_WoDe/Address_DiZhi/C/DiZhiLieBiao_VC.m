@@ -33,7 +33,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
     self.title = @"管理收货地址";
     [self init_UI];
@@ -194,6 +193,11 @@
 #pragma mark- 滑动代理
 -(void)SlideButtonViewDelegate_Acion:(NSInteger)btn_Tag{
     if (slide.tag != btn_Tag) {
+        if (btn_Tag == 1 && self.bool_SH) {
+            [MyHelper showMessage:@"亲！当前商品不支持送货上门服务哦！"];
+            slide.init_Selected = 0;
+            return;
+        }
         slide.tag = btn_Tag;
         
         [self init_Data];
@@ -259,9 +263,11 @@
     return TJ;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(DiZhiLieBiao_VC_Delegate_DZ:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(DiZhiLieBiao_VC_Delegate_DZ: isFS:)]) {
         DiZhiLieBiao_Model_Data *MMMM = model.data[indexPath.row];
-        [self.delegate DiZhiLieBiao_VC_Delegate_DZ:MMMM];
+        [self.delegate DiZhiLieBiao_VC_Delegate_DZ:MMMM isFS:slide.tag == 0 ? 0 : 1];
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

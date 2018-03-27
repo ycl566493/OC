@@ -17,6 +17,8 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 @implementation MyHelper
 
 +(NSURL *)imaeg_URL:(NSString*)image_url view:(UIView *)view{
+//     NSString *imgUrl = [image_url  stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "]];
+    
     return [NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",image_url,view.width * 2]];
 }
 

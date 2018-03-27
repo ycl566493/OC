@@ -7,6 +7,7 @@
 //
 
 #import "MyUIView.h"
+#import "QueRenDingDan_Model_Arr.h"
 
 @interface ShangPinLieBiao_QRDD_V : MyUIView
 
@@ -15,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableV_H;
 
 @property (nonatomic, assign) NSInteger      index_Row;
+
+@property (nonatomic, strong) NSArray            *arr_Data;
 
 @end
 

@@ -32,7 +32,7 @@
                         <constraint firstAttribute="width" constant="141" id="H2O-61-Ae9"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOw-6e-FpE">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOw-6e-FpE">
                     <rect key="frame" x="137" y="361.5" width="100" height="25"/>
                     <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -48,7 +48,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="EOw-6e-FpE" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="DtA-jI-diD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bxD-Hk-WwS" secondAttribute="trailing" id="HIu-Av-jn8"/>

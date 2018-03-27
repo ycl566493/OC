@@ -4,9 +4,10 @@
 //
 //  Created by 杨成龙MAC on 2018/3/14.
 //  Copyright © 2018年 CKJY. All rights reserved.
-//  购物车
+//  购物车确认订单
 
 #import "BaseViewController.h"
+#import "QueRenDingDan_Model_RootClass.h"
 
 @interface QueRenDingDan_GWC_VC : BaseViewController
 
@@ -18,5 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lbl_JE_H;//高度问题
 
+@property (nonatomic, strong) QueRenDingDan_Model_RootClass *model;
 
 @end

@@ -11,12 +11,17 @@
 #import "GouWuChe_Cell.h"//购物车cell
 #import "QueRenDingDan_GWC_VC.h"//确认订单
 #import "GouWuChe_Model_RootClass.h"
+#import "KBY_View.h"//空白页
+#import "QueRenDingDan_Model_RootClass.h"
 
-@interface GouWuChe_VC ()<GouWuChe_DiBu_V_Delegate,GouWuChe_Cell_Delegate>{
+@interface GouWuChe_VC ()<GouWuChe_DiBu_V_Delegate,GouWuChe_Cell_Delegate,KBY_View_Delegate>{
     GouWuChe_DiBu_V  *DiBu;
     GouWuChe_Model_RootClass        *Model_GWC;//购物车model
     UIButton        *btn_QKGWC;//清空购物车
+    QueRenDingDan_Model_RootClass   *model_QRDD;
 }
+
+@property(nonatomic,weak)KBY_View       *kby;//空白页
 
 @end
 
@@ -48,11 +53,37 @@
         }
         [MyHelper UP_GWCSL];
         [self.tableview reloadData];
-        
+        [DiBu set_Btn_Selected:NO];
+        [self KBY_IF];
         NSLog(@"购物车列表 = = =%@",dict);
     } fail:^(id error) {
         
     }];
+}
+
+-(KBY_View *)kby{
+    if (!_kby) {
+        _kby = [KBY_View init_Xib];
+        _kby.frame = self.view.bounds;
+        _kby.delegate =self;
+        [self.view addSubview:_kby];
+        _kby.hidden = YES;
+    }
+    return _kby;
+}
+
+-(void)KBY_View_Delegate_Action{
+    NSLog(@"空白页点击");
+}
+
+#pragma mark- 空白页
+-(void)KBY_IF{
+    if (Model_GWC.data.count == 0) {
+        self.kby.hidden = NO;
+    }else{
+        self.kby.hidden = YES;
+        [self.kby removeFromSuperview];
+    }
 }
 
 - (void)refresh{
@@ -144,7 +175,8 @@
             [dic_DDDDDD setObject:[NSString stringWithFormat:@"%li",MMM.goodsId] forKey:@"goodsid"];
             [dic_DDDDDD setObject:MMM.price forKey:@"price"];
             [dic_DDDDDD setObject:[NSString stringWithFormat:@"%li",MMM.num] forKey:@"num"];
-            [arr_Data addObject:dic_DDDDDD];
+            
+            [arr_Data addObject:[MyHelper toJson:dic_DDDDDD]];
         }
     }
     if (arr_Data.count == 0) {
@@ -154,13 +186,15 @@
     NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"3"};
     [NetRequest postWithUrl:order_getOrderDesc params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"确认订单 == %@",dict);
-        
+        model_QRDD = [[QueRenDingDan_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_QRDD.code == 1) {
+            QueRenDingDan_GWC_VC    *VC = [[QueRenDingDan_GWC_VC alloc]init];
+            VC.model = model_QRDD;
+            [self.navigationController pushViewController:VC animated:YES];
+        }
     } fail:^(id error) {
         
     }];
-    
-//    QueRenDingDan_GWC_VC    *VC = [[QueRenDingDan_GWC_VC alloc]init];
-//    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

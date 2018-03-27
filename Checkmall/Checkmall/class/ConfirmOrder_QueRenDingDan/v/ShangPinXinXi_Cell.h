@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QueRenDingDan_Model_Arr.h"
 
 @interface ShangPinXinXi_Cell : UITableViewCell
 
@@ -22,6 +23,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_SPSL;//商品数量
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *TGR;//手势
+
+@property (nonatomic, strong)QueRenDingDan_Model_Arr            *Model;//购物车model
 
 +(CGFloat)get_H;
 

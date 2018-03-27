@@ -93,6 +93,9 @@
     [btn_GM setTitle:[NSString stringWithFormat:@"结算(%li)",sl] forState:UIControlStateNormal];
 
 }
+- (void)set_Btn_Selected:(BOOL)selected{
+    btn_QX.selected = selected;
+}
 
 -(void)btn_GM_Action{
     if (self.delegate && [self.delegate respondsToSelector:@selector(GouWuChe_DiBu_V_Delegate_Action)]) {

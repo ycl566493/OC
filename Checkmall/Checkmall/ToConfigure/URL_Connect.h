@@ -32,6 +32,8 @@
 #define order_getOrderDesc [NSString stringWithFormat:@"%@%@",URL_LJ,@"order/getOrderDesc"]//确认订单
 #define order_getMessage [NSString stringWithFormat:@"%@%@",URL_LJ,@"order/getMessage"]//下单
 #define order_orderList [NSString stringWithFormat:@"%@%@",URL_LJ,@"order/orderList"]//订单列表
+#define coupon_getmycoin [NSString stringWithFormat:@"%@%@",URL_LJ,@"coupon/getmycoin"]//购物车列表
+#define Advertisement_getBannerList [NSString stringWithFormat:@"%@%@",URL_LJ,@"Advertisement/getBannerList"]//广告
 
 
 

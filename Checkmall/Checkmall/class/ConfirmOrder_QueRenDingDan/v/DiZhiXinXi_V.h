@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DiZhiXinXi_V_Delegate <NSObject>
+
+@optional
+- (void)DiZhiXinXi_V_Delegate_Action;//地址点击
+
+@end
+
 @interface DiZhiXinXi_V : MyUIView
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Name;//姓名
@@ -26,6 +33,8 @@
 @property (nonatomic, strong)NSString *str_DZ;//地址信息
 
 @property (nonatomic, assign) BOOL bool_SC;//首次没有地址的清空
+
+@property (nonatomic, assign) id<DiZhiXinXi_V_Delegate> delegate;
 
 +(CGFloat)FS:(BOOL)fs str_NR:(NSString*)str_nr;//获取高度
 

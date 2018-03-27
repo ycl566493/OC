@@ -28,7 +28,7 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.index_Row;
+    return self.arr_Data.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [ShangPinXinXi_Cell get_H];
@@ -39,9 +39,10 @@
         cell= (ShangPinXinXi_Cell *)[[[NSBundle  mainBundle]  loadNibNamed:@"ShangPinXinXi_Cell" owner:self options:nil]  lastObject];
         cell.TGR = nil;
     }
-
+    cell.tag = indexPath.row;
+    QueRenDingDan_Model_Arr *MMM = self.arr_Data[indexPath.row];
+    cell.Model = MMM;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -58,6 +59,11 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+}
+
+-(void)setArr_Data:(NSArray *)arr_Data{
+    _arr_Data = arr_Data;
+    [self.tableV reloadData];
 }
 
 -(void)setIndex_Row:(NSInteger)index_Row{

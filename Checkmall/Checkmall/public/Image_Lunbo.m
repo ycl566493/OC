@@ -257,14 +257,7 @@
 #pragma mark 赋值裁剪图片
 - (void)imageV_JT:(UIImageView *)imageV string_URL:(NSString *)S_URL{
 
-    
-    [imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[MyHelper Url_String:S_URL]]] placeholderImage:[UIImage imageNamed:@"MoRenTu"] options:SDWebImageRetryFailed  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        if (image) {
-//            imageV.image = [MyHelper handleImage:image withSize:CGSizeMake(imageV.width * 2, imageV.height * 2)];
-//        }else{
-//            imageV.image = [MyHelper handleImage:[UIImage imageNamed:@"图片默认图"] withSize:CGSizeMake(imageV.width * 2, imageV.height * 2)];
-//        }
-    }];
+    [imageV sd_setImageWithURL:[MyHelper imaeg_URL:S_URL view:imageV] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
 }
 
 #pragma mark 判断是否超出界限
