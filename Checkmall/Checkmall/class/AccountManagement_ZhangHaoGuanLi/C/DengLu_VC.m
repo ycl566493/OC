@@ -11,6 +11,7 @@
 #import "ZhuCe_VC.h"//注册
 #import "WangJiMiMa_VC.h"//忘记密码
 #import "BangDingShouJi_VC.h"//绑定手机
+#import <ShareSDK/ShareSDK.h>//sharSDK
 
 @interface DengLu_VC ()<UITextViewDelegate>{
     MyUIScrollView  *scrollV;//滑动背景
@@ -241,8 +242,64 @@
 
 #pragma mark- 微信登录
 - (void)btn_WXDL_Action{
-    BangDingShouJi_VC *vc = [[BangDingShouJi_VC alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    //例如QQ的登录
+    [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat];
+    [ShareSDK getUserInfo:SSDKPlatformTypeWechat
+           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+     {
+         if (state == SSDKResponseStateSuccess)
+         {
+             
+//             NSLog(@"uid=%@",user.uid);
+//             NSLog(@"%@",user.credential);
+//             NSLog(@"token=%@",user.credential.token);
+//             NSLog(@"nickname=%@",user.nickname);
+//             NSLog(@"unionid == %@",user.rawData[@"unionid"]);
+             [self WeiXinDL:user.rawData[@"unionid"] name:user.nickname image_TX:user.icon];
+         }
+         
+         else
+         {
+             [MyHelper showMessage:@"微信授权登录失败！"];
+             NSLog(@"%@",error);
+         }
+         
+     }];
+
+}
+
+- (void)WeiXinDL:(NSString *)unionid name:(NSString *)name image_TX:(NSString*)image{
+    
+    NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+
+    NSDictionary *dic = @{@"type":@"4",@"facility":deviceUUID,@"unionid":unionid};
+    [NetRequest postWithUrl:login_wxLogin params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        
+        NSLog(@"微信登录 == %@",dict);
+        if ([dict[@"code"] integerValue] == 1) {
+            NSDictionary *dic_Data = dict[@"data"];
+            if ([dic_Data[@"status"] boolValue]) {
+                NSDictionary *dic_data = dict[@"data"];
+                [kUserDefaults setObject:txt_SJH.text forKey:YongHuMing];
+                [kUserDefaults setObject:txt_MM.text forKey:MiMa];
+                [kUserDefaults setBool:YES forKey:DengLuZhuangTai];
+                [kUserDefaults setObject:dic_data[@"token"] forKey:MYtoken];
+                
+                [self dismissViewControllerAnimated:YES completion:^{
+                    
+                }];
+            }else{
+                BangDingShouJi_VC *vc = [[BangDingShouJi_VC alloc]init];
+                vc.str_Name = name;
+                vc.str_UnionID = unionid;
+                vc.str_Image_TX = image;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        }
+        
+    } fail:^(id error) {
+        
+    }];
 }
 
 #pragma mark- 协议点击
@@ -329,35 +386,76 @@
 
 #pragma mark- 登录
 - (void)btn_DL_Action{
-    if (![MyHelper isPhone:txt_SJH.text]){
-        [MyHelper showMessage:@"请输入正确的手机号！"];
-    }else if(txt_MM.text.length < 6 || txt_MM.text.length > 15){
-        [MyHelper showMessage:@"密码长度为6~15位！"];
+    if (bool_MM_KJ) {
+        //验证码
+        if (![MyHelper isPhone:txt_SJH.text]){
+            [MyHelper showMessage:@"请输入正确的手机号！"];
+        }else if(txt_YZM.text.length == 0  ){
+            [MyHelper showMessage:@"请输入验证码！"];
+        }else{
+            [self YZMDL];
+        }
     }else{
-        
-        NSDictionary *dic_encryptData = @{@"tel":txt_SJH.text,@"password":txt_MM.text};
-        NSString * str_encryptData = [RSA_Object encryptString:[MyHelper toJson:dic_encryptData] publicKey:RSA_public_key];
-        NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-
-        NSDictionary *dic = @{@"encryptData":str_encryptData,@"act":@"login",@"type":@"4",@"facility":deviceUUID};
-        [NetRequest postWithUrl:login_getUserInfo params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
-            if ([dict[@"code"] integerValue] == 1) {
-                NSDictionary *dic_data = dict[@"data"];
-                [kUserDefaults setObject:txt_SJH.text forKey:YongHuMing];
-                [kUserDefaults setObject:txt_MM.text forKey:MiMa];
-                [kUserDefaults setBool:YES forKey:DengLuZhuangTai];
-                [kUserDefaults setObject:dic_data[@"token"] forKey:MYtoken];
-
-                [self dismissViewControllerAnimated:YES completion:^{
-                    
-                }];
-            }
-            NSLog(@"登录 == %@ ==  %@",dict,[MyHelper toJson:dict]);
-        } fail:^(id error) {
-            
-        }];
+        //密码
+        if (![MyHelper isPhone:txt_SJH.text]){
+            [MyHelper showMessage:@"请输入正确的手机号！"];
+        }else if(txt_MM.text.length < 6 || txt_MM.text.length > 15){
+            [MyHelper showMessage:@"密码长度为6~15位！"];
+        }else{
+            [self SJHDL];
+        }
     }
+
+}
+#pragma mark- 验证码登录
+- (void)YZMDL{
+    NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+
+    NSDictionary *dic_encryptData = @{@"tel":txt_SJH.text,@"code":txt_YZM.text,@"type":@"4",@"facility":deviceUUID};
+    NSString * str_encryptData = [RSA_Object encryptString:[MyHelper toJson:dic_encryptData] publicKey:RSA_public_key];
     
+    NSDictionary *dic = @{@"encryptData":str_encryptData,@"act":@"verification"};
+    [NetRequest postWithUrl:login_getUserInfo params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        if ([dict[@"code"] integerValue] == 1) {
+            NSDictionary *dic_data = dict[@"data"];
+            [kUserDefaults setObject:txt_SJH.text forKey:YongHuMing];
+//            [kUserDefaults setObject:txt_MM.text forKey:MiMa];
+            [kUserDefaults setBool:YES forKey:DengLuZhuangTai];
+            [kUserDefaults setObject:dic_data[@"token"] forKey:MYtoken];
+            
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+        }
+        NSLog(@"登录 == %@ ==  %@",dict,[MyHelper toJson:dict]);
+    } fail:^(id error) {
+        
+    }];
+}
+
+#pragma mark- 手机号登录
+- (void)SJHDL{
+    NSDictionary *dic_encryptData = @{@"tel":txt_SJH.text,@"password":txt_MM.text};
+    NSString * str_encryptData = [RSA_Object encryptString:[MyHelper toJson:dic_encryptData] publicKey:RSA_public_key];
+    NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    
+    NSDictionary *dic = @{@"encryptData":str_encryptData,@"act":@"login",@"type":@"4",@"facility":deviceUUID};
+    [NetRequest postWithUrl:login_getUserInfo params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        if ([dict[@"code"] integerValue] == 1) {
+            NSDictionary *dic_data = dict[@"data"];
+            [kUserDefaults setObject:txt_SJH.text forKey:YongHuMing];
+            [kUserDefaults setObject:txt_MM.text forKey:MiMa];
+            [kUserDefaults setBool:YES forKey:DengLuZhuangTai];
+            [kUserDefaults setObject:dic_data[@"token"] forKey:MYtoken];
+            
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+        }
+        NSLog(@"登录 == %@ ==  %@",dict,[MyHelper toJson:dict]);
+    } fail:^(id error) {
+        
+    }];
 }
 
 - (void)DLFS_Action:(UIButton*)btn{

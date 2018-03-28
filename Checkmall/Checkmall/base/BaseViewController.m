@@ -70,11 +70,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     NSLog(@"%s", __FUNCTION__);
     [super viewDidAppear:animated];
-    if ([self.navigationController isKindOfClass:[BaseNavigationController class]]) {
-        BaseNavigationController *nav = (BaseNavigationController*)self.navigationController;
-        [nav.view addSubview:nav.view_FGX];
-        [nav.view bringSubviewToFront:nav.view_FGX];
-    }
+
 }
 
 #pragma mark- 分割线是否显示
@@ -82,7 +78,7 @@
     if ([self.navigationController isKindOfClass:[BaseNavigationController class]]) {
         BaseNavigationController *nav = (BaseNavigationController*)self.navigationController;
         nav.view_FGX.hidden = fgx;
-        [nav.view addSubview:nav.view_FGX];
+        [self.navigationController.navigationBar addSubview:nav.view_FGX];
     }
 }
 #pragma mark- 去登陆界面

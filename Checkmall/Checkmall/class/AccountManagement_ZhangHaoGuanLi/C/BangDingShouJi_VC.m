@@ -103,11 +103,13 @@
     txt_MM.layer.borderWidth = .5;
     txt_MM.backgroundColor = [UIColor whiteColor];
     txt_MM.clearButtonMode=UITextFieldViewModeWhileEditing;
+    
     txt_MM.font = font15;
     UIView *leftView_MM = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
     leftView_MM.backgroundColor = [UIColor whiteColor];
     txt_MM.leftView = leftView_MM;
     txt_MM.leftViewMode = UITextFieldViewModeAlways;
+    txt_MM.secureTextEntry = YES;
     txt_MM.placeholder = @"请输入密码";
     
     right_Image_MM = [[UIImageView alloc]init];
@@ -142,9 +144,33 @@
     
 }
 
-#pragma mark- 提价
+#pragma mark- 提交
 -(void)btn_ZC_Action{
+    if (![MyHelper isPhone:txt_SJH.text]){
+        [MyHelper showMessage:@"请输入正确的手机号！"];
+    }else if(txt_YZM.text.length == 0){
+        [MyHelper showMessage:@"请输入验证码！"];
+    }else if(txt_MM.text.length < 6 || txt_MM.text.length > 15){
+        [MyHelper showMessage:@"密码长度6~15位！"];
+    }else{
+        NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
+        NSDictionary *dic = @{@"type":@"4",@"facility":deviceUUID,@"unionid":self.str_UnionID,@"nickname":self.str_Name,@"headimgurl":self.str_Image_TX,@"code":txt_YZM.text,@"tel":[RSA_Object encryptString:txt_SJH.text publicKey:RSA_public_key],@"password":txt_MM.text};
+        [NetRequest postWithUrl:login_bindingUser params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+            NSLog(@"微信绑定登录 == %@",dict);
+            NSDictionary *dic_data = dict[@"data"];
+            [kUserDefaults setObject:txt_SJH.text forKey:YongHuMing];
+            [kUserDefaults setObject:txt_MM.text forKey:MiMa];
+            [kUserDefaults setBool:YES forKey:DengLuZhuangTai];
+            [kUserDefaults setObject:dic_data[@"token"] forKey:MYtoken];
+            
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+        } fail:^(id error) {
+        
+        }];
+    }
 }
 
 -(void)dealloc{
@@ -163,9 +189,20 @@
 #pragma mark- 判断密码是否可见
 - (void)if_MMKJ{
     if (bool_MM_KJ) {
-        right_Image_MM.image = [UIImage imageNamed:@"KaiYan"];
-    }else{
         right_Image_MM.image = [UIImage imageNamed:@"BiYan"];
+        
+        NSString *tempPwdStr = txt_MM.text;
+        txt_MM.text = @""; // 这句代码可以防止切换的时候光标偏移
+        txt_MM.secureTextEntry = YES;
+        txt_MM.text = tempPwdStr;
+        
+    }else{
+        right_Image_MM.image = [UIImage imageNamed:@"KaiYan"];
+        
+        NSString *tempPwdStr = txt_MM.text;
+        txt_MM.text = @""; // 这句代码可以防止切换的时候光标偏移
+        txt_MM.secureTextEntry = NO;
+        txt_MM.text = tempPwdStr;
     }
     
 }
@@ -173,11 +210,22 @@
 
 #pragma mark- 获取验证码
 - (void)btn_YZM_Action{
-    [btn_YZM setEnabled:NO];
-    int_DJS = 60;
-    
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action:) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    if (![MyHelper isPhone:txt_SJH.text]){
+        [MyHelper showMessage:@"请输入正确的手机号！"];
+    }else{
+        NSString * str_JM = [RSA_Object encryptString:txt_SJH.text publicKey:RSA_public_key];
+        [NetRequest postWithUrl:message_getIphone params:@{@"iphone":str_JM,@"type":@"forget"} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+            
+            NSLog(@"发送验证码===  %@ \n%@",dict,[MyHelper toJson:dict]);
+            if ([dict[@"code"] integerValue] == 1) {
+                [btn_YZM setEnabled:NO];
+                int_DJS = 60;
+                timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action:) userInfo:nil repeats:YES];
+                [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+            }
+        } fail:^(id error) {
+        }];
+    }
 }
 
 - (void)action:(NSTimer *)sender {

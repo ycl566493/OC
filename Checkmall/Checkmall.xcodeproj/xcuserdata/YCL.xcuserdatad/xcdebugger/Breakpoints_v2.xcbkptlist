@@ -28,27 +28,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Checkmall/class/HomePage_ShouYe/C/ShouYe_VC.m"
-            timestampString = "543846589.135071"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "-init_data_GG"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Checkmall/class/ConfirmOrder_QueRenDingDan/C/QueRenDingDan_GWC_VC.m"
-            timestampString = "543846589.135165"
+            timestampString = "543896423.801643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
@@ -64,7 +48,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Checkmall/class/ConfirmOrder_QueRenDingDan/C/QueRenDingDan_GWC_VC.m"
-            timestampString = "543846589.135493"
+            timestampString = "543896423.801922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -80,7 +64,7 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/ConfirmOrder_QueRenDingDan/C/QueRenDingDan_GWC_VC.m"
-                  timestampString = "543846589.185465"
+                  timestampString = "543926318.2562211"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "79"
@@ -95,7 +79,7 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/ConfirmOrder_QueRenDingDan/C/QueRenDingDan_GWC_VC.m"
-                  timestampString = "543846589.187452"
+                  timestampString = "543926318.258296"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "80"
@@ -103,6 +87,134 @@
                   offsetFromSymbolStart = "64">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
+            timestampString = "543926318.137884"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-btn_ZC_Action"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
+            timestampString = "543926318.1379499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "-btn_ZC_Action"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BangDingShouJi_VC btn_ZC_Action]"
+                  moduleName = "Checkmall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
+                  timestampString = "543926318.265506"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "1468">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[BangDingShouJi_VC btn_ZC_Action]_block_invoke"
+                  moduleName = "Checkmall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
+                  timestampString = "543926318.2673481"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/DengLu_VC.m"
+            timestampString = "543926318.1380039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
+            landmarkName = "-YZMDL"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DengLu_VC YZMDL]"
+                  moduleName = "Checkmall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/DengLu_VC.m"
+                  timestampString = "543926318.27122"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "418"
+                  endingLineNumber = "418"
+                  offsetFromSymbolStart = "724">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__18-[DengLu_VC YZMDL]_block_invoke"
+                  moduleName = "Checkmall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/DengLu_VC.m"
+                  timestampString = "543926318.272997"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "419"
+                  endingLineNumber = "419"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/DengLu_VC.m"
+            timestampString = "543926318.138334"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "430"
+            endingLineNumber = "430"
+            landmarkName = "-YZMDL"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

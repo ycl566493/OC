@@ -10,4 +10,9 @@
 
 @interface BangDingShouJi_VC : BaseViewController
 
+@property (nonatomic,copy)NSString  *str_Name;
+@property (nonatomic,copy)NSString  *str_UnionID;
+@property (nonatomic,copy)NSString  *str_Image_TX;
+
+
 @end

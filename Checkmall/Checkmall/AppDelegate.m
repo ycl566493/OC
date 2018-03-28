@@ -11,6 +11,15 @@
 #import "IQKeyboardManager.h"//自动收键盘
 #import <AlipaySDK/AlipaySDK.h>
 
+//sharSDK
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+//微信SDK头文件
+#import "WXApi.h"
+
 
 @interface AppDelegate ()
 
@@ -32,7 +41,59 @@
     [self.window makeKeyAndVisible];
     
     
+    [self init_LaunchingWithOptions:launchOptions];
+    
     return YES;
+}
+
+#pragma mark- 注册三方
+- (void)init_LaunchingWithOptions:(NSDictionary *)launchOptions{
+    /**初始化ShareSDK应用
+     @param activePlatforms
+     使用的分享平台集合
+     @param importHandler (onImport)
+     导入回调处理，当某个平台的功能需要依赖原平台提供的SDK支持时，需要在此方法中对原平台SDK进行导入操作
+     @param configurationHandler (onConfiguration)
+     配置回调处理，在此方法中根据设置的platformType来填充应用配置信息
+     */
+    
+    [ShareSDK registerActivePlatforms:@[@(SSDKPlatformTypeWechat),
+                                        @(SSDKPlatformTypeQQ),
+                                        @(SSDKPlatformTypeCopy)
+                                        ]
+                             onImport:^(SSDKPlatformType platformType)
+     {
+         switch (platformType)
+         {
+             case SSDKPlatformTypeWechat:
+                 [ShareSDKConnector connectWeChat:[WXApi class]];
+                 break;
+//             case SSDKPlatformTypeQQ:
+//                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+//                 break;
+             default:
+                 break;
+         }
+     }
+    onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
+     {
+         
+         switch (platformType)
+         {
+                 break;
+             case SSDKPlatformTypeWechat:
+                 [appInfo SSDKSetupWeChatByAppId:@"wxbc8156dc82d2974c"
+                                       appSecret:@"cb9067cf4c2c0bedbe6031d9cb4d05b0"];
+                 break;
+//             case SSDKPlatformTypeQQ:
+//                 [appInfo SSDKSetupQQByAppId:@"100371282"
+//                                      appKey:@"aed9b0303e3ed1e27bae87c33761161d"
+//                                    authType:SSDKAuthTypeBoth];
+//                 break;
+             default:
+                 break;
+         }
+     }];
 }
 
 

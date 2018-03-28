@@ -22,8 +22,9 @@
 #import "SouSuo_VC.h"//搜索页面
 #import "ShouYe_Model_RootClass.h"//首页model
 #import "GuangGao_Model_RootClass.h"
+#import "FenLei_SY_VC.h"//首页
 
-@interface ShouYe_VC ()<ShouYe_H_PTTJ_V_delegate,ShouYe_Cell_Delegate_GWC,Image_Lunbo_delegate>{
+@interface ShouYe_VC ()<ShouYe_H_PTTJ_V_delegate,ShouYe_Cell_Delegate_GWC,Image_Lunbo_delegate,ShouYe_H_FL_V_Delegate>{
     UIView          *view_Nav;//顶部视图
     Image_Lunbo     *LB;//轮播
     ShouYe_H_BZ_V   *BZ;//质量保证
@@ -61,6 +62,13 @@
 //        
 //    }];
 
+}
+
+#pragma mark- 分类点击
+-(void)ShouYe_H_FL_V_Delegate_Selegate:(NSInteger)tag{
+    FenLei_SY_VC *VC = [[FenLei_SY_VC alloc]init];
+    VC.select_Row = tag;
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 #pragma mark- 轮播代理
@@ -139,6 +147,7 @@
     
     //首页分类
     FL = [[ShouYe_H_FL_V alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [ShouYe_H_FL_V get_H:nil])];
+    FL.delegate = self;
     
     //今日快报
     KB =[[ShouYe_H_KB_V alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [ShouYe_H_KB_V get_H:nil])];
@@ -226,7 +235,7 @@
     
     cell.tag = indexPath.row;
     cell.delegate =self;
-    
+    cell.is_DH = YES;
     return cell;
 }
 
@@ -301,19 +310,6 @@
             [footer addSubview:RX];
         }
         return footer;
-    }
-    return nil;
-}
-
--(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if (section == 0) {
-        return BZ;
-    }
-    if (section == 1) {
-        return KB;
-    }
-    if (section == 2) {
-        return RX;
     }
     return nil;
 }

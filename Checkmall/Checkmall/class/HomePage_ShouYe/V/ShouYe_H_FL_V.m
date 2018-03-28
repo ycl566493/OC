@@ -30,6 +30,8 @@
         UIButton    *btn = [[UIButton alloc]initWithFrame:CGRectMake(i%5 * w, i / 5 * h, w, h)];
   
         [btn setImage:[UIImage imageNamed:arr_Image[i]] forState:UIControlStateNormal];
+        btn.tag = i;
+        [btn addTarget:self action:@selector(btn_Action:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
         
     }
@@ -37,6 +39,12 @@
     UIView *view_FGX = [[UIView alloc]initWithFrame:CGRectMake(0, 150, ScreenWidth, 5)];
     view_FGX.backgroundColor = RGBA(239, 239, 239, 1);
     [self addSubview:view_FGX];
+}
+
+- (void)btn_Action:(UIButton*)btn{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(ShouYe_H_FL_V_Delegate_Selegate:)]) {
+        [self.delegate ShouYe_H_FL_V_Delegate_Selegate:btn.tag];
+    }
 }
 
 + (CGFloat)get_H:(id)data{

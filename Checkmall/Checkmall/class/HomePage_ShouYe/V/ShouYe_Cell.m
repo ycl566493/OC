@@ -91,22 +91,41 @@
     
 }
 
+-(void)setModel_FL:(FenLeiShangPin_Model_Data *)model_FL{
+    _model_FL = model_FL;
+    lbl_Title.text = model_FL.name;
+    [imageV_DT sd_setImageWithURL:[MyHelper imaeg_URL:model_FL.image view:imageV_DT] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%@",model_FL.groupPrice,model_FL.marketPrice];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     lbl_JG.text];
+    NSRange range = NSMakeRange(model_FL.groupPrice.length+1, model_FL.marketPrice.length + 1);
+    // 设置颜色
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0x999999) range:range];
+    // 设置字体大小
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:11] range:range];
+    lbl_JG.attributedText = attributedStr;
+    
+}
+
 +(CGFloat)get_H:(id)data{
     return 80 + (ScreenWidth - 3) /2;
 }   
 
 -(void)btn_GWC_Action:(UIButton*)btn{
-    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-    CGRect rect=[btn convertRect: btn.bounds toView:window];
-    [MyHelper addToShoppingCartWithGoodsImage:btn.imageView.image startPoint:CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2) endPoint:CGPointMake([[kUserDefaults objectForKey:GWC_X] floatValue], [[kUserDefaults objectForKey:GWC_Y] floatValue]) completion:^(BOOL finished) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"GouWuCheShuLiang" object:nil];
-    }];
+    if (self.is_DH) {
+        UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+        CGRect rect=[btn convertRect: btn.bounds toView:window];
+        [MyHelper addToShoppingCartWithGoodsImage:btn.imageView.image startPoint:CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2) endPoint:CGPointMake([[kUserDefaults objectForKey:GWC_X] floatValue], [[kUserDefaults objectForKey:GWC_Y] floatValue]) completion:^(BOOL finished) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"GouWuCheShuLiang" object:nil];
+        }];
+    }
+
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(ShouYe_Cell_Delegate_GWC:)]) {
         [self.delegate ShouYe_Cell_Delegate_GWC:self.tag];
     }
 
-    NSLog(@"%@",NSStringFromCGRect(rect));
 }
+
+
 
 @end

@@ -43,26 +43,14 @@
     }else if (slide.tag == 4){
         str = @"5";
     }
-    
-    NSError *error;
-    NSString *dataStr = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"jsonjson" ofType:@"txt"] encoding:NSUTF8StringEncoding error:&error];
-    
-    NSData *jsonData = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *jerror;
-    
-    NSDictionary*dicttttt = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jerror];
-
-    
-    
-    
     NSDictionary *dic = @{@"token":[MyHelper toToken],@"order_status":str,@"page":[NSString stringWithFormat:@"%li",self.pageIndex]};
     [NetRequest postWithUrl:order_orderList params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         
         if (Y_N) {
-            model_DD = [[DingDanLieBiao_Model_RootClass alloc]initWithDictionary:dicttttt];
+            model_DD = [[DingDanLieBiao_Model_RootClass alloc]initWithDictionary:dict];
             
         }else{
-            [model_DD Add_Dictionary:dicttttt];
+            [model_DD Add_Dictionary:dict];
         }
         [self.tableV reloadData];
         
@@ -75,7 +63,7 @@
 -(void)SlideButtonViewDelegate_Acion:(NSInteger)btn_Tag{
     if (slide.tag != btn_Tag) {
         slide.tag = btn_Tag;
-        
+        [self init_Data:YES];
     }
 }
 

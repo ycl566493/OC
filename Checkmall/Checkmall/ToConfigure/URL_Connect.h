@@ -34,7 +34,8 @@
 #define order_orderList [NSString stringWithFormat:@"%@%@",URL_LJ,@"order/orderList"]//订单列表
 #define coupon_getmycoin [NSString stringWithFormat:@"%@%@",URL_LJ,@"coupon/getmycoin"]//购物车列表
 #define Advertisement_getBannerList [NSString stringWithFormat:@"%@%@",URL_LJ,@"Advertisement/getBannerList"]//广告
-
+#define login_wxLogin [NSString stringWithFormat:@"%@%@",URL_LJ,@"login/wxLogin"]//微信登录 
+#define login_bindingUser [NSString stringWithFormat:@"%@%@",URL_LJ,@"login/bindingUser"]//微信绑定手机号
 
 
 

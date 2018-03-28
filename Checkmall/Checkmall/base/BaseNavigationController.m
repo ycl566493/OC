@@ -52,14 +52,14 @@
     [super viewDidLoad];
 
     [self addGestureRecognizer];
-    
-    [self.view addSubview:self.view_FGX];
+//    self.navigationController.navigationBar
+    [self.navigationBar addSubview:self.view_FGX];
 
 }
 
 -(UIView *)view_FGX{
     if (!_view_FGX) {
-        _view_FGX = [[UIView alloc]initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight - .5, ScreenWidth, .5)];
+        _view_FGX = [[UIView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight - .5, ScreenWidth, .5)];
         _view_FGX.backgroundColor = RGBA(0, 0, 0, .3);
     }
     return _view_FGX;
