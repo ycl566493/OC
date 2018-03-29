@@ -52,6 +52,7 @@
     [self UP_UI];
 }
 
+#pragma mark- 支付接口
 - (IBAction)ZF_Action:(id)sender {
     NSLog(@"支付");
     if (dz_id == 0) {
@@ -83,7 +84,6 @@
         }];
     }
 }
-
 
 - (void)UP_UI{
     

@@ -130,6 +130,8 @@
 		74A3B544204EBAA1004017DA /* FenLei_H_Title_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3B543204EBAA1004017DA /* FenLei_H_Title_V.m */; };
 		74AA129A2051408700F030AF /* ZhuCe_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AA12992051408700F030AF /* ZhuCe_VC.m */; };
 		74AA129D2051462700F030AF /* WangJiMiMa_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AA129C2051462700F030AF /* WangJiMiMa_VC.m */; };
+		74BF4255206D0683003D77A4 /* SouSuo_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BF4251206D0683003D77A4 /* SouSuo_Model_Data.m */; };
+		74BF4256206D0683003D77A4 /* SouSuo_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BF4252206D0683003D77A4 /* SouSuo_Model_RootClass.m */; };
 		74C890DC2064F6F400898168 /* FenLeiShangPin_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C890D92064F6F400898168 /* FenLeiShangPin_Model_RootClass.m */; };
 		74C890DD2064F6F400898168 /* FenLeiShangPin_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C890DB2064F6F400898168 /* FenLeiShangPin_Model_Data.m */; };
 		74C890E32064F8F900898168 /* DiZhiLieBiao_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C890DF2064F8F900898168 /* DiZhiLieBiao_Model_RootClass.m */; };
@@ -558,6 +560,10 @@
 		74AA12992051408700F030AF /* ZhuCe_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuCe_VC.m; sourceTree = "<group>"; };
 		74AA129B2051462700F030AF /* WangJiMiMa_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WangJiMiMa_VC.h; sourceTree = "<group>"; };
 		74AA129C2051462700F030AF /* WangJiMiMa_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WangJiMiMa_VC.m; sourceTree = "<group>"; };
+		74BF4251206D0683003D77A4 /* SouSuo_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SouSuo_Model_Data.m; sourceTree = "<group>"; };
+		74BF4252206D0683003D77A4 /* SouSuo_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SouSuo_Model_RootClass.m; sourceTree = "<group>"; };
+		74BF4253206D0683003D77A4 /* SouSuo_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SouSuo_Model_Data.h; sourceTree = "<group>"; };
+		74BF4254206D0683003D77A4 /* SouSuo_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SouSuo_Model_RootClass.h; sourceTree = "<group>"; };
 		74C890D82064F6F400898168 /* FenLeiShangPin_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FenLeiShangPin_Model_Data.h; sourceTree = "<group>"; };
 		74C890D92064F6F400898168 /* FenLeiShangPin_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FenLeiShangPin_Model_RootClass.m; sourceTree = "<group>"; };
 		74C890DA2064F6F400898168 /* FenLeiShangPin_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FenLeiShangPin_Model_RootClass.h; sourceTree = "<group>"; };
@@ -1572,6 +1578,24 @@
 			path = V;
 			sourceTree = "<group>";
 		};
+		74BF4248206CE44D003D77A4 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		74BF4250206D0683003D77A4 /* SouSuo */ = {
+			isa = PBXGroup;
+			children = (
+				74BF4254206D0683003D77A4 /* SouSuo_Model_RootClass.h */,
+				74BF4252206D0683003D77A4 /* SouSuo_Model_RootClass.m */,
+				74BF4253206D0683003D77A4 /* SouSuo_Model_Data.h */,
+				74BF4251206D0683003D77A4 /* SouSuo_Model_Data.m */,
+			);
+			path = SouSuo;
+			sourceTree = "<group>";
+		};
 		74C890D72064F6F400898168 /* FenLeiShangPin */ = {
 			isa = PBXGroup;
 			children = (
@@ -2312,18 +2336,11 @@
 		74D74892204E3BA500DB65FD /* NewExclusive_XinRenZhuanXiang */ = {
 			isa = PBXGroup;
 			children = (
-				74D74893204E3BA500DB65FD /* M */,
+				74BF4248206CE44D003D77A4 /* M */,
 				74D74894204E3BA500DB65FD /* C */,
 				74D74895204E3BA500DB65FD /* V */,
 			);
 			path = NewExclusive_XinRenZhuanXiang;
-			sourceTree = "<group>";
-		};
-		74D74893204E3BA500DB65FD /* M */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = M;
 			sourceTree = "<group>";
 		};
 		74D74894204E3BA500DB65FD /* C */ = {
@@ -2609,6 +2626,7 @@
 		74ECFA862060DB3C00CC018B /* M */ = {
 			isa = PBXGroup;
 			children = (
+				74BF4250206D0683003D77A4 /* SouSuo */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -2815,6 +2833,7 @@
 				74DE7737205F619D006846FC /* TC_KDDZ.m in Sources */,
 				74C890E32064F8F900898168 /* DiZhiLieBiao_Model_RootClass.m in Sources */,
 				74D7476F204E39B800DB65FD /* TTLayout.m in Sources */,
+				74BF4255206D0683003D77A4 /* SouSuo_Model_Data.m in Sources */,
 				74780F7D205404EB00E85CCD /* NSArray+MASAdditions.m in Sources */,
 				74D74835204E39E400DB65FD /* UIImage+GIF.m in Sources */,
 				74D74847204E39E400DB65FD /* IQUIView+Hierarchy.m in Sources */,
@@ -2933,6 +2952,7 @@
 				74D7484E204E39E400DB65FD /* UIProgressView+AFNetworking.m in Sources */,
 				74D748B4204E3BFB00DB65FD /* ShouYe_H_PTTJ_V.m in Sources */,
 				74D74822204E39E400DB65FD /* MJRefreshBackStateFooter.m in Sources */,
+				74BF4256206D0683003D77A4 /* SouSuo_Model_RootClass.m in Sources */,
 				74D7476E204E39B800DB65FD /* SYStickHeaderWaterFallLayout.m in Sources */,
 				74780F7B205404EB00E85CCD /* MASConstraintMaker.m in Sources */,
 				749CB00C205D0F9200A16260 /* My_PickerView.m in Sources */,

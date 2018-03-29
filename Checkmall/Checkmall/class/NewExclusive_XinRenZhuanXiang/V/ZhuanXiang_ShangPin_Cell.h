@@ -10,4 +10,6 @@
 
 @interface ZhuanXiang_ShangPin_Cell : BaseTableViewCell
 
+//@property (nonatomic,strong)TuanGou_Model_Data  *model;
+
 @end

@@ -386,7 +386,7 @@
 
 #pragma mark- 登录
 - (void)btn_DL_Action{
-    if (bool_MM_KJ) {
+    if (bool_DLFS) {
         //验证码
         if (![MyHelper isPhone:txt_SJH.text]){
             [MyHelper showMessage:@"请输入正确的手机号！"];

@@ -46,6 +46,7 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
+                                <action selector="ZF_Action:" destination="-1" eventType="touchUpInside" id="j81-Af-aKk"/>
                                 <action selector="btn_ZF_Action:" destination="-1" eventType="touchUpInside" id="xTh-cK-kgI"/>
                             </connections>
                         </button>

@@ -7,8 +7,11 @@
 //  商品分类
 
 #import "BaseTableViewCell.h"
+#import "FenLeiLieBiao_Model_Data.h"
 
 @interface ZhuanXiang_Cell : BaseTableViewCell
+
+@property (nonatomic,strong)FenLeiLieBiao_Model_Data    *model;
 
 - (void)iF_Select:(BOOL)select;//判断选中
 

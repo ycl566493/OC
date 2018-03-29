@@ -14,8 +14,9 @@
 #import "FenLeiLieBiao_Model_RootClass.h"//分类列表
 #import "FenLeiShangPin_Model_RootClass.h"//分类商品数据
 #import "ShangPinXiangQing_VC.h"//商品详情
+#import "GuangGao_Model_RootClass.h"//广告model
 
-@interface FenLei_VC ()<UITableViewDelegate,UITableViewDataSource>{
+@interface FenLei_VC ()<UITableViewDelegate,UITableViewDataSource,FenLei_H_GG_V_Delegate>{
     UITableView *table_V_FL;//分类列表
     UITableView *table_V_SP;//商品列表
     FenLei_H_GG_V       *GG;//分类广告
@@ -25,6 +26,7 @@
 
     FenLeiLieBiao_Model_RootClass       *model_FLLB;//分类列表
     FenLeiShangPin_Model_RootClass      *model_FLSP;//分类商品数据
+    GuangGao_Model_RootClass            *model_GG;//广告
 }
 
 
@@ -41,7 +43,44 @@
     self.title = @"分类";
     [self init_UI];
     [self init_Data_FL];
+    
+    [self init_data_GG];
 }
+
+-(void)FenLei_H_GG_V_Delegate_Action{
+    if (model_GG.data.count > 0) {
+        GuangGao_Model_Data *MMM = model_GG.data[0];
+        if (MMM.istype == 1) {
+            //商品详情
+            ShangPinXiangQing_VC    *vc = [[ShangPinXiangQing_VC alloc]init];
+            vc.Str_ID = [NSString stringWithFormat:@"%li",MMM.goodsId];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else if (MMM.istype == 2){
+            
+        }
+    }
+}
+
+#pragma mark- 广告接口
+- (void)init_data_GG{
+    //    广告位类型 1首页 2今日团购 3分类 4个人中心
+    
+    [NetRequest postWithUrl:Advertisement_getBannerList params:@{@"type":@"3"} showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        NSLog(@"广告数据  == %@",dict);
+        model_GG = [[GuangGao_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_GG.code == 1) {
+            if (model_GG.data.count>0) {
+                GuangGao_Model_Data *MMM = model_GG.data[0];
+                GG.image_TP = MMM.adverUrl;
+            }
+            [table_V_SP reloadData];
+        }
+    } fail:^(id error) {
+        
+    }];
+}
+
 
 #pragma mark- 分类列表
 -(void)init_Data_FL{
@@ -123,6 +162,8 @@
     [self.view addSubview:table_V_SP];
     
     GG = [[FenLei_H_GG_V alloc]initWithFrame:CGRectMake(0, 0, table_V_SP.width, [FenLei_H_GG_V get_H:nil])];
+    GG.delegate = self;
+    
     BT = [[FenLei_H_Title_V alloc]initWithFrame:CGRectMake(0, 0, table_V_SP.width, [FenLei_H_Title_V get_H:nil])];
 }
 
@@ -177,13 +218,13 @@
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0 && table_V_SP == tableView) {
+    if (section == 0 && table_V_SP == tableView && model_GG.data.count>0) {
         return [FenLei_H_GG_V get_H:nil];
     }
     return 0.01;
 }
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section == 0 && table_V_SP == tableView) {
+    if (section == 0 && table_V_SP == tableView && model_GG.data.count>0) {
         return GG;
     }
     return nil;

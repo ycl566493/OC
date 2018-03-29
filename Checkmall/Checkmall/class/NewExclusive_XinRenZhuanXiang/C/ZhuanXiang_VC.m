@@ -13,6 +13,8 @@
 #import "ZhuanXiang_ShangPin_Cell.h"//专享商品cell
 #import "ZhuanXiang_DiBu_V.h"//专享底部
 #import "QueRenDingDan_TG_VC.h"//团购
+#import "FenLeiLieBiao_Model_RootClass.h"//分类modle
+#import "ShangPinXiangQing_VC.h"
 
 @interface ZhuanXiang_VC ()<UITableViewDelegate,UITableViewDataSource,ZhuanXiang_DiBu_V_Delegate>{
     UITableView *table_V_FL;//分类列表
@@ -22,6 +24,7 @@
     ZhuanXiang_DiBu_V   *DB;//底部
     
     NSInteger           Select_Index;//选中的分类
+    FenLeiLieBiao_Model_RootClass * model_FLLB;
 }
 
 @end
@@ -33,12 +36,45 @@
 
     self.title = @"今日团购";
     
+    self.pageIndex = 1;
+    
     [self init_UI];
     
     
     [self setLeftItemWithIcon:[UIImage imageNamed:@"FanHui"] title:@"" selector:@selector(backAction)];
     
+    [self init_data_SP];
+}
 
+#pragma mark- 分类列表
+//-(void)init_Data_FL{
+//    [NetRequest postWithUrl:Category_getCatelist params:@{} showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+//        model_FLLB = [[FenLeiLieBiao_Model_RootClass alloc]initWithDictionary:dict];
+//        NSLog(@"分类列表 ==  %@",dict);
+//        if (model_FLLB.code == 1) {
+//            [table_V_FL reloadData];
+//            [self init_data_SP:YES];
+//        }
+//
+//    } fail:^(id error) {
+//
+//    }];
+//}
+
+- (void)init_data_SP{
+    FenLeiLieBiao_Model_Data *MMMM = model_FLLB.data[Select_Index];
+
+    NSDictionary *dic =@{@"page":[NSString stringWithFormat:@"%li",self.pageIndex],@"pid":[NSString stringWithFormat:@"%li",MMMM.idField]};
+    [NetRequest postWithUrl:Group_getGroupGoodsListByid params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"团购 == %@",dict);
+        
+//        if (model_SPSJ.code == 1) {
+//            [table_V_SP reloadData];
+//        }
+        
+    } fail:^(id error) {
+        
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -131,9 +167,13 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if ((section == 1 &&table_V_SP == tableView) || tableView == table_V_FL) {
-        return 30;
-    }
+    
+//    if (tableView == table_V_FL) {
+//        return model_FLLB.data.count;
+//    }
+//    if ((section == 1 &&table_V_SP == tableView) || tableView == table_V_FL) {
+//        return model_SPSJ.data.count;
+//    }
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -152,6 +192,8 @@
             cell = [[ZhuanXiang_Cell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_FL"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+        FenLeiLieBiao_Model_Data *mmm = model_FLLB.data[indexPath.row];
+        cell.model = mmm;
         [cell iF_Select:indexPath.row == Select_Index ? YES : NO];
         
         return cell;
@@ -161,6 +203,8 @@
             cell = [[ZhuanXiang_ShangPin_Cell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_SP"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+//        TuanGou_Model_Data  *model = model_SPSJ.data[indexPath.row];
+//        cell.model = model;
         return cell;
     }
 }
@@ -190,10 +234,20 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
     if (tableView == table_V_FL) {
         Select_Index = indexPath.row;
         [table_V_FL reloadData];
+
+    }else if (tableView == table_V_SP){
+//        ShangPinXiangQing_VC *vc = [[ShangPinXiangQing_VC alloc]init];
+//        FenLeiShangPin_Model_Data   *MMm = model_FLSP.data[indexPath.row];
+//
+//        vc.Str_ID = [NSString stringWithFormat:@"%li",MMm.idField];
+//        [self.navigationController pushViewController:vc animated:YES];
+        
     }
+
     
 }
 

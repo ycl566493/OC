@@ -9,8 +9,11 @@
 #import "SouSuoJieGuo_VC.h"
 #import "ShouYe_Cell.h"
 #import "ShangPinXiangQing_VC.h"
+#import "SouSuo_Model_RootClass.h"//model
 
-@interface SouSuoJieGuo_VC ()
+@interface SouSuoJieGuo_VC (){
+    SouSuo_Model_RootClass  *model;
+}
 
 @end
 
@@ -21,7 +24,48 @@
 
     self.title = @"商品搜索";
     self.view.backgroundColor = [UIColor whiteColor];
+    self.pageIndex = 1;
     [self init_UI];
+    
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear: animated];
+    
+    [self init_Data_SS:YES];
+}
+
+- (void)init_Data_SS:(BOOL)Y_N{
+   
+    [NetRequest postWithUrl:Search_goodsSearch params:@{@"goodsname":self.str_Name,@"page":[NSString stringWithFormat:@"%li",self.pageIndex]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"搜索历史 = = %@",dict);
+        
+        if (Y_N) {
+            model = [[SouSuo_Model_RootClass alloc]initWithDictionary:dict];
+        }else{
+            [model Add_Dictionary:dict];
+        }
+        if (model.code == 1) {
+            [self.collectionView reloadData];
+        }
+    } fail:^(id error) {
+        
+    }];
+}
+
+- (void)refresh{
+    //下拉请求
+    [self endRefreshing];
+    self.pageIndex = 1;
+    [self init_Data_SS:YES];
+    
+}
+- (void)loadMore{
+    //加载更多
+    [self endRefreshing];
+    self.pageIndex ++ ;
+    [self init_Data_SS:NO];
 }
 
 
@@ -35,13 +79,15 @@
     [self.collectionView registerClass:[ShouYe_Cell class] forCellWithReuseIdentifier:@"cell"];
 }
 
+
+
 #pragma mark- collectionviewcollection代理
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 2;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (section == 1) {
-        return 10;
+        return model.data.count;
     }
     return 0;
 }
@@ -50,6 +96,10 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * CellIdentifier = @"cell";
     ShouYe_Cell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    SouSuo_Model_Data   *MMMMM = model.data[indexPath.row];
+    cell.model_SS = MMMMM;
+    
     return cell;
 }
 
@@ -80,6 +130,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     ShangPinXiangQing_VC    *vc = [[ShangPinXiangQing_VC alloc]init];
+    SouSuo_Model_Data *MMMMM = model.data[indexPath.row];
+    vc.Str_ID = [NSString stringWithFormat:@"%li",MMMMM.idField];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

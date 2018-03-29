@@ -106,6 +106,20 @@
     
 }
 
+-(void)setModel_SS:(SouSuo_Model_Data *)model_SS{
+    _model_SS = model_SS;
+    lbl_Title.text = model_SS.name;
+    [imageV_DT sd_setImageWithURL:[MyHelper imaeg_URL:model_SS.path view:imageV_DT] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%@",model_SS.sprice,model_SS.mprice];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     lbl_JG.text];
+    NSRange range = NSMakeRange(model_SS.sprice.length+1, model_SS.mprice.length + 1);
+    // 设置颜色
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0x999999) range:range];
+    // 设置字体大小
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:11] range:range];
+    lbl_JG.attributedText = attributedStr;
+}
+
 +(CGFloat)get_H:(id)data{
     return 80 + (ScreenWidth - 3) /2;
 }   

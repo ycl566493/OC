@@ -9,6 +9,7 @@
 #import "BaseCollectionViewCell.h"
 #import "ShouYe_Model_Data.h"//model
 #import "FenLeiShangPin_Model_Data.h"//分类商品里诶博爱
+#import "SouSuo_Model_Data.h"//搜索model
 
 @protocol ShouYe_Cell_Delegate_GWC <NSObject>
 
@@ -26,5 +27,7 @@
 @property (nonatomic,strong)FenLeiShangPin_Model_Data   *model_FL;//分类model
 
 @property (nonatomic,assign)BOOL                is_DH;//动画
+
+@property (nonatomic,strong)SouSuo_Model_Data   *model_SS;//搜索model
 
 @end

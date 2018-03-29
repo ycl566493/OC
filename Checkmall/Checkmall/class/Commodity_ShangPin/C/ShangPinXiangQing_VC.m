@@ -16,6 +16,7 @@
 #import "QueRenDingDan_PT_VC.h"//确认订单拼团
 #import "TC_PTXZ_V.h"//拼团须知
 #import "ShangPin_Model_RootClass.h"
+#import "QueRenDingDan_Model_RootClass.h"//确认订单
 
 @interface ShangPinXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate>{
     ShangPin_TuPian_V       *TuPian;
@@ -33,6 +34,7 @@
 //    UIButton                *btn_GWC;//购物车按钮
     
     ShangPin_Model_RootClass    *model_SPXQ;//商品详情model
+    QueRenDingDan_Model_RootClass   *model_QRDD;//确认订单
 }
 
 @property(weak,nonatomic)TC_PTXZ_V          *PTXZ;//拼团须知
@@ -78,6 +80,10 @@
 
     PinTuan.top = MS.bottom;
     scrollV.contentSize = CGSizeMake(0, PinTuan.bottom);
+
+    lbl_GM.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
+    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n马上参团",model_SPXQ.data.productPrice];
+
 }
 
 -(TC_PTXZ_V *)PTXZ{
@@ -165,14 +171,38 @@
 #pragma mark- 拼团
 - (void)btn_PT_Action{
     QueRenDingDan_PT_VC *VC = [[QueRenDingDan_PT_VC alloc]init];
+    
     [self.navigationController pushViewController:VC animated:YES];
 }
 
 #pragma mark- 购买
 -(void)btn_GM_Action{
-    QueRenDingDan_VC *VC= [[QueRenDingDan_VC alloc]init];
     
-    [self.navigationController pushViewController:VC animated:YES];
+    
+    NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
+   
+    NSMutableDictionary *dic_DDDDDD = [[NSMutableDictionary alloc]init];
+    [dic_DDDDDD setObject:[NSString stringWithFormat:@"%li",model_SPXQ.data.productId] forKey:@"goodsid"];
+    [dic_DDDDDD setObject:model_SPXQ.data.productSprice forKey:@"price"];
+    [dic_DDDDDD setObject:[NSString stringWithFormat:@"1"] forKey:@"num"];
+    
+    [arr_Data addObject:[MyHelper toJson:dic_DDDDDD]];
+
+    //       type 商品类型 1 拼团 2 开团 3 单独购买 4今日团购 5兑换 6接龙
+    NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"3"};
+    [NetRequest postWithUrl:order_getOrderDesc params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"确认订单 == %@",dict);
+        model_QRDD = [[QueRenDingDan_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_QRDD.code == 1 && model_QRDD.data.arr.count > 0) {
+            QueRenDingDan_VC *VC= [[QueRenDingDan_VC alloc]init];
+            VC.model = model_QRDD;
+            [self.navigationController pushViewController:VC animated:YES];
+        }
+    } fail:^(id error) {
+        
+    }];
+    
+ 
 }
 
 

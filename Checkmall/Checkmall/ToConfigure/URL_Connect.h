@@ -36,7 +36,8 @@
 #define Advertisement_getBannerList [NSString stringWithFormat:@"%@%@",URL_LJ,@"Advertisement/getBannerList"]//广告
 #define login_wxLogin [NSString stringWithFormat:@"%@%@",URL_LJ,@"login/wxLogin"]//微信登录 
 #define login_bindingUser [NSString stringWithFormat:@"%@%@",URL_LJ,@"login/bindingUser"]//微信绑定手机号
-
+#define Group_getGroupGoodsListByid [NSString stringWithFormat:@"%@%@",URL_LJ,@"Group/getGroupGoodsListByid"]//团购商品列表
+#define Search_goodsSearch [NSString stringWithFormat:@"%@%@",URL_LJ,@"Search/goodsSearch"]//搜索列表
 
 
 

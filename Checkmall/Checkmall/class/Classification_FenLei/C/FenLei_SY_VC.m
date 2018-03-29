@@ -62,8 +62,7 @@
         _slide.bool_SlideBar = YES;
         _slide.SlideBar_Color = UIColorFromHex(0x5db851);
         _slide.delegate = self;
-        _slide.tag = 0;
-        _slide.init_Selected = 0;
+        _slide.tag = -1;
         [self.view addSubview:_slide];
     }
     return _slide;

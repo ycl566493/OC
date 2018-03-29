@@ -10,4 +10,6 @@
 
 @interface SouSuoJieGuo_VC : BaseCollectionViewController
 
+@property (nonatomic,strong)NSString    *str_Name;
+
 @end

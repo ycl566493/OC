@@ -52,13 +52,13 @@
     lbl_Name = [[UILabel alloc]initWithFrame:CGRectMake(imageV_TP.right + 15, 10, self_W - imageV_TP.right - 30, 20)];
     lbl_Name.font = font14;
     lbl_Name.textColor = UIColorFromHex(0x333333);
-    lbl_Name.text = @"火龙果火龙果火龙果火龙果火火龙果";
+    lbl_Name.text = @"";
     [self addSubview:lbl_Name];
     
     lbl_SJ = [[UILabel alloc]initWithFrame:CGRectMake(lbl_Name.left , lbl_Name.bottom, lbl_Name.width  , 15)];
     lbl_SJ.font = [UIFont systemFontOfSize:11];
     lbl_SJ.textColor = UIColorFromHex(0x999999);
-    lbl_SJ.text = @"10月10日到达";
+    lbl_SJ.text = @"";
     [self addSubview:lbl_SJ];
 
     
@@ -82,7 +82,7 @@
     lbl_JG = [[UILabel alloc]initWithFrame:CGRectMake(imageV_TP.right + 15, lbl_SJ.bottom + 10, btn_Jian.left - imageV_TP.right - 15 - 5, 20)];
     lbl_JG.font= [UIFont systemFontOfSize:15];
     lbl_JG.textColor = UIColorFromHex(0xf46c18);
-    lbl_JG.text = @"￥99.00";
+    lbl_JG.text = @"￥";
     [self addSubview:lbl_JG];
     
     lbl_JZ  = [[UILabel alloc]initWithFrame:CGRectMake(lbl_JG.left, lbl_JG.bottom , self_W - imageV_TP.right - 15 * 2, 15)];
@@ -121,6 +121,19 @@
         lbl_SL.hidden = YES;
     }
 }
+
+//-(void)setModel:(TuanGou_Model_Data *)model{
+//    _model = model;
+//    [imageV_TP sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",model.image,imageV_TP.width*2]] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+//    lbl_Name.text = model.name;
+//    //    lbl_SJ.text = model.name;
+//
+//    lbl_JG.text = [NSString stringWithFormat:@"￥%@",model.sprice];
+//    lbl_SJ.text = [NSString stringWithFormat:@"%@送达",model.arrivalTime];
+//    lbl_JZ.text = [NSString stringWithFormat:@"截团时间：%@",model.endTime];
+//
+//}
+
 
 + (CGFloat)get_H:(id)data{
     return 97.5;

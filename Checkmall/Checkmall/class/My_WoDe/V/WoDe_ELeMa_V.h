@@ -7,7 +7,18 @@
 //  饿了吗
 
 #import "MyUIView.h"
+@protocol WoDe_ELeMa_V_Delegate <NSObject>
+
+@optional
+- (void)WoDe_ELeMa_V_Delegate_Action;//广告点击
+
+@end
 
 @interface WoDe_ELeMa_V : MyUIView
+
+@property (nonatomic,assign)id<WoDe_ELeMa_V_Delegate>           delegate;
+
+@property (nonatomic,strong)NSString    *str_imageTP;//图片
+
 
 @end

@@ -16,13 +16,17 @@
 #import "DingDanLieBiao_VC.h"//订单列表
 #import "YouHuiJuan_VC.h"//优惠券
 #import "WoDe_Model_RootClass.h"//modle
+#import "GuangGao_Model_RootClass.h"//广告model
+#import "ShangPinXiangQing_VC.h"//商品详情
+#import "JieLong_VC.h"
 
-@interface WoDe_VC ()<WoDe_TouBu_V_Delegate,WoDe_FuWo_V_Delegate,WoDe_DD_V_Delegate>{
+@interface WoDe_VC ()<WoDe_TouBu_V_Delegate,WoDe_FuWo_V_Delegate,WoDe_DD_V_Delegate,WoDe_ELeMa_V_Delegate>{
     WoDe_TouBu_V    *TouBu;//头部
     WoDe_DD_V       *DD;//我的订单模块
     WoDe_FuWo_V     *FW;//服务模块
     WoDe_ELeMa_V    *GGW;//广告位
     WoDe_Model_RootClass    *model_WD;//我的modle
+    GuangGao_Model_RootClass        *model_GG;
 }
 
 @end
@@ -37,7 +41,42 @@
     self.view.mj_y = -kStatusBarHeight;
 
     [self init_UI];
- 
+    [self init_data_GG];
+}
+
+-(void)WoDe_ELeMa_V_Delegate_Action{
+    if (model_GG.data.count > 0) {
+        GuangGao_Model_Data *MMM = model_GG.data[0];
+        if (MMM.istype == 1) {
+            //商品详情
+            ShangPinXiangQing_VC    *vc = [[ShangPinXiangQing_VC alloc]init];
+            vc.Str_ID = [NSString stringWithFormat:@"%li",MMM.goodsId];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else if (MMM.istype == 3){
+            //接龙
+            JieLong_VC *vc = [[JieLong_VC alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+}
+
+#pragma mark- 广告接口
+- (void)init_data_GG{
+    //    广告位类型 1首页 2今日团购 3分类 4个人中心
+    
+    [NetRequest postWithUrl:Advertisement_getBannerList params:@{@"type":@"4"} showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        NSLog(@"广告数据  == %@",dict);
+        model_GG = [[GuangGao_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_GG.code == 1) {
+            if (model_GG.data.count > 0) {
+                GuangGao_Model_Data *MMM = model_GG.data[0];
+                GGW.str_imageTP = MMM.adverUrl;
+            }
+        }
+    } fail:^(id error) {
+        
+    }];
 }
 
 
@@ -68,6 +107,7 @@
     [self.scrollView addSubview:FW];
     
     GGW = [[WoDe_ELeMa_V alloc]initWithFrame:CGRectMake(0, FW.bottom, ScreenWidth, [WoDe_ELeMa_V get_H:nil])];
+    GGW.delegate = self;
     [self.scrollView addSubview:GGW];
     
     self.scrollView.contentSize = CGSizeMake(0, GGW.bottom);

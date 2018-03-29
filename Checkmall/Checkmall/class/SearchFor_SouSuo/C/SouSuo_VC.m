@@ -18,7 +18,7 @@
 
 @property (nonatomic,weak)SS_Top_V  *SSTB;//搜索头部
 
-@property (nonatomic,weak)SS_SJ_V  *RMTJ;//热门推荐
+//@property (nonatomic,weak)SS_SJ_V  *RMTJ;//热门推荐
 @property (nonatomic,weak)SS_SJ_V  *LSJL;//历史记录
 
 @end
@@ -30,12 +30,21 @@
 
     [self setLeftItemWithIcon:nil title:nil selector:nil];
     [self init_UI];
+    [self UP_UI];
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.SSTB.hidden = NO;
+
+
+}
+
+
 #pragma mark- 初始化
 - (void)init_UI{
-    [self.scrollV addSubview:self.RMTJ];
+//    [self.scrollV addSubview:self.RMTJ];
     [self.scrollV addSubview:self.LSJL];
     
     btn_QKSSJL = [[UIButton alloc]initWithFrame:CGRectMake((ScreenWidth - 125) / 2, 0, 125, 30)];
@@ -49,7 +58,6 @@
     [btn_QKSSJL addTarget:self action:@selector(btn_QKSSJL_Action) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollV addSubview:btn_QKSSJL];
     
-    [self UP_UI];
 }
 
 
@@ -61,12 +69,12 @@
 
 #pragma mark- 按钮点击事件
 -(void)SS_SJ_V_Delegate_Action:(NSInteger)tag VC:(UIView *)vc Name:(NSString *)str{
-    if (vc == self.RMTJ) {
-        NSLog(@"热门 ==  %li  = = = %@",tag,str);
-    }else{
-        NSLog(@"搜索 ==  %li  = = = %@",tag,str);
-
-    }
+//    if (vc == self.RMTJ) {
+//        NSLog(@"热门 ==  %li  = = = %@",tag,str);
+//    }else{
+//        NSLog(@"搜索 ==  %li  = = = %@",tag,str);
+//
+//    }
     SouSuoJieGuo_VC *vvv =[[SouSuoJieGuo_VC alloc]init];
     [self.navigationController pushViewController:vvv animated:YES];
 }
@@ -75,6 +83,7 @@
 -(void)SS_Top_V_Delegate_SS:(NSString *)str{
     NSLog(@"搜索");
     SouSuoJieGuo_VC *vc =[[SouSuoJieGuo_VC alloc]init];
+    vc.str_Name = str;
     [self.navigationController pushViewController:vc animated:YES];
     
     NSDictionary *dic;
@@ -118,8 +127,8 @@
 #pragma mark- 刷新页面
 - (void)UP_UI{
     
-    NSArray*arr = @[@"鸡蛋鸡蛋鸡蛋",@"鸡蛋鸡蛋",@"鸡蛋",@"鸡蛋",@"鸡积极",@"鸡",@"鸡蛋鸡蛋鸡蛋",@"鸡蛋",@"鸡蛋鸡蛋",@"鸡蛋蛋",@"鸡蛋",@"鸡蛋",@"鸡蛋鸡蛋鸡蛋鸡蛋鸡蛋鸡蛋",@"鸡蛋蛋",@"鸡蛋鸡蛋鸡蛋",@"鸡蛋",@"鸡蛋鸡蛋",@"鸡蛋蛋"];
-    self.RMTJ.arr_Data = arr;
+//    NSArray*arr = @[@"鸡蛋鸡蛋鸡蛋",@"鸡蛋鸡蛋",@"鸡蛋",@"鸡蛋",@"鸡积极",@"鸡",@"鸡蛋鸡蛋鸡蛋",@"鸡蛋",@"鸡蛋鸡蛋",@"鸡蛋蛋",@"鸡蛋",@"鸡蛋",@"鸡蛋鸡蛋鸡蛋鸡蛋鸡蛋鸡蛋",@"鸡蛋蛋",@"鸡蛋鸡蛋鸡蛋",@"鸡蛋",@"鸡蛋鸡蛋",@"鸡蛋蛋"];
+//    self.RMTJ.arr_Data = arr;
     
     NSDictionary *dic;
     NSArray *arr_data;
@@ -136,7 +145,9 @@
     }
     self.LSJL.arr_Data = arr_data;
     
-    self.LSJL.top = self.RMTJ.bottom;
+//    self.LSJL.top = self.RMTJ.bottom;
+    self.LSJL.top = 0;
+
     btn_QKSSJL.top = self.LSJL.bottom+ 30;
     self.scrollV.contentSize = CGSizeMake(0, btn_QKSSJL.bottom + 30);
 }
@@ -144,7 +155,9 @@
 #pragma mark- 搜索内容更新视图
 -(void)SS_SJ_V_Delegate_UP{
     
-    self.LSJL.top = self.RMTJ.bottom;
+//    self.LSJL.top = self.RMTJ.bottom;
+    self.LSJL.top = 0;
+
     btn_QKSSJL.top = self.LSJL.bottom+ 30;
     self.scrollV.contentSize = CGSizeMake(0, btn_QKSSJL.bottom + 30);
 }
@@ -161,15 +174,15 @@
     return _SSTB;
 }
 #pragma mark- 热门推荐
--(SS_SJ_V *)RMTJ{
-    if (!_RMTJ) {
-        SS_SJ_V *RMTJ = [SS_SJ_V init_Xib];
-        _RMTJ = RMTJ;
-        _RMTJ.delegate = self;
-        _RMTJ.frame = CGRectMake(0, 0, ScreenWidth , 100);
-    }
-    return _RMTJ;
-}
+//-(SS_SJ_V *)RMTJ{
+//    if (!_RMTJ) {
+//        SS_SJ_V *RMTJ = [SS_SJ_V init_Xib];
+//        _RMTJ = RMTJ;
+//        _RMTJ.delegate = self;
+//        _RMTJ.frame = CGRectMake(0, 0, ScreenWidth , 100);
+//    }
+//    return _RMTJ;
+//}
 #pragma mark- 历史记录
 -(SS_SJ_V *)LSJL{
     if (!_LSJL) {
@@ -187,10 +200,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.SSTB.hidden = NO;
-}
+
 
 -(void)dealloc{
     for (UIView *view in self.SSTB.subviews) {
