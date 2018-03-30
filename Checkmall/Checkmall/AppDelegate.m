@@ -19,9 +19,10 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 //微信SDK头文件
 #import "WXApi.h"
+#import "WXApiManager.h"
 
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -48,6 +49,9 @@
 
 #pragma mark- 注册三方
 - (void)init_LaunchingWithOptions:(NSDictionary *)launchOptions{
+    
+    [WXApi registerApp:@"wxbc8156dc82d2974c"];
+
     /**初始化ShareSDK应用
      @param activePlatforms
      使用的分享平台集合
@@ -123,6 +127,12 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return  [WXApi handleOpenURL:url delegate:self];
+}
+
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+//}
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     if ([url.host isEqualToString:@"safepay"]) {
@@ -131,7 +141,9 @@
             NSLog(@"result = %@",resultDic);
         }];
     }
-    return YES;
+    
+    return [WXApi handleOpenURL:url delegate:self];
+
 }
 
 // NOTE: 9.0以后使用新API接口
@@ -143,8 +155,37 @@
             NSLog(@"result = %@",resultDic);
         }];
     }
+    if ([url.host isEqualToString:@"pay"]) {
+        return [WXApi handleOpenURL:url delegate:self];
+    }
     return YES;
 }
+
+#pragma mark- z 支付回调
+-(void)onResp:(BaseResp *)resp{
+    //支付
+    if ([resp isKindOfClass:[PayResp class]]){
+        PayResp*response=(PayResp*)resp;
+        switch(response.errCode){
+            case WXSuccess:{
+                //服务器端查询支付通知或查询API返回的结果再提示成功
+                NSNotification *notification =[NSNotification notificationWithName:@"ZFHD" object:@"微信"];
+                //通过通知中心发送通知
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+                NSLog(@"支付成功");
+            }
+                break;
+            default:{
+                [MyHelper showMessage:@"支付失败"];
+                NSLog(@"支付失败，retcode=%d",resp.errCode);
+            }
+                break;
+        }
+        
+    }
+}
+
+//////结束
 
 
 @end

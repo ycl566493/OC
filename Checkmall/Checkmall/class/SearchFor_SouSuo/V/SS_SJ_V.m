@@ -8,6 +8,14 @@
 
 #import "SS_SJ_V.h"
 
+@interface SS_SJ_V(){
+    
+}
+
+@property (nonatomic,strong)NSMutableArray      *arrM_Btn;
+
+@end
+
 @implementation SS_SJ_V
 
 -(void)awakeFromNib{
@@ -19,13 +27,17 @@
 
 }
 
+-(NSMutableArray *)arrM_Btn{
+    if (!_arrM_Btn) {
+        _arrM_Btn = [[NSMutableArray alloc]init];
+    }
+    return _arrM_Btn;
+}
 -(void)setArr_Data:(NSArray *)arr_Data{
     _arr_Data = arr_Data;
     
-    for (UIView *VVV in self.subviews) {
-        if ([VVV isKindOfClass:[UIButton class]]) {
-            [VVV removeFromSuperview];
-        }
+    for (UIButton *bbbbb in self.arrM_Btn) {
+        [bbbbb removeFromSuperview];
     }
     
     NSArray*arr =arr_Data;
@@ -62,7 +74,7 @@
         btn.tag = i;
         [btn addTarget:self action:@selector(btn_Action:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
-        
+        [self.arrM_Btn addObject:btn];
         x = x + wwwww + 10;
     }
     self.height = y + h;

@@ -38,7 +38,7 @@
 #define login_bindingUser [NSString stringWithFormat:@"%@%@",URL_LJ,@"login/bindingUser"]//微信绑定手机号
 #define Group_getGroupGoodsListByid [NSString stringWithFormat:@"%@%@",URL_LJ,@"Group/getGroupGoodsListByid"]//团购商品列表
 #define Search_goodsSearch [NSString stringWithFormat:@"%@%@",URL_LJ,@"Search/goodsSearch"]//搜索列表
-
+#define Wxpay_wxPay [NSString stringWithFormat:@"%@%@",URL_LJ,@"Wxpay/wxPay"]//充值
 
 
 #endif /* URL_Connect_h */

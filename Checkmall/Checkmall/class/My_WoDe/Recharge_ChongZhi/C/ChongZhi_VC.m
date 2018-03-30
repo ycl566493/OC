@@ -8,6 +8,8 @@
 
 #import "ChongZhi_VC.h"
 #import "TC_DHJ_V.h"
+#import "ZhiFuWenJian.h"//支付文件
+#import "WeiXinZhiFu_Model_RootClass.h"//微信支付文件
 
 @interface ChongZhi_VC ()<UITextViewDelegate>{
     UILabel         *lbl_ZH;//当前账号
@@ -19,6 +21,7 @@
     UIButton        *btn_CZ;//充值
     NSInteger            int_ZDY;//类别数量
     UITextView *txtV_XX;//充值协议
+    WeiXinZhiFu_Model_RootClass *model_WX;//微信支付model
 }
 
 @property (nonatomic,weak)TC_DHJ_V      *DHJ;//兑换券
@@ -208,7 +211,43 @@
 
 #pragma mark- 充值按钮
 -(void)btn_CZ_Action{
-    [self.window addSubview:self.DHJ];
+//    [self.window addSubview:self.DHJ];
+    if (int_ZDY == 0) {
+        [self ChongZhi:YES str_JE:@"50"];
+    }else if (int_ZDY == 1){
+        [self ChongZhi:YES str_JE:@"100"];
+    }else if (int_ZDY == 2){
+        [self ChongZhi:YES str_JE:@"200"];
+    }else if (int_ZDY == 3){
+        [self ChongZhi:YES str_JE:@"500"];
+    }else if (int_ZDY == 4){
+        [self ChongZhi:YES str_JE:@"1000"];
+    }else if (int_ZDY == 5){
+        if ([txt_SL.text integerValue] > 0) {
+            [self ChongZhi:YES str_JE:txt_SL.text];
+        }else{
+            [MyHelper showMessage:@"请输入充值金额！"];
+        }
+    }
+}
+
+#pragma mark- 充值接口 yes 微信 no 支付宝
+- (void)ChongZhi:(BOOL)Y_N  str_JE:(NSString *)str_je{
+    if (Y_N) {
+        NSDictionary *dic = @{@"fee":str_je,@"token":[MyHelper toToken]};
+        [NetRequest postWithUrl:Wxpay_wxPay params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+            NSLog(@"支付回调 = = %@",dict);
+            model_WX = [[WeiXinZhiFu_Model_RootClass alloc]initWithDictionary:dict];
+            if (model_WX.code == 1) {
+                
+                [ZhiFuWenJian WeiXinZhiFu_partnerId:model_WX.data.partnerid prepayId:model_WX.data.prepayid nonceStr:model_WX.data.noncestr timeStamp:model_WX.data.timestamp package:model_WX.data.packageField sign:model_WX.data.sign];
+            }
+        } fail:^(id error) {
+            
+        }];
+    }
+
+    
 }
 
 #pragma mark- 协议点击
