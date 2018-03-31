@@ -14,12 +14,16 @@
 #import "ZhiFuFangShi_V.h"//支付方式
 #import "ZhiFuChengGong_VC.h"//支付成功
 #import "DiZhiLieBiao_VC.h"//地址信息
+#import "WeiXinZhiFu_Model_RootClass.h"//
+#import "ZhiFuWenJian.h"//支付文杰
 
 @interface QueRenDingDan_VC ()<DiZhiXinXi_V_Delegate,DiZhiLieBiao_VC_Delegate>{
     UIScrollView    *scrollV;
     NSInteger           dz_id;//地址id
 
     BOOL            bool_PS;//配送方式 0 自提 1 快递
+    WeiXinZhiFu_Model_RootClass *model_WX;
+    NSString            *str_DDID;//订单id
 }
 
 @property (nonatomic,weak)DiZhiXinXi_V   *DZ;//地址信息
@@ -47,6 +51,34 @@
     self.view.backgroundColor = UIColorFromHex(0xf2f2f2);
     
     [self UP_UI];
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ZFHD) name:@"ZFHD" object:nil];
+}
+
+#pragma mark- 支付回调
+- (void)ZFHD{
+//    [self UP_DD];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self UP_DD];
+}
+
+#pragma mark- 刷新订单
+-(void)UP_DD{
+    if (str_DDID) {
+        [NetRequest postWithUrl:Order_returnStatus params:@{@"order_sn":@"",@"paytype":@"2"} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+            NSLog(@"支付状态 == %@",dict);
+            if ([dict[@"code"] integerValue] == 1) {
+                ZhiFuChengGong_VC *vc = [[ZhiFuChengGong_VC alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        } fail:^(id error) {
+            
+        }];
+    }
 }
 
 - (void)UP_UI{
@@ -113,10 +145,15 @@
         //       type 商品类型 1 拼团 2 开团 3 单独购买 4今日团购 5兑换 6接龙
         // paymode 支付方式 1 微信 2 支付宝 3 余额支付
         
-        NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"3",@"paymode":@"1",@"addressid":[NSString stringWithFormat:@"%li",dz_id]};
+        NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"3",@"paymode":@"1",@"addressid":[NSString stringWithFormat:@"%li",dz_id],@"paytype":@"2",@"coupon_amount":@"1",@"shipping_amount":@"1"};
         
         [NetRequest postWithUrl:order_getMessage params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             NSLog(@"下单返回 ==  %@",dict);
+            model_WX = [[WeiXinZhiFu_Model_RootClass alloc]initWithDictionary:dict];
+            if (model_WX.code == 1) {
+                
+                [ZhiFuWenJian WeiXinZhiFu_partnerId:model_WX.data.partnerid prepayId:model_WX.data.prepayid nonceStr:model_WX.data.noncestr timeStamp:model_WX.data.timestamp package:model_WX.data.packageField sign:model_WX.data.sign];
+            }
         } fail:^(id error) {
             
         }];
@@ -251,13 +288,6 @@
     return _DZ;
 }
 
-
-#pragma mark- 支付
-
-- (IBAction)btn_ZF_Action:(UIButton *)sender {
-    ZhiFuChengGong_VC *vc = [[ZhiFuChengGong_VC alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 
 @end

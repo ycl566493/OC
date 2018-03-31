@@ -234,8 +234,8 @@
 #pragma mark- 充值接口 yes 微信 no 支付宝
 - (void)ChongZhi:(BOOL)Y_N  str_JE:(NSString *)str_je{
     if (Y_N) {
-        NSDictionary *dic = @{@"fee":str_je,@"token":[MyHelper toToken]};
-        [NetRequest postWithUrl:Wxpay_wxPay params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSDictionary *dic = @{@"fee":str_je,@"token":[MyHelper toToken],@"paytype":@"1",@"paymode":@"1"};
+        [NetRequest postWithUrl:order_getMessage params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             NSLog(@"支付回调 = = %@",dict);
             model_WX = [[WeiXinZhiFu_Model_RootClass alloc]initWithDictionary:dict];
             if (model_WX.code == 1) {

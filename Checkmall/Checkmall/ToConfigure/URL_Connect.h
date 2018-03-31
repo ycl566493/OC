@@ -39,6 +39,7 @@
 #define Group_getGroupGoodsListByid [NSString stringWithFormat:@"%@%@",URL_LJ,@"Group/getGroupGoodsListByid"]//团购商品列表
 #define Search_goodsSearch [NSString stringWithFormat:@"%@%@",URL_LJ,@"Search/goodsSearch"]//搜索列表
 #define Wxpay_wxPay [NSString stringWithFormat:@"%@%@",URL_LJ,@"Wxpay/wxPay"]//充值
+#define Order_returnStatus [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/returnStatus"]//返回订单状态
 
 
 #endif /* URL_Connect_h */
