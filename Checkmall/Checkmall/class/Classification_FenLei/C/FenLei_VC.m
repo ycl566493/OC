@@ -15,6 +15,7 @@
 #import "FenLeiShangPin_Model_RootClass.h"//分类商品数据
 #import "ShangPinXiangQing_VC.h"//商品详情
 #import "GuangGao_Model_RootClass.h"//广告model
+#import "KBY_View.h"
 
 @interface FenLei_VC ()<UITableViewDelegate,UITableViewDataSource,FenLei_H_GG_V_Delegate>{
     UITableView *table_V_FL;//分类列表
@@ -29,7 +30,7 @@
     GuangGao_Model_RootClass            *model_GG;//广告
 }
 
-
+@property (nonatomic,weak)KBY_View      *kby;//空白页
 @end
 
 @implementation FenLei_VC
@@ -113,10 +114,32 @@
         if (model_FLSP.code == 1) {
             [table_V_SP reloadData];
         }
-        
+        [self UP_KBse];
     } fail:^(id error) {
         
     }];
+}
+
+-(KBY_View *)kby{
+    if (!_kby) {
+        KBY_View*  kby = [KBY_View init_Xib];
+        _kby = kby;
+        _kby.frame = table_V_SP.bounds;
+        _kby.hidden = YES;
+        [table_V_SP addSubview:_kby];
+    }
+    return _kby;
+}
+
+#pragma mark- 刷新空白页
+- (void)UP_KBse{
+    
+    if (model_FLSP.data.count == 0) {
+        self.kby.hidden = NO;
+    }else{
+        self.kby.hidden = YES;
+    }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{

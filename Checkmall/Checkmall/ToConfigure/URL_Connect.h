@@ -40,6 +40,13 @@
 #define Search_goodsSearch [NSString stringWithFormat:@"%@%@",URL_LJ,@"Search/goodsSearch"]//搜索列表
 #define Wxpay_wxPay [NSString stringWithFormat:@"%@%@",URL_LJ,@"Wxpay/wxPay"]//充值
 #define Order_returnStatus [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/returnStatus"]//返回订单状态
+#define Coupon_getcoin_warn [NSString stringWithFormat:@"%@%@",URL_LJ,@"Coupon/getcoin_warn"]//更新优惠劵送礼品
+#define Coupon_receiveCoin [NSString stringWithFormat:@"%@%@",URL_LJ,@"Coupon/receiveCoin"]//领取兑换券
+
+
+
+
+
 
 
 #endif /* URL_Connect_h */

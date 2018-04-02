@@ -33,7 +33,7 @@
 -(void)setModel:(DingDanLieBiao_Model_Data *)model{
     _model = model;
     self.lbl_BH.text = [NSString stringWithFormat:@"订单编号:%@",model.orderSn];
-    [self.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.url view:self.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    [self.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.path view:self.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
     self.lbl_Name.text = model.goodsName;
     self.lbl_DH.text = [NSString stringWithFormat:@"%ld到货",(long)model.arrivalTime];
     self.lbl_SL.text = [NSString stringWithFormat:@"x%li",model.number];

@@ -29,6 +29,13 @@
     [self removeFromSuperview];
 }
 
+- (IBAction)btn_LQ:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(TC_DHJ_V_Delegate_Action)]) {
+        [self.delegate TC_DHJ_V_Delegate_Action];
+    }
+    self.hidden = YES;
+    [self removeFromSuperview];
+}
 
 
 @end

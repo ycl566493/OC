@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,10 +67,12 @@
                     <state key="normal" title="立即领取">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="btn_LQ:" destination="iN0-l3-epB" eventType="touchUpInside" id="lbL-QR-PRv"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pNM-kj-dN1">
                     <rect key="frame" x="88" y="331" width="70" height="70"/>
-                    <color key="backgroundColor" red="1" green="0.47058823529999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="dK3-7D-IcO"/>
                         <constraint firstAttribute="height" constant="70" id="rrB-8Q-T1o"/>
@@ -125,7 +127,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="btn_GB" destination="yZd-X3-0Kr" id="EFe-SB-NXp"/>
+                <outlet property="imageV_TP" destination="pNM-kj-dN1" id="ZwW-P7-7Dv"/>
+                <outlet property="lbl_LBMC" destination="Ggq-UE-ZcP" id="DHd-gk-JuN"/>
                 <outlet property="lbl_Name" destination="yhK-yr-0ym" id="xdH-P6-VGr"/>
+                <outlet property="lbl_SJ" destination="mAy-sm-yoW" id="FVV-o0-RQJ"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="75.5"/>
         </view>

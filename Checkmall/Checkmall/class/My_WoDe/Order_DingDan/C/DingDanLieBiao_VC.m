@@ -10,12 +10,15 @@
 #import "SlideButtonView.h"//头部
 #import "DingDan_Cell.h"//订单cell
 #import "DingDanLieBiao_Model_RootClass.h"
+#import "KBY_View.h"//空白页
 
 @interface DingDanLieBiao_VC ()<SlideButtonViewDelegate,UITableViewDelegate,UITableViewDataSource>{
     SlideButtonView * slide;
     DingDanLieBiao_Model_RootClass *model_DD;//model
-    
+
 }
+
+@property (nonatomic,weak)  KBY_View        *KBY;
 
 @end
 
@@ -27,6 +30,17 @@
     self.title = @"我的订单";
     [self init_UI];
     [self init_Data:YES];
+}
+
+-(KBY_View *)KBY{
+    if (!_KBY) {
+        _KBY = [KBY_View init_Xib];
+        _KBY.hidden = YES;
+        _KBY.frame = self.tableV.bounds;
+        _KBY.lbl_Title.text = @"亲，订单是空的哦！";
+        [self.tableV addSubview:_KBY];
+    }
+    return _KBY;
 }
 
 #pragma mark- 初始化
@@ -52,12 +66,22 @@
         }else{
             [model_DD Add_Dictionary:dict];
         }
-        [self.tableV reloadData];
         
+        [self.tableV reloadData];
+        [self UP_KBY];
         NSLog(@"订单列表 == %@",dict);
     } fail:^(id error) {
         
     }];
+}
+
+-(void)UP_KBY{
+    if (model_DD.data.count == 0) {
+        self.KBY.hidden = NO;
+    }else{
+        self.KBY.hidden = YES;
+    }
+    
 }
 
 -(void)SlideButtonViewDelegate_Acion:(NSInteger)btn_Tag{

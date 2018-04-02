@@ -15,16 +15,10 @@ NSString *const kYouHuiJuan_Model_RootClassMessage = @"message";
 @end
 @implementation YouHuiJuan_Model_RootClass
 
-
-
-
-/**
- * Instantiate the instance using the passed dictionary values to set the properties values
- */
-
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    self.data = [[NSMutableArray alloc]init];
 	if(![dictionary[kYouHuiJuan_Model_RootClassCode] isKindOfClass:[NSNull class]]){
 		self.code = [dictionary[kYouHuiJuan_Model_RootClassCode] integerValue];
 	}
@@ -36,11 +30,31 @@ NSString *const kYouHuiJuan_Model_RootClassMessage = @"message";
 			YouHuiJuan_Model_Data * dataItem = [[YouHuiJuan_Model_Data alloc] initWithDictionary:dataDictionary];
 			[dataItems addObject:dataItem];
 		}
-		self.data = dataItems;
+		[self.data addObjectsFromArray:dataItems];
 	}
 	if(![dictionary[kYouHuiJuan_Model_RootClassMessage] isKindOfClass:[NSNull class]]){
 		self.message = dictionary[kYouHuiJuan_Model_RootClassMessage];
 	}	
 	return self;
 }
+
+-(void)Add_Dictionary:(NSDictionary *)dictionary{
+    if(![dictionary[kYouHuiJuan_Model_RootClassCode] isKindOfClass:[NSNull class]]){
+        self.code = [dictionary[kYouHuiJuan_Model_RootClassCode] integerValue];
+    }
+    
+    if(dictionary[kYouHuiJuan_Model_RootClassData] != nil && [dictionary[kYouHuiJuan_Model_RootClassData] isKindOfClass:[NSArray class]]){
+        NSArray * dataDictionaries = dictionary[kYouHuiJuan_Model_RootClassData];
+        NSMutableArray * dataItems = [NSMutableArray array];
+        for(NSDictionary * dataDictionary in dataDictionaries){
+            YouHuiJuan_Model_Data * dataItem = [[YouHuiJuan_Model_Data alloc] initWithDictionary:dataDictionary];
+            [dataItems addObject:dataItem];
+        }
+        [self.data addObjectsFromArray:dataItems];
+    }
+    if(![dictionary[kYouHuiJuan_Model_RootClassMessage] isKindOfClass:[NSNull class]]){
+        self.message = dictionary[kYouHuiJuan_Model_RootClassMessage];
+    }
+}
+
 @end

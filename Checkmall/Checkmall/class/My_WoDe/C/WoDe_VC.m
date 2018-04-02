@@ -85,6 +85,8 @@
         
         NSLog(@"个人信息 == = %@",dict);
         model_WD = [[WoDe_Model_RootClass alloc]initWithDictionary:dict];
+        [kUserDefaults setObject:model_WD.data.creditCardBalance forKey:YuE];
+
         TouBu.model = model_WD;
     } fail:^(id error) {
         

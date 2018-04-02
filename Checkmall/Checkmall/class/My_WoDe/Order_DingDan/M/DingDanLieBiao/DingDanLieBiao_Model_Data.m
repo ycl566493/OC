@@ -25,7 +25,7 @@ NSString *const kDingDanLieBiao_Model_DataOrderType = @"order_type";
 NSString *const kDingDanLieBiao_Model_DataPaidAmount = @"paid_amount";
 NSString *const kDingDanLieBiao_Model_DataPrice = @"price";
 NSString *const kDingDanLieBiao_Model_DataSprice = @"sprice";
-NSString *const kDingDanLieBiao_Model_DataUrl = @"url";
+NSString *const kDingDanLieBiao_Model_DataPath = @"path";
 
 @interface DingDanLieBiao_Model_Data ()
 @end
@@ -103,8 +103,8 @@ NSString *const kDingDanLieBiao_Model_DataUrl = @"url";
 	if(![dictionary[kDingDanLieBiao_Model_DataSprice] isKindOfClass:[NSNull class]]){
 		self.sprice = dictionary[kDingDanLieBiao_Model_DataSprice];
 	}	
-	if(![dictionary[kDingDanLieBiao_Model_DataUrl] isKindOfClass:[NSNull class]]){
-		self.url = dictionary[kDingDanLieBiao_Model_DataUrl];
+	if(![dictionary[kDingDanLieBiao_Model_DataPath] isKindOfClass:[NSNull class]]){
+		self.path = dictionary[kDingDanLieBiao_Model_DataPath];
 	}	
 	return self;
 }

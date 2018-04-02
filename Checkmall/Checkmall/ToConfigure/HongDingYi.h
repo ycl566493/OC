@@ -35,6 +35,7 @@
 
 #define TouXiang @"TouXiang"//头像
 #define NiCheng @"NiCheng"//昵称
+#define YuE @"YuE"//余额
 
 //缓存路径
 #define kUserDefaults       [NSUserDefaults standardUserDefaults]

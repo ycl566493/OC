@@ -10,13 +10,16 @@
 #import "SlideButtonView.h"
 #import "YouHuiJuanCell.h"
 #import "YouHuiJuan_Model_RootClass.h"
+#import "KBY_View.h"//空白页
 
 @interface YouHuiJuan_VC ()<SlideButtonViewDelegate>{
     SlideButtonView * slide;
     NSString                *type;//优惠卷类型 0 未使用 1已使用 2已过期
     YouHuiJuan_Model_RootClass  *model_YHJ;
-
+    
 }
+
+@property (nonatomic,weak)KBY_View *KBY;//空白页
 
 @end
 
@@ -30,6 +33,25 @@
     [self init_UI];
     
     [self init_Data:YES];
+}
+
+-(KBY_View *)KBY{
+    if (!_KBY) {
+        KBY_View *kby = [KBY_View init_Xib];
+        _KBY = kby;
+        _KBY.hidden = YES;
+        _KBY.frame = self.tableview.bounds;
+        [self.tableview addSubview:_KBY];
+    }
+    return _KBY;
+}
+
+- (void)UP_KBY{
+    if (model_YHJ.data.count == 0) {
+        self.KBY.hidden = NO;
+    }else{
+        self.KBY.hidden = YES;
+    }
 }
 
 -(void)SlideButtonViewDelegate_Acion:(NSInteger)btn_Tag{
@@ -47,22 +69,17 @@
 
 #pragma mark- 购物车列表
 - (void)init_Data:(BOOL)Y_N{
-    
-    
-    NSError *error;
-    NSString *dataStr = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"YHJ" ofType:@"txt"] encoding:NSUTF8StringEncoding error:&error];
-    
-    NSData *jsonData = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *jerror;
-    
-    NSDictionary*dicttttt = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jerror];
-    
-    
     NSDictionary *dic = @{@"token":[MyHelper toToken],@"coupon_type":type,@"page":[NSString stringWithFormat:@"%li",self.pageIndex]};
     [NetRequest postWithUrl:coupon_getmycoin params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"优惠===  = = %@",dict);
-        model_YHJ = [[YouHuiJuan_Model_RootClass alloc]initWithDictionary:dicttttt];
+        if (Y_N) {
+            model_YHJ = [[YouHuiJuan_Model_RootClass alloc]initWithDictionary:dict];
+        }else{
+            [model_YHJ Add_Dictionary:dict];
+        }
         [self.tableview reloadData];
+        
+        [self UP_KBY];
     } fail:^(id error) {
         
     }];
@@ -71,7 +88,7 @@
 - (void)refresh{
     //下拉请求
     [self endRefreshing];
-    self.pageIndex = 0;
+    self.pageIndex = 1;
     [self init_Data:YES];
 }
 - (void)loadMore{

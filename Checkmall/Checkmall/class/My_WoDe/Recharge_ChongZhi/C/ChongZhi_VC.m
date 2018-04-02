@@ -10,8 +10,9 @@
 #import "TC_DHJ_V.h"
 #import "ZhiFuWenJian.h"//支付文件
 #import "WeiXinZhiFu_Model_RootClass.h"//微信支付文件
+#import "DingDanZhuangTai_Model_RootClass.h"
 
-@interface ChongZhi_VC ()<UITextViewDelegate>{
+@interface ChongZhi_VC ()<UITextViewDelegate,UITextFieldDelegate,TC_DHJ_V_Delegate>{
     UILabel         *lbl_ZH;//当前账号
     UILabel         *lbl_YE;//余额
     NSMutableArray  *arr_Btn;//按钮
@@ -22,6 +23,9 @@
     NSInteger            int_ZDY;//类别数量
     UITextView *txtV_XX;//充值协议
     WeiXinZhiFu_Model_RootClass *model_WX;//微信支付model
+    NSString                *str_DDID;//订单id
+    UIButton             *btn_FL;
+    DingDanZhuangTai_Model_RootClass    *model;
 }
 
 @property (nonatomic,weak)TC_DHJ_V      *DHJ;//兑换券
@@ -40,6 +44,62 @@
     self.title = @"充值中心";
     [self init_UI];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ZFHS) name:@"ZFHD" object:nil];
+}
+
+-(void)ZFHS{
+    [self UP_DD];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
+#pragma mark- 刷新订单
+-(void)UP_DD{
+    if (str_DDID) {
+        NSString *str_JE = @"";
+        switch (int_ZDY) {
+            case 0:
+                str_JE= @"50";
+                break;
+            case 1:
+                str_JE= @"100";
+                break;
+            case 2:
+                str_JE= @"200";
+                break;
+            case 3:
+                str_JE= @"500";
+                break;
+            case 4:
+                str_JE= @"1000";
+                break;
+            case 5:
+                str_JE= txt_SL.text;
+                break;
+            default:
+                break;
+        }
+        NSDictionary *dic = @{@"order_sn":str_DDID,@"paytype":@"1",@"token":[MyHelper toToken],@"money":str_JE};
+        [NetRequest postWithUrl:Order_returnStatus params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+            NSLog(@"支付状态 == %@",dict);
+            model = [[DingDanZhuangTai_Model_RootClass alloc]initWithDictionary:dict];
+            if (model.data.sta) {
+                [kUserDefaults setObject:model.data.money forKey:YuE];
+                lbl_YE.text = [NSString stringWithFormat:@"%@￥",model.data.money];
+                [self.window addSubview:self.DHJ];
+                [self.DHJ.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.data.path view:self.DHJ.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+                self.DHJ.lbl_LBMC.text = model.data.name;
+                self.DHJ.lbl_SJ.text =[NSString stringWithFormat:@"%@到期",model.data.endtime];
+                
+            }else{
+                [MyHelper showMessage:model.msg];
+            }
+        } fail:^(id error) {
+            
+        }];
+    }
 }
 
 -(TC_DHJ_V *)DHJ{
@@ -47,9 +107,24 @@
         TC_DHJ_V *DHJ = [TC_DHJ_V init_Xib];
         _DHJ = DHJ;
         _DHJ.frame = self.window.bounds;
-        
+        _DHJ.delegate = self;
     }
     return _DHJ;
+}
+
+-(void)TC_DHJ_V_Delegate_Action{
+    NSLog(@"立即领取");
+    NSDictionary *dic = @{@"cid":[NSString stringWithFormat:@"%li",model.data.idField],@"cname":model.data.name,@"order_sn":str_DDID,@"token":[MyHelper toToken]};
+    [NetRequest postWithUrl:Coupon_receiveCoin params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"领取优惠劵==  %@",dict);
+        if ([dict[@"code"] integerValue]) {
+            [MyHelper showMessage:@"领取成功！"];
+        }else{
+            [MyHelper showMessage:dict[@"msg"]];
+        }
+    } fail:^(id error) {
+        
+    }];
 }
 
 #pragma mark- 初始化
@@ -63,13 +138,13 @@
     lbl_ZH = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, image_BJ.width - 10 * 2, 38)];
     lbl_ZH.font = font14;
     lbl_ZH.textColor = UIColorFromHex(0x666666);
-    lbl_ZH.text = @"当前账号：15810387573";
+    lbl_ZH.text = [NSString stringWithFormat:@"当前账号：%@",[kUserDefaults objectForKey:YongHuMing]];
     [image_BJ addSubview:lbl_ZH];
     
     lbl_YE = [[UILabel alloc]initWithFrame:CGRectMake(image_BJ.width - 210, 39, 200, 60)];
     lbl_YE.font = [UIFont systemFontOfSize:26];
     lbl_YE.textColor = UIColorFromHex(0x333333);
-    lbl_YE.text = @"￥133399.99";
+    lbl_YE.text = [NSString stringWithFormat:@"%@￥",[kUserDefaults objectForKey:YuE]];
     lbl_YE.textAlignment = 2;
     [image_BJ addSubview:lbl_YE];
     
@@ -111,7 +186,7 @@
         [arr_lbl addObject:lbl];
     }
     
-    UIButton *btn_FL = [[UIButton alloc]initWithFrame:CGRectMake(15, image_BJ.bottom + 15 + ( 10 + 65) * 2, ScreenWidth - 15*2, 30)];
+    btn_FL = [[UIButton alloc]initWithFrame:CGRectMake(15, image_BJ.bottom + 15 + ( 10 + 65) * 2, ScreenWidth - 15*2, 30)];
     [btn_FL setImage:[UIImage imageNamed:@"TiShi"] forState:UIControlStateNormal];
     [btn_FL setTitle:@" 单次充值满1000送鸡蛋兑换券" forState:UIControlStateNormal];
     btn_FL.titleLabel.font = font12;
@@ -121,6 +196,7 @@
     
     //充值数量
     txt_SL = [[UITextField alloc]initWithFrame:CGRectMake(15, btn_FL.bottom , ScreenWidth - 15*2, 40)];
+    txt_SL.delegate = self;
     txt_SL.layer.masksToBounds = YES;
     txt_SL.layer.cornerRadius = 5;
     txt_SL.layer.borderColor = UIColorFromHex(0xff7800).CGColor;
@@ -194,6 +270,54 @@
     [self if_ZDY];
 }
 
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    [self UP_YHJ];
+    return YES;
+}
+
+#pragma mark-  //更新优惠劵送礼品
+- (void)UP_YHJ{
+    NSString *str_JE = @"";
+    switch (int_ZDY) {
+        case 0:
+            str_JE= @"50";
+            break;
+        case 1:
+            str_JE= @"100";
+            break;
+        case 2:
+            str_JE= @"200";
+            break;
+        case 3:
+            str_JE= @"500";
+            break;
+        case 4:
+            str_JE= @"1000";
+            break;
+        case 5:
+            str_JE= txt_SL.text;
+            break;
+        default:
+            break;
+    }
+    
+    [NetRequest postWithUrl:Coupon_getcoin_warn params:@{@"money_str":str_JE} showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        NSLog(@"获取送的优惠劵 ==  %@",dict);
+        if ([dict[@"code"] integerValue] == 1) {
+            NSDictionary *dic_data = dict[@"data"];
+            btn_FL.hidden = NO;
+            [btn_FL setTitle:[NSString stringWithFormat:@" 单次充值满%@送%@",str_JE,dic_data[@"name"]] forState:UIControlStateNormal];
+            btn_FL.width = [MyHelper strWidth:btn_FL.titleLabel.text andFont:btn_FL.titleLabel.font andHeight:btn_FL.height] + 15;
+        }else{
+            btn_FL.hidden = YES;
+        }
+        
+    } fail:^(id error) {
+        
+    }];
+}
+
 - (void)if_ZDY{
     if (int_ZDY == 5) {
         //自定义金额
@@ -211,24 +335,41 @@
 
 #pragma mark- 充值按钮
 -(void)btn_CZ_Action{
-//    [self.window addSubview:self.DHJ];
-    if (int_ZDY == 0) {
-        [self ChongZhi:YES str_JE:@"50"];
-    }else if (int_ZDY == 1){
-        [self ChongZhi:YES str_JE:@"100"];
-    }else if (int_ZDY == 2){
-        [self ChongZhi:YES str_JE:@"200"];
-    }else if (int_ZDY == 3){
-        [self ChongZhi:YES str_JE:@"500"];
-    }else if (int_ZDY == 4){
-        [self ChongZhi:YES str_JE:@"1000"];
-    }else if (int_ZDY == 5){
-        if ([txt_SL.text integerValue] > 0) {
-            [self ChongZhi:YES str_JE:txt_SL.text];
-        }else{
-            [MyHelper showMessage:@"请输入充值金额！"];
+    
+    //初始化提示框；
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"请选择充值方式" preferredStyle: UIAlertControllerStyleActionSheet];
+    
+    __weak ChongZhi_VC *weak_Self = self;
+    [alert addAction:[UIAlertAction actionWithTitle:@"微信" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //点击按钮的响应事件；
+        if (int_ZDY == 0) {
+            [weak_Self ChongZhi:YES str_JE:@"50"];
+        }else if (int_ZDY == 1){
+            [weak_Self ChongZhi:YES str_JE:@"100"];
+        }else if (int_ZDY == 2){
+            [weak_Self ChongZhi:YES str_JE:@"200"];
+        }else if (int_ZDY == 3){
+            [weak_Self ChongZhi:YES str_JE:@"500"];
+        }else if (int_ZDY == 4){
+            [weak_Self ChongZhi:YES str_JE:@"1000"];
+        }else if (int_ZDY == 5){
+            if ([txt_SL.text integerValue] > 0) {
+                [weak_Self ChongZhi:YES str_JE:txt_SL.text];
+            }else{
+                [MyHelper showMessage:@"请输入充值金额！"];
+            }
         }
-    }
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        //点击按钮的响应事件；
+    }]];
+    
+    //弹出提示框；
+    [self presentViewController:alert animated:true completion:nil];
+    return;
+    
+//    [self.window addSubview:self.DHJ];
+
 }
 
 #pragma mark- 充值接口 yes 微信 no 支付宝
@@ -241,6 +382,7 @@
             if (model_WX.code == 1) {
                 
                 [ZhiFuWenJian WeiXinZhiFu_partnerId:model_WX.data.partnerid prepayId:model_WX.data.prepayid nonceStr:model_WX.data.noncestr timeStamp:model_WX.data.timestamp package:model_WX.data.packageField sign:model_WX.data.sign];
+                str_DDID = model_WX.data.out_trade_no;
             }
         } fail:^(id error) {
             
@@ -276,7 +418,7 @@
         }
     }
     [self if_ZDY];
-    
+    [self UP_YHJ];
 }
 
 @end

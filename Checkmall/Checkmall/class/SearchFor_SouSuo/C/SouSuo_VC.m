@@ -182,6 +182,7 @@
     if (!_RMTJ) {
         SS_SJ_V *RMTJ = [SS_SJ_V init_Xib];
         _RMTJ = RMTJ;
+        _RMTJ.hidden = YES;
         _RMTJ.delegate = self;
         _RMTJ.frame = CGRectMake(0, 0, ScreenWidth , 0);
     }

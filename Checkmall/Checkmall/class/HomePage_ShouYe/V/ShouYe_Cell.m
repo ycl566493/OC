@@ -58,7 +58,7 @@
     lbl_JG = [[UILabel alloc]initWithFrame:CGRectMake(10, btn_GWC.top + 10, btn_GWC.left - 10 -10, 20)];
     lbl_JG.font = font17;
     lbl_JG.textColor = UIColorFromHex(0xff7800);
-    lbl_JG.text = @"￥99.0￥188.0";
+    lbl_JG.text = @"￥00.0￥000.0";
     
     
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     lbl_JG.text];

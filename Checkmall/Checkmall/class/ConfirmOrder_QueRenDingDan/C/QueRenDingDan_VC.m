@@ -15,7 +15,7 @@
 #import "ZhiFuChengGong_VC.h"//支付成功
 #import "DiZhiLieBiao_VC.h"//地址信息
 #import "WeiXinZhiFu_Model_RootClass.h"//
-#import "ZhiFuWenJian.h"//支付文杰
+#import "ZhiFuWenJian.h"//支付文件
 
 @interface QueRenDingDan_VC ()<DiZhiXinXi_V_Delegate,DiZhiLieBiao_VC_Delegate>{
     UIScrollView    *scrollV;
@@ -58,22 +58,26 @@
 
 #pragma mark- 支付回调
 - (void)ZFHD{
-//    [self UP_DD];
+    [self UP_DD];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self UP_DD];
 }
 
 #pragma mark- 刷新订单
 -(void)UP_DD{
     if (str_DDID) {
-        [NetRequest postWithUrl:Order_returnStatus params:@{@"order_sn":@"",@"paytype":@"2"} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        [NetRequest postWithUrl:Order_returnStatus params:@{@"order_sn":str_DDID,@"paytype":@"2",@"token":[MyHelper toToken]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             NSLog(@"支付状态 == %@",dict);
             if ([dict[@"code"] integerValue] == 1) {
+                [MyHelper showMessage:@"付款成功！"];
+
                 ZhiFuChengGong_VC *vc = [[ZhiFuChengGong_VC alloc]init];
                 [self.navigationController pushViewController:vc animated:YES];
+            }else{
+                [MyHelper showMessage:dict[@"msg"]];
+
             }
         } fail:^(id error) {
             
@@ -153,6 +157,7 @@
             if (model_WX.code == 1) {
                 
                 [ZhiFuWenJian WeiXinZhiFu_partnerId:model_WX.data.partnerid prepayId:model_WX.data.prepayid nonceStr:model_WX.data.noncestr timeStamp:model_WX.data.timestamp package:model_WX.data.packageField sign:model_WX.data.sign];
+                str_DDID = model_WX.data.out_trade_no;
             }
         } fail:^(id error) {
             

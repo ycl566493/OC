@@ -27,7 +27,7 @@
 @property (nonatomic, strong) NSString * paidAmount;
 @property (nonatomic, strong) NSString * price;
 @property (nonatomic, strong) NSString * sprice;
-@property (nonatomic, strong) NSString * url;
+@property (nonatomic, strong) NSString * path;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end
