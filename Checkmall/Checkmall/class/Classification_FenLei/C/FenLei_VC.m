@@ -17,7 +17,7 @@
 #import "GuangGao_Model_RootClass.h"//广告model
 #import "KBY_View.h"
 
-@interface FenLei_VC ()<UITableViewDelegate,UITableViewDataSource,FenLei_H_GG_V_Delegate>{
+@interface FenLei_VC ()<UITableViewDelegate,UITableViewDataSource,FenLei_H_GG_V_Delegate,FenLei_ShangPin_Cell_Delegate>{
     UITableView *table_V_FL;//分类列表
     UITableView *table_V_SP;//商品列表
     FenLei_H_GG_V       *GG;//分类广告
@@ -142,6 +142,25 @@
     
 }
 
+#pragma mark- 添加购物车
+- (void)FenLei_ShangPin_Cell_Delegate_GWC:(NSInteger)tag{
+    FenLeiShangPin_Model_Data   *MMMM = model_FLSP.data[tag];
+
+    NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",MMMM.idField],@"num":@"1"};
+    
+    [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        
+        NSLog(@"添加购物车 = = =%@",dict);
+        if ([dict[@"code"] integerValue] == 1) {
+            [MyHelper UP_GWCSL];
+        }
+    } fail:^(id error) {
+        
+        
+    }];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear: animated];
 }
@@ -237,6 +256,8 @@
         }
         FenLeiShangPin_Model_Data   *MMm = model_FLSP.data[indexPath.row];
         cell.model = MMm;
+        cell.tag = indexPath.row;
+        cell.delegate = self;
         return cell;
     }
 }

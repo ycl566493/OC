@@ -13,6 +13,10 @@
 @optional
 - (void)WoDe_FuWo_V_Delegate_DZ;//地址按钮
 
+- (void)WoDe_FuWo_V_Delegate_BZ;//帮助按钮
+
+- (void)WoDe_FuWo_V_Delegate_KF;//客服按钮
+
 @end
 
 @interface WoDe_FuWo_V : MyUIView

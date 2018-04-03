@@ -26,21 +26,18 @@ NSString *const kDingDanLieBiao_Model_DataPaidAmount = @"paid_amount";
 NSString *const kDingDanLieBiao_Model_DataPrice = @"price";
 NSString *const kDingDanLieBiao_Model_DataSprice = @"sprice";
 NSString *const kDingDanLieBiao_Model_DataPath = @"path";
+NSString *const kDingDanLieBiao_Model_DataOg_status = @"og_status";
 
 @interface DingDanLieBiao_Model_Data ()
 @end
 @implementation DingDanLieBiao_Model_Data
 
-
-
-
-/**
- * Instantiate the instance using the passed dictionary values to set the properties values
- */
-
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    if(![dictionary[kDingDanLieBiao_Model_DataOg_status] isKindOfClass:[NSNull class]]){
+        self.og_status = [dictionary[kDingDanLieBiao_Model_DataOg_status] integerValue];
+    }
 	if(![dictionary[kDingDanLieBiao_Model_DataAllPayCount] isKindOfClass:[NSNull class]]){
 		self.allPayCount = dictionary[kDingDanLieBiao_Model_DataAllPayCount];
 	}	

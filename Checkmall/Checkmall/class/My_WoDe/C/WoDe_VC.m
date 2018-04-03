@@ -54,11 +54,67 @@
             [self.navigationController pushViewController:vc animated:YES];
         }else if (MMM.istype == 3){
             //接龙
-            JieLong_VC *vc = [[JieLong_VC alloc]init];
-            [self.navigationController pushViewController:vc animated:YES];
+//            JieLong_VC *vc = [[JieLong_VC alloc]init];
+//            [self.navigationController pushViewController:vc animated:YES];
         }
     }
 }
+
+#pragma mark- 帮助
+-(void)WoDe_FuWo_V_Delegate_BZ{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"帮助中心" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"010-57281579" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //点击按钮的响应事件；
+        NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
+        if (phoneVersion.floatValue < 10.0) {
+            //iOS10 以前使用
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"Tel://01057281579"]];
+        }
+        else {
+            //iOS10 以后使用
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"Tel://01057281579"]
+                                               options:@{}
+                                     completionHandler:nil];
+        }
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        //点击按钮的响应事件；
+    }]];
+    
+    //弹出提示框；
+    [self presentViewController:alert animated:true completion:nil];
+}
+
+#pragma mark- 客服
+-(void)WoDe_FuWo_V_Delegate_KF{
+    //初始化提示框；
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"客服电话" message:nil preferredStyle: UIAlertControllerStyleActionSheet];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"010-57281579" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //点击按钮的响应事件；
+        NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
+        if (phoneVersion.floatValue < 10.0) {
+            //iOS10 以前使用
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"Tel://01057281579"]];
+        }
+        else {
+            //iOS10 以后使用
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"Tel://01057281579"]
+                                               options:@{}
+                                     completionHandler:nil];
+        }
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        //点击按钮的响应事件；
+    }]];
+    
+    //弹出提示框；
+    [self presentViewController:alert animated:true completion:nil];
+}
+
+
 
 #pragma mark- 广告接口
 - (void)init_data_GG{
@@ -132,6 +188,7 @@
 //我的地址
 - (void)WoDe_FuWo_V_Delegate_DZ{
     DiZhiLieBiao_VC *vc = [[DiZhiLieBiao_VC alloc]init];
+    vc.bool_SH = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -144,8 +201,8 @@
 
 #pragma mark- 优惠劵
 -(void)WoDe_TouBu_V_Delegate_YHJ{
-    YouHuiJuan_VC   *vc = [[YouHuiJuan_VC alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    YouHuiJuan_VC   *vc = [[YouHuiJuan_VC alloc]init];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

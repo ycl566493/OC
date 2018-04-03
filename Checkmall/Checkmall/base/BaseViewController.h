@@ -15,7 +15,7 @@
 @property (nonatomic,assign)BOOL     CeHua;//侧滑开关
 @property (nonatomic,strong)UIWindow *window;
 @property(nonatomic,assign) NSInteger pageIndex;
-
+@property (nonatomic,weak)BaseViewController    *weak_Self;
 
 - (void)FGX:(BOOL)fgx;//分割线是否显示
 - (void)init_UI;//初始化

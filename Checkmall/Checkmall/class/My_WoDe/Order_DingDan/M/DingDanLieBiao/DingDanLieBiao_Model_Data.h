@@ -28,6 +28,9 @@
 @property (nonatomic, strong) NSString * price;
 @property (nonatomic, strong) NSString * sprice;
 @property (nonatomic, strong) NSString * path;
+@property (nonatomic, assign) NSInteger  og_status;
+
+
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

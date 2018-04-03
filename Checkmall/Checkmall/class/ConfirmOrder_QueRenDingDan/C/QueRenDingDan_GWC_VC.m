@@ -16,8 +16,10 @@
 #import "ZhiFuWenJian.h"//支付文件
 #import "WeiXinZhiFu_Model_RootClass.h"//支付model
 #import "ZhiFuChengGong_VC.h"//支付成功
+#import "ZFJG_Model_RootClass.h"//支付结果
+#import "ChongZhi_VC.h"//充值
 
-@interface QueRenDingDan_GWC_VC ()<DiZhiXinXi_V_Delegate,DiZhiLieBiao_VC_Delegate>{
+@interface QueRenDingDan_GWC_VC ()<DiZhiXinXi_V_Delegate,DiZhiLieBiao_VC_Delegate,ZhiFuFangShi_V_Delegate>{
     UIScrollView    *scrollV;
     
     BOOL            bool_PS;//配送方式 0 自提 1 快递
@@ -62,19 +64,40 @@
     [self UP_DD];
 }
 
+#pragma mark- 充值
+-(void)ZhiFuFangShi_V_Delegate_LJCZ{
+    ChongZhi_VC *vc = [[ChongZhi_VC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 #pragma mark- 刷新订单
 -(void)UP_DD{
     if (str_DDID) {
+        
+        WeakSelf(ws);
         [NetRequest postWithUrl:Order_returnStatus params:@{@"order_sn":str_DDID,@"paytype":@"2",@"token":[MyHelper toToken]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             NSLog(@"支付状态 == %@",dict);
-            if ([dict[@"code"] integerValue] == 1) {
-                [MyHelper showMessage:@"付款成功！"];
+            ZFJG_Model_RootClass    *model = [[ZFJG_Model_RootClass alloc]initWithDictionary:dict];
 
+            if (model.data.sta  == 1) {
+                [MyHelper showMessage:@"付款成功！"];
+                NSString    *JG = @"";
+                JG = model.data.paidAmount;
                 ZhiFuChengGong_VC *vc = [[ZhiFuChengGong_VC alloc]init];
-                [self.navigationController pushViewController:vc animated:YES];
+                vc.str_JG = JG;
+                [ws.navigationController pushViewController:vc animated:YES];
+                
+                NSMutableArray *marr = [[NSMutableArray alloc]initWithArray:ws.navigationController.viewControllers];
+                for (UIViewController *vc in marr) {
+                    if ([vc isKindOfClass:[ws class]]) {
+                        [marr removeObject:vc];
+                        break;
+                    }
+                }
+                ws.navigationController.viewControllers = marr;
             }else{
-                [MyHelper showMessage:dict[@"msg"]];
+                [MyHelper showMessage:model.msg];
             }
         } fail:^(id error) {
             
@@ -92,28 +115,65 @@
     }else{
         
         NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
+        
         for (QueRenDingDan_Model_Arr *MMM in self.model.data.arr) {
+            
                 NSMutableDictionary *dic_DDDDDD = [[NSMutableDictionary alloc]init];
                 [dic_DDDDDD setObject:[NSString stringWithFormat:@"%li",MMM.gid] forKey:@"goodsid"];
                 [dic_DDDDDD setObject:MMM.price forKey:@"price"];
                 [dic_DDDDDD setObject:[NSString stringWithFormat:@"%@",MMM.number] forKey:@"num"];
                 
                 [arr_Data addObject:[MyHelper toJson:dic_DDDDDD]];
+            
+            
         }
         if (arr_Data.count == 0) {
             return;
         }
         //       type 商品类型 1 拼团 2 开团 3 单独购买 4今日团购 5兑换 6接龙
       // paymode 支付方式 1 微信 2 支付宝 3 余额支付
-
-        NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"3",@"paymode":@"1",@"addressid":[NSString stringWithFormat:@"%li",dz_id],@"paytype":@"2",@"coupon_amount":@"1",@"shipping_amount":@"1"};
+        NSString *str_ZFFS = @"3";
+        if (self.ZFFS.int_ZFFS == 1) {
+            str_ZFFS = @"1";
+        }else if (self.ZFFS.int_ZFFS == 2) {
+            str_ZFFS = @"2";
+            [MyHelper showMessage:@"亲！暂未开通支付宝支付！"];
+            return;
+        }else if (self.ZFFS.int_ZFFS == 3) {
+            str_ZFFS = @"3";
+        }else{
+            [MyHelper showMessage:@"服务异常！请稍后再试用！"];
+            return;
+        }
         
+        NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"3",@"paymode":str_ZFFS,@"addressid":[NSString stringWithFormat:@"%li",dz_id],@"paytype":@"2",@"coupon_amount":@"1",@"shipping_amount":@"1"};
+        
+        WeakSelf(ws);
         [NetRequest postWithUrl:order_getMessage params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             NSLog(@"下单返回 ==  %@",dict);
-            model_WX = [[WeiXinZhiFu_Model_RootClass alloc]initWithDictionary:dict];
-            if (model_WX.code == 1) {
-                [ZhiFuWenJian WeiXinZhiFu_partnerId:model_WX.data.partnerid prepayId:model_WX.data.prepayid nonceStr:model_WX.data.noncestr timeStamp:model_WX.data.timestamp package:model_WX.data.packageField sign:model_WX.data.sign];
-                str_DDID = model_WX.data.out_trade_no;
+            if (self.ZFFS.int_ZFFS == 1) {
+                model_WX = [[WeiXinZhiFu_Model_RootClass alloc]initWithDictionary:dict];
+                if (model_WX.code == 1) {
+                    
+                    [ZhiFuWenJian WeiXinZhiFu_partnerId:model_WX.data.partnerid prepayId:model_WX.data.prepayid nonceStr:model_WX.data.noncestr timeStamp:model_WX.data.timestamp package:model_WX.data.packageField sign:model_WX.data.sign];
+                    str_DDID = model_WX.data.out_trade_no;
+                }
+            }else if (self.ZFFS.int_ZFFS == 3){
+                if ([dict[@"code"] integerValue] == 1) {
+                    [MyHelper showMessage:@"支付成功！"];
+                    ZhiFuChengGong_VC *vc = [[ZhiFuChengGong_VC alloc]init];
+                    vc.str_JG = dict[@"data"];
+                    [ws.navigationController pushViewController:vc animated:YES];
+                    
+                    NSMutableArray *marr = [[NSMutableArray alloc]initWithArray:ws.navigationController.viewControllers];
+                    for (UIViewController *vc in marr) {
+                        if ([vc isKindOfClass:[ws class]]) {
+                            [marr removeObject:vc];
+                            break;
+                        }
+                    }
+                    ws.navigationController.viewControllers = marr;
+                }
             }
           
             
@@ -242,6 +302,7 @@
         ZFFS.width = self.view.width;
         [self.view addSubview:ZFFS];
         _ZFFS = ZFFS;
+        _ZFFS.delegate = self;
     }
     return _ZFFS;
 }

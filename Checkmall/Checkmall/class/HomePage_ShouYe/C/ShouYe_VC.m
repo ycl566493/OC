@@ -54,7 +54,8 @@
     [self.collectionView registerClass:[CollectionReusableView_H class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"Footer"];
 
-    [self init_Data];
+    self.pageIndex = 1;
+    [self init_Data:YES];
     
 //    DengLu_VC *vc = [[DengLu_VC alloc]init];
 //    BaseNavigationController    *nVc = [[BaseNavigationController alloc]initWithRootViewController:vc];
@@ -63,6 +64,21 @@
 //    }];
 
 }
+
+- (void)refresh{
+    //下拉请求
+    [self endRefreshing];
+    self.pageIndex = 1;
+    [self init_Data:YES];
+}
+
+- (void)loadMore{
+    //加载更多
+    [self endRefreshing];
+    self.pageIndex += 1;
+    [self init_Data:NO];
+}
+
 
 #pragma mark- 分类点击
 -(void)ShouYe_H_FL_V_Delegate_Selegate:(NSInteger)tag{
@@ -106,10 +122,15 @@
 }
 
 #pragma mark- 请求数据
--(void)init_Data{
-    [NetRequest postWithUrl:product_getRecommendProduct params:@{@"page":@"1"} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+-(void)init_Data:(BOOL)Y_N{
+    [NetRequest postWithUrl:product_getRecommendProduct params:@{@"page":[NSString stringWithFormat:@"%li",self.pageIndex]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"%@",dict);
-        model = [[ShouYe_Model_RootClass alloc]initWithDictionary:dict];
+        if (Y_N) {
+            model = [[ShouYe_Model_RootClass alloc]initWithDictionary:dict];
+
+        }else{
+            [model Add_Dictionary:dict];;
+        }
         [self.collectionView reloadData];
         
     } fail:^(id error) {
@@ -200,8 +221,8 @@
     if (tag == 1) {
 //        ZhuanXiang_VC *vc = [[ZhuanXiang_VC alloc]init];
 //        vc.bool_TZ = YES;
-        JieLong_VC  *vc = [[JieLong_VC alloc]init];
-        [self.navigationController pushViewController:vc animated:YES];
+//        JieLong_VC  *vc = [[JieLong_VC alloc]init];
+//        [self.navigationController pushViewController:vc animated:YES];
     }else if (tag == 2){
         
     }

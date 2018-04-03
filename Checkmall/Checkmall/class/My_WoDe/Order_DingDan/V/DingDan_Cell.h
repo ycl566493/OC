@@ -9,6 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "DingDanLieBiao_Model_Data.h"//model
 
+@protocol DingDan_Cell_Delegate <NSObject>
+
+@optional
+- (void)DingDan_Cell_Delegate_Action1:(NSInteger)tag;//操作按钮1
+- (void)DingDan_Cell_Delegate_Action2:(NSInteger)tag;//操作按钮2
+
+
+@end
+
 @interface DingDan_Cell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageV_TP;//商品图片
@@ -35,7 +44,11 @@
 
 @property (nonatomic,strong)DingDanLieBiao_Model_Data   *model;
 
+@property (nonatomic,assign)id<DingDan_Cell_Delegate>   delegate;
+
+
 +(CGFloat)get_H;
+
 
 
 @end

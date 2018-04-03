@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 #import "QueRenDingDan_Model_RootClass.h"
 
+
+
 @interface QueRenDingDan_VC : BaseViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_DR;//确认提交
@@ -20,5 +22,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lbl_JE_H;//高度问题
 
 @property (nonatomic, strong) QueRenDingDan_Model_RootClass *model;
+
 
 @end

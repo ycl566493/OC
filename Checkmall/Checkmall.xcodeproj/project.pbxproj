@@ -134,6 +134,8 @@
 		74A3B544204EBAA1004017DA /* FenLei_H_Title_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3B543204EBAA1004017DA /* FenLei_H_Title_V.m */; };
 		74AA129A2051408700F030AF /* ZhuCe_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AA12992051408700F030AF /* ZhuCe_VC.m */; };
 		74AA129D2051462700F030AF /* WangJiMiMa_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AA129C2051462700F030AF /* WangJiMiMa_VC.m */; };
+		74B2170820739D2100A166BD /* ZFJG_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B2170520739D2100A166BD /* ZFJG_Model_RootClass.m */; };
+		74B2170920739D2100A166BD /* ZFJG_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B2170620739D2100A166BD /* ZFJG_Model_Data.m */; };
 		74BF4255206D0683003D77A4 /* SouSuo_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BF4251206D0683003D77A4 /* SouSuo_Model_Data.m */; };
 		74BF4256206D0683003D77A4 /* SouSuo_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BF4252206D0683003D77A4 /* SouSuo_Model_RootClass.m */; };
 		74C890DC2064F6F400898168 /* FenLeiShangPin_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C890D92064F6F400898168 /* FenLeiShangPin_Model_RootClass.m */; };
@@ -574,6 +576,10 @@
 		74AA12992051408700F030AF /* ZhuCe_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuCe_VC.m; sourceTree = "<group>"; };
 		74AA129B2051462700F030AF /* WangJiMiMa_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WangJiMiMa_VC.h; sourceTree = "<group>"; };
 		74AA129C2051462700F030AF /* WangJiMiMa_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WangJiMiMa_VC.m; sourceTree = "<group>"; };
+		74B2170420739D2100A166BD /* ZFJG_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJG_Model_Data.h; sourceTree = "<group>"; };
+		74B2170520739D2100A166BD /* ZFJG_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJG_Model_RootClass.m; sourceTree = "<group>"; };
+		74B2170620739D2100A166BD /* ZFJG_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFJG_Model_Data.m; sourceTree = "<group>"; };
+		74B2170720739D2100A166BD /* ZFJG_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFJG_Model_RootClass.h; sourceTree = "<group>"; };
 		74BF4251206D0683003D77A4 /* SouSuo_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SouSuo_Model_Data.m; sourceTree = "<group>"; };
 		74BF4252206D0683003D77A4 /* SouSuo_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SouSuo_Model_RootClass.m; sourceTree = "<group>"; };
 		74BF4253206D0683003D77A4 /* SouSuo_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SouSuo_Model_Data.h; sourceTree = "<group>"; };
@@ -1575,6 +1581,7 @@
 		749FDA0B205A79E300596F36 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				74B2170320739D2100A166BD /* ZFJG */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1609,6 +1616,17 @@
 				74ECFA8C2060E32B00CC018B /* JL_SPXX_V.xib */,
 			);
 			path = V;
+			sourceTree = "<group>";
+		};
+		74B2170320739D2100A166BD /* ZFJG */ = {
+			isa = PBXGroup;
+			children = (
+				74B2170420739D2100A166BD /* ZFJG_Model_Data.h */,
+				74B2170620739D2100A166BD /* ZFJG_Model_Data.m */,
+				74B2170720739D2100A166BD /* ZFJG_Model_RootClass.h */,
+				74B2170520739D2100A166BD /* ZFJG_Model_RootClass.m */,
+			);
+			path = ZFJG;
 			sourceTree = "<group>";
 		};
 		74BF4248206CE44D003D77A4 /* M */ = {
@@ -2893,12 +2911,14 @@
 				74D74832204E39E400DB65FD /* SDWebImageDecoder.m in Sources */,
 				74A3B544204EBAA1004017DA /* FenLei_H_Title_V.m in Sources */,
 				74D7484D204E39E400DB65FD /* IQKeyboardReturnKeyHandler.m in Sources */,
+				74B2170920739D2100A166BD /* ZFJG_Model_Data.m in Sources */,
 				74D74764204E39B800DB65FD /* UIImage+Extension.m in Sources */,
 				74FCF0B6206E3BEF007F7BAD /* WeiXinZhiFu_Model_RootClass.m in Sources */,
 				74662F1C205A2788001A224E /* DingDan_Cell.m in Sources */,
 				7465374B20579ECD00CF0D6B /* DiZhi_Add_V.m in Sources */,
 				74D74827204E39E400DB65FD /* MJRefreshNormalHeader.m in Sources */,
 				74F3EB4F2053B728002BDD8B /* ShangPin_TuPian_V.m in Sources */,
+				74B2170820739D2100A166BD /* ZFJG_Model_RootClass.m in Sources */,
 				74785871205B5A0900674310 /* ZhiFuChengGong_PT_VC.m in Sources */,
 				74D74850204E39E400DB65FD /* AFNetworkActivityIndicatorManager.m in Sources */,
 				74D74845204E39E400DB65FD /* IQTextView.m in Sources */,

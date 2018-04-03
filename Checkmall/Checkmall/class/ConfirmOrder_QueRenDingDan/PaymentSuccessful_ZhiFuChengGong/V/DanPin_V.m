@@ -19,8 +19,24 @@
     
 }
 
+#pragma mark- //查看订单
+- (IBAction)btn_DD_Action:(id)sender {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(DanPin_V_Delegate_Action_DD)]) {
+        [self.delegate DanPin_V_Delegate_Action_DD];
+    }
+}
+
+#pragma mark- 返回首页
+- (IBAction)btn_FHSY_Action:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(DanPin_V_Delegate_Action_FH)]) {
+        [self.delegate DanPin_V_Delegate_Action_FH];
+    }
+}
+
+
 +(CGFloat)get_H:(id)data{
-    return 213;
+    return 200;
 }
 
 @end

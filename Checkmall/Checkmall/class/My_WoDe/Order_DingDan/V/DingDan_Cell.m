@@ -17,6 +17,7 @@
     self.btn_CZ.layer.cornerRadius = 5;
     self.btn_CZ.backgroundColor  = UIColorFromHex(0xff7800);
     [self.btn_CZ setTitle:@"立即付款" forState:UIControlStateNormal];
+    [self.btn_CZ addTarget:self action:@selector(btn_CZ_Action) forControlEvents:UIControlEventTouchUpInside];
     [self.btn_CZ setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     self.btn_QX.layer.masksToBounds = YES;
@@ -25,10 +26,26 @@
     self.btn_QX.layer.borderColor= UIColorFromHex(0x9d9d9d).CGColor;
     self.btn_QX.backgroundColor  = [UIColor whiteColor];
     [self.btn_QX setTitle:@"取消订单" forState:UIControlStateNormal];
+    [self.btn_QX addTarget:self action:@selector(btn_QX_Action) forControlEvents:UIControlEventTouchUpInside];
     [self.btn_QX setTitleColor:UIColorFromHex(0x9d9d9d) forState:UIControlStateNormal];
     
 
 }
+
+#pragma mark- 操作按钮1
+-(void)btn_CZ_Action{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(DingDan_Cell_Delegate_Action1:)]) {
+        [self.delegate DingDan_Cell_Delegate_Action1:self.tag];
+    }
+}
+
+#pragma mark- 操作按钮2
+-(void)btn_QX_Action{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(DingDan_Cell_Delegate_Action2:)]) {
+        [self.delegate DingDan_Cell_Delegate_Action2:self.tag];
+    }
+}
+
 
 -(void)setModel:(DingDanLieBiao_Model_Data *)model{
     _model = model;
@@ -54,22 +71,29 @@
     self.lbl_JG.attributedText = attributedStr;
     
     
+    self.btn_QX.hidden = YES;
+    self.btn_CZ.hidden = YES;
     //    order_status   订单状态 1 待付款 2 代发货 3待收货 4 已退款 5 交易成功 6 已取消',
-    if ([model.orderStatus integerValue] == 1) {
+    if (model.og_status == 1) {
         self.lbl_ZT.text = @"待付款";
-    }else if ([model.orderStatus integerValue] == 2) {
+        self.btn_QX.hidden = NO;
+        self.btn_CZ.hidden = NO;
+        [self.btn_CZ setTitle:@"立即付款" forState:UIControlStateNormal];
+        [self.btn_QX setTitle:@"取消订单" forState:UIControlStateNormal];
+        
+    }else if (model.og_status == 2) {
         self.lbl_ZT.text = @"代发货";
-    }else if ([model.orderStatus integerValue] == 3) {
+    }else if (model.og_status == 3) {
         self.lbl_ZT.text = @"待收货";
-    }else if ([model.orderStatus integerValue] == 4) {
+        self.btn_CZ.hidden = NO;
+        [self.btn_CZ setTitle:@"立即收货" forState:UIControlStateNormal];
+    }else if (model.og_status == 4) {
         self.lbl_ZT.text = @"已退款";
-    }else if ([model.orderStatus integerValue] == 5) {
+    }else if (model.og_status == 5) {
         self.lbl_ZT.text = @"交易成功";
-    }else if ([model.orderStatus integerValue] == 6) {
+    }else if (model.og_status == 6) {
         self.lbl_ZT.text = @"已取消";
     }
-    
-    
     
 }
 

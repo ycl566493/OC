@@ -43,6 +43,16 @@
         if (self.delegate && [self.delegate respondsToSelector:@selector(WoDe_FuWo_V_Delegate_DZ)]) {
             [self.delegate WoDe_FuWo_V_Delegate_DZ];
         }
+    }else if (btn.tag == 2){
+        //帮助
+        if (self.delegate && [self.delegate respondsToSelector:@selector(WoDe_FuWo_V_Delegate_BZ)]) {
+            [self.delegate WoDe_FuWo_V_Delegate_BZ];
+        }
+    }else if (btn.tag == 3){
+        //客服
+        if (self.delegate && [self.delegate respondsToSelector:@selector(WoDe_FuWo_V_Delegate_KF)]) {
+            [self.delegate WoDe_FuWo_V_Delegate_KF];
+        }
     }
 }
 

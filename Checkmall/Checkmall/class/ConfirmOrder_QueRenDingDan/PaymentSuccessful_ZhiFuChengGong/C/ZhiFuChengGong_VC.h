@@ -10,4 +10,6 @@
 
 @interface ZhiFuChengGong_VC : BaseCollectionViewController
 
+@property (nonatomic,strong) NSString       *str_JG;//商品价格
+
 @end

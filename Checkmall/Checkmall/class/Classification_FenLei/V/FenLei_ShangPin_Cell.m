@@ -54,6 +54,7 @@
     
     btn_GWC = [[UIButton alloc]initWithFrame:CGRectMake(self_W - 30 - 15, 97 - 30 - 10, 30, 30)];
     [btn_GWC setImage:[UIImage imageNamed:@"GouWuCheHong"] forState:UIControlStateNormal];
+    [btn_GWC addTarget:self action:@selector(btn_GWC_Action:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn_GWC];
     
     lbl_JG = [[UILabel alloc]initWithFrame:CGRectMake(imageV_TP.right + 15, 97 - 20 - 10, btn_GWC.left - imageV_TP.right - 15 - 5, 20)];
@@ -76,6 +77,19 @@
     lbl_JG.attributedText = attributedStr;
     
 }
+
+-(void)btn_GWC_Action:(UIButton*)btn{
+    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+    CGRect rect=[btn convertRect: btn.bounds toView:window];
+    [MyHelper addToShoppingCartWithGoodsImage:btn.imageView.image startPoint:CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2) endPoint:CGPointMake([[kUserDefaults objectForKey:GWC_X] floatValue], [[kUserDefaults objectForKey:GWC_Y] floatValue]) completion:^(BOOL finished) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GouWuCheShuLiang" object:nil];
+    }];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(FenLei_ShangPin_Cell_Delegate_GWC:)]) {
+        [self.delegate FenLei_ShangPin_Cell_Delegate_GWC:self.tag];
+    }
+}
+
 
 -(void)setModel:(FenLeiShangPin_Model_Data *)model{
     _model = model;

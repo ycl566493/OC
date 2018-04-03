@@ -43,7 +43,8 @@
 #define Coupon_getcoin_warn [NSString stringWithFormat:@"%@%@",URL_LJ,@"Coupon/getcoin_warn"]//更新优惠劵送礼品
 #define Coupon_receiveCoin [NSString stringWithFormat:@"%@%@",URL_LJ,@"Coupon/receiveCoin"]//领取兑换券
 
-
+#define Order_saveOrderStatus [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/saveOrderStatus"]//取消订单
+#define Order_goToPayment [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/goToPayment"]//去支付
 
 
 

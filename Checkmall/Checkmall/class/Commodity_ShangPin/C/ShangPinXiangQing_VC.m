@@ -24,7 +24,7 @@
     ShangPin_XinXi_V        *XinXi;//商品信息
     ShangPin_XiaDan_V       *XiaDan;//商品下单信息
     ShangPin_MS_V           *MS;//商品描述
-    ShangPin_PinTuanXuZhi_V *PinTuan;//拼团
+//    ShangPin_PinTuanXuZhi_V *PinTuan;//拼团
     
     UIButton                *btn_GM;//购买
     UIButton                *btn_PT;//拼团
@@ -37,7 +37,7 @@
     QueRenDingDan_Model_RootClass   *model_QRDD;//确认订单
 }
 
-@property(weak,nonatomic)TC_PTXZ_V          *PTXZ;//拼团须知
+//@property(weak,nonatomic)TC_PTXZ_V          *PTXZ;//拼团须知
 
 @end
 
@@ -78,27 +78,30 @@
     MS.model = model_SPXQ;
     MS.height = [ShangPin_MS_V get_H:model_SPXQ.data.productDesc];
 
-    PinTuan.top = MS.bottom;
-    scrollV.contentSize = CGSizeMake(0, PinTuan.bottom);
+//    PinTuan.top = MS.bottom;
+    scrollV.contentSize = CGSizeMake(0, MS.bottom + 20);
 
-    lbl_GM.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
-    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n马上参团",model_SPXQ.data.productPrice];
+//    lbl_GM.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
+//    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n马上参团",model_SPXQ.data.productPrice];
+    
+    lbl_GM.text = [NSString stringWithFormat:@"加入购物车"];
+    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
 
 }
 
--(TC_PTXZ_V *)PTXZ{
-    if (!_PTXZ) {
-        TC_PTXZ_V* PTXZ = [TC_PTXZ_V init_Xib];
-        [self.view addSubview:PTXZ];
-        _PTXZ = PTXZ;
-        _PTXZ.frame = self.window.bounds;
-    }
-    return _PTXZ;
-}
+//-(TC_PTXZ_V *)PTXZ{
+//    if (!_PTXZ) {
+//        TC_PTXZ_V* PTXZ = [TC_PTXZ_V init_Xib];
+//        [self.view addSubview:PTXZ];
+//        _PTXZ = PTXZ;
+//        _PTXZ.frame = self.window.bounds;
+//    }
+//    return _PTXZ;
+//}
 
 #pragma mark- 拼团须知
 -(void)ShangPin_PinTuanXuZhi_V_Delegate_PTXZ{
-    [self.window addSubview:self.PTXZ];
+//    [self.window addSubview:self.PTXZ];
 }
 
 #pragma mark- 初始化
@@ -113,7 +116,7 @@
     TuPian = [[ShangPin_TuPian_V alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [ShangPin_TuPian_V get_H:nil])];
     [scrollV addSubview:TuPian];
     
-    NSString *str_Title = @"商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称";
+    NSString *str_Title = @"";
     XinXi = [[ShangPin_XinXi_V alloc]initWithFrame:CGRectMake(0, TuPian.bottom, ScreenWidth, [ShangPin_XinXi_V get_H:str_Title])];
     XinXi.str_Title = str_Title;
     [scrollV addSubview:XinXi];
@@ -123,15 +126,15 @@
     [scrollV addSubview:XiaDan];
     
     
-    NSString    *str_MS = @"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈";
+    NSString    *str_MS = @"";
     MS = [[ShangPin_MS_V alloc]initWithFrame:CGRectMake(0, XiaDan.bottom, ScreenWidth, [ShangPin_MS_V get_H:str_MS])];
     [scrollV addSubview:MS];
     
-    PinTuan = [[ShangPin_PinTuanXuZhi_V alloc]initWithFrame:CGRectMake(0, MS.bottom, ScreenWidth, [ShangPin_PinTuanXuZhi_V get_H:nil])];
-    PinTuan.delegate = self;
-    [scrollV addSubview:PinTuan];
+//    PinTuan = [[ShangPin_PinTuanXuZhi_V alloc]initWithFrame:CGRectMake(0, MS.bottom, ScreenWidth, [ShangPin_PinTuanXuZhi_V get_H:nil])];
+//    PinTuan.delegate = self;
+//    [scrollV addSubview:PinTuan];
     
-    scrollV.contentSize = CGSizeMake(0, PinTuan.bottom );
+    scrollV.contentSize = CGSizeMake(0, MS.bottom );
     
     btn_GM = [[UIButton alloc]initWithFrame:CGRectMake(0, scrollV.bottom, ScreenWidth / 2, 54)];
     btn_GM.backgroundColor = UIColorFromHex(0xff9333);
@@ -140,7 +143,7 @@
     lbl_GM = [[UILabel alloc]initWithFrame:btn_GM.bounds];
     lbl_GM.numberOfLines = 2;
     lbl_GM.textAlignment = 1;
-    lbl_GM.text = @"￥25\n单独购买";
+    lbl_GM.text = @"加入购物车";
     lbl_GM.textColor = [UIColor whiteColor];
     lbl_GM.font = [UIFont systemFontOfSize:17];
     [btn_GM addSubview:lbl_GM];
@@ -152,7 +155,7 @@
     lbl_PT = [[UILabel alloc]initWithFrame:btn_GM.bounds];
     lbl_PT.numberOfLines = 2;
     lbl_PT.textAlignment = 1;
-    lbl_PT.text = @"￥15\n马上参团";
+    lbl_PT.text = @"￥0\n马上参团";
     lbl_PT.textColor = [UIColor whiteColor];
     lbl_PT.font = [UIFont systemFontOfSize:17];
     [btn_PT addSubview:lbl_PT];
@@ -168,15 +171,18 @@
 }
 
 
-#pragma mark- 拼团
-- (void)btn_PT_Action{
-    QueRenDingDan_PT_VC *VC = [[QueRenDingDan_PT_VC alloc]init];
+#pragma mark- 拼团btn_PT_Action
+- (void)btn_GM_Action{
+//    QueRenDingDan_PT_VC *VC = [[QueRenDingDan_PT_VC alloc]init];
+//
+//    [self.navigationController pushViewController:VC animated:YES];
     
-    [self.navigationController pushViewController:VC animated:YES];
+    [MyHelper showMessage:@"添加购物车成功"];
+
 }
 
-#pragma mark- 购买
--(void)btn_GM_Action{
+#pragma mark- 购买btn_GM_Action
+-(void)btn_PT_Action{
     
     
     NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];

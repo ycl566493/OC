@@ -12,10 +12,13 @@
 #import "ShouYe_H_RX_V.h"//热销
 #import "DanPin_V.h"//单品成功
 #import "CollectionReusableView_H.h"
+#import "ShouYe_Model_RootClass.h"//首页的数据modle
+#import "DingDanLieBiao_VC.h"
 
-@interface ZhiFuChengGong_VC (){
+@interface ZhiFuChengGong_VC ()<ShouYe_Cell_Delegate_GWC,DanPin_V_Delegate>{
     ShouYe_H_RX_V           *RX;
     UIButton                *btn_GWC;//购物车
+    ShouYe_Model_RootClass  *model;
 }
 
 @property (weak,nonatomic)DanPin_V      *DP;
@@ -28,6 +31,9 @@
     [super viewDidLoad];
     self.title = @"支付成功";
     [self init_UI];
+    [self setLeftItemWithIcon:nil title:nil selector:nil];
+    self.pageIndex = 1;
+    [self init_Data:YES];
 }
 
 -(void)init_UI{
@@ -45,10 +51,50 @@
     [self.collectionView registerClass:[CollectionReusableView_H class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"Footer"];
     
-    btn_GWC = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 50 - 15, ScreenHeight - kTabbarSafeBottomMargin - kStatusBarAndNavigationBarHeight - 15 - 50, 50, 50)];
-    [btn_GWC setImage:[UIImage imageNamed:@"GouWuCheYuan"] forState:UIControlStateNormal];
-    [self.view addSubview:btn_GWC];
+//    btn_GWC = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 50 - 15, ScreenHeight - kTabbarSafeBottomMargin - kStatusBarAndNavigationBarHeight - 15 - 50, 50, 50)];
+//    [btn_GWC setImage:[UIImage imageNamed:@"GouWuCheYuan"] forState:UIControlStateNormal];
+//    [self.view addSubview:btn_GWC];
 
+}
+#pragma mark- 订单
+-(void)DanPin_V_Delegate_Action_DD{
+    DingDanLieBiao_VC *vc = [[DingDanLieBiao_VC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark- 返回
+-(void)DanPin_V_Delegate_Action_FH{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)refresh{
+    //下拉请求
+    [self endRefreshing];
+    self.pageIndex = 1;
+    [self init_Data:YES];
+}
+
+- (void)loadMore{
+    //加载更多
+    [self endRefreshing];
+    self.pageIndex += 1;
+    [self init_Data:NO];
+}
+
+- (void)init_Data:(BOOL)Y_N{
+    [NetRequest postWithUrl:product_getRecommendProduct params:@{@"page":[NSString stringWithFormat:@"%li",self.pageIndex]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"%@",dict);
+        if (Y_N) {
+            model = [[ShouYe_Model_RootClass alloc]initWithDictionary:dict];
+            
+        }else{
+            [model Add_Dictionary:dict];;
+        }
+        [self.collectionView reloadData];
+        
+    } fail:^(id error) {
+        
+    }];
 }
 
 - (DanPin_V *)DP {
@@ -56,6 +102,7 @@
         DanPin_V *DP = [DanPin_V init_Xib];
         [self.view addSubview:DP];
         _DP = DP;
+        _DP.delegate = self;
         _DP.width = ScreenWidth;
         _DP.height = [DanPin_V get_H:nil];
     }
@@ -68,7 +115,7 @@
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (section == 1) {
-        return 10;
+        return model.data.count;
     }
     return 0;
 }
@@ -77,6 +124,13 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * CellIdentifier = @"cell";
     ShouYe_Cell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    ShouYe_Model_Data *MMMM = model.data[indexPath.row];
+    cell.ShouYe_Model = MMMM;
+    
+    cell.tag = indexPath.row;
+//    cell.delegate =self;
+//    cell.is_DH = YES;
     return cell;
 }
 
@@ -115,6 +169,7 @@
         //添加头视图的内容
         //头视图添加view
         if (indexPath.section == 0) {
+            self.DP.lbl_JG.text = [NSString stringWithFormat:@"￥%@",self.str_JG];
             [header addSubview:self.DP];
         }
         return header;

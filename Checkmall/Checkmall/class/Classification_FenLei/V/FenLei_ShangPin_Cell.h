@@ -9,8 +9,17 @@
 #import "BaseTableViewCell.h"
 #import "FenLeiShangPin_Model_Data.h"
 
+@protocol FenLei_ShangPin_Cell_Delegate <NSObject>
+
+@optional
+- (void)FenLei_ShangPin_Cell_Delegate_GWC:(NSInteger)tag;//购物车
+
+@end
+
 @interface FenLei_ShangPin_Cell : BaseTableViewCell
 
 @property (nonatomic,strong)FenLeiShangPin_Model_Data   *model;
+
+@property (nonatomic,assign)id<FenLei_ShangPin_Cell_Delegate>   delegate;
 
 @end

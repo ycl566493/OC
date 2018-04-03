@@ -22,7 +22,8 @@
 //字符串是否为空
 #define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
 
-
+#define WeakSelf(weakSelf)  __weak __typeof(&*self) weakSelf  = self;
+//弱引用
 
 //返回安全的字符串
 #define kSafeString(str) str.length > 0 ? str : @""

@@ -66,6 +66,7 @@
 
 }
 
+
 //视图已经出现
 - (void)viewDidAppear:(BOOL)animated {
     NSLog(@"%s", __FUNCTION__);

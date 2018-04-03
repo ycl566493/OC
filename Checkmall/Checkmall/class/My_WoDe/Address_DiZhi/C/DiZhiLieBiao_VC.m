@@ -194,7 +194,7 @@
 -(void)SlideButtonViewDelegate_Acion:(NSInteger)btn_Tag{
     if (slide.tag != btn_Tag) {
         if (btn_Tag == 1 && self.bool_SH) {
-            [MyHelper showMessage:@"亲！当前商品不支持送货上门服务哦！"];
+            [MyHelper showMessage:@"亲！暂时不支持送货上门服务哦！"];
             slide.init_Selected = 0;
             return;
         }
