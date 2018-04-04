@@ -44,6 +44,10 @@
 
 #pragma mark- 购物车
 - (void)init_data:(BOOL)Y_N{
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
     NSDictionary  *dic = @{@"token":[MyHelper toToken]};
     [NetRequest postWithUrl:goodscar_getGoodsCarData params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
         if (Y_N) {
@@ -104,6 +108,11 @@
 
 #pragma mark- 清空购物车
 - (void)btn_QKGWC_Action{
+    
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
     NSMutableArray *arr = [[NSMutableArray alloc]init];
     for (GouWuChe_Model_Data*MMMM in Model_GWC.data) {
         [arr addObject:[NSString stringWithFormat:@"%li",MMMM.goodsId]];
@@ -168,6 +177,11 @@
 #pragma mark- 下单
 -(void)GouWuChe_DiBu_V_Delegate_Action{
 
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    
     NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
     for (GouWuChe_Model_Data *MMM in Model_GWC.data) {
         if (MMM.is_XZ) {
@@ -256,6 +270,12 @@
 
 #pragma mark- 修改商品数量
 -(void)UP_Num:(GouWuChe_Model_Data*)mmmm{
+    
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    
     NSDictionary *dic = @{@"token":[MyHelper toToken],@"gid":[NSString stringWithFormat:@"%li",mmmm.goodsId],@"num":[NSString stringWithFormat:@"%li",mmmm.num]};
     [NetRequest postWithUrl:goodscar_addAndReduce params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
         

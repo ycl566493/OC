@@ -33,7 +33,7 @@
     
     self.backgroundColor = [UIColor whiteColor];
     
-    imageV_DT = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.width, self.width)];
+    imageV_DT = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, (ScreenWidth - 3) /2, (ScreenWidth - 3) /2)];
     imageV_DT.contentMode = UIViewContentModeScaleAspectFill;
     imageV_DT.clipsToBounds = YES;
     [self addSubview:imageV_DT];
@@ -80,9 +80,11 @@
     [imageV_DT sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",ShouYe_Model.productImage,imageV_DT.width]] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
     lbl_NR.text = ShouYe_Model.productDesc;
     
-    lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%@",ShouYe_Model.productPrice,ShouYe_Model.productMarketPrice];
+    lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%@",ShouYe_Model.productMarketPrice,ShouYe_Model.mprice];
+    
+    
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     lbl_JG.text];
-    NSRange range = NSMakeRange(ShouYe_Model.productPrice.length+1, ShouYe_Model.productMarketPrice.length + 1);
+    NSRange range = NSMakeRange(ShouYe_Model.productMarketPrice.length+1, ShouYe_Model.mprice.length + 1);
     // 设置颜色
     [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0x999999) range:range];
     // 设置字体大小
@@ -111,6 +113,8 @@
     lbl_Title.text = model_SS.name;
     [imageV_DT sd_setImageWithURL:[MyHelper imaeg_URL:model_SS.path view:imageV_DT] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
     lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%@",model_SS.sprice,model_SS.mprice];
+    
+    
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     lbl_JG.text];
     NSRange range = NSMakeRange(model_SS.sprice.length+1, model_SS.mprice.length + 1);
     // 设置颜色

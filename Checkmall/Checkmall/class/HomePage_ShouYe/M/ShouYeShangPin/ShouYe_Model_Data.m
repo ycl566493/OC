@@ -15,6 +15,7 @@ NSString *const kShouYe_Model_DataProductMarketPrice = @"product_market_price";
 NSString *const kShouYe_Model_DataProductName = @"product_name";
 NSString *const kShouYe_Model_DataProductNum = @"product_num";
 NSString *const kShouYe_Model_DataProductPrice = @"product_price";
+NSString *const kShouYe_Model_DataMprice = @"mprice";
 
 @interface ShouYe_Model_Data ()
 @end
@@ -22,14 +23,12 @@ NSString *const kShouYe_Model_DataProductPrice = @"product_price";
 
 
 
-
-/**
- * Instantiate the instance using the passed dictionary values to set the properties values
- */
-
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    if(![dictionary[kShouYe_Model_DataMprice] isKindOfClass:[NSNull class]]){
+        self.mprice = dictionary[kShouYe_Model_DataMprice];
+    }
 	if(![dictionary[kShouYe_Model_DataProductCategory] isKindOfClass:[NSNull class]]){
 		self.productCategory = [dictionary[kShouYe_Model_DataProductCategory] integerValue];
 	}

@@ -137,6 +137,11 @@
 
 
 -(void)init_Data{
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    
     [NetRequest postWithUrl:user_getUserInfo params:@{@"token":[MyHelper toToken]} showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
         
         NSLog(@"个人信息 == = %@",dict);

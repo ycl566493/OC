@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-//#import "DengLu_VC.h"//登录
+#import "DengLu_VC.h"//登录
 #import "BaseNavigationController.h"//nav
 
 @interface BaseViewController ()
@@ -84,7 +84,11 @@
 }
 #pragma mark- 去登陆界面
 - (void)QuDeLu {
-
+    DengLu_VC *vc = [[DengLu_VC alloc]init];
+    BaseNavigationController    *nVc = [[BaseNavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:nVc animated:YES completion:^{
+        
+    }];
 }
 
 -(void)DengLu_VC_Delegate_SHDL{

@@ -76,6 +76,10 @@
 #pragma mark- 刷新订单
 -(void)UP_DD{
     if (str_DDID) {
+        if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+            [self QuDeLu];
+            return;
+        }
         WeakSelf(ws);
         [NetRequest postWithUrl:Order_returnStatus params:@{@"order_sn":str_DDID,@"paytype":@"2",@"token":[MyHelper toToken]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             NSLog(@"支付状态 == %@",dict);
@@ -154,6 +158,10 @@
         [MyHelper showMessage:@"请选择收货地址！"];
         return;
     }else{
+        if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+            [self QuDeLu];
+            return;
+        }
         
         NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
         QueRenDingDan_Model_Arr *MMM = self.model.data.arr[0];
@@ -342,6 +350,7 @@
         DiZhiXinXi_V *DZ = [DiZhiXinXi_V init_Xib];
         [self.view addSubview:DZ];
         _DZ = DZ;
+        _DZ.width = ScreenWidth;
         _DZ.delegate = self;
     }
     return _DZ;

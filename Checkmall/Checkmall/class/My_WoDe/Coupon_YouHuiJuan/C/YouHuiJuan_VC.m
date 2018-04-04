@@ -70,6 +70,11 @@
 #pragma mark- 购物车列表
 - (void)init_Data:(BOOL)Y_N{
     
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    
     NSDictionary *dic = @{@"token":[MyHelper toToken],@"coupon_type":type,@"page":[NSString stringWithFormat:@"%li",self.pageIndex]};
     [NetRequest postWithUrl:coupon_getmycoin params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"优惠===  = = %@",dict);

@@ -225,7 +225,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     if ([[NSUserDefaults standardUserDefaults]objectForKey:@"token"]) {
         return [[NSUserDefaults standardUserDefaults]objectForKey:@"token"];
     }else{
-        return @"";
+        return @"1";
     }
 }
 
@@ -773,6 +773,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 
 #pragma mark- 更新购物车数量
 +(void)UP_GWCSL{
+    
     [NetRequest   postWithUrl:goodscar_getCarCount params:@{@"token":[MyHelper toToken]} showAnimate:NO showMsg:NO vc:nil success:^(NSDictionary *dict) {
         if ([dict[@"code"] integerValue] == 1) {
             [kUserDefaults setObject:dict[@"data"] forKey:GWC_SL];

@@ -58,6 +58,11 @@
 -(void)UP_DD{
     if (str_DDID) {
         WeakSelf(ws);
+        if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+            [self QuDeLu];
+            return;
+        }
+        
         [NetRequest postWithUrl:Order_returnStatus params:@{@"order_sn":str_DDID,@"paytype":@"2",@"token":[MyHelper toToken]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             NSLog(@"支付状态 == %@",dict);
             ZFJG_Model_RootClass    *model = [[ZFJG_Model_RootClass alloc]initWithDictionary:dict];
@@ -91,7 +96,10 @@
 
 #pragma mark- 初始化
 -(void)init_Data:(BOOL)Y_N{
-    
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
 //    类型 1全部 2代付款3未发货4待收货5待评价
     NSString *str = @"1";
     if (slide.tag == 1) {
@@ -146,12 +154,22 @@
     DingDanLieBiao_Model_Data   *MMMM = model_DD.data[tag];
     if (MMMM.og_status == 1) {
         // @"待付款";
+        
+        if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+            [self QuDeLu];
+            return;
+        }
         NSLog(@"去付款");
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"支付方式" message:nil preferredStyle: UIAlertControllerStyleActionSheet];
         
         [alert addAction:[UIAlertAction actionWithTitle:@"微信" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             //点击按钮的响应事件；
+            if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+                [self QuDeLu];
+                return;
+            }
+            
             NSDictionary *dic = @{@"order_sn":MMMM.orderSn,@"gid":[NSString stringWithFormat:@"%li",MMMM.gid],@"token":[MyHelper toToken],@"paytype":@"2",@"paymode":@"1"};
             str_DDID =MMMM.orderSn;
             [NetRequest postWithUrl:Order_goToPayment params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
@@ -169,6 +187,11 @@
         
         [alert addAction:[UIAlertAction actionWithTitle:@"余额" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             //点击按钮的响应事件；
+            
+            if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+                [self QuDeLu];
+                return;
+            }
             NSDictionary *dic = @{@"order_sn":MMMM.orderSn,@"gid":[NSString stringWithFormat:@"%li",MMMM.gid],@"token":[MyHelper toToken],@"paytype":@"2",@"paymode":@"3"};
             str_DDID =MMMM.orderSn;
             [NetRequest postWithUrl:Order_goToPayment params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
@@ -199,6 +222,10 @@
     }else if (MMMM.og_status == 3) {
         //@"待收货";
         NSLog(@"确认收货");
+        if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+            [self QuDeLu];
+            return;
+        }
         NSDictionary *dic = @{@"order_sn":MMMM.orderSn,@"gid":[NSString stringWithFormat:@"%li",MMMM.gid],@"token":[MyHelper toToken],@"status":@"5"};
         [NetRequest postWithUrl:Order_saveOrderStatus params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             if ([dict[@"code"] integerValue] == 0) {
@@ -223,12 +250,16 @@
         // @"待付款";
         NSLog(@"取消订单");
 //        商品状态 1 待付款 2 代发货 3待收货 4 已退款 5 交易成功 6 已取消
-
+        if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+            [self QuDeLu];
+            return;
+        }
         NSDictionary *dic = @{@"order_sn":MMMM.orderSn,@"gid":[NSString stringWithFormat:@"%li",MMMM.gid],@"token":[MyHelper toToken],@"status":@"6"};
         [NetRequest postWithUrl:Order_saveOrderStatus params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             NSLog(@"取消订单 == %@",dict);
-            if ([dict[@"code"] integerValue] == 0) {
+            if ([dict[@"code"] integerValue] == 1) {
                 self.pageIndex = 1;
+                [MyHelper showMessage:@"取消订单成功！"];
                 self.tableV.contentOffset = CGPointMake(0, 0);
                 [self init_Data:YES];
             }else{
@@ -245,7 +276,7 @@
 #pragma mark- 初始化
 -(void)init_UI{
     slide = [[SlideButtonView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
-    slide.arr_Title = @[@"全部",@"代付款",@"代发货",@"待收货"];
+    slide.arr_Title = @[@"全部",@"待付款",@"待发货",@"待收货"];
     slide.Font_Size = 14;
     slide.No_Color = UIColorFromHex(0x333333);
     slide.Yes_Color = UIColorFromHex(0x5db851);

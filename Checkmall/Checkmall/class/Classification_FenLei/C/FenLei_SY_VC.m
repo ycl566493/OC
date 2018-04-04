@@ -108,6 +108,11 @@
     
     FenLeiShangPin_Model_Data *MMMM = model_FLSP.data[tag];
     
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    
     NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",MMMM.idField],@"num":@"1"};
     
     [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
@@ -182,7 +187,7 @@
 
 //定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((ScreenWidth - 3) / 2, 273);
+    return CGSizeMake((ScreenWidth - 3) / 2, [ShouYe_Cell get_H:nil]);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(1, 0, 1, 0);

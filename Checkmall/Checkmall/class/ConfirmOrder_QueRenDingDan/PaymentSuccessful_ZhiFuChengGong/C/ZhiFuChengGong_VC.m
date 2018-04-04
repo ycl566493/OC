@@ -67,6 +67,28 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)ShouYe_Cell_Delegate_GWC:(NSInteger)tag{
+    ShouYe_Model_Data *MMMM = model.data[tag];
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",MMMM.productId],@"num":@"1"};
+    
+    [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        
+        NSLog(@"添加购物车 = = =%@",dict);
+        if ([dict[@"code"] integerValue] == 1) {
+            [MyHelper showMessage:@"添加购物车成功！"];
+            [MyHelper UP_GWCSL];
+        }
+    } fail:^(id error) {
+        
+        
+    }];
+}
+
 - (void)refresh{
     //下拉请求
     [self endRefreshing];
@@ -127,16 +149,15 @@
     
     ShouYe_Model_Data *MMMM = model.data[indexPath.row];
     cell.ShouYe_Model = MMMM;
-    
     cell.tag = indexPath.row;
-//    cell.delegate =self;
-//    cell.is_DH = YES;
+    cell.delegate =self;
+    cell.is_DH = NO;
     return cell;
 }
 
 //定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((ScreenWidth - 3) / 2, 273);
+    return CGSizeMake((ScreenWidth - 3) / 2, [ShouYe_Cell get_H:nil]);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0, 0, 0, 0);
@@ -188,6 +209,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     ShangPinXiangQing_VC    *vc = [[ShangPinXiangQing_VC alloc]init];
+    ShouYe_Model_Data *MMMM = model.data[indexPath.row];
+
+    vc.Str_ID = [NSString stringWithFormat:@"%li",MMMM.productId];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

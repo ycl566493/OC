@@ -41,6 +41,11 @@
 
 #pragma mark-data
 -(void)init_Data{
+    
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
     NSDictionary *dic =@{@"token":[MyHelper toToken],@"type":slide.tag == 0?@"1":@"2"};
     [NetRequest postWithUrl:address_getAddressList params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"获取地址列表 == = %@",dict);
@@ -193,7 +198,9 @@
 #pragma mark- 滑动代理
 -(void)SlideButtonViewDelegate_Acion:(NSInteger)btn_Tag{
     if (slide.tag != btn_Tag) {
-        if (btn_Tag == 1 && self.bool_SH) {
+//        if (btn_Tag == 1 && self.bool_SH) {
+            if (btn_Tag == 1) {
+
             [MyHelper showMessage:@"亲！暂时不支持送货上门服务哦！"];
             slide.init_Selected = 0;
             return;

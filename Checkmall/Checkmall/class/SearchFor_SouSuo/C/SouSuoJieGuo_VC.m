@@ -11,7 +11,7 @@
 #import "ShangPinXiangQing_VC.h"
 #import "SouSuo_Model_RootClass.h"//model
 
-@interface SouSuoJieGuo_VC (){
+@interface SouSuoJieGuo_VC ()<ShouYe_Cell_Delegate_GWC>{
     SouSuo_Model_RootClass  *model;
 }
 
@@ -28,6 +28,28 @@
     [self init_UI];
     
     
+}
+
+-(void)ShouYe_Cell_Delegate_GWC:(NSInteger)tag{
+    SouSuo_Model_Data *MMMM = model.data[tag];
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",MMMM.idField],@"num":@"1"};
+    
+    [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        
+        NSLog(@"添加购物车 = = =%@",dict);
+        if ([dict[@"code"] integerValue] == 1) {
+            [MyHelper showMessage:@"添加购物车成功！"];
+            [MyHelper UP_GWCSL];
+        }
+    } fail:^(id error) {
+        
+        
+    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -99,13 +121,16 @@
     
     SouSuo_Model_Data   *MMMMM = model.data[indexPath.row];
     cell.model_SS = MMMMM;
+    cell.tag = indexPath.row;
+    cell.delegate =self;
+    cell.is_DH = NO;
     
     return cell;
 }
 
 //定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((ScreenWidth - 3) / 2, 273);
+    return CGSizeMake((ScreenWidth - 3) / 2, [ShouYe_Cell get_H:nil]);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0, 0, 0, 0);

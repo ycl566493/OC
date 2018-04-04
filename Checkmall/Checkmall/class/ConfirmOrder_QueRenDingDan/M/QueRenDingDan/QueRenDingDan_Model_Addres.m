@@ -33,24 +33,36 @@ NSString *const kQueRenDingDan_Model_AddresMername = @"mername";
 	self = [super init];
     if(![dictionary[kQueRenDingDan_Model_AddresMername] isKindOfClass:[NSNull class]]){
         self.mername = dictionary[kQueRenDingDan_Model_AddresMername];
+    }else{
+        self.mername = @"";
     }
+    
 	if(![dictionary[kQueRenDingDan_Model_AddresAddress] isKindOfClass:[NSNull class]]){
 		self.address = dictionary[kQueRenDingDan_Model_AddresAddress];
-	}	
+    }else{
+        self.address = @"";
+    }
+    
 	if(![dictionary[kQueRenDingDan_Model_AddresAddressto] isKindOfClass:[NSNull class]]){
 		self.addressto = dictionary[kQueRenDingDan_Model_AddresAddressto];
-	}	
+    }else{
+        self.addressto = @"";
+    }
+    
 	if(![dictionary[kQueRenDingDan_Model_AddresCity] isKindOfClass:[NSNull class]]){
 		self.city = [dictionary[kQueRenDingDan_Model_AddresCity] integerValue];
-	}
+    }
 
 	if(![dictionary[kQueRenDingDan_Model_AddresCreated] isKindOfClass:[NSNull class]]){
 		self.created = [dictionary[kQueRenDingDan_Model_AddresCreated] integerValue];
-	}
+    }
 
 	if(![dictionary[kQueRenDingDan_Model_AddresGeoCode] isKindOfClass:[NSNull class]]){
 		self.geoCode = dictionary[kQueRenDingDan_Model_AddresGeoCode];
-	}	
+    }else{
+        self.geoCode = @"";
+    }
+    
 	if(![dictionary[kQueRenDingDan_Model_AddresIdField] isKindOfClass:[NSNull class]]){
 		self.idField = [dictionary[kQueRenDingDan_Model_AddresIdField] integerValue];
 	}
@@ -69,10 +81,14 @@ NSString *const kQueRenDingDan_Model_AddresMername = @"mername";
 
 	if(![dictionary[kQueRenDingDan_Model_AddresOpenid] isKindOfClass:[NSNull class]]){
 		self.openid = dictionary[kQueRenDingDan_Model_AddresOpenid];
-	}	
+	}
+    
 	if(![dictionary[kQueRenDingDan_Model_AddresPhone] isKindOfClass:[NSNull class]]){
 		self.phone = dictionary[kQueRenDingDan_Model_AddresPhone];
-	}	
+    }else{
+        self.phone  = @"";
+    }
+
 	if(![dictionary[kQueRenDingDan_Model_AddresProvince] isKindOfClass:[NSNull class]]){
 		self.province = [dictionary[kQueRenDingDan_Model_AddresProvince] integerValue];
 	}
@@ -87,7 +103,10 @@ NSString *const kQueRenDingDan_Model_AddresMername = @"mername";
 
 	if(![dictionary[kQueRenDingDan_Model_AddresUsername] isKindOfClass:[NSNull class]]){
 		self.username = dictionary[kQueRenDingDan_Model_AddresUsername];
-	}	
+    }else{
+        self.username = @"";
+    }
+    
 	return self;
 }
 @end

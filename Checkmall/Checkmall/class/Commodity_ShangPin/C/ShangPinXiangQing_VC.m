@@ -51,6 +51,11 @@
     [self init_Data];
 }
 
+-(void)dealloc{
+    [TuPian removeFromSuperview];
+    TuPian  = nil;
+}
+
 -(void)init_Data{
     [NetRequest postWithUrl:product_bulkDetail params:@{@"goods_id":self.Str_ID} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         
@@ -177,13 +182,37 @@
 //
 //    [self.navigationController pushViewController:VC animated:YES];
     
-    [MyHelper showMessage:@"添加购物车成功"];
+    
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    
+    NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",model_SPXQ.data.productId],@"num":@"1"};
+    
+    [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        
+        NSLog(@"添加购物车 = = =%@",dict);
+        if ([dict[@"code"] integerValue] == 1) {
+            
+            [MyHelper showMessage:@"添加购物车成功"];
+
+            [MyHelper UP_GWCSL];
+        }
+    } fail:^(id error) {
+        
+        
+    }];
 
 }
 
 #pragma mark- 购买btn_GM_Action
 -(void)btn_PT_Action{
-    
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
     
     NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
    

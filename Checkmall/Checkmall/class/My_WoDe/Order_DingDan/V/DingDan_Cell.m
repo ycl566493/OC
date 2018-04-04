@@ -82,7 +82,7 @@
         [self.btn_QX setTitle:@"取消订单" forState:UIControlStateNormal];
         
     }else if (model.og_status == 2) {
-        self.lbl_ZT.text = @"代发货";
+        self.lbl_ZT.text = @"待发货";
     }else if (model.og_status == 3) {
         self.lbl_ZT.text = @"待收货";
         self.btn_CZ.hidden = NO;

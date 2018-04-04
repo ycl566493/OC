@@ -172,6 +172,9 @@
 		74C8912E2065201000898168 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C8912D2065201000898168 /* openssl_wrapper.m */; };
 		74C891812065222D00898168 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C8917F2065222C00898168 /* libssl.a */; };
 		74C891822065222D00898168 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C891802065222D00898168 /* libcrypto.a */; };
+		74CB89C52074967000054D6C /* YinDaoYe_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CB89C42074967000054D6C /* YinDaoYe_VC.m */; };
+		74CB89C92074CB6800054D6C /* web_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CB89C72074CB6800054D6C /* web_VC.m */; };
+		74CB89CA2074CB6800054D6C /* web_VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74CB89C82074CB6800054D6C /* web_VC.xib */; };
 		74D3ED8F2052279600DE296B /* BangDingShouJi_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D3ED8E2052279600DE296B /* BangDingShouJi_VC.m */; };
 		74D3ED96205259B800DE296B /* ChongZhi_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D3ED95205259B800DE296B /* ChongZhi_VC.m */; };
 		74D74720204E37C800DB65FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D7471F204E37C800DB65FD /* AppDelegate.m */; };
@@ -702,6 +705,11 @@
 		74C8917E206521CF00898168 /* lhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lhash.h; sourceTree = "<group>"; };
 		74C8917F2065222C00898168 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		74C891802065222D00898168 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		74CB89C32074967000054D6C /* YinDaoYe_VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YinDaoYe_VC.h; sourceTree = "<group>"; };
+		74CB89C42074967000054D6C /* YinDaoYe_VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YinDaoYe_VC.m; sourceTree = "<group>"; };
+		74CB89C62074CB6800054D6C /* web_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = web_VC.h; sourceTree = "<group>"; };
+		74CB89C72074CB6800054D6C /* web_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = web_VC.m; sourceTree = "<group>"; };
+		74CB89C82074CB6800054D6C /* web_VC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = web_VC.xib; sourceTree = "<group>"; };
 		74D3ED8D2052279600DE296B /* BangDingShouJi_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BangDingShouJi_VC.h; sourceTree = "<group>"; };
 		74D3ED8E2052279600DE296B /* BangDingShouJi_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BangDingShouJi_VC.m; sourceTree = "<group>"; };
 		74D3ED94205259B800DE296B /* ChongZhi_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChongZhi_VC.h; sourceTree = "<group>"; };
@@ -1968,6 +1976,8 @@
 		74D7473D204E395000DB65FD /* public */ = {
 			isa = PBXGroup;
 			children = (
+				74CB89C32074967000054D6C /* YinDaoYe_VC.h */,
+				74CB89C42074967000054D6C /* YinDaoYe_VC.m */,
 				743759612063B37300752982 /* M */,
 				74D7486B204E3A2C00DB65FD /* Image_Lunbo.h */,
 				74D7486C204E3A2C00DB65FD /* Image_Lunbo.m */,
@@ -1994,6 +2004,9 @@
 				74C890E52065086200898168 /* HWProgressHUD.h */,
 				74C890E62065086200898168 /* HWProgressHUD.m */,
 				74C890E820650A3200898168 /* Image */,
+				74CB89C62074CB6800054D6C /* web_VC.h */,
+				74CB89C72074CB6800054D6C /* web_VC.m */,
+				74CB89C82074CB6800054D6C /* web_VC.xib */,
 			);
 			path = public;
 			sourceTree = "<group>";
@@ -2815,6 +2828,7 @@
 				74973E4E20637BAB00E00E4C /* area.json in Resources */,
 				746537592057AEC900CF0D6B /* DiZhiXinXi_V.xib in Resources */,
 				74DE1222206B7E2200E5CEFE /* ShareSDK.bundle in Resources */,
+				74CB89CA2074CB6800054D6C /* web_VC.xib in Resources */,
 				74780F942054050000E85CCD /* play@2x.png in Resources */,
 				74780F962054050000E85CCD /* pause.png in Resources */,
 				74C890F420650A3300898168 /* com_loading04@2x.png in Resources */,
@@ -2938,6 +2952,7 @@
 				74D74769204E39B800DB65FD /* NSString+Extension.m in Sources */,
 				74D74887204E3A4700DB65FD /* NetRequest.m in Sources */,
 				74D74851204E39E400DB65FD /* UIImageView+AFNetworking.m in Sources */,
+				74CB89C92074CB6800054D6C /* web_VC.m in Sources */,
 				742F0564206A4BCE006B28F7 /* GuangGao_Model_RootClass.m in Sources */,
 				743EEAC8204FB40B00B7555B /* ZhuanXiang_GG_H.m in Sources */,
 				74D74849204E39E400DB65FD /* IQTitleBarButtonItem.m in Sources */,
@@ -2958,6 +2973,7 @@
 				74D74820204E39E400DB65FD /* UIView+MJExtension.m in Sources */,
 				74D748B7204E3C1600DB65FD /* WoDe_VC.m in Sources */,
 				74D7482D204E39E400DB65FD /* MJRefreshAutoFooter.m in Sources */,
+				74CB89C52074967000054D6C /* YinDaoYe_VC.m in Sources */,
 				74D74858204E39E400DB65FD /* AFHTTPSessionManager.m in Sources */,
 				74D74888204E3A4700DB65FD /* BaseCollectionViewController.m in Sources */,
 				74A3B53E204EAAA5004017DA /* FenLei_ShangPin_Cell.m in Sources */,

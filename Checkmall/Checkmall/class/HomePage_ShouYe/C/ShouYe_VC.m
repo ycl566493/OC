@@ -160,7 +160,7 @@
     [btn_SS addTarget:self action:@selector(btn_SS_Action) forControlEvents:UIControlEventTouchUpInside];
     [view_Nav addSubview:btn_SS];
     
-    LB = [[Image_Lunbo alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 155)];
+    LB = [[Image_Lunbo alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 170)];
     LB.delegate = self;
     
     //质量保证
@@ -195,6 +195,11 @@
     
     ShouYe_Model_Data *MMMM = model.data[tag];
 
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    
     NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",MMMM.productId],@"num":@"1"};
     
     [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
@@ -262,7 +267,7 @@
 
 //定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((ScreenWidth - 3) / 2, 273);
+    return CGSizeMake((ScreenWidth - 3) / 2, [ShouYe_Cell get_H:nil]);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(1, 0, 1, 0);
@@ -275,7 +280,7 @@
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return CGSizeMake(ScreenWidth, 155);
+        return CGSizeMake(ScreenWidth, 170);
     }
     if (section == 1) {
         return CGSizeMake(ScreenWidth, FL.height);
@@ -343,13 +348,13 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    if (scrollView.contentOffset.y < 100) {
-//        view_Nav.backgroundColor = RGBA(255, 255, 255, ((int)scrollView.contentOffset.y) %100 * .01);
-//    }else{
-//        view_Nav.backgroundColor = RGBA(255, 255, 255, 1);
-//    }
-//}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y < 150) {
+        view_Nav.backgroundColor = RGBA(255, 255, 255, ((int)scrollView.contentOffset.y) %100 * .01);
+    }else{
+        view_Nav.backgroundColor = RGBA(255, 255, 255, .9);
+    }
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

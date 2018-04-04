@@ -58,6 +58,12 @@
 #pragma mark- 刷新订单
 -(void)UP_DD{
     if (str_DDID) {
+        
+        if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+            [self QuDeLu];
+            return;
+        }
+        
         NSString *str_JE = @"";
         switch (int_ZDY) {
             case 0:
@@ -114,6 +120,12 @@
 
 -(void)TC_DHJ_V_Delegate_Action{
     NSLog(@"立即领取");
+    
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    
     NSDictionary *dic = @{@"cid":[NSString stringWithFormat:@"%li",model.data.idField],@"cname":model.data.name,@"order_sn":str_DDID,@"token":[MyHelper toToken]};
     [NetRequest postWithUrl:Coupon_receiveCoin params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"领取优惠劵==  %@",dict);
@@ -375,6 +387,12 @@
 #pragma mark- 充值接口 yes 微信 no 支付宝
 - (void)ChongZhi:(BOOL)Y_N  str_JE:(NSString *)str_je{
     if (Y_N) {
+        
+        if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+            [self QuDeLu];
+            return;
+        }
+        
         NSDictionary *dic = @{@"fee":str_je,@"token":[MyHelper toToken],@"paytype":@"1",@"paymode":@"1"};
         [NetRequest postWithUrl:order_getMessage params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             NSLog(@"支付回调 = = %@",dict);
@@ -396,6 +414,12 @@
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
     if ([[URL scheme] isEqualToString:@"xieyi"]) {
         NSLog(@"协议");
+        
+        web_VC *vc = [[web_VC alloc]init];
+        vc.title = @"充值协议";
+        vc.str_URL =@"http://www.jingchengcaidian.com/index/index/recharge";
+        [self.navigationController pushViewController:vc animated:YES];
+        
         return NO;
     }
     return YES;

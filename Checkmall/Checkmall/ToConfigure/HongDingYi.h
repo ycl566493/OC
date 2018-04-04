@@ -32,7 +32,8 @@
 #define DengLuZhuangTai @"DengLuZhuangTai"//登录状态
 #define MYtoken @"token"//用户token
 #define YongHuMing @"YongHuMing"//用户名
-#define MiMa @"MiMa"//密码
+#define MiMa @"MiMa"//密码'
+#define ShouChi @"ShouChi"//首次
 
 #define TouXiang @"TouXiang"//头像
 #define NiCheng @"NiCheng"//昵称

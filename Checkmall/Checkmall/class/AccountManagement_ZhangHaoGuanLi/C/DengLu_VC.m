@@ -306,6 +306,13 @@
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
     if ([[URL scheme] isEqualToString:@"xieyi"]) {
         NSLog(@"协议");
+        
+//
+        web_VC *vc = [[web_VC alloc]init];
+        vc.title = @"注册协议";
+        vc.str_URL =@"http://www.jingchengcaidian.com/index/index/register";
+        [self.navigationController pushViewController:vc animated:YES];
+        
         return NO;
     }
     return YES;

@@ -20,6 +20,7 @@
 //微信SDK头文件
 #import "WXApi.h"
 #import "WXApiManager.h"
+#import "YinDaoYe_VC.h"
 
 
 @interface AppDelegate ()<WXApiDelegate>
@@ -37,7 +38,12 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [BaseTabBarController new];
+    
+    if ([YinDaoYe_VC if_YD]) {
+        self.window.rootViewController = [YinDaoYe_VC new];
+    }else{
+        self.window.rootViewController = [BaseTabBarController new];
+    }
     
     [self.window makeKeyAndVisible];
     

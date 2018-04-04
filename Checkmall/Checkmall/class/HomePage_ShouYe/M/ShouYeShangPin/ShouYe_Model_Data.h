@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSString * productName;
 @property (nonatomic, strong) NSString * productNum;
 @property (nonatomic, strong) NSString * productPrice;
+@property (nonatomic, strong) NSString * mprice;
+
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

@@ -146,6 +146,11 @@
 - (void)FenLei_ShangPin_Cell_Delegate_GWC:(NSInteger)tag{
     FenLeiShangPin_Model_Data   *MMMM = model_FLSP.data[tag];
 
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    
     NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",MMMM.idField],@"num":@"1"};
     
     [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
