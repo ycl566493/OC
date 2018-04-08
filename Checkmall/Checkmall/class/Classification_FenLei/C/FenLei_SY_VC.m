@@ -12,16 +12,19 @@
 #import "ShouYe_Cell.h"
 #import "CollectionReusableView_H.h"
 #import "FenLeiShangPin_Model_RootClass.h"//Model
+#import "KBY_View.h"
 
 @interface FenLei_SY_VC ()<SlideButtonViewDelegate,ShouYe_Cell_Delegate_GWC>{
    
     
     FenLeiShangPin_Model_RootClass  *model_FLSP;
     NSString            *str_ID;//分类id
+    
+    
 }
 @property (nonatomic,strong) NSArray             *arr_ID;
 @property (nonatomic,strong) SlideButtonView     *slide;
-
+@property (nonatomic,weak) KBY_View            *KBY;//kongbaiye
 
 @end
 
@@ -66,6 +69,17 @@
         [self.view addSubview:_slide];
     }
     return _slide;
+}
+
+- (KBY_View *)KBY{
+    if (!_KBY) {
+        KBY_View * KBY = [KBY_View init_Xib];
+        _KBY = KBY;
+        _KBY.frame = self.collectionView.bounds;
+        [self.collectionView addSubview:_KBY];
+        _KBY.hidden = YES;
+    }
+    return _KBY;
 }
 
 - (void)refresh{
@@ -143,9 +157,19 @@
             [self.collectionView reloadData];
         }
         
+        [self if_KBY];
     } fail:^(id error) {
         
     }];
+}
+
+-(void)if_KBY{
+    if (model_FLSP.data.count == 0) {
+        self.KBY.hidden = NO;
+    }else{
+        self.KBY.hidden = YES;
+
+    }
 }
 
 #pragma mark- 选择条代理

@@ -11,8 +11,9 @@
 #import "YouHuiJuanCell.h"
 #import "YouHuiJuan_Model_RootClass.h"
 #import "KBY_View.h"//空白页
+#import "DuiHuanShangPin_VC.h"
 
-@interface YouHuiJuan_VC ()<SlideButtonViewDelegate>{
+@interface YouHuiJuan_VC ()<SlideButtonViewDelegate,YouHuiJuanCell_Delegate>{
     SlideButtonView * slide;
     NSString                *type;//优惠卷类型 0 未使用 1已使用 2已过期
     YouHuiJuan_Model_RootClass  *model_YHJ;
@@ -64,6 +65,9 @@
         }else if (slide.tag == 2){
             type = @"2";
         }
+        self.tableview.contentOffset = CGPointMake(0, 0 );
+        self.pageIndex = 1;
+        [self init_Data:YES];
     }
 }
 
@@ -132,6 +136,12 @@
     
 }
 
+-(void)YouHuiJuanCell_Delegate_LJDH:(NSInteger)tag{
+    YouHuiJuan_Model_Data   *MMMM = model_YHJ.data[tag];
+    DuiHuanShangPin_VC * vc = [[DuiHuanShangPin_VC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark- tableview代理
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -151,6 +161,8 @@
     YouHuiJuan_Model_Data   *MMMM = model_YHJ.data[indexPath.row];
     
     cell.model = MMMM;
+    cell.delegate = self;
+    cell.tag = indexPath.row;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -168,7 +180,7 @@
     return nil;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+
 }
 
 @end

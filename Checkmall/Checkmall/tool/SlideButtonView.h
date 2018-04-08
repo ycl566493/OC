@@ -11,6 +11,7 @@
 //代理
 @protocol SlideButtonViewDelegate <NSObject>
 //点击的回调
+@optional
 - (void)SlideButtonViewDelegate_Acion:(NSInteger )btn_Tag;
 
 @end

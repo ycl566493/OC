@@ -28,7 +28,7 @@
     self.lbl_Name.text = model.name;
     self.lbl_YXQ.text = model.endtime;
     
-    __weak YouHuiJuanCell *weak_Self = self;
+//    __weak YouHuiJuanCell *weak_Self = self;
     [self.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.path view:self.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
 //        if (weak_Self.model.) {
 //            <#statements#>
@@ -39,6 +39,9 @@
 
 #pragma mark- 兑换
 - (IBAction)btn_Action:(UIButton *)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(YouHuiJuanCell_Delegate_LJDH:)]) {
+        [self.delegate YouHuiJuanCell_Delegate_LJDH:self.tag];
+    }
 }
 
 +(CGFloat)get_H{

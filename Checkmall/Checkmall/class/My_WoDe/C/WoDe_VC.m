@@ -206,8 +206,8 @@
 
 #pragma mark- 优惠劵
 -(void)WoDe_TouBu_V_Delegate_YHJ{
-//    YouHuiJuan_VC   *vc = [[YouHuiJuan_VC alloc]init];
-//    [self.navigationController pushViewController:vc animated:YES];
+    YouHuiJuan_VC   *vc = [[YouHuiJuan_VC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

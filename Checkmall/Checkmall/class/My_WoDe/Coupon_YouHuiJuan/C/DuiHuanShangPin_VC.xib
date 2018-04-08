@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DuiHuanShangPin_VC">
+            <connections>
+                <outlet property="scrollV" destination="cEK-bn-sS8" id="ALF-f3-ULj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfQ-jG-T0M">
+                    <rect key="frame" x="0.0" y="619" width="375" height="48"/>
+                    <color key="backgroundColor" red="1" green="0.47058823529411764" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="guf-Wj-hye"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="立即兑换">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="LJDH_Action:" destination="-1" eventType="touchUpInside" id="rha-R1-f0z"/>
+                    </connections>
+                </button>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEK-bn-sS8">
+                    <rect key="frame" x="0.0" y="20" width="375" height="599"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cEK-bn-sS8" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Lb9-xa-jUz"/>
+                <constraint firstItem="dfQ-jG-T0M" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="To0-1G-VFr"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cEK-bn-sS8" secondAttribute="trailing" id="aUh-jS-PYI"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="dfQ-jG-T0M" secondAttribute="bottom" id="apg-U0-dOV"/>
+                <constraint firstItem="dfQ-jG-T0M" firstAttribute="top" secondItem="cEK-bn-sS8" secondAttribute="bottom" id="lwi-vK-QVv"/>
+                <constraint firstItem="cEK-bn-sS8" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="opn-K3-eq0"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="dfQ-jG-T0M" secondAttribute="trailing" id="vJo-qy-dfN"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+        </view>
+    </objects>
+</document>

@@ -338,7 +338,9 @@
     }];
     
     //点击事件
-    [self.delegate SlideButtonViewDelegate_Acion:btn.tag];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SlideButtonViewDelegate_Acion:)]) {
+        [self.delegate SlideButtonViewDelegate_Acion:btn.tag];
+    }
     
 }
 
