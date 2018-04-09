@@ -11,12 +11,22 @@
 #import "DiQuMenDian_Cell.h"
 #import "DiQu_Model_RootClass.h"//地区model
 #import "MenDian_Model_RootClass.h"//门店
+#import "MDXZ_TC_V.h"
 
-@interface DiQuMenDian_VC ()<SlideButtonViewDelegate,UITableViewDelegate,UITableViewDataSource>{
+@interface DiQuMenDian_VC ()<SlideButtonViewDelegate,UITableViewDelegate,UITableViewDataSource,MDXZ_TC_V_Delegate>{
     SlideButtonView * slide;
     DiQu_Model_RootClass    * model_DQ;
     MenDian_Model_RootClass * model_MD;
+    
+    NSString            *str_SJH;//手机号
+    NSString            *str_XM;//姓名
+    NSString            *str_MD;//门店
+    NSString            *str_MDDZ;//门店地址
+    NSString            *str_id;//门店id
+    
 }
+
+@property (nonatomic,weak)MDXZ_TC_V     *dzxx;//地址信息
 
 @end
 
@@ -66,23 +76,19 @@
 //    }
     
     //    tableV下拉刷新
-    WeakSelf(ws);
-    self.tableV.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [ws.tableV.mj_header endRefreshing];
-        
-        //  结束刷新
-        ws.pageIndex =1;
-//        [ws init_Data:YES];
-    }];
+//    WeakSelf(ws);
+    //  结束刷新
+//    self.tableV.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        [ws.tableV.mj_header endRefreshing];
+//        ws.pageIndex =1;
+//    }];
     // 设置自动切换透明度(在导航栏下面自动隐藏)
     //    self.tableV.mj_header.automaticallyChangeAlpha = YES;
     // tableV上拉加载
-    self.tableV.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [ws.tableV.mj_footer endRefreshing];
-        
-        ws.pageIndex += 1;
-//        [ws init_Data:NO];
-    }];
+//    self.tableV.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+//        [ws.tableV.mj_footer endRefreshing];
+//        ws.pageIndex += 1;
+//    }];
 }
 
 - (void)SlideButtonViewDelegate_Acion:(NSInteger )btn_Tag{
@@ -115,6 +121,16 @@
     }];
 }
 
+-(MDXZ_TC_V *)dzxx{
+    if (!_dzxx) {
+        MDXZ_TC_V *dzxx = [MDXZ_TC_V init_Xib];
+        _dzxx = dzxx;
+        _dzxx.frame = [UIScreen mainScreen].bounds;
+        _dzxx.delegate = self;
+    }
+    return _dzxx;
+}
+
 #pragma mark- 获取门店地址
 - (void)init_data_MD:(NSInteger)code_id{
     [NetRequest postWithUrl:address_getStoreInfo params:@{@"code":[NSString stringWithFormat:@"%li",(long)code_id]} showAnimate:YES showMsg:YES vc:nil success:^(NSDictionary *dict) {
@@ -127,6 +143,19 @@
     } fail:^(id error) {
         
     }];
+}
+
+-(void)MDXZ_TC_V_Delegate_XM:(NSString *)str_XM DH:(NSString *)str_DH{
+    str_SJH = str_DH;
+    str_XM = str_XM;
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(DiQuMenDian_VC_Delegate_XM:SJ:str_ID:MD:MDDZ:)]) {
+        [self.delegate DiQuMenDian_VC_Delegate_XM:str_XM SJ:str_SJH str_ID:str_id MD:str_MD MDDZ:str_MDDZ];
+        
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    NSLog(@"结束");
 }
 
 #pragma mark- tableview代理
@@ -145,7 +174,8 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DiQuMenDian_Cell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-
+    MenDian_Model_Data  *MMMM = model_MD.data[indexPath.row];
+    cell.model = MMMM;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -163,7 +193,15 @@
     return nil;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    MenDian_Model_Data  *MMMM = model_MD.data[indexPath.row];
+
+    self.dzxx.lbl_MD.text= MMMM.name;
+    self.dzxx.lbl_MDDZ.text = MMMM.address;
+    str_MD = MMMM.name;
+    str_MDDZ = MMMM.address;
+    str_id = [NSString stringWithFormat:@"%li",MMMM.idField];
+    [self.window addSubview:self.dzxx];
+
 }
 
 

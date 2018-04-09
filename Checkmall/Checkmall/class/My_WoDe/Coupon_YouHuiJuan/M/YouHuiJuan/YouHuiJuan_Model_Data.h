@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, assign) NSInteger needprice;
 @property (nonatomic, strong) NSString * path;
+@property (nonatomic, strong) NSString * goodsid;
+
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

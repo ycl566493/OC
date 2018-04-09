@@ -12,21 +12,18 @@ NSString *const kYouHuiJuan_Model_DataIdField = @"id";
 NSString *const kYouHuiJuan_Model_DataName = @"name";
 NSString *const kYouHuiJuan_Model_DataNeedprice = @"needprice";
 NSString *const kYouHuiJuan_Model_DataPath = @"path";
+NSString *const kYouHuiJuan_Model_DataGoodsid = @"goodsid";
 
 @interface YouHuiJuan_Model_Data ()
 @end
 @implementation YouHuiJuan_Model_Data
 
-
-
-
-/**
- * Instantiate the instance using the passed dictionary values to set the properties values
- */
-
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    if(![dictionary[kYouHuiJuan_Model_DataGoodsid] isKindOfClass:[NSNull class]]){
+        self.goodsid = dictionary[kYouHuiJuan_Model_DataGoodsid];
+    }
 	if(![dictionary[kYouHuiJuan_Model_DataEndtime] isKindOfClass:[NSNull class]]){
 		self.endtime = dictionary[kYouHuiJuan_Model_DataEndtime];
 	}	

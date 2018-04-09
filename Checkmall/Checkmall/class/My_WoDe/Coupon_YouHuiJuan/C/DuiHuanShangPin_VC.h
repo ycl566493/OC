@@ -10,6 +10,10 @@
 
 @interface DuiHuanShangPin_VC : BaseViewController
 
+@property (nonatomic,strong)NSString        *str_ID;//id优惠卷
+
+@property (nonatomic,strong)NSString        *str_SPID;//商品id
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollV;
 
 

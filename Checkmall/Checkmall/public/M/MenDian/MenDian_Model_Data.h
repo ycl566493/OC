@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSString * address;
 @property (nonatomic, assign) NSInteger idField;
 @property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * url;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

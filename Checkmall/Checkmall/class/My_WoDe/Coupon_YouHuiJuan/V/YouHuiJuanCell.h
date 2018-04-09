@@ -4,7 +4,7 @@
 //
 //  Created by 杨成龙MAC on 2018/3/16.
 //  Copyright © 2018年 CKJY. All rights reserved.
-//
+//  优惠间信息
 
 #import <UIKit/UIKit.h>
 #import "YouHuiJuan_Model_Data.h"
@@ -27,9 +27,14 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageV_TP;//图片
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageV_BJ;//图片背景
+
+
 @property (nonatomic,strong) YouHuiJuan_Model_Data   *model;
 
 @property (nonatomic,assign)id<YouHuiJuanCell_Delegate>     delegate;
+
+- (void)setZT:(NSInteger)tag;//1未使用 2、已使用 3 已过期
 
 +(CGFloat)get_H;
 

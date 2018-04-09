@@ -45,8 +45,8 @@
 
 #define Order_saveOrderStatus [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/saveOrderStatus"]//取消订单
 #define Order_goToPayment [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/goToPayment"]//去支付
-
-
+#define Coupon_exchangeGoodsDesc [NSString stringWithFormat:@"%@%@",URL_LJ,@"Coupon/exchangeGoodsDesc"]//兑换券商品信息
+#define Coupon_exchangeGoods [NSString stringWithFormat:@"%@%@",URL_LJ,@"Coupon/exchangeGoods"]//兑换商品
 
 
 

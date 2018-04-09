@@ -139,6 +139,8 @@
 -(void)YouHuiJuanCell_Delegate_LJDH:(NSInteger)tag{
     YouHuiJuan_Model_Data   *MMMM = model_YHJ.data[tag];
     DuiHuanShangPin_VC * vc = [[DuiHuanShangPin_VC alloc]init];
+    vc.str_ID = [NSString stringWithFormat:@"%li",MMMM.idField];
+    vc.str_SPID = MMMM.goodsid;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -164,7 +166,7 @@
     cell.delegate = self;
     cell.tag = indexPath.row;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    [cell setZT:slide.tag + 1];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

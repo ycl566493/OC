@@ -15,7 +15,7 @@
     // Initialization code
     self.backgroundColor = [UIColor clearColor];
     
-    self.imageV_TP.image = [MyHelper Image_Hui:[UIImage imageNamed:@"JiDan"]];
+//    self.imageV_TP.image = [MyHelper Image_Hui:[UIImage imageNamed:@"JiDan"]];
     
 }
 
@@ -35,6 +35,29 @@
 //        }
 //        weak_Self.imageV_TP.
     }];
+}
+
+-(void)setZT:(NSInteger)tag{
+    if (tag == 1) {
+       [self.btn_DH setEnabled:YES];
+        self.lbl_Name.textColor = UIColorFromHex(0xff7800);
+        self.imageV_BJ.image = [UIImage imageNamed:@"WeiDuiHuan"];
+    }
+    if (tag == 2) {
+        [self.btn_DH setEnabled:NO];
+        self.lbl_Name.textColor = UIColorFromHex(0xd9d9d9);
+//        self.imageV_TP.image = [MyHelper Image_Hui:self.imageV_TP.image];
+        self.imageV_BJ.image = [UIImage imageNamed:@"YiDuiHuan"];
+        
+    }
+    if (tag == 3) {
+
+        [self.btn_DH setEnabled:NO];
+        self.lbl_Name.textColor = UIColorFromHex(0xd9d9d9);
+//        self.imageV_TP.image = [MyHelper Image_Hui:self.imageV_TP.image];
+        self.imageV_BJ.image = [UIImage imageNamed:@"YiGuoQi"];
+
+    }
 }
 
 #pragma mark- 兑换
