@@ -229,10 +229,10 @@
         case 903:{
             NSLog(@"新人专享");
             [MyHelper showMessage:@"亲，功能暂时未开放哦！"];
-//            ZhuanXiang_VC *VC= [[ZhuanXiang_VC alloc]init];
-//            BaseNavigationController *nav = [[BaseNavigationController alloc]initWithRootViewController:VC];
-//            VC.bool_TZ = NO;
-//            [self presentViewController:nav animated:YES completion:nil];
+            ZhuanXiang_VC *VC= [[ZhuanXiang_VC alloc]init];
+            BaseNavigationController *nav = [[BaseNavigationController alloc]initWithRootViewController:VC];
+            VC.bool_TZ = NO;
+            [self presentViewController:nav animated:YES completion:nil];
         }
             break;
         case 904:{

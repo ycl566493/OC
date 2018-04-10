@@ -226,8 +226,8 @@
     if (tag == 1) {
 //        ZhuanXiang_VC *vc = [[ZhuanXiang_VC alloc]init];
 //        vc.bool_TZ = YES;
-//        JieLong_VC  *vc = [[JieLong_VC alloc]init];
-//        [self.navigationController pushViewController:vc animated:YES];
+        JieLong_VC  *vc = [[JieLong_VC alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (tag == 2){
         
     }

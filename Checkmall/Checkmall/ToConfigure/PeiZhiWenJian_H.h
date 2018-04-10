@@ -12,6 +12,9 @@
 //服务器选择
 //#define FuWuQi @"" //正式
 #define FuWuQi @"http://www.jingchengcaidian.com"  //测试地址：
+#define FuWuQi @"http://www.jingchengcaidian.com"  //测试地址：
+
+//http://192.168.48.129/
 
 //https://api.jingchengcaidian.com/api/product/getRecommendProduct
 //路径选择

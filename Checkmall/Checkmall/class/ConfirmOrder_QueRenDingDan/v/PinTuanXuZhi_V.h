@@ -8,12 +8,21 @@
 
 #import "MyUIView.h"
 
+@protocol PinTuanXuZhi_V_Delegate <NSObject>
+
+@optional
+-(void)PinTuanXuZhi_V_Delegate_Action;
+
+@end
+
 @interface PinTuanXuZhi_V : MyUIView
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_PT;//拼团须知
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_CKXQ;//查看详情
+
+@property (nonatomic,assign) id<PinTuanXuZhi_V_Delegate>        delegate;
 
 
 @end

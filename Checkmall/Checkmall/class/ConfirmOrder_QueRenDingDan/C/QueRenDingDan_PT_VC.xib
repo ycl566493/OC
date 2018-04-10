@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2320" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,8 +14,6 @@
             <connections>
                 <outlet property="btn_DR" destination="Zpu-rD-WWi" id="S2C-1h-cxn"/>
                 <outlet property="lbl_JE" destination="2xw-Lf-ces" id="VgN-fa-GD4"/>
-                <outlet property="lbl_JE_H" destination="Q5d-wE-ogP" id="pL8-QG-YAq"/>
-                <outlet property="lbl_YF" destination="JTb-nk-Baf" id="b2h-QZ-Dxo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -42,10 +40,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xw-Lf-ces">
-                            <rect key="frame" x="15" y="10" width="210" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="Q5d-wE-ogP"/>
-                            </constraints>
+                            <rect key="frame" x="15" y="10" width="210" height="30"/>
                             <attributedString key="attributedText">
                                 <fragment content="订单金额：9999.00">
                                     <attributes>
@@ -56,28 +51,17 @@
                             </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="含运费：9999.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-nk-Baf">
-                            <rect key="frame" x="15" y="30" width="210" height="15"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="15" id="JrG-X0-y6T"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                            <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Zpu-rD-WWi" secondAttribute="trailing" id="Ami-0I-DgU"/>
-                        <constraint firstItem="JTb-nk-Baf" firstAttribute="top" secondItem="2xw-Lf-ces" secondAttribute="bottom" id="HOE-lI-vdX"/>
                         <constraint firstItem="Zpu-rD-WWi" firstAttribute="leading" secondItem="2xw-Lf-ces" secondAttribute="trailing" id="HfO-Rk-Bhx"/>
-                        <constraint firstItem="JTb-nk-Baf" firstAttribute="leading" secondItem="fKW-Qo-uKZ" secondAttribute="leading" constant="15" id="Mic-UC-HGU"/>
                         <constraint firstItem="2xw-Lf-ces" firstAttribute="leading" secondItem="fKW-Qo-uKZ" secondAttribute="leading" constant="15" id="Rxq-7P-bGf"/>
                         <constraint firstItem="2xw-Lf-ces" firstAttribute="top" secondItem="fKW-Qo-uKZ" secondAttribute="top" constant="10" id="UzF-2a-iwb"/>
-                        <constraint firstItem="Zpu-rD-WWi" firstAttribute="leading" secondItem="JTb-nk-Baf" secondAttribute="trailing" id="XhK-DB-SZi"/>
                         <constraint firstAttribute="height" constant="50" id="edc-vj-Jmu"/>
                         <constraint firstItem="Zpu-rD-WWi" firstAttribute="top" secondItem="fKW-Qo-uKZ" secondAttribute="top" id="pmb-2y-8kw"/>
                         <constraint firstAttribute="bottom" secondItem="Zpu-rD-WWi" secondAttribute="bottom" id="taW-Ed-PJ3"/>
+                        <constraint firstAttribute="bottom" secondItem="2xw-Lf-ces" secondAttribute="bottom" constant="10" id="uZK-hF-Qje"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDe-yZ-h3j">

@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString * url;
 @property (nonatomic, strong) NSString * mprice;
 @property (nonatomic, assign) NSInteger arrival_time;
+@property (nonatomic, assign) NSString * g_price;
 
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;

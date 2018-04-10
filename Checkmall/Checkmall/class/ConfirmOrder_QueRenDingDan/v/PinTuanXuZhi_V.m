@@ -13,7 +13,9 @@
 
 #pragma mark- 查看详情
 - (IBAction)btn_XX:(id)sender {
-    
+    if (self.delegate && [self.delegate respondsToSelector: @selector(PinTuanXuZhi_V_Delegate_Action)]) {
+        [self.delegate PinTuanXuZhi_V_Delegate_Action];
+    }
 }
 
 

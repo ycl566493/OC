@@ -24,7 +24,7 @@
     ShangPin_XinXi_V        *XinXi;//商品信息
     ShangPin_XiaDan_V       *XiaDan;//商品下单信息
     ShangPin_MS_V           *MS;//商品描述
-//    ShangPin_PinTuanXuZhi_V *PinTuan;//拼团
+    ShangPin_PinTuanXuZhi_V *PinTuan;//拼团
     
     UIButton                *btn_GM;//购买
     UIButton                *btn_PT;//拼团
@@ -37,7 +37,7 @@
     QueRenDingDan_Model_RootClass   *model_QRDD;//确认订单
 }
 
-//@property(weak,nonatomic)TC_PTXZ_V          *PTXZ;//拼团须知
+@property(weak,nonatomic)TC_PTXZ_V          *PTXZ;//拼团须知
 
 @end
 
@@ -83,30 +83,30 @@
     MS.model = model_SPXQ;
     MS.height = [ShangPin_MS_V get_H:model_SPXQ.data.productDesc];
 
-//    PinTuan.top = MS.bottom;
-    scrollV.contentSize = CGSizeMake(0, MS.bottom + 20);
+    PinTuan.top = MS.bottom;
+    scrollV.contentSize = CGSizeMake(0, PinTuan.bottom + 20);
 
-//    lbl_GM.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
-//    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n马上参团",model_SPXQ.data.productPrice];
+    lbl_GM.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
+    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n马上参团",model_SPXQ.data.productPrice];
     
-    lbl_GM.text = [NSString stringWithFormat:@"加入购物车"];
-    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
+//    lbl_GM.text = [NSString stringWithFormat:@"加入购物车"];
+//    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
 
 }
 
-//-(TC_PTXZ_V *)PTXZ{
-//    if (!_PTXZ) {
-//        TC_PTXZ_V* PTXZ = [TC_PTXZ_V init_Xib];
-//        [self.view addSubview:PTXZ];
-//        _PTXZ = PTXZ;
-//        _PTXZ.frame = self.window.bounds;
-//    }
-//    return _PTXZ;
-//}
+-(TC_PTXZ_V *)PTXZ{
+    if (!_PTXZ) {
+        TC_PTXZ_V* PTXZ = [TC_PTXZ_V init_Xib];
+        [self.view addSubview:PTXZ];
+        _PTXZ = PTXZ;
+        _PTXZ.frame = self.window.bounds;
+    }
+    return _PTXZ;
+}
 
 #pragma mark- 拼团须知
 -(void)ShangPin_PinTuanXuZhi_V_Delegate_PTXZ{
-//    [self.window addSubview:self.PTXZ];
+    [self.window addSubview:self.PTXZ];
 }
 
 #pragma mark- 初始化
@@ -135,11 +135,11 @@
     MS = [[ShangPin_MS_V alloc]initWithFrame:CGRectMake(0, XiaDan.bottom, ScreenWidth, [ShangPin_MS_V get_H:str_MS])];
     [scrollV addSubview:MS];
     
-//    PinTuan = [[ShangPin_PinTuanXuZhi_V alloc]initWithFrame:CGRectMake(0, MS.bottom, ScreenWidth, [ShangPin_PinTuanXuZhi_V get_H:nil])];
-//    PinTuan.delegate = self;
-//    [scrollV addSubview:PinTuan];
+    PinTuan = [[ShangPin_PinTuanXuZhi_V alloc]initWithFrame:CGRectMake(0, MS.bottom, ScreenWidth, [ShangPin_PinTuanXuZhi_V get_H:nil])];
+    PinTuan.delegate = self;
+    [scrollV addSubview:PinTuan];
     
-    scrollV.contentSize = CGSizeMake(0, MS.bottom );
+    scrollV.contentSize = CGSizeMake(0, PinTuan.bottom );
     
     btn_GM = [[UIButton alloc]initWithFrame:CGRectMake(0, scrollV.bottom, ScreenWidth / 2, 54)];
     btn_GM.backgroundColor = UIColorFromHex(0xff9333);
@@ -177,38 +177,65 @@
 
 
 #pragma mark- 拼团btn_PT_Action
-- (void)btn_GM_Action{
+- (void)btn_PT_Action{
 //    QueRenDingDan_PT_VC *VC = [[QueRenDingDan_PT_VC alloc]init];
-//
 //    [self.navigationController pushViewController:VC animated:YES];
     
+//
+//    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+//        [self QuDeLu];
+//        return;
+//    }
+//
+//    NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",model_SPXQ.data.productId],@"num":@"1"};
+//
+//    [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+//
+//
+//        NSLog(@"添加购物车 = = =%@",dict);
+//        if ([dict[@"code"] integerValue] == 1) {
+//
+//            [MyHelper showMessage:@"添加购物车成功"];
+//
+//            [MyHelper UP_GWCSL];
+//        }
+//    } fail:^(id error) {
+//
+//
+//    }];
     
     if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
         [self QuDeLu];
         return;
     }
     
-    NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",model_SPXQ.data.productId],@"num":@"1"};
+    NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
     
-    [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
-        
-        
-        NSLog(@"添加购物车 = = =%@",dict);
-        if ([dict[@"code"] integerValue] == 1) {
-            
-            [MyHelper showMessage:@"添加购物车成功"];
-
-            [MyHelper UP_GWCSL];
+    NSMutableDictionary *dic_DDDDDD = [[NSMutableDictionary alloc]init];
+    [dic_DDDDDD setObject:[NSString stringWithFormat:@"%li",model_SPXQ.data.productId] forKey:@"goodsid"];
+    [dic_DDDDDD setObject:model_SPXQ.data.productSprice forKey:@"price"];
+    [dic_DDDDDD setObject:[NSString stringWithFormat:@"1"] forKey:@"num"];
+    
+    [arr_Data addObject:[MyHelper toJson:dic_DDDDDD]];
+    
+    //       type 商品类型 1 拼团 2 开团 3 单独购买 4今日团购 5兑换 6接龙
+    NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"1"};
+    [NetRequest postWithUrl:order_getOrderDesc params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"确认订单 == %@",dict);
+        model_QRDD = [[QueRenDingDan_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_QRDD.code == 1 && model_QRDD.data.arr.count > 0) {
+            QueRenDingDan_PT_VC *VC= [[QueRenDingDan_PT_VC alloc]init];
+            VC.model = model_QRDD;
+            [self.navigationController pushViewController:VC animated:YES];
         }
     } fail:^(id error) {
-        
         
     }];
 
 }
 
 #pragma mark- 购买btn_GM_Action
--(void)btn_PT_Action{
+-(void)btn_GM_Action{
     if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
         [self QuDeLu];
         return;

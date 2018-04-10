@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *TGR;//手势
 
 @property (nonatomic, strong)QueRenDingDan_Model_Arr            *Model;//购物车model
+@property (nonatomic, strong)QueRenDingDan_Model_Arr            *Model_PT;//拼团model
 
 +(CGFloat)get_H;
 

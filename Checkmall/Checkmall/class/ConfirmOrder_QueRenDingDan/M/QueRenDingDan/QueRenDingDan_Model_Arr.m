@@ -21,6 +21,7 @@ NSString *const kQueRenDingDan_Model_ArrSupplier = @"supplier";
 NSString *const kQueRenDingDan_Model_ArrUrl = @"url";
 NSString *const kQueRenDingDan_Model_ArrMprice = @"mprice";
 NSString *const kQueRenDingDan_Model_ArrArrival_time = @"arrival_time";
+NSString *const kQueRenDingDan_Model_ArrG_price = @"g_price";
 
 @interface QueRenDingDan_Model_Arr ()
 @end
@@ -29,6 +30,10 @@ NSString *const kQueRenDingDan_Model_ArrArrival_time = @"arrival_time";
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    if(![dictionary[kQueRenDingDan_Model_ArrG_price] isKindOfClass:[NSNull class]]){
+        self.g_price = dictionary[kQueRenDingDan_Model_ArrG_price];
+    }
+    
     if(![dictionary[kQueRenDingDan_Model_ArrArrival_time] isKindOfClass:[NSNull class]]){
         self.arrival_time = [dictionary[kQueRenDingDan_Model_ArrArrival_time] integerValue];
     }
