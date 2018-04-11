@@ -67,8 +67,8 @@
     
     //分享按钮
     btn_FX = [[UIButton alloc]initWithFrame:CGRectMake(self.width - 50, 10, 50, 50)];
-    [btn_FX setImage:[UIImage imageNamed:@"FenXiang"] forState:UIControlStateNormal];
-    [self addSubview:btn_FX];
+//    [btn_FX setImage:[UIImage imageNamed:@"FenXiang"] forState:UIControlStateNormal];
+//    [self addSubview:btn_FX];
     
     lbL_Title = [[UILabel alloc]initWithFrame:CGRectMake(15, btn_FX.bottom + 10, ScreenWidth - 30, 40)];
     lbL_Title.font = [UIFont systemFontOfSize:16];

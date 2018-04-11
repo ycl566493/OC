@@ -11,6 +11,9 @@
 @protocol WoDe_FuWo_V_Delegate <NSObject>
 
 @optional
+
+- (void)WoDe_FuWo_V_Delegate_TG;//我的团购
+
 - (void)WoDe_FuWo_V_Delegate_DZ;//地址按钮
 
 - (void)WoDe_FuWo_V_Delegate_BZ;//帮助按钮

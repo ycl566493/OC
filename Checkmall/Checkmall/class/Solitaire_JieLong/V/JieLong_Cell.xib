@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +44,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子橘子" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5c-N5-kOv">
-                        <rect key="frame" x="110" y="45" width="250" height="14.5"/>
+                        <rect key="frame" x="110" y="45" width="250" height="29"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="250" constant="40" id="MdI-yg-P5S"/>
                         </constraints>
@@ -53,10 +53,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="2月31日14:00到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZO-3R-Mzo">
-                        <rect key="frame" x="110" y="85.5" width="89.5" height="14.5"/>
+                        <rect key="frame" x="110" y="80" width="165" height="20"/>
                         <color key="backgroundColor" red="1" green="0.97647058823529409" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" priority="250" constant="180" id="NLS-ag-Dgp"/>
+                            <constraint firstAttribute="height" constant="20" id="flj-me-FBX"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="1" green="0.50588235294117645" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,32 +76,22 @@
                             <action selector="btn_CT:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1sa-ar-UOG"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5P-e0-w9s">
-                        <rect key="frame" x="15" y="20" width="80" height="80"/>
-                        <state key="normal" image="ShiPinBoFang"/>
-                        <connections>
-                            <action selector="btn_SP:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bai-hh-dJg"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Xmz-jk-hMS" firstAttribute="leading" secondItem="dQG-Zs-Mdn" secondAttribute="trailing" constant="15" id="0PX-6h-Yhl"/>
-                    <constraint firstItem="Z5P-e0-w9s" firstAttribute="leading" secondItem="dQG-Zs-Mdn" secondAttribute="leading" id="2dp-19-Ge1"/>
                     <constraint firstItem="CHk-US-A5g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="81j-GS-gGb"/>
                     <constraint firstItem="1ZO-3R-Mzo" firstAttribute="leading" secondItem="dQG-Zs-Mdn" secondAttribute="trailing" constant="15" id="8GT-tT-xWQ"/>
                     <constraint firstItem="dQG-Zs-Mdn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="B2C-GT-nes"/>
-                    <constraint firstItem="Z5P-e0-w9s" firstAttribute="trailing" secondItem="dQG-Zs-Mdn" secondAttribute="trailing" id="D4e-9B-SI6"/>
+                    <constraint firstItem="BLS-A2-Pbv" firstAttribute="leading" secondItem="1ZO-3R-Mzo" secondAttribute="trailing" constant="10" id="ERx-ph-WlJ"/>
                     <constraint firstItem="dQG-Zs-Mdn" firstAttribute="top" secondItem="CHk-US-A5g" secondAttribute="bottom" constant="15" id="IEe-3m-Q7a"/>
                     <constraint firstItem="b5c-N5-kOv" firstAttribute="top" secondItem="Xmz-jk-hMS" secondAttribute="bottom" id="MIs-Yi-ojB"/>
                     <constraint firstAttribute="trailing" secondItem="BLS-A2-Pbv" secondAttribute="trailing" constant="15" id="MO1-rj-3dH"/>
-                    <constraint firstItem="Z5P-e0-w9s" firstAttribute="top" secondItem="dQG-Zs-Mdn" secondAttribute="top" id="Mb9-pM-Zpo"/>
                     <constraint firstItem="Xmz-jk-hMS" firstAttribute="top" secondItem="CHk-US-A5g" secondAttribute="bottom" constant="15" id="NcX-Is-F3c"/>
                     <constraint firstAttribute="trailing" secondItem="CHk-US-A5g" secondAttribute="trailing" id="PAp-42-A7o"/>
                     <constraint firstItem="b5c-N5-kOv" firstAttribute="leading" secondItem="dQG-Zs-Mdn" secondAttribute="trailing" constant="15" id="Xxi-QF-yDJ"/>
                     <constraint firstAttribute="trailing" secondItem="b5c-N5-kOv" secondAttribute="trailing" constant="15" id="c3f-uM-Itq"/>
                     <constraint firstItem="1ZO-3R-Mzo" firstAttribute="bottom" secondItem="dQG-Zs-Mdn" secondAttribute="bottom" id="goB-oV-hOj"/>
                     <constraint firstItem="CHk-US-A5g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jsU-RU-p07"/>
-                    <constraint firstItem="Z5P-e0-w9s" firstAttribute="bottom" secondItem="dQG-Zs-Mdn" secondAttribute="bottom" id="su0-XD-kVv"/>
                     <constraint firstAttribute="trailing" secondItem="Xmz-jk-hMS" secondAttribute="trailing" constant="15" id="xGe-va-tEZ"/>
                     <constraint firstItem="BLS-A2-Pbv" firstAttribute="bottom" secondItem="dQG-Zs-Mdn" secondAttribute="bottom" constant="4" id="zDR-sc-4hm"/>
                 </constraints>
@@ -117,7 +107,4 @@
             <point key="canvasLocation" x="-81.5" y="128"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="ShiPinBoFang" width="65" height="65"/>
-    </resources>
 </document>

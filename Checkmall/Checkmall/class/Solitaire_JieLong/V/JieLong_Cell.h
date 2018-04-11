@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JLLB_Model_Data.h"
 
 @interface JieLong_Cell : UITableViewCell
 
@@ -20,7 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageV_TP;//图片
 
-
+@property (nonatomic, strong) JLLB_Model_Data   *model;
 
 //返回高度
 +(CGFloat)get_H;

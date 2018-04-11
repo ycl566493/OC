@@ -9,13 +9,15 @@
 #import "JieLong_VC.h"
 #import "SlideButtonView.h"//上部滑动条
 #import "JieLong_Cell.h"//接龙cell
-#import "TC_JL_V.h"//接龙弹出
+//#import "TC_JL_V.h"//接龙弹出
 #import "QueRenDingDan_JL_VC.h"//接龙确认订单页
+#import "JLLB_Model_RootClass.h"
+#import "JieLong_JG_VC.h"
 
-@interface JieLong_VC ()<UITableViewDelegate,UITableViewDataSource,SlideButtonViewDelegate,TC_JL_V_Delegate>{
-    SlideButtonView   * slide;
+@interface JieLong_VC ()<UITableViewDelegate,UITableViewDataSource>{
+    JLLB_Model_RootClass    *model;
 }
-@property (nonatomic,weak)TC_JL_V       *JLTC;//接龙弹出窗口
+//@property (nonatomic,weak)TC_JL_V       *JLTC;//接龙弹出窗口
 
 @end
 
@@ -23,50 +25,53 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.pageIndex = 1;
     [self init_UI];
     self.title = @"车客接龙";
+    [self init_data:YES];
+}
 
+- (void)init_data:(BOOL)Y_N{
+    
+    [NetRequest postWithUrl:Solitaire_lists params:@{@"page":[NSString stringWithFormat:@"%li",self.pageIndex]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"接龙列表 ==  %@",dict);
+        if (YES) {
+            model = [[JLLB_Model_RootClass alloc]initWithDictionary:dict];
+        }else{
+            [model Add_Dictionary:dict];
+        }
+        if (model.code == 1) {
+            [self.tableview reloadData];
+        }
+    } fail:^(id error) {
+        
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
    
-    [self.JLTC layoutIfNeeded];
-    self.JLTC.alpha = 0;
-    self.JLTC.hidden = NO;
-    [UIView animateWithDuration:.6 animations:^{
-        self.JLTC.alpha = 1;
-        [self.JLTC layoutIfNeeded];
-
-    } completion:^(BOOL finished) {
-        
-    }];
+//    [self.JLTC layoutIfNeeded];
+//    self.JLTC.alpha = 0;
+//    self.JLTC.hidden = NO;
+//    [UIView animateWithDuration:.6 animations:^{
+//        self.JLTC.alpha = 1;
+//        [self.JLTC layoutIfNeeded];
+//
+//    } completion:^(BOOL finished) {
+//
+//    }];
     
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.JLTC.hidden = YES;
+//    self.JLTC.hidden = YES;
 }
 
 -(void)init_UI{
-    slide = [[SlideButtonView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
-    slide.arr_Title = @[@"推荐",@"蔬菜",@"水果",@"禽蛋",@"肉类",@"蔬菜",@"水果",@"禽蛋",@"肉类",@"蔬菜",@"水果",@"禽蛋",@"肉类"];
-    slide.Font_Size = 14;
-    slide.No_Color = UIColorFromHex(0x333333);
-    slide.Yes_Color = UIColorFromHex(0x5db851);
-    slide.No_backgroundColor = UIColorFromHex(0xffffff);
-    slide.Yes_backgroundColor = UIColorFromHex(0xffffff);
-    slide.bool_SlideBar = YES;
-    slide.SlideBar_Color = UIColorFromHex(0x5db851);
-    slide.delegate = self;
-    slide.tag = 0;
-    slide.init_Selected = 0;
-    [self.view addSubview:slide];
-    
     self.tableview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    self.tableview.top = slide.bottom;
-    self.tableview.height = ScreenHeight - slide.height  - kTabbarSafeBottomMargin ;
+    self.tableview.top = 0;
+    self.tableview.height = ScreenHeight - kTabbarSafeBottomMargin ;
     self.tableview.backgroundColor = UIColorFromHex(0xf2f2f2);
     if (!iOS11) {
         self.tableview.height = ScreenHeight ;
@@ -80,30 +85,22 @@
 }
 
 #pragma mark- 接龙弹出
--(TC_JL_V *)JLTC{
-    if (!_JLTC) {
-        TC_JL_V *JLTC = [TC_JL_V init_Xib];
-        _JLTC = JLTC;
-        _JLTC.frame = self.window.bounds;
-        _JLTC.delegate = self;
-    }
-    return _JLTC;
-}
-
-#pragma mark- 选择条代理
--(void)SlideButtonViewDelegate_Acion:(NSInteger)btn_Tag{
-    if (slide.tag != btn_Tag) {
-        slide.tag = btn_Tag;
-        
-    }
-}
+//-(TC_JL_V *)JLTC{
+//    if (!_JLTC) {
+//        TC_JL_V *JLTC = [TC_JL_V init_Xib];
+//        _JLTC = JLTC;
+//        _JLTC.frame = self.window.bounds;
+//        _JLTC.delegate = self;
+//    }
+//    return _JLTC;
+//}
 
 #pragma mark- tableview代理
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return model.data.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [JieLong_Cell get_H];
@@ -114,7 +111,8 @@
         cell= (JieLong_Cell *)[[[NSBundle  mainBundle]  loadNibNamed:@"JieLong_Cell" owner:self options:nil]  lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
+    JLLB_Model_Data *MMMM = model.data[indexPath.row];
+    cell.model = MMMM;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -130,18 +128,21 @@
     return nil;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.JLTC.View_BJ_Y.constant = self.JLTC.height;
-    [self.window addSubview:self.JLTC];
-    
-    [self.JLTC layoutIfNeeded];
+//    self.JLTC.View_BJ_Y.constant = self.JLTC.height;
+//    [self.window addSubview:self.JLTC];
+//
+//    [self.JLTC layoutIfNeeded];
+//
+//    [UIView animateWithDuration:.4 animations:^{
+//        self.JLTC.View_BJ_Y.constant = 0;
+//        [self.JLTC layoutIfNeeded];
+//    } completion:^(BOOL finished) {
+//    }];
+    JLLB_Model_Data *MMMM = model.data[indexPath.row];
 
-    [UIView animateWithDuration:.4 animations:^{
-        self.JLTC.View_BJ_Y.constant = 0;
-        [self.JLTC layoutIfNeeded];
-    } completion:^(BOOL finished) {
-    }];
-    
-    
+    JieLong_JG_VC *vc = [[JieLong_JG_VC alloc]init];
+    vc.str_ID = [NSString stringWithFormat:@"%li",MMMM.idField];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

@@ -10,15 +10,6 @@
 
 @implementation JieLong_Cell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-}
-
 -(void)layoutSubviews{
     [super layoutSubviews];
     [self init_UI];
@@ -31,19 +22,24 @@
     self.btn_JL.layer.borderWidth = .5;
     self.btn_JL.layer.borderColor = self.btn_JL.titleLabel.textColor.CGColor;
     
-    self.lbl_SJ.text = @"  2018-19-19 19:00到货  ";
     
     
+}
+
+-(void)setModel:(JLLB_Model_Data *)model{
+    _model = model;
+    [self.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.imgpath view:self.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    
+    self.lbl_Title.text = model.title;
+    self.lbl_NR.text = model.desc;
+    NSString *str_SJ = [NSString stringWithFormat:@" %@到货 ",[MyHelper dateChangeToTime:[NSString stringWithFormat:@"%li",model.endtime]]];
+    self.lbl_SJ.text = str_SJ;
+
 }
 
 #pragma mark- 参团按钮
 - (IBAction)btn_CT:(id)sender {
     NSLog(@"参团");
-}
-
-#pragma mark- 视频播放
-- (IBAction)btn_SP:(id)sender {
-    NSLog(@"视频播放");
 }
 
 

@@ -116,18 +116,18 @@ static NetRequest * netequest;
             [[NSNotificationCenter defaultCenter]postNotificationName:@"ToLogIn" object:nil];
             
         }else{
-            NSLog(@"dictdata === %@",[responseObject objectForKey:@"Msg"]);
-            if ([responseObject[@"Msg"] length]>0) {
-                [MyHelper showMessage:responseObject[@"Msg"]];
+            NSLog(@"dictdata === %@",[responseObject objectForKey:@"msg"]);
+            if ([responseObject[@"msg"] length]>0) {
+                [MyHelper showMessage:responseObject[@"msg"]];
             }
          
         }
         success(responseObject);
-        if (showMsg) {
-            if ([responseObject[@"Msg"] length]>0) {
-                [MyHelper showMessage:responseObject[@"Msg"]];
-            }
-        }
+//        if (showMsg) {
+//            if ([responseObject[@"msg"] length]>0) {
+//                [MyHelper showMessage:responseObject[@"msg"]];
+//            }
+//        }
 
         if (showAnimate==YES) {
 //            [DH yinChang];

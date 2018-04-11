@@ -52,7 +52,7 @@
     self.lbl_BH.text = [NSString stringWithFormat:@"订单编号:%@",model.orderSn];
     [self.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.path view:self.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
     self.lbl_Name.text = model.goodsName;
-    self.lbl_DH.text = [NSString stringWithFormat:@"%ld到货",(long)model.arrivalTime];
+    self.lbl_DH.text = [NSString stringWithFormat:@"%@到货",[MyHelper dateChangeToTime:[NSString stringWithFormat:@"%li",model.arrivalTime]]];
     self.lbl_SL.text = [NSString stringWithFormat:@"x%li",model.number];
     self.lbl_XD.text = [NSString stringWithFormat:@"%@下单",model.created];
     self.lbl_SFK.text = [NSString stringWithFormat:@"实付款：￥%@",model.paidAmount];

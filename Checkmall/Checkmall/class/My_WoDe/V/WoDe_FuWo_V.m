@@ -38,6 +38,11 @@
 }
 
 - (void)btn_Action:(UIButton*)btn{
+    if (btn.tag == 0) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(WoDe_FuWo_V_Delegate_TG)]) {
+            [self.delegate WoDe_FuWo_V_Delegate_TG];
+        }
+    }
     if (btn.tag == 1) {
         //收货地址
         if (self.delegate && [self.delegate respondsToSelector:@selector(WoDe_FuWo_V_Delegate_DZ)]) {

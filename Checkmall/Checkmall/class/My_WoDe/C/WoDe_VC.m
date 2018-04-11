@@ -204,6 +204,13 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+#pragma mark- 团购
+-(void)WoDe_FuWo_V_Delegate_TG{
+    DingDanLieBiao_VC *vc = [[DingDanLieBiao_VC alloc]init];
+    vc.int_Tag = 0;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark- 优惠劵
 -(void)WoDe_TouBu_V_Delegate_YHJ{
     YouHuiJuan_VC   *vc = [[YouHuiJuan_VC alloc]init];

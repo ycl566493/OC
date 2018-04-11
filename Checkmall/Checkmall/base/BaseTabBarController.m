@@ -117,7 +117,7 @@
     self.viewControllers = array2;
 }
 
-#define btn_width ScreenWidth/5
+#define btn_width ScreenWidth/4
 - (void)initTabBarItem
 {
     //tabbar
@@ -152,16 +152,16 @@
     [btn_2 setAdjustsImageWhenHighlighted:NO];
     [tabBarView addSubview:btn_2];
     
-    btn_3 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn_3.frame = CGRectMake(btn_2.right, -14, btn_width, 63.5);
-    [btn_3 addTarget:self action:@selector(selectViewController:) forControlEvents:UIControlEventTouchUpInside];
-    btn_3.tag = 903;
-    [btn_3 setImage:[UIImage imageNamed:@"XinRenZhuanXiang"] forState:UIControlStateNormal];
-    [btn_3 setAdjustsImageWhenHighlighted:NO];
-    [tabBarView addSubview:btn_3];
+//    btn_3 = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btn_3.frame = CGRectMake(btn_2.right, -14, btn_width, 63.5);
+//    [btn_3 addTarget:self action:@selector(selectViewController:) forControlEvents:UIControlEventTouchUpInside];
+//    btn_3.tag = 903;
+//    [btn_3 setImage:[UIImage imageNamed:@"XinRenZhuanXiang"] forState:UIControlStateNormal];
+//    [btn_3 setAdjustsImageWhenHighlighted:NO];
+//    [tabBarView addSubview:btn_3];
     
     btn_4 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn_4.frame = CGRectMake(btn_3.right , btn_1.top,btn_width, btn_1.height);
+    btn_4.frame = CGRectMake(btn_2.right , btn_1.top,btn_width, btn_1.height);
     [btn_4 addTarget:self action:@selector(selectViewController:) forControlEvents:UIControlEventTouchUpInside];
     btn_4.tag = 904;
     [btn_4 setImage:[UIImage imageNamed:@"GouWuChe2"] forState:UIControlStateNormal];
