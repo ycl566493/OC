@@ -10,6 +10,7 @@
 #import "TC_JL_Cell.h"
 #import "JLLPSP_Model_RootClass.h"
 #import "QueRenDingDan_Model_RootClass.h"//确认订单
+#import "QueRenDingDan_JL_VC.h"//确认订单
 
 @interface JieLong_JG_VC ()<UITableViewDelegate,UITableViewDataSource,TC_JL_Cell_Delegate>{
     JLLPSP_Model_RootClass  *model;
@@ -130,7 +131,9 @@
 #pragma mark- 提交订单
 - (IBAction)btn_TJ:(id)sender {
     NSLog(@"提交");
-    
+//    QueRenDingDan_JL_VC    *VC = [[QueRenDingDan_JL_VC alloc]init];
+//    [self.navigationController pushViewController:VC animated:YES];
+//    return;
     
     if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
         [self QuDeLu];
@@ -139,7 +142,7 @@
     
     NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
     for (JLLPSP_Model_Data *MMM in model.data) {
-        if ([MMM.str_SL integerValue]>1) {
+        if ([MMM.str_SL integerValue]>0) {
             NSMutableDictionary *dic_DDDDDD = [[NSMutableDictionary alloc]init];
             [dic_DDDDDD setObject:[NSString stringWithFormat:@"%li",MMM.gid] forKey:@"goodsid"];
             [dic_DDDDDD setObject:MMM.sprice forKey:@"price"];
@@ -157,9 +160,10 @@
         NSLog(@"确认订单 == %@",dict);
         model_QRDD = [[QueRenDingDan_Model_RootClass alloc]initWithDictionary:dict];
         if (model_QRDD.code == 1) {
-//            QueRenDingDan_GWC_VC    *VC = [[QueRenDingDan_GWC_VC alloc]init];
-//            VC.model = model_QRDD;
-//            [self.navigationController pushViewController:VC animated:YES];
+            QueRenDingDan_JL_VC    *VC = [[QueRenDingDan_JL_VC alloc]init];
+            VC.model = model_QRDD;
+            [self.navigationController pushViewController:VC animated:YES];
+
         }
     } fail:^(id error) {
         

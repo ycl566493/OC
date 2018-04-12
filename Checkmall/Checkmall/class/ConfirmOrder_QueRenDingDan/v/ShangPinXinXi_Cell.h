@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "QueRenDingDan_Model_Arr.h"
+#import "PTZFCG_Model_RootClass.h"//拼团支付成功
 
 @interface ShangPinXinXi_Cell : UITableViewCell
 
@@ -26,6 +27,8 @@
 
 @property (nonatomic, strong)QueRenDingDan_Model_Arr            *Model;//购物车model
 @property (nonatomic, strong)QueRenDingDan_Model_Arr            *Model_PT;//拼团model
+
+@property (nonatomic, strong)PTZFCG_Model_RootClass             *Model_PTCG;
 
 +(CGFloat)get_H;
 

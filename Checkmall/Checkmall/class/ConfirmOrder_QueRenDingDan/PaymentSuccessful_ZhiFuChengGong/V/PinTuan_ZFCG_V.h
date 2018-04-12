@@ -7,6 +7,7 @@
 //  拼团的支付成功页
 
 #import "MyUIView.h"
+#import "PTZFCG_Model_RootClass.h"
 
 @interface PinTuan_ZFCG_V : MyUIView
 @property (weak, nonatomic) IBOutlet UIView *View_TX;//头像背景
@@ -26,4 +27,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableV_H;//列表高
 
 @property (nonatomic,assign) NSInteger          index_Row;//个数
+
+@property (nonatomic, strong) PTZFCG_Model_RootClass    *model;
+
+
+
+
+
+
 @end

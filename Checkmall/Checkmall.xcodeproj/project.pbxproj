@@ -364,6 +364,10 @@
 		74ECFA9C2061092100CC018B /* SS_SJ_V.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74ECFA9B2061092100CC018B /* SS_SJ_V.xib */; };
 		74ECFAA020612C8100CC018B /* SouSuoJieGuo_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74ECFA9E20612C8100CC018B /* SouSuoJieGuo_VC.m */; };
 		74F3EB4F2053B728002BDD8B /* ShangPin_TuPian_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F3EB4E2053B728002BDD8B /* ShangPin_TuPian_V.m */; };
+		74F50127207F5423006063BA /* PTZFCG_Model_Good.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5011F207F5423006063BA /* PTZFCG_Model_Good.m */; };
+		74F50128207F5423006063BA /* PTZFCG_Model_Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F50120207F5423006063BA /* PTZFCG_Model_Group.m */; };
+		74F50129207F5423006063BA /* PTZFCG_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F50121207F5423006063BA /* PTZFCG_Model_RootClass.m */; };
+		74F5012A207F5423006063BA /* PTZFCG_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F50122207F5423006063BA /* PTZFCG_Model_Data.m */; };
 		74FCF0B3206E3BEF007F7BAD /* WeiXinZhiFu_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FCF0AB206E3BEF007F7BAD /* WeiXinZhiFu_Model_Data.m */; };
 		74FCF0B6206E3BEF007F7BAD /* WeiXinZhiFu_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FCF0B1206E3BEF007F7BAD /* WeiXinZhiFu_Model_RootClass.m */; };
 /* End PBXBuildFile section */
@@ -1078,6 +1082,14 @@
 		74ECFA9E20612C8100CC018B /* SouSuoJieGuo_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SouSuoJieGuo_VC.m; sourceTree = "<group>"; };
 		74F3EB4D2053B728002BDD8B /* ShangPin_TuPian_V.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShangPin_TuPian_V.h; sourceTree = "<group>"; };
 		74F3EB4E2053B728002BDD8B /* ShangPin_TuPian_V.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShangPin_TuPian_V.m; sourceTree = "<group>"; };
+		74F5011F207F5423006063BA /* PTZFCG_Model_Good.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTZFCG_Model_Good.m; sourceTree = "<group>"; };
+		74F50120207F5423006063BA /* PTZFCG_Model_Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTZFCG_Model_Group.m; sourceTree = "<group>"; };
+		74F50121207F5423006063BA /* PTZFCG_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTZFCG_Model_RootClass.m; sourceTree = "<group>"; };
+		74F50122207F5423006063BA /* PTZFCG_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTZFCG_Model_Data.m; sourceTree = "<group>"; };
+		74F50123207F5423006063BA /* PTZFCG_Model_Good.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTZFCG_Model_Good.h; sourceTree = "<group>"; };
+		74F50124207F5423006063BA /* PTZFCG_Model_Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTZFCG_Model_Group.h; sourceTree = "<group>"; };
+		74F50125207F5423006063BA /* PTZFCG_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTZFCG_Model_Data.h; sourceTree = "<group>"; };
+		74F50126207F5423006063BA /* PTZFCG_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTZFCG_Model_RootClass.h; sourceTree = "<group>"; };
 		74FCF0AB206E3BEF007F7BAD /* WeiXinZhiFu_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiXinZhiFu_Model_Data.m; sourceTree = "<group>"; };
 		74FCF0AC206E3BEF007F7BAD /* WeiXinZhiFu_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiXinZhiFu_Model_RootClass.h; sourceTree = "<group>"; };
 		74FCF0AF206E3BEF007F7BAD /* WeiXinZhiFu_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiXinZhiFu_Model_Data.h; sourceTree = "<group>"; };
@@ -1673,6 +1685,7 @@
 		749FDA0B205A79E300596F36 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				74F5011E207F5423006063BA /* PTZFCG */,
 				74B2170320739D2100A166BD /* ZFJG */,
 			);
 			path = M;
@@ -2811,6 +2824,21 @@
 			path = V;
 			sourceTree = "<group>";
 		};
+		74F5011E207F5423006063BA /* PTZFCG */ = {
+			isa = PBXGroup;
+			children = (
+				74F50123207F5423006063BA /* PTZFCG_Model_Good.h */,
+				74F5011F207F5423006063BA /* PTZFCG_Model_Good.m */,
+				74F50124207F5423006063BA /* PTZFCG_Model_Group.h */,
+				74F50120207F5423006063BA /* PTZFCG_Model_Group.m */,
+				74F50126207F5423006063BA /* PTZFCG_Model_RootClass.h */,
+				74F50121207F5423006063BA /* PTZFCG_Model_RootClass.m */,
+				74F50125207F5423006063BA /* PTZFCG_Model_Data.h */,
+				74F50122207F5423006063BA /* PTZFCG_Model_Data.m */,
+			);
+			path = PTZFCG;
+			sourceTree = "<group>";
+		};
 		74FCF0AA206E3BEF007F7BAD /* WeiXinZhiFu */ = {
 			isa = PBXGroup;
 			children = (
@@ -3010,6 +3038,7 @@
 				74BF4255206D0683003D77A4 /* SouSuo_Model_Data.m in Sources */,
 				74780F7D205404EB00E85CCD /* NSArray+MASAdditions.m in Sources */,
 				74D74835204E39E400DB65FD /* UIImage+GIF.m in Sources */,
+				74F50129207F5423006063BA /* PTZFCG_Model_RootClass.m in Sources */,
 				74D74847204E39E400DB65FD /* IQUIView+Hierarchy.m in Sources */,
 				74D74854204E39E400DB65FD /* UIWebView+AFNetworking.m in Sources */,
 				74D3ED8F2052279600DE296B /* BangDingShouJi_VC.m in Sources */,
@@ -3055,6 +3084,7 @@
 				742F0564206A4BCE006B28F7 /* GuangGao_Model_RootClass.m in Sources */,
 				743EEAC8204FB40B00B7555B /* ZhuanXiang_GG_H.m in Sources */,
 				74D74849204E39E400DB65FD /* IQTitleBarButtonItem.m in Sources */,
+				74F50128207F5423006063BA /* PTZFCG_Model_Group.m in Sources */,
 				7437596F2063BB0D00752982 /* MenDian_Model_Data.m in Sources */,
 				74D7483E204E39E400DB65FD /* SDImageCacheConfig.m in Sources */,
 				74780F9C2054050000E85CCD /* SBControlView.m in Sources */,
@@ -3142,6 +3172,7 @@
 				749CB00C205D0F9200A16260 /* My_PickerView.m in Sources */,
 				74D7483F204E39E400DB65FD /* UIView+WebCacheOperation.m in Sources */,
 				74DE7748205F9224006846FC /* TC_JL_V.m in Sources */,
+				74F50127207F5423006063BA /* PTZFCG_Model_Good.m in Sources */,
 				742F0574206A5E87006B28F7 /* YouHuiJuan_Model_Data.m in Sources */,
 				74D74856204E39E400DB65FD /* AFImageDownloader.m in Sources */,
 				74C8912120651BDB00898168 /* ZhiFuWenJian.m in Sources */,
@@ -3201,6 +3232,7 @@
 				74D748BD204E3C3F00DB65FD /* GouWuChe_VC.m in Sources */,
 				74D7485B204E39E400DB65FD /* AFNetworkReachabilityManager.m in Sources */,
 				74DE1201206B38A300E5CEFE /* FenLei_SY_VC.m in Sources */,
+				74F5012A207F5423006063BA /* PTZFCG_Model_Data.m in Sources */,
 				74AA129A2051408700F030AF /* ZhuCe_VC.m in Sources */,
 				74D92A1E207B37C1007A923B /* DiQuMenDian_Cell.m in Sources */,
 				74C890E72065086200898168 /* HWProgressHUD.m in Sources */,

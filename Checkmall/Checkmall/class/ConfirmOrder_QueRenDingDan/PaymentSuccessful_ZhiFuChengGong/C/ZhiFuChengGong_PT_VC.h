@@ -10,4 +10,8 @@
 
 @interface ZhiFuChengGong_PT_VC : BaseCollectionViewController
 
+@property (nonatomic,strong)NSString        *str_DDID;//订单id
+
+@property (nonatomic,strong)NSString        *str_SPID;//商品id
+
 @end

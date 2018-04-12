@@ -27,8 +27,10 @@
     BOOL            bool_PS;//配送方式 0 自提 1 快递
     NSString            *str_DDID;//订单id
     NSInteger           dz_id;//地址id
-
+    NSString            *str_SP_ID;//商品id
+    
     WeiXinZhiFu_Model_RootClass *model_WX;
+    
 }
 
 @property (nonatomic,weak)TC_PTXZ_V     *PTXZ_V;//拼团须知
@@ -54,7 +56,7 @@
     [super viewDidLoad];
 
     self.view.width = ScreenWidth;
-
+    str_SP_ID = @"";
     bool_PS = 1;
     self.title = @"确认订单";
     [self init_UI];
@@ -86,7 +88,8 @@
                 [MyHelper showMessage:@"付款成功！"];
                 
                 ZhiFuChengGong_PT_VC *vc = [[ZhiFuChengGong_PT_VC alloc]init];
-//                vc.str_JG = model.data.paidAmount;
+                vc.str_DDID = str_DDID;
+                vc.str_SPID = str_SP_ID;
                 [ws.navigationController pushViewController:vc animated:YES];
                 
                 NSMutableArray *marr = [[NSMutableArray alloc]initWithArray:ws.navigationController.viewControllers];
@@ -233,11 +236,14 @@
         
         NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
         QueRenDingDan_Model_Arr *MMM = self.model.data.arr[0];
+        
         NSMutableDictionary *dic_DDDDDD = [[NSMutableDictionary alloc]init];
         [dic_DDDDDD setObject:[NSString stringWithFormat:@"%li",MMM.gid] forKey:@"goodsid"];
         [dic_DDDDDD setObject:MMM.price forKey:@"price"];
         [dic_DDDDDD setObject:[NSString stringWithFormat:@"%@",self.JJ.lbl_SL.text] forKey:@"num"];
         [arr_Data addObject:[MyHelper toJson:dic_DDDDDD]];
+        
+        str_SP_ID = [NSString stringWithFormat:@"%li",MMM.gid];
         
         if (arr_Data.count == 0) {
             return;
@@ -273,7 +279,8 @@
                 if ([dict[@"code"] integerValue] == 1) {
                     [MyHelper showMessage:@"支付成功！"];
                     ZhiFuChengGong_PT_VC *vc = [[ZhiFuChengGong_PT_VC alloc]init];
-//                    vc.str_JG = dict[@"data"];
+                    vc.str_SPID = str_SP_ID;
+                    vc.str_DDID = dict[@"data"][@"order_sn"];
                     [ws.navigationController pushViewController:vc animated:YES];
                     
                     NSMutableArray *marr = [[NSMutableArray alloc]initWithArray:ws.navigationController.viewControllers];

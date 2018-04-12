@@ -7,6 +7,7 @@
 //  接龙支付成功
 
 #import "BaseViewController.h"
+#import "QueRenDingDan_Model_RootClass.h"
 
 @interface QueRenDingDan_JL_VC : BaseViewController
 
@@ -17,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_YF;//运费
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lbl_JE_H;//高度问题
+
+@property (nonatomic,strong)QueRenDingDan_Model_RootClass   *model;
 
 @end

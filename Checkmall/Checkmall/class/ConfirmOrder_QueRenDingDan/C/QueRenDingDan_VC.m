@@ -205,7 +205,7 @@
                 if ([dict[@"code"] integerValue] == 1) {
                     [MyHelper showMessage:@"支付成功！"];
                     ZhiFuChengGong_VC *vc = [[ZhiFuChengGong_VC alloc]init];
-                    vc.str_JG = dict[@"data"];
+                    vc.str_JG = dict[@"data"][@"fee"];
                     [ws.navigationController pushViewController:vc animated:YES];
                     
                     NSMutableArray *marr = [[NSMutableArray alloc]initWithArray:ws.navigationController.viewControllers];

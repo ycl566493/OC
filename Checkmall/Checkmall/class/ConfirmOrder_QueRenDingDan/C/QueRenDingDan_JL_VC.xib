@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,8 +14,6 @@
             <connections>
                 <outlet property="btn_DR" destination="8nS-ne-arW" id="Lc4-Rr-TeB"/>
                 <outlet property="lbl_JE" destination="j7R-0d-eAJ" id="ygp-8T-915"/>
-                <outlet property="lbl_JE_H" destination="PW5-V3-Ify" id="Yrz-0Z-9Ht"/>
-                <outlet property="lbl_YF" destination="bXf-q0-PEu" id="fPH-oE-q4D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,10 +26,7 @@
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7R-0d-eAJ">
-                            <rect key="frame" x="15" y="10" width="205" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="PW5-V3-Ify"/>
-                            </constraints>
+                            <rect key="frame" x="15" y="10" width="205" height="30"/>
                             <attributedString key="attributedText">
                                 <fragment content="订单金额：9999.00">
                                     <attributes>
@@ -40,15 +35,6 @@
                                     </attributes>
                                 </fragment>
                             </attributedString>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="含运费：9999.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXf-q0-PEu">
-                            <rect key="frame" x="15" y="30" width="205" height="15"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="15" id="nU6-rk-wV2"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                            <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nS-ne-arW">
@@ -69,14 +55,12 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="j7R-0d-eAJ" secondAttribute="bottom" constant="10" id="59q-Re-iJA"/>
                         <constraint firstItem="j7R-0d-eAJ" firstAttribute="leading" secondItem="09I-eA-wkP" secondAttribute="leading" constant="15" id="8Iw-fh-IBM"/>
                         <constraint firstAttribute="trailing" secondItem="8nS-ne-arW" secondAttribute="trailing" id="Cjh-AZ-tfx"/>
-                        <constraint firstItem="bXf-q0-PEu" firstAttribute="top" secondItem="j7R-0d-eAJ" secondAttribute="bottom" id="GzD-EG-uqO"/>
                         <constraint firstAttribute="bottom" secondItem="8nS-ne-arW" secondAttribute="bottom" id="N9e-MX-brQ"/>
                         <constraint firstItem="8nS-ne-arW" firstAttribute="leading" secondItem="j7R-0d-eAJ" secondAttribute="trailing" constant="5" id="UWx-HI-dS5"/>
-                        <constraint firstItem="bXf-q0-PEu" firstAttribute="leading" secondItem="09I-eA-wkP" secondAttribute="leading" constant="15" id="clt-0k-M8m"/>
                         <constraint firstItem="j7R-0d-eAJ" firstAttribute="top" secondItem="09I-eA-wkP" secondAttribute="top" constant="10" id="gvJ-em-erG"/>
-                        <constraint firstItem="8nS-ne-arW" firstAttribute="leading" secondItem="bXf-q0-PEu" secondAttribute="trailing" constant="5" id="kFP-0J-3p9"/>
                         <constraint firstAttribute="height" constant="50" id="xVp-0o-VRj"/>
                     </constraints>
                 </view>

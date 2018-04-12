@@ -294,6 +294,7 @@
     if (tableView == table_V_FL) {
         Select_Index = indexPath.row;
         [table_V_FL reloadData];
+        self.pageIndex = 1;
         [self init_data_SP:YES];
     }else if (tableView == table_V_SP){
         ShangPinXiangQing_VC *vc = [[ShangPinXiangQing_VC alloc]init];

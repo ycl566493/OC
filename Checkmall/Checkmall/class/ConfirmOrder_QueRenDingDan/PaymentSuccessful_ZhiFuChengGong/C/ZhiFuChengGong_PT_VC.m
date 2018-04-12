@@ -14,10 +14,15 @@
 #import "PinTuan_ZFCG_V.h"//拼团
 #import "CollectionReusableView_H.h"
 #import "PinTuanXuZhi_V.h"//拼团须知
+#import "PTZFCG_Model_RootClass.h"//model
 
-@interface ZhiFuChengGong_PT_VC (){
+#import "ShouYe_Model_RootClass.h"//商品列表
+
+@interface ZhiFuChengGong_PT_VC ()<ShouYe_Cell_Delegate_GWC>{
     ShouYe_H_RX_V           *RX;
-    UIButton                *btn_GWC;
+//    UIButton                *btn_GWC;
+    PTZFCG_Model_RootClass  *model_PTCG;
+    ShouYe_Model_RootClass  *model_SP;
 }
 
 @property (nonatomic,weak)ShangPinXinXi_Cell *SP;//商品信息
@@ -33,11 +38,57 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.pageIndex = 1;
     self.title = @"支付成功";
     [self init_UI];
+    
+    [self init_Data];
+    [self init_Data:YES];
 }
 
--(void)init_UI{
+- (void)init_Data{
+    NSDictionary *dic = @{@"order_sn":self.str_DDID,@"gid":self.str_SPID};
+    [NetRequest postWithUrl:Order_groupBuyReturn params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"支付成功 = =%@",dict);
+        model_PTCG = [[PTZFCG_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_PTCG.code == 1) {
+            [self UP_UI];
+        }
+    } fail:^(id error) {
+
+    }];
+}
+
+#pragma mark- 更新视图
+- (void)UP_UI{
+    self.SP.Model_PTCG = model_PTCG;
+    
+    self.ZFXX.height = [PinTuan_ZFCG_V get_H:[NSString stringWithFormat:@"%li",model_PTCG.data.group.count]];
+    self.ZFXX.index_Row = model_PTCG.data.group.count;
+    self.ZFXX.model = model_PTCG;
+    
+    [self.collectionView reloadData];
+}
+
+#pragma mark- 商品列表
+- (void)init_Data:(BOOL)Y_N{
+    [NetRequest postWithUrl:product_getRecommendProduct params:@{@"page":[NSString stringWithFormat:@"%li",self.pageIndex]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"%@",dict);
+        if (Y_N) {
+            model_SP = [[ShouYe_Model_RootClass alloc]initWithDictionary:dict];
+            
+        }else{
+            [model_SP Add_Dictionary:dict];;
+        }
+        [self.collectionView reloadData];
+        
+    } fail:^(id error) {
+        
+    }];
+}
+
+#pragma mark- 初始化
+- (void)init_UI{
     
     //热销
     RX = [[ShouYe_H_RX_V alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [ShouYe_H_RX_V get_H:nil])];
@@ -52,10 +103,25 @@
     [self.collectionView registerClass:[CollectionReusableView_H class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"Footer"];
     
-    btn_GWC = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 50 - 15, ScreenHeight - kTabbarSafeBottomMargin - kStatusBarAndNavigationBarHeight - 15 - 50, 50, 50)];
-    [btn_GWC setImage:[UIImage imageNamed:@"GouWuCheYuan"] forState:UIControlStateNormal];
-    [self.view addSubview:btn_GWC];
+//    btn_GWC = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 50 - 15, ScreenHeight - kTabbarSafeBottomMargin - kStatusBarAndNavigationBarHeight - 15 - 50, 50, 50)];
+//    [btn_GWC setImage:[UIImage imageNamed:@"GouWuCheYuan"] forState:UIControlStateNormal];
+//    [self.view addSubview:btn_GWC];
 }
+
+- (void)refresh{
+    //下拉请求
+    [self endRefreshing];
+    self.pageIndex = 1;
+    [self init_Data:YES];
+}
+- (void)loadMore{
+    //加载更多
+    [self endRefreshing];
+    self.pageIndex  += 1;
+
+    [self init_Data:NO];
+}
+
 
 -(PinTuanXuZhi_V *)PTXZ{
     if (!_PTXZ) {
@@ -100,13 +166,35 @@
     return _SP;
 }
 
+-(void)ShouYe_Cell_Delegate_GWC:(NSInteger)tag{
+    ShouYe_Model_Data *MMMM = model_SP.data[tag];
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",MMMM.productId],@"num":@"1"};
+    
+    [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+        
+        
+        NSLog(@"添加购物车 = = =%@",dict);
+        if ([dict[@"code"] integerValue] == 1) {
+            [MyHelper showMessage:@"添加购物车成功！"];
+            [MyHelper UP_GWCSL];
+        }
+    } fail:^(id error) {
+        
+        
+    }];
+}
+
 #pragma mark- collectionviewcollection代理
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 3;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (section == 2) {
-        return 10;
+        return model_SP.data.count;
     }
     return 0;
 }
@@ -115,6 +203,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * CellIdentifier = @"cell";
     ShouYe_Cell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    ShouYe_Model_Data *mmmm = model_SP.data[indexPath.row];
+    cell.ShouYe_Model = mmmm;
+    cell.tag = indexPath.row;
+    cell.delegate = self;
     return cell;
 }
 

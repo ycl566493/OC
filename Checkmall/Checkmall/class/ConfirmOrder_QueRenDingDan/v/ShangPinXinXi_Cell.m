@@ -76,6 +76,28 @@
     self.lbl_JG.attributedText = attributedStr;
 
 }
+-(void)setModel_PTCG:(PTZFCG_Model_RootClass *)Model_PTCG{
+    _Model_PTCG = Model_PTCG;
+    [self.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:Model_PTCG.data.goods.url view:self.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    self.lbl_Name.text = Model_PTCG.data.goods.goodsName;
+    self.lbl_DDSJ.text = [NSString stringWithFormat:@"%@到达",[MyHelper dateChangeToTime:[NSString stringWithFormat:@"%li",(long)Model_PTCG.data.goods.arrivalTime]]];
+    self.lbl_SPSL.text = [NSString stringWithFormat:@"x%ld",(long)Model_PTCG.data.goods.number];
+    self.lbl_JTSJ.text = [NSString stringWithFormat:@"截团时间：%@",[MyHelper dateChangeToTime:[NSString stringWithFormat:@"%li",(long)Model_PTCG.data.endtime]]];
+    
+    self.lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%.2f",Model_PTCG.data.goods.price,Model_PTCG.data.goods.sprice];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     self.lbl_JG.text];
+    NSRange range = NSMakeRange(Model_PTCG.data.goods.price.length + 1, [NSString stringWithFormat:@"%.2f",Model_PTCG.data.goods.sprice].length + 1);
+    // 设置颜色
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0x999999) range:range];
+    // 设置字体大小
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:11] range:range];
+    
+    //删除线
+    [attributedStr addAttribute:NSStrikethroughStyleAttributeName value:@(1) range:range];
+    [attributedStr addAttribute:NSStrikethroughColorAttributeName value:UIColorFromHex(0x999999) range:range];
+    
+    self.lbl_JG.attributedText = attributedStr;
+}
 
 +(CGFloat)get_H{
     return 106;

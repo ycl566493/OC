@@ -34,7 +34,7 @@
     imageV_TX.layer.cornerRadius = imageV_TX.width / 2;
     imageV_TX.layer.borderColor = UIColorFromHex(0xc5c5c5c).CGColor;
     imageV_TX.layer.borderWidth = .5;
-    imageV_TX.backgroundColor = [UIColor redColor];
+//    imageV_TX.backgroundColor = [UIColor redColor];
     [self addSubview:imageV_TX];
     
     lbl_Name = [[UILabel alloc]initWithFrame:CGRectMake(imageV_TX.right + 10,  imageV_TX.top,200, imageV_TX.height  )];
@@ -58,6 +58,15 @@
     view_FGX.backgroundColor = UIColorFromHex(0xeeeeee);
     [self addSubview:view_FGX];
     
+}
+
+-(void)setModel_PT:(PTZFCG_Model_Group *)model_PT{
+    _model_PT = model_PT;
+    [imageV_TX sd_setImageWithURL:[MyHelper imaeg_URL:model_PT.path view:imageV_TX] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    
+    lbl_Name.text = model_PT.username;
+    lbl_XDSJ.text = [NSString stringWithFormat:@"%@下单",[MyHelper dateChangeToTime:[NSString stringWithFormat:@"%li",model_PT.created]]];
+
 }
 
 -(void)setModel:(ShangPin_Model_GroupUserInfo *)model{

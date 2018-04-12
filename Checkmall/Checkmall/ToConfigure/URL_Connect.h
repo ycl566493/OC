@@ -45,11 +45,11 @@
 
 #define Order_saveOrderStatus [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/saveOrderStatus"]//取消订单
 #define Order_goToPayment [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/goToPayment"]//去支付
-#define Coupon_exchangeGoodsDesc [NSString stringWithFormat:@"%@%@",URL_LJ,@"Coupon/exchangeGoodsDesc"]//兑换券商品信息
+#define Coupon_exchangeGoodsDesc [NSString stringWithFormat:@"%@%@",URL_LJ,@"Coupon/exchangeGoo dsDesc"]//兑换券商品信息
 #define Coupon_exchangeGoods [NSString stringWithFormat:@"%@%@",URL_LJ,@"Coupon/exchangeGoods"]//兑换商品
 #define Solitaire_lists [NSString stringWithFormat:@"%@%@",URL_LJ,@"Solitaire/lists"]//接龙列表
 #define Solitaire_goodslists [NSString stringWithFormat:@"%@%@",URL_LJ,@"Solitaire/goodslists"]//接龙商品列表
-
+#define Order_groupBuyReturn [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/groupBuyReturn"]//团购支付成功
 
 
 

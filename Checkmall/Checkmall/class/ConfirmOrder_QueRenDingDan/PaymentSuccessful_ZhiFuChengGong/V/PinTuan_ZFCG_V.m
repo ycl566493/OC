@@ -24,17 +24,43 @@
 
 #pragma mark- 初始化
 -(void)init_UI{
-    for (NSInteger i = 0 ; i<6; i++) {
+    
+    
+    self.Btn_YQ.layer.masksToBounds = YES;
+    self.Btn_YQ.layer.cornerRadius = 5;
+    
+    self.tableV.delegate = self;
+    self.tableV.dataSource = self;
+    self.tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableV.backgroundColor = [UIColor whiteColor];
+//    if (@available(iOS 11.0, *)){
+//        self.tableV.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    }
+    
+
+    
+}
+
+-(void)setModel:(PTZFCG_Model_RootClass *)model{
+    _model = model;
+    
+    for (UIView *vvvv in self.View_TX.subviews) {
+        [vvvv removeFromSuperview];
+    }
+    
+    for (NSInteger i = 0 ; i < (model.data.group.count > 6 ? 6 : model.data.group.count ); i++) {
+        PTZFCG_Model_Group * mmmm = model.data.group[i];
         UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake(9 + (9 + 45)*i, 5, 45, 45)];
         imageV.backgroundColor = [UIColor yellowColor];
         imageV.layer.masksToBounds = YES;
         imageV.layer.cornerRadius = imageV.width / 2;
-        imageV.layer.borderColor = UIColorFromHex(0xc2c2c2).CGColor;
+//        imageV.layer.borderColor = UIColorFromHex(0xc2c2c2).CGColor;
+        [imageV sd_setImageWithURL:[MyHelper imaeg_URL:mmmm.path view:imageV] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
         imageV.layer.borderWidth = .5;
         [self.View_TX addSubview:imageV];
         self.View_TX_W.constant = imageV.right +9;
-
-//        GengDuoTouXiang.png
+        
+        //        GengDuoTouXiang.png
         
         if (i == 0) {
             UILabel *lbL_TZ = [[UILabel alloc]initWithFrame:CGRectMake(imageV.left, imageV.top, 25, 12)];
@@ -52,19 +78,10 @@
         
     }
     
-    self.Btn_YQ.layer.masksToBounds = YES;
-    self.Btn_YQ.layer.cornerRadius = 5;
-    
-    self.tableV.delegate = self;
-    self.tableV.dataSource = self;
-    self.tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableV.backgroundColor = [UIColor whiteColor];
-//    if (@available(iOS 11.0, *)){
-//        self.tableV.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//    }
-    
-
-    
+    self.lbl_XDTS.text = [NSString stringWithFormat:@"第%li人下单，分享给好友，成功率会更高哦~",model.data.group.count];
+    self.lbl_JSSJ.text= [NSString  stringWithFormat:@"距结束%@",[MyHelper time_SFM:[NSString stringWithFormat:@"%li",model.data.agotime]]];
+    self.lbl_XDE.text = [NSString stringWithFormat:@"已经下单的%li人",model.data.group.count];
+    [self.tableV reloadData];
 }
 
 -(void)setIndex_Row:(NSInteger)index_Row{
@@ -74,7 +91,7 @@
     }else{
         self.tableV_H.constant = [ShangPin_XiaDan_Cell get_H:nil] * self.index_Row;
     }
-    [self.tableV reloadData];
+//    [self.tableV reloadData];
 }
 
 #pragma mark- tableview代理
@@ -93,6 +110,8 @@
         cell = [[ShangPin_XiaDan_Cell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    PTZFCG_Model_Group * mmmm = self.model.data.group[indexPath.row];
+    cell.model_PT = mmmm;
     cell.tag = indexPath.row;
     return cell;
 }
