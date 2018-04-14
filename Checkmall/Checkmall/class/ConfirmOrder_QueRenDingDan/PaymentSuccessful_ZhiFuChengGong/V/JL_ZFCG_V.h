@@ -7,6 +7,7 @@
 //  接龙支付成功
 
 #import "MyUIView.h"
+#import "JLCG_Model_RootClass.h"
 
 @interface JL_ZFCG_V : MyUIView
 
@@ -21,5 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *Btn_YQ;//邀请好友
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_XDE;//已经下单人数
+
+@property (nonatomic,strong)JLCG_Model_RootClass    *model;
+
 
 @end

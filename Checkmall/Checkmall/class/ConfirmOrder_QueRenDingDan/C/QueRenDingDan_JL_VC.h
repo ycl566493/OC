@@ -17,6 +17,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_YF;//运费
 
+@property (nonatomic,strong)NSString *  str_JLID;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lbl_JE_H;//高度问题
 
 @property (nonatomic,strong)QueRenDingDan_Model_RootClass   *model;

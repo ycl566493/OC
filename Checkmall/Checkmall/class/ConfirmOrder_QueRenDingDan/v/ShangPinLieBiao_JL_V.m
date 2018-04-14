@@ -29,7 +29,7 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.index_Row;
+    return self.arr_data.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [ShangPin_JL_Cell get_H];
@@ -38,9 +38,9 @@
     ShangPin_JL_Cell *cell = (ShangPin_JL_Cell *)[tableView dequeueReusableCellWithIdentifier:@"ShangPin_JL_Cell"];
     if (cell == nil) {
         cell= (ShangPin_JL_Cell *)[[[NSBundle  mainBundle]  loadNibNamed:@"ShangPin_JL_Cell" owner:self options:nil]  lastObject];
-        cell.TGR = nil;
     }
-    
+    QueRenDingDan_Model_Arr *mmmm = self.arr_data[indexPath.row];
+    cell.Model = mmmm;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -59,6 +59,11 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+}
+
+-(void)setArr_data:(NSArray *)arr_data{
+    _arr_data = arr_data;
+    [self.tableV reloadData];
 }
 
 -(void)setIndex_Row:(NSInteger)index_Row{

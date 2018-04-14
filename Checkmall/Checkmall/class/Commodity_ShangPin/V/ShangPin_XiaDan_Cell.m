@@ -79,6 +79,14 @@
     
 }
 
+-(void)setModel_JL:(JLCG_Model_Group *)model_JL{
+    _model_JL = model_JL;
+    [imageV_TX sd_setImageWithURL:[MyHelper imaeg_URL:model_JL.path view:imageV_TX] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    
+    lbl_Name.text = model_JL.username;
+    lbl_XDSJ.text = [NSString stringWithFormat:@"%@下单",model_JL.created];
+}
+
 -(void)setTag:(NSInteger)tag{
     lbl_XDSL.text = [NSString stringWithFormat:@"第%li位用户",tag +1];
 }

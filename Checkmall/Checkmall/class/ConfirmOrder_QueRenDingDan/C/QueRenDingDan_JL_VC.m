@@ -15,13 +15,16 @@
 #import "ChongZhi_VC.h"//充值
 #import "ZFJG_Model_RootClass.h"//支付结果model
 #import "DiZhiLieBiao_VC.h"
+#import "WeiXinZhiFu_Model_RootClass.h"//支付model
+#import "ZhiFuWenJian.h"
 
-@interface QueRenDingDan_JL_VC ()<DiZhiLieBiao_VC_Delegate>{
+@interface QueRenDingDan_JL_VC ()<DiZhiLieBiao_VC_Delegate,DiZhiXinXi_V_Delegate>{
     UIScrollView    *scrollV;
     
     NSString        *str_DDID;//订单id
-    NSString        *dz_id;//地址id
+    NSInteger        dz_id;//地址id
     BOOL            bool_PS;//配送方式 0 自提 1 快递
+    WeiXinZhiFu_Model_RootClass         *model_WX;
 }
 
 @property (nonatomic,weak)DiZhiXinXi_V   *DZ;//地址信息
@@ -82,7 +85,8 @@
                 JG = model.data.paidAmount;
                 ZhiFuChengGong_JL_VC *vc = [[ZhiFuChengGong_JL_VC alloc]init];
 //                vc.str_JG = JG;
-                
+                vc.str_JLID = self.str_JLID;
+                vc.str_DDID = str_DDID;
                 [ws.navigationController pushViewController:vc animated:YES];
                 
                 NSMutableArray *marr = [[NSMutableArray alloc]initWithArray:ws.navigationController.viewControllers];
@@ -188,13 +192,87 @@
         DiZhiXinXi_V *DZ = [DiZhiXinXi_V init_Xib];
         [self.view addSubview:DZ];
         _DZ = DZ;
+        DZ.delegate = self;
     }
     return _DZ;
 }
 
 - (IBAction)btn_QD:(id)sender {
-    ZhiFuChengGong_JL_VC    *VC = [[ZhiFuChengGong_JL_VC alloc]init];
-    [self.navigationController pushViewController:VC animated:YES];
+    
+    if (dz_id == 0) {
+        [MyHelper showMessage:@"请选择收货地址！"];
+        return;
+    }else{
+        
+        
+        NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
+        
+        for (QueRenDingDan_Model_Arr *MMM in self.model.data.arr) {
+            
+            NSMutableDictionary *dic_DDDDDD = [[NSMutableDictionary alloc]init];
+            [dic_DDDDDD setObject:[NSString stringWithFormat:@"%li",MMM.gid] forKey:@"goodsid"];
+            [dic_DDDDDD setObject:MMM.price forKey:@"price"];
+            [dic_DDDDDD setObject:[NSString stringWithFormat:@"%@",MMM.number] forKey:@"num"];
+            
+            [arr_Data addObject:[MyHelper toJson:dic_DDDDDD]];
+            
+            
+        }
+        if (arr_Data.count == 0) {
+            return;
+        }
+        //       type 商品类型 1 拼团 2 开团 3 单独购买 4今日团购 5兑换 6接龙
+        // paymode 支付方式 1 微信 2 支付宝 3 余额支付
+        NSString *str_ZFFS = @"3";
+        if (self.ZFFS.int_ZFFS == 1) {
+            str_ZFFS = @"1";
+        }else if (self.ZFFS.int_ZFFS == 2) {
+            str_ZFFS = @"2";
+            [MyHelper showMessage:@"亲！暂未开通支付宝支付！"];
+            return;
+        }else if (self.ZFFS.int_ZFFS == 3) {
+            str_ZFFS = @"3";
+        }else{
+            [MyHelper showMessage:@"服务异常！请稍后再试用！"];
+            return;
+        }
+        
+        NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"6",@"paymode":str_ZFFS,@"addressid":[NSString stringWithFormat:@"%li",dz_id],@"paytype":@"2",@"coupon_amount":@"1",@"shipping_amount":@"1"};
+        
+        WeakSelf(ws);
+        [NetRequest postWithUrl:order_getMessage params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+            NSLog(@"下单返回 ==  %@",dict);
+            if (self.ZFFS.int_ZFFS == 1) {
+                model_WX = [[WeiXinZhiFu_Model_RootClass alloc]initWithDictionary:dict];
+                if (model_WX.code == 1) {
+                    
+                    [ZhiFuWenJian WeiXinZhiFu_partnerId:model_WX.data.partnerid prepayId:model_WX.data.prepayid nonceStr:model_WX.data.noncestr timeStamp:model_WX.data.timestamp package:model_WX.data.packageField sign:model_WX.data.sign];
+                    str_DDID = model_WX.data.out_trade_no;
+                }
+            }else if (self.ZFFS.int_ZFFS == 3){
+                if ([dict[@"code"] integerValue] == 1) {
+                    [MyHelper showMessage:@"支付成功！"];
+                    ZhiFuChengGong_JL_VC *vc = [[ZhiFuChengGong_JL_VC alloc]init];
+                    vc.str_JLID = self.str_JLID;
+                    vc.str_DDID = dict[@"data"][@"order_sn"];
+                    [ws.navigationController pushViewController:vc animated:YES];
+                    
+                    NSMutableArray *marr = [[NSMutableArray alloc]initWithArray:ws.navigationController.viewControllers];
+                    for (UIViewController *vc in marr) {
+                        if ([vc isKindOfClass:[ws class]]) {
+                            [marr removeObject:vc];
+                            break;
+                        }
+                    }
+                    ws.navigationController.viewControllers = marr;
+                }
+            }
+            
+            
+        } fail:^(id error) {
+            
+        }];
+    }
 }
 
 
@@ -211,7 +289,7 @@
         
         self.DZ.lbl_Name.text = [NSString stringWithFormat:@"%@ %@",self.model.data.address.username,self.model.data.address.phone];
         self.DZ.lbl_DZXX.text = [NSString stringWithFormat:@"%@ %@",self.model.data.address.addressto,self.model.data.address.address];
-//        dz_id = self.model.data.address.idField;
+        dz_id = self.model.data.address.idField;
         if (self.model.data.address.status == 2) {
             self.DZ.bool_FS = 0;
             self.DZ.lbl_ZTD.text = self.model.data.address.mername;

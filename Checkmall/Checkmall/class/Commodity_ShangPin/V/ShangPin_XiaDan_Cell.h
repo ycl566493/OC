@@ -9,11 +9,14 @@
 #import "BaseTableViewCell.h"
 #import "ShangPin_Model_GroupUserInfo.h"
 #import "PTZFCG_Model_Group.h"//拼团下单model
+#import "JLCG_Model_Group.h"//接龙支付成功
 
 @interface ShangPin_XiaDan_Cell : BaseTableViewCell
 
 @property (nonatomic,strong)ShangPin_Model_GroupUserInfo    *model;
 
 @property (nonatomic,strong) PTZFCG_Model_Group         *model_PT;
+
+@property (nonatomic,strong) JLCG_Model_Group           *model_JL;//接龙支付成功
 
 @end

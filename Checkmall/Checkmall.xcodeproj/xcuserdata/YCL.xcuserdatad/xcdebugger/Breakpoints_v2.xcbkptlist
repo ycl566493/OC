@@ -64,7 +64,7 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
-                  timestampString = "545228770.265855"
+                  timestampString = "545394302.016821"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
@@ -79,12 +79,12 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
-                  timestampString = "545228770.268821"
+                  timestampString = "545394302.019447"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
                   endingLineNumber = "159"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -94,12 +94,12 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
-                  timestampString = "545228770.271731"
+                  timestampString = "545394302.021354"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
                   endingLineNumber = "159"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -127,12 +127,12 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/DengLu_VC.m"
-                  timestampString = "545228770.280368"
+                  timestampString = "545394302.030935"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "425"
                   endingLineNumber = "425"
-                  offsetFromSymbolStart = "715">
+                  offsetFromSymbolStart = "724">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -142,12 +142,12 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/DengLu_VC.m"
-                  timestampString = "545228770.283083"
+                  timestampString = "545394302.0327131"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
                   endingLineNumber = "426"
-                  offsetFromSymbolStart = "54">
+                  offsetFromSymbolStart = "64">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -157,12 +157,12 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/DengLu_VC.m"
-                  timestampString = "545228770.286086"
+                  timestampString = "545394302.034331"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "425"
                   endingLineNumber = "425"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -237,24 +237,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Checkmall/class/Solitaire_JieLong/V/TC_JL_Cell.m"
-            timestampString = "545141400.08609"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "-textFieldDidEndEditing:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Checkmall/class/ConfirmOrder_QueRenDingDan/C/QueRenDingDan_PT_VC.m"
-            timestampString = "545228770.102676"
+            timestampString = "545296195.41968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "274"
@@ -270,7 +254,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Checkmall/class/ConfirmOrder_QueRenDingDan/C/QueRenDingDan_PT_VC.m"
-            timestampString = "545228770.1027271"
+            timestampString = "545296195.419763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "315"
@@ -285,59 +269,75 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Checkmall/class/My_WoDe/Address_DiZhi/C/DiZhiLieBiao_VC.m"
-            timestampString = "545194460.3487099"
+            filePath = "Checkmall/class/ConfirmOrder_QueRenDingDan/C/QueRenDingDan_JL_VC.m"
+            timestampString = "545313307.971881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-init_Data"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "-UP_DD"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmall/class/Commodity_ShangPin/C/ShangPinXiangQing_VC.m"
+            timestampString = "545394301.886592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
+            landmarkName = "-btn_GM_Action"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[DiZhiLieBiao_VC init_Data]"
+                  symbolName = "-[ShangPinXiangQing_VC btn_GM_Action]"
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/My_WoDe/Address_DiZhi/C/DiZhiLieBiao_VC.m"
-                  timestampString = "545228770.332127"
+                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/Commodity_ShangPin/C/ShangPinXiangQing_VC.m"
+                  timestampString = "545394302.057339"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "446">
+                  startingLineNumber = "352"
+                  endingLineNumber = "352"
+                  offsetFromSymbolStart = "1132">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__28-[DiZhiLieBiao_VC init_Data]_block_invoke"
+                  symbolName = "__37-[ShangPinXiangQing_VC btn_GM_Action]_block_invoke"
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/My_WoDe/Address_DiZhi/C/DiZhiLieBiao_VC.m"
-                  timestampString = "545228770.334534"
+                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/Commodity_ShangPin/C/ShangPinXiangQing_VC.m"
+                  timestampString = "545394302.058905"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "352"
+                  endingLineNumber = "352"
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
+                  symbolName = "__destroy_helper_block_.272"
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/My_WoDe/Address_DiZhi/C/DiZhiLieBiao_VC.m"
-                  timestampString = "545228770.3364691"
+                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/Commodity_ShangPin/C/ShangPinXiangQing_VC.m"
+                  timestampString = "545394302.060452"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "352"
+                  endingLineNumber = "352"
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>

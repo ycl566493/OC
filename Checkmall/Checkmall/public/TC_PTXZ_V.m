@@ -19,10 +19,17 @@
 
 -(void)init_UI{
     
-    NSString *str = @"开团：阿拉丁发了啥福利卡时间段分离开静安寺的离开飞机撒拉德克士大师傅的";
+    NSArray  *arr_str = @[
+                          @"开团：选择心仪商品，点击“马上拼团”按钮，付款后即为参团成功；",
+                          @"参团：进入朋友分享的页面，点击“立即参团”按钮，付款后即为参团成功;",
+                          @"成团：在开团或参团成功后，点击“邀请好友参团”将页面分享给好友，在有效时间内凑齐人数/件数即为成团，此时商家会开始发货；",
+                          @"组团失败：在有效时间内未凑齐人数，即为组团失败，此时付款项会原路退回到支付账户；",
+                          @"组团有效期间内，拼团商品订单不允许取消；"
+                          ];
     CGFloat yyyyyy= 0;
     
-    for (NSInteger i = 0; i < 30; i ++) {
+    for (NSInteger i = 0; i < arr_str.count; i ++) {
+        NSString *str = arr_str[i];
         UIView  *view = [[UIView alloc]initWithFrame:CGRectMake(5,yyyyyy + 5, 4, 4)];
         view.layer.masksToBounds = YES;
         view.layer.cornerRadius = view.width / 2;

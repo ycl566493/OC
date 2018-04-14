@@ -49,7 +49,7 @@
 - (void)init_Data{
     NSDictionary *dic = @{@"order_sn":self.str_DDID,@"gid":self.str_SPID};
     [NetRequest postWithUrl:Order_groupBuyReturn params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
-        NSLog(@"支付成功 = =%@",dict);
+        NSLog(@"订单信息成功 = =%@",dict);
         model_PTCG = [[PTZFCG_Model_RootClass alloc]initWithDictionary:dict];
         if (model_PTCG.code == 1) {
             [self UP_UI];

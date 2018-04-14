@@ -7,12 +7,14 @@
 //  接龙的商品列表
 
 #import "MyUIView.h"
+#import "QueRenDingDan_Model_Arr.h"
 
 @interface ShangPinLieBiao_JL_V : MyUIView
 
 @property (weak, nonatomic) IBOutlet UITableView *tableV;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableV_H;
+
 
 @property (nonatomic, assign) NSInteger      index_Row;
 @property (nonatomic, strong)NSArray    *arr_data;

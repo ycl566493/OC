@@ -10,8 +10,11 @@
 #import "JL_SPXX_V.h"//接龙商品数据
 #import "JL_ZFCG_V.h"//接龙支付成功
 #import "ShangPin_XiaDan_Cell.h"
+#import "JLCG_Model_RootClass.h"//接龙支付成功信息
 
-@interface ZhiFuChengGong_JL_VC ()<UITableViewDelegate,UITableViewDataSource>
+@interface ZhiFuChengGong_JL_VC ()<UITableViewDelegate,UITableViewDataSource>{
+    JLCG_Model_RootClass    *model;//接龙支付成功
+}
 
 @property (nonatomic,weak) JL_SPXX_V *SPXX;//商品信息
 
@@ -23,9 +26,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.pageIndex = 1;
     self.title = @"支付成功";
     [self init_UI];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self init_Data];
+}
+
+
+
+- (void)init_Data{
+    NSDictionary *dic = @{@"order_sn":self.str_DDID,@"soid":self.str_JLID};
+    [NetRequest postWithUrl:Order_solitaireReturn params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"订单信息成功 = =%@",dict);
+        model = [[JLCG_Model_RootClass alloc]initWithDictionary:dict];
+        if (model.code == 1) {
+            [self UP_UI];
+        }
+    
+    } fail:^(id error) {
+        
+    }];
+}
+
+- (void)UP_UI{
+    self.SPXX.model = model;
+    self.JLXX.model = model;
 }
 
 #pragma mark- 接龙信息
@@ -67,7 +94,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 1) {
-        return 20;
+        return model.data.group.count;
     }
     return 0;
 }
@@ -80,6 +107,8 @@
         cell = [[ShangPin_XiaDan_Cell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    JLCG_Model_Group *mmmm = model.data.group[indexPath.row];
+    cell.model_JL = mmmm;
     cell.tag = indexPath.row;
     return cell;
 }

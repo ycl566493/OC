@@ -11,7 +11,17 @@
 @implementation JL_SPXX_V
 
 
-
+-(void)setModel:(JLCG_Model_RootClass *)model{
+    _model = model;
+    [self.imaegV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.data.goods.imgpath view:self.imaegV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];//商品图片
+    
+    self.lbl_Name.text = model.data.goods.title;//商品名称
+    
+    self.lbl_SJ.text = model.data.goods.endTime;//时间
+    
+    self.lbl_MS.text = model.data.goods.desc;
+    
+}
 
 
 +(CGFloat)get_H:(id)data{

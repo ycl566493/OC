@@ -11,6 +11,7 @@
 #import "JLLPSP_Model_RootClass.h"
 #import "QueRenDingDan_Model_RootClass.h"//确认订单
 #import "QueRenDingDan_JL_VC.h"//确认订单
+#import "JieLongXiangQing_VC.h"//接龙详情
 
 @interface JieLong_JG_VC ()<UITableViewDelegate,UITableViewDataSource,TC_JL_Cell_Delegate>{
     JLLPSP_Model_RootClass  *model;
@@ -125,7 +126,9 @@
     return nil;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    JieLongXiangQing_VC * vc = [[JieLongXiangQing_VC alloc]init];
+    vc.Str_ID = @"8897";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark- 提交订单
@@ -162,6 +165,7 @@
         if (model_QRDD.code == 1) {
             QueRenDingDan_JL_VC    *VC = [[QueRenDingDan_JL_VC alloc]init];
             VC.model = model_QRDD;
+            VC.str_JLID = self.str_ID;
             [self.navigationController pushViewController:VC animated:YES];
 
         }

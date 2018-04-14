@@ -7,6 +7,7 @@
 //  接龙商品信息
 
 #import "MyUIView.h"
+#import "JLCG_Model_RootClass.h"
 
 @interface JL_SPXX_V : MyUIView
 
@@ -16,10 +17,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_SJ;//时间
 
-@property (weak, nonatomic) IBOutlet UILabel *lbl_JG;//价格
+@property (weak, nonatomic) IBOutlet UILabel *lbl_MS;//价格
 
-@property (weak, nonatomic) IBOutlet UILabel *lbl_SL;//数量
-
-
+@property (nonatomic,strong)JLCG_Model_RootClass    *model;
 
 @end

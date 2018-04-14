@@ -10,4 +10,7 @@
 
 @interface ZhiFuChengGong_JL_VC : BaseTableViewController
 
+@property (nonatomic,strong) NSString   *str_JLID;//接龙id
+@property (nonatomic,strong) NSString   *str_DDID;//订单id
+
 @end
