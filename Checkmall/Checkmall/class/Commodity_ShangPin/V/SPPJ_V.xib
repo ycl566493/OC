@@ -88,6 +88,10 @@
                 <constraint firstItem="jA8-kg-WlD" firstAttribute="leading" secondItem="NS2-IO-QCl" secondAttribute="trailing" id="zdH-ag-vhy"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="lbl_HP" destination="NS2-IO-QCl" id="hhK-cK-WPN"/>
+                <outlet property="lbl_SL" destination="29N-UD-IhX" id="qbA-XJ-UyA"/>
+            </connections>
             <point key="canvasLocation" x="-58" y="727"/>
         </view>
     </objects>

@@ -51,6 +51,9 @@
 #define Solitaire_goodslists [NSString stringWithFormat:@"%@%@",URL_LJ,@"Solitaire/goodslists"]//接龙商品列表
 #define Order_groupBuyReturn [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/groupBuyReturn"]//团购支付成功
 #define Order_solitaireReturn [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/solitaireReturn"]//接龙支付成功
+#define Product_commentList [NSString stringWithFormat:@"%@%@",URL_LJ,@"Product/commentList"]//评论列表
+#define Solitaire_goodsdetails [NSString stringWithFormat:@"%@%@",URL_LJ,@"Solitaire/goodsdetails"]//接龙详情页
+
 
 
 #endif /* URL_Connect_h */

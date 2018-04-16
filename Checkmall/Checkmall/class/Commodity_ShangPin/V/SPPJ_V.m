@@ -32,19 +32,28 @@
     
 }
 
+-(void)setModel:(ShangPin_Model_Comment *)model{
+    self.PJ.height = [PingJia_Cell get_H:model.comInfo.content row:0];
+    self.PJ.model_XQ = model.comInfo;
+    
+    self.lbl_SL.text = [NSString stringWithFormat:@"商品评价（%@）",model.rate > 1000 ? @"999+" : [NSString stringWithFormat:@"%li",model.rate]];
+}
+
 - (PingJia_Cell *)PJ{
     if (!_PJ) {
         PingJia_Cell *pj = [PingJia_Cell init_Xib];
         _PJ = pj;
         _PJ.frame = CGRectMake(0, 44.5, ScreenWidth, [PingJia_Cell get_H:@"哈哈哈哈" row:2]);
-        [_PJ set_W:2];
     }
     return _PJ;
 }
 
 + (CGFloat)get_H:(id)data{
-    return 45 + [PingJia_Cell get_H:@"哈哈哈哈" row:2];
-
+    ShangPin_Model_Com_Info    *mmm =data;
+    if (!mmm) {
+        return 45;
+    }
+    return 45 + [PingJia_Cell get_H:mmm.content row:0];
 }
 
 @end

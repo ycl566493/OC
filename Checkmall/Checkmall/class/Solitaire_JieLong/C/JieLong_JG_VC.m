@@ -126,8 +126,11 @@
     return nil;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    JLLPSP_Model_Data *MMMM = model.data[indexPath.row];
+
     JieLongXiangQing_VC * vc = [[JieLongXiangQing_VC alloc]init];
-    vc.Str_ID = @"8897";
+    vc.str_SPID = [NSString stringWithFormat:@"%li",MMMM.gid];
+    vc.Str_JLID = self.str_ID;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

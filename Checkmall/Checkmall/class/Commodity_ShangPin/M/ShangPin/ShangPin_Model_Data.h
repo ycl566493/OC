@@ -34,6 +34,7 @@
 @property (nonatomic, assign) NSInteger surplusTime;
 @property (nonatomic, strong) NSString * taketype;
 @property (nonatomic, strong) NSString * video;
+@property (nonatomic, strong) NSString * product_content;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

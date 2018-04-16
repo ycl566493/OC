@@ -12,6 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollV;//滑动呗
 
-@property (nonatomic,copy)  NSString *Str_ID;//接龙id
+@property (nonatomic,strong)  NSString *Str_JLID;//接龙id
+
+@property (nonatomic,strong)  NSString  *str_SPID;//商品id
+
 
 @end

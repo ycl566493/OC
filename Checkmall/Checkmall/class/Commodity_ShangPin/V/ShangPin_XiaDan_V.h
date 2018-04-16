@@ -8,9 +8,13 @@
 
 #import "MyUIView.h"
 #import "ShangPin_Model_RootClass.h"
+#import "JLXQ_Model_RootClass.h"
 
 @interface ShangPin_XiaDan_V : MyUIView
 
 @property (nonatomic,strong)ShangPin_Model_RootClass    *model;
+@property (nonatomic,strong)JLXQ_Model_RootClass    *model_JL;
+
+
 
 @end

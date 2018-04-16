@@ -21,8 +21,9 @@
 #import "SPSP_Cell.h"
 #import "SPPJ_V.h"
 #import "PingJia_VC.h"//评价列表
+#import "ShangPin_XQ_V.h"//商品描述
 
-@interface ShangPinXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate,QieHuan_V_Delegate,UITableViewDataSource,UITableViewDelegate,SPPJ_V_Delegate>{
+@interface ShangPinXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate,QieHuan_V_Delegate,UITableViewDataSource,UITableViewDelegate,SPPJ_V_Delegate,ShangPin_XQ_V_Delegate>{
     ShangPin_TuPian_V       *TuPian;
     UIScrollView            *scrollV;//滑动背景
     ShangPin_XiaDan_V       *XiaDan;//商品下单信息
@@ -34,7 +35,7 @@
     
     UILabel                 *lbl_GM;//购买文字
     UILabel                 *lbl_PT;//购买文字
-//    UIButton                *btn_GWC;//购物车按钮
+
     
     ShangPin_Model_RootClass    *model_SPXQ;//商品详情model
     QueRenDingDan_Model_RootClass   *model_QRDD;//确认订单
@@ -46,6 +47,7 @@
 
 @property (nonatomic,weak) QieHuan_V                 *QH;//切换选择
 @property (nonatomic,weak) SPPJ_V                 *PJ;//评价
+//@property (nonatomic,weak) ShangPin_XQ_V            *Web_MS;//网页描述
 
 @property (nonatomic , assign) ShangPin_XinXi_V        *XinXi;//商品信息
 
@@ -63,9 +65,14 @@
     [self init_Data];
 }
 
+
 -(void)dealloc{
     [TuPian removeFromSuperview];
     TuPian  = nil;
+//    [self.Web_MS removeFromSuperview];
+//    self.Web_MS = nil;
+    [self.PJ removeFromSuperview];
+    self.PJ = nil;
 }
 
 -(void)init_Data{
@@ -92,6 +99,17 @@
     return _QH;
 }
 
+#pragma mark- 网页商品描述
+//- (ShangPin_XQ_V *)Web_MS{
+//    if (!_Web_MS) {
+//        ShangPin_XQ_V *web_MS = [ShangPin_XQ_V init_Xib];
+//        _Web_MS = web_MS;
+//        _Web_MS.frame = CGRectMake(0, 0, ScreenWidth, 0);
+//        _Web_MS.delegate = self;
+//    }
+//    return _Web_MS;
+//}
+
 #pragma mark- 商品信息
 -(ShangPin_XinXi_V *)XinXi{
     if (!_XinXi) {
@@ -107,7 +125,6 @@
     if (!_PJ) {
         SPPJ_V *pj = [SPPJ_V init_Xib];
         _PJ = pj;
-        _PJ.backgroundColor = [UIColor yellowColor];
         _PJ.delegate = self;
     }
     return _PJ;
@@ -147,12 +164,21 @@
     XiaDan.model = model_SPXQ;
     XiaDan.height = [ShangPin_XiaDan_V get_H:[NSString stringWithFormat:@"%li",model_SPXQ.data.groupUserInfo.count]];
     
+    self.PJ.model = model_SPXQ.data.comment;
     self.PJ.mj_y = XiaDan.bottom;
-    self.PJ.height = [SPPJ_V get_H:nil];
+    self.PJ.height = [SPPJ_V get_H:model_SPXQ.data.comment.comInfo];
+    self.PJ.hidden = NO;
+    if (model_SPXQ.data.comment.comNum == 0) {
+        self.PJ.hidden = YES;
+        self.PJ.height = 0;
+    }
+    
     MS.mj_y = self.PJ.bottom;
     MS.model = model_SPXQ;
     MS.height = [ShangPin_MS_V get_H:model_SPXQ.data.productDesc];
 
+//    self.Web_MS.str_HTML = model_SPXQ.data.product_content;
+//    self.Web_MS.top = MS.bottom;
     
     PinTuan.mj_y = MS.bottom;
     view_XQ.height = PinTuan.bottom;
@@ -164,6 +190,16 @@
     
 //    lbl_GM.text = [NSString stringWithFormat:@"加入购物车"];
 //    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
+
+}
+
+#pragma mark- 商品高度
+-(void)ShangPin_XQ_V_Delegate_H{
+    
+//    PinTuan.mj_y = self.Web_MS.bottom;
+    view_XQ.height = PinTuan.bottom;
+    
+    scrollV.contentSize = CGSizeMake(0, view_XQ.bottom );
 
 }
 
@@ -220,7 +256,6 @@
     
     //下单模块
     XiaDan = [[ShangPin_XiaDan_V alloc]initWithFrame:CGRectMake(0, self.XinXi.bottom, ScreenWidth, [ShangPin_XiaDan_V get_H:nil])];
-    XiaDan.backgroundColor = [UIColor redColor];
     [view_XQ addSubview:XiaDan];
     
     self.PJ.frame = CGRectMake(0, XiaDan.bottom, ScreenWidth, [SPPJ_V get_H:nil]);
@@ -230,6 +265,10 @@
     MS = [[ShangPin_MS_V alloc]initWithFrame:CGRectMake(0, self.PJ.bottom, ScreenWidth, [ShangPin_MS_V get_H:str_MS])];
     MS.backgroundColor = [UIColor whiteColor];
     [view_XQ addSubview:MS];
+    
+//    self.Web_MS.top = MS.bottom;
+//    [view_XQ addSubview:self.Web_MS];
+    
     
     PinTuan = [[ShangPin_PinTuanXuZhi_V alloc]initWithFrame:CGRectMake(0, MS.bottom, ScreenWidth, [ShangPin_PinTuanXuZhi_V get_H:nil])];
     PinTuan.delegate = self;
@@ -261,10 +300,6 @@
     lbl_PT.textColor = [UIColor whiteColor];
     lbl_PT.font = [UIFont systemFontOfSize:17];
     [btn_PT addSubview:lbl_PT];
-
-//    btn_GWC = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 50 - 15, btn_GM.top - 5 - 50, 50, 50)];
-//    [btn_GWC setImage:[UIImage imageNamed:@"GouWuCheYuan"] forState:UIControlStateNormal];
-//    [self.view addSubview:btn_GWC];
     
     if (!iOS11) {
         scrollV.height = ScreenHeight - kStatusBarAndNavigationBarHeight ;

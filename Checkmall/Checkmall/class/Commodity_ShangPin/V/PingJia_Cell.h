@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PLLB_Model_Data.h"//
+#import "ShangPin_Model_Com_Info.h"//详情model
+
 
 @interface PingJia_Cell : UITableViewCell
 
@@ -26,10 +29,13 @@
 @property (weak, nonatomic) IBOutlet UIView *view_TP;//图片
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *view_TP_H;//图片高度
 
+@property (nonatomic, strong) PLLB_Model_Data   *model;
+
+@property (nonatomic, strong) ShangPin_Model_Com_Info   *model_XQ;
+
 + (instancetype)init_Xib;
 
 + (CGFloat)get_H:(NSString*)str_NR row:(NSInteger)row;
 
-- (void)set_W:(NSInteger)row;
 
 @end

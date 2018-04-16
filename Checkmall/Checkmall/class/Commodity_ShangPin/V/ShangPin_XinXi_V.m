@@ -52,9 +52,9 @@
     [attributedStr addAttribute:NSStrikethroughColorAttributeName value:UIColorFromHex(0x999999) range:range];
     self.lbl_JG.attributedText = attributedStr;
     
-    self.lbl_DP.text = @"88";
-    self.lbl_TG.text = @"9999";
-    self.lbl_PS.text = @"门店自提 + 物流配送";
+    self.lbl_DP.text = [NSString stringWithFormat:@"%li",model.data.stock];
+    self.lbl_TG.text = [NSString stringWithFormat:@"%li",model.data.amount];
+    self.lbl_PS.text = [model.data.taketype integerValue] == 0 ? @"门店自提" : @"门店自提 + 物流配送";
     self.lbl_SJ.text = [NSString stringWithFormat:@"%@到", model.data.productArrivalTime];
 }
 

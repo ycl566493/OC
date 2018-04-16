@@ -92,6 +92,15 @@
     }
     [self init_Data];
 }
+-(void)setModel_JL:(JLXQ_Model_RootClass *)model_JL{
+    _model_JL = model_JL;
+    if ([model_JL.data.video isEqualToString:@""]) {
+        self.bool_SP = NO;
+    }else{
+        self.bool_SP = YES;
+    }
+    [self init_Data];
+}
 
 -(void)if_SP{
     if (self.bool_SP) {
@@ -140,7 +149,11 @@
         lbl_Index.hidden = NO;
         NSInteger iiii = scrollV.contentOffset.x / scrollV.width;
 
-        lbl_Index.text = [NSString stringWithFormat:@"%li/%li",iiii+1,self.model.data.slidsUrlList.count];
+        if (self.model) {
+            lbl_Index.text = [NSString stringWithFormat:@"%li/%li",iiii+1,self.model.data.slidsUrlList.count];
+        }else{
+            lbl_Index.text = [NSString stringWithFormat:@"%li/%li",iiii+1,self.model_JL.data.path.count];
+        }
         lbl_Index.width = [MyHelper strWidth:lbl_Index.text andFont:lbl_Index.font andHeight:lbl_Index.height] + 15;
         lbl_Index.mj_x = ScreenWidth - 15 - lbl_Index.width;
     }else{
@@ -152,7 +165,13 @@
         }else{
             lbl_Index.hidden = NO;
 
-            lbl_Index.text = [NSString stringWithFormat:@"%li/%li",iiii,self.model.data.slidsUrlList.count];
+            if (self.model) {
+                lbl_Index.text = [NSString stringWithFormat:@"%li/%li",iiii,self.model.data.slidsUrlList.count];
+
+            }else{
+                lbl_Index.text = [NSString stringWithFormat:@"%li/%li",iiii,self.model_JL.data.path.count];
+
+            }
             lbl_Index.width = [MyHelper strWidth:lbl_Index.text andFont:lbl_Index.font andHeight:lbl_Index.height] + 15;
             lbl_Index.mj_x = ScreenWidth - 15 - lbl_Index.width;
         }
@@ -162,18 +181,30 @@
 
 -(void)init_Data{
     view_SPTP.hidden = YES;
-    NSMutableArray *arr = [[NSMutableArray alloc]initWithArray:self.model.data.slidsUrlList];
+    
+    NSMutableArray *arr;
+    if (self.model) {
+        arr = [[NSMutableArray alloc]initWithArray:self.model.data.slidsUrlList];
+    }else{
+        arr = [[NSMutableArray alloc]initWithArray:self.model_JL.data.path];
+    }
     if (self.bool_SP && arr.count >0) {
         [arr insertObject:arr[0] atIndex:0];
     }
     
     for (NSInteger i = 0; i < arr.count; i ++) {
         
-        ShangPin_Model_SlidsUrlList *MMMM = arr[i];
         UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake(i*scrollV.width, 0, scrollV.width, scrollV.height)];
         imageV.userInteractionEnabled = YES;
 
-        [imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",MMMM.path,imageV.width*2]] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+        if (self.model) {
+            ShangPin_Model_SlidsUrlList *MMMM = arr[i];
+            [imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",MMMM.path,imageV.width*2]] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+        }else{
+            [imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",arr[i],imageV.width*2]] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+
+        }
+
  
         
         if (i == 0 &&self.bool_SP) {

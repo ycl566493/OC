@@ -8,9 +8,15 @@
 
 #import "PingJia_VC.h"
 #import "PingJia_Cell.h"
+#import "PLLB_Model_RootClass.h"
+#import "KBY_View.h"
 
 @interface PingJia_VC ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    PLLB_Model_RootClass    *model_PLLB;//评论列表
+    
+}
+@property (nonatomic,weak)  KBY_View                *kby;//空白页
 @end
 
 @implementation PingJia_VC
@@ -20,10 +26,47 @@
     self.pageIndex = 1;
     self.title = @"评价";
     [self init_UI];
+    
+    [self init_Data:YES];
 }
 
 -(void)init_Data:(BOOL)Y_N{
+
     
+    [NetRequest postWithUrl:Product_commentList params:@{@"gid":@"8423",@"page":[NSString stringWithFormat:@"%li",self.pageIndex]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"评论列表 ==  %@",dict);
+        
+        if (Y_N) {
+            model_PLLB = [[PLLB_Model_RootClass alloc]initWithDictionary:dict];
+        }else{
+            [model_PLLB Add_Dictionary:dict];
+        }
+        
+        if (model_PLLB.code == 1) {
+            [self.tableV reloadData];
+            
+        }
+        
+        [self if_KYB];
+    } fail:^(id error) {
+        
+    }];
+}
+
+- (void)if_KYB{
+    if (model_PLLB.data.count == 0) {
+        self.kby.hidden = NO;
+    }else{
+        self.kby.hidden = YES;
+    }
+}
+
+- (KBY_View *)kby{
+    if (!_kby) {
+        KBY_View *kby = [KBY_View init_Xib];
+        _kby = kby;
+    }
+    return _kby;
 }
 
 -(void)init_UI{
@@ -39,18 +82,18 @@
         self.tableV.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     //    tableV下拉刷新
-    WeakSelf(ws);
+//    WeakSelf(ws);
     self.tableV.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [ws.tableV.mj_header endRefreshing];
-        ws.pageIndex =1;
-        [ws init_Data:YES];
+        [self.tableV.mj_header endRefreshing];
+        self.pageIndex =1;
+        [self init_Data:YES];
     }];
     // 设置自动切换透明度(在导航栏下面自动隐藏)
     // tableV上拉加载
     self.tableV.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [ws.tableV.mj_footer endRefreshing];
-        ws.pageIndex += 1;
-        [ws init_Data:NO];
+        [self.tableV.mj_footer endRefreshing];
+        self.pageIndex += 1;
+        [self init_Data:NO];
     }];
 
 }
@@ -60,18 +103,21 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return model_PLLB.data.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [PingJia_Cell get_H:@"啊哈哈啊哈哈哈哈哈哈哈" row:indexPath.row % 4];
+    PLLB_Model_Data *MMMM = model_PLLB.data[indexPath.row];
+
+    return [PingJia_Cell get_H:MMMM.content row:MMMM.piclist.count];
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     PingJia_Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"PingJia_Cell"];
     if (!cell) {
         cell = [[[NSBundle mainBundle]loadNibNamed:@"PingJia_Cell" owner:self options:nil] lastObject];
     }
+    PLLB_Model_Data *MMMM = model_PLLB.data[indexPath.row];
+    cell.model = MMMM;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell set_W:indexPath.row];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

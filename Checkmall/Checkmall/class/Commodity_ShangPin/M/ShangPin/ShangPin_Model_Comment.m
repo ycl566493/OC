@@ -9,6 +9,7 @@
 
 NSString *const kShangPin_Model_CommentComInfo = @"com_info";
 NSString *const kShangPin_Model_CommentComNum = @"com_num";
+NSString *const kShangPin_Model_CommentRate = @"rate";
 
 @interface ShangPin_Model_Comment ()
 @end
@@ -25,10 +26,15 @@ NSString *const kShangPin_Model_CommentComNum = @"com_num";
 {
 	self = [super init];
 	if(![dictionary[kShangPin_Model_CommentComInfo] isKindOfClass:[NSNull class]]){
-		self.comInfo = dictionary[kShangPin_Model_CommentComInfo];
-	}	
+		self.comInfo = [[ShangPin_Model_Com_Info alloc] initWithDictionary:dictionary[kShangPin_Model_CommentComInfo]];
+	}
+
 	if(![dictionary[kShangPin_Model_CommentComNum] isKindOfClass:[NSNull class]]){
 		self.comNum = [dictionary[kShangPin_Model_CommentComNum] integerValue];
+	}
+
+	if(![dictionary[kShangPin_Model_CommentRate] isKindOfClass:[NSNull class]]){
+		self.rate = [dictionary[kShangPin_Model_CommentRate] integerValue];
 	}
 
 	return self;

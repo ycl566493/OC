@@ -7,6 +7,7 @@
 //
 
 #import "MyUIView.h"
+#import "ShangPin_Model_Comment.h"
 
 @protocol SPPJ_V_Delegate <NSObject>
 
@@ -17,7 +18,15 @@
 
 @interface SPPJ_V : MyUIView
 
-@property (nonatomic , assign) id<SPPJ_V_Delegate>  delegate;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_SL;//评价人数
+
+@property (weak, nonatomic) IBOutlet UILabel *lbl_HP;//好评率
+
+
+
+@property (nonatomic, strong) ShangPin_Model_Comment    *model;
+
+@property (nonatomic, assign) id<SPPJ_V_Delegate>  delegate;
 
 @end
 

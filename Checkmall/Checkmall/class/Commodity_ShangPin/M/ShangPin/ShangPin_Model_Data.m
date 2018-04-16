@@ -29,21 +29,19 @@ NSString *const kShangPin_Model_DataStock = @"stock";
 NSString *const kShangPin_Model_DataSurplusTime = @"surplus_time";
 NSString *const kShangPin_Model_DataTaketype = @"taketype";
 NSString *const kShangPin_Model_DataVideo = @"video";
+NSString *const kShangPin_Model_Dataproduct_content = @"product_content";
 
 @interface ShangPin_Model_Data ()
 @end
 @implementation ShangPin_Model_Data
 
-
-
-
-/**
- * Instantiate the instance using the passed dictionary values to set the properties values
- */
-
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    if(![dictionary[kShangPin_Model_Dataproduct_content] isKindOfClass:[NSNull class]]){
+        self.product_content = dictionary[kShangPin_Model_Dataproduct_content];
+    }
+    
 	if(![dictionary[kShangPin_Model_DataAmount] isKindOfClass:[NSNull class]]){
 		self.amount = [dictionary[kShangPin_Model_DataAmount] integerValue];
 	}

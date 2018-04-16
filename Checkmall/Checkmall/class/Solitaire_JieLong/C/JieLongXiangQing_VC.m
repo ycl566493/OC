@@ -13,7 +13,7 @@
 #import "ShangPin_MS_V.h"//商品描述
 #import "ShangPin_PinTuanXuZhi_V.h"//拼团须知
 #import "TC_PTXZ_V.h"//拼团须知
-#import "ShangPin_Model_RootClass.h"
+#import "JLXQ_Model_RootClass.h"
 #import "QieHuan_V.h"//切换
 #import "SPSP_Cell.h"
 #import "SPPJ_V.h"
@@ -26,7 +26,7 @@
     ShangPin_PinTuanXuZhi_V *PinTuan;//拼团
     
     
-    ShangPin_Model_RootClass    *model_SPXQ;//商品详情model
+    JLXQ_Model_RootClass    *model_SPXQ;//商品详情model
     
     UIView                      *view_XQ;//详情
     UITableView                      *tableV_SP;//视频
@@ -60,10 +60,10 @@
 }
 
 -(void)init_Data{
-    [NetRequest postWithUrl:product_bulkDetail params:@{@"goods_id":self.Str_ID} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+    [NetRequest postWithUrl:Solitaire_goodsdetails params:@{@"sid":self.Str_JLID,@"gid":self.str_SPID} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         
-        NSLog(@"商品详情= ==  =%@",dict);
-        model_SPXQ = [[ShangPin_Model_RootClass alloc]initWithDictionary:dict];
+        NSLog(@"接龙详情= ==  =%@",dict);
+        model_SPXQ = [[JLXQ_Model_RootClass alloc]initWithDictionary:dict];
         if (model_SPXQ.code == 1) {
             [self UP_UI];
         }
@@ -132,20 +132,20 @@
 
 #pragma mark- 更新视图
 -(void)UP_UI{
-    TuPian.model = model_SPXQ;
+    TuPian.model_JL = model_SPXQ;
     self.QH.height =[QieHuan_V get_H:nil];
 
-    self.XinXi.model = model_SPXQ;
-    self.XinXi.height = [ShangPin_XinXi_V get_H:model_SPXQ.data.productName];
+    self.XinXi.model_JL = model_SPXQ;
+    self.XinXi.height = [ShangPin_XinXi_V get_H:model_SPXQ.data.name];
     XiaDan.mj_y = self.XinXi.bottom;
-    XiaDan.model = model_SPXQ;
-    XiaDan.height = [ShangPin_XiaDan_V get_H:[NSString stringWithFormat:@"%li",model_SPXQ.data.groupUserInfo.count]];
+    XiaDan.model_JL = model_SPXQ;
+    XiaDan.height = [ShangPin_XiaDan_V get_H:[NSString stringWithFormat:@"%li",model_SPXQ.data.buyuser.count]];
     
     self.PJ.mj_y = XiaDan.bottom;
     self.PJ.height = [SPPJ_V get_H:nil];
     MS.mj_y = self.PJ.bottom;
-    MS.model = model_SPXQ;
-    MS.height = [ShangPin_MS_V get_H:model_SPXQ.data.productDesc];
+    MS.model_JL = model_SPXQ;
+    MS.height = [ShangPin_MS_V get_H:model_SPXQ.data.details];
     
     
     PinTuan.mj_y = MS.bottom;

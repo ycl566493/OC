@@ -62,7 +62,6 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1n-s3-1Ii">
                         <rect key="frame" x="15" y="86" width="403" height="50"/>
-                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="Swc-bv-bRp"/>
                         </constraints>
