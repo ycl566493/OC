@@ -23,7 +23,7 @@
 - (void)init_UI{
     self.backgroundColor = [UIColor whiteColor];
     
-    NSArray *arr = @[@"WoDeTuanGou",@"DiZhi",@"BangZhu",@"KeFu"];
+    NSArray *arr = @[@"WoDeTuanGou",@"DiZhi",@"BangZhu",@"SheZhi"];
     for (NSInteger i = 0; i < 4; i ++) {
         UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth / 4 * i, 0, ScreenWidth / 4, 81)];
         btn.tag = i;

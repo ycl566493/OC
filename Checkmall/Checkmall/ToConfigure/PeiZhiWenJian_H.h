@@ -10,9 +10,8 @@
 #define PeiZhiWenJian_H_h
 
 //服务器选择
-//#define FuWuQi @"" //正式
-#define FuWuQi @"http://www.jingchengcaidian.com"  //测试地址：
-#define FuWuQi @"http://www.jingchengcaidian.com"  //测试地址：
+#define FuWuQi @"http://www.jingchengcaidian.com"  //正式地址：
+//#define FuWuQi @"m"  //
 
 //http://192.168.48.129/
 

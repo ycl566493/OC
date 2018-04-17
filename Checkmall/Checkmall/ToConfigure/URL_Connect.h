@@ -53,7 +53,8 @@
 #define Order_solitaireReturn [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/solitaireReturn"]//接龙支付成功
 #define Product_commentList [NSString stringWithFormat:@"%@%@",URL_LJ,@"Product/commentList"]//评论列表
 #define Solitaire_goodsdetails [NSString stringWithFormat:@"%@%@",URL_LJ,@"Solitaire/goodsdetails"]//接龙详情页
-
-
+#define User_exitLogin [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/exitLogin"]//退出登录
+#define User_userHeadImage [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/userHeadImage"]//上传头像
+#define User_updateNickname [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/updateNickname"]//修改昵称
 
 #endif /* URL_Connect_h */

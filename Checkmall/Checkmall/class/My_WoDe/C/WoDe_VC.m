@@ -19,6 +19,7 @@
 #import "GuangGao_Model_RootClass.h"//广告model
 #import "ShangPinXiangQing_VC.h"//商品详情
 #import "JieLong_VC.h"
+#import "SheZhi_Vc.h"
 
 @interface WoDe_VC ()<WoDe_TouBu_V_Delegate,WoDe_FuWo_V_Delegate,WoDe_DD_V_Delegate,WoDe_ELeMa_V_Delegate>{
     WoDe_TouBu_V    *TouBu;//头部
@@ -89,29 +90,9 @@
 
 #pragma mark- 客服
 -(void)WoDe_FuWo_V_Delegate_KF{
-    //初始化提示框；
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"客服电话" message:nil preferredStyle: UIAlertControllerStyleActionSheet];
-    
-    [alert addAction:[UIAlertAction actionWithTitle:@"010-57281579" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //点击按钮的响应事件；
-        NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
-        if (phoneVersion.floatValue < 10.0) {
-            //iOS10 以前使用
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"Tel://01057281579"]];
-        }
-        else {
-            //iOS10 以后使用
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"Tel://01057281579"]
-                                               options:@{}
-                                     completionHandler:nil];
-        }
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        //点击按钮的响应事件；
-    }]];
-    
-    //弹出提示框；
-    [self presentViewController:alert animated:true completion:nil];
+ 
+    SheZhi_Vc *vc = [[SheZhi_Vc alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

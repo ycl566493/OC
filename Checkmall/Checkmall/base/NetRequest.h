@@ -12,7 +12,7 @@
 /**
  *  请求超时的时间
  **/
-#define kTimeOutInterval 30
+#define kTimeOutInterval 5
 
 typedef void (^SuccessBlock)(NSDictionary *dict); // 访问成功block
 

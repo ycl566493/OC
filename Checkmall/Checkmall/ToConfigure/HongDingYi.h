@@ -37,6 +37,7 @@
 
 #define TouXiang @"TouXiang"//头像
 #define NiCheng @"NiCheng"//昵称
+#define XingBie @"XingBie"//性别
 #define YuE @"YuE"//余额
 
 //缓存路径

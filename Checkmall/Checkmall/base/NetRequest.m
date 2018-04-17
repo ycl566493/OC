@@ -9,7 +9,8 @@
 #import "NetRequest.h"
 #import "dongHua.h"
 #import "BaseNavigationController.h"
-#import "HWProgressHUD.h"
+//#import "HWProgressHUD.h"
+#import "SVProgressHUD.h"
 
 @interface NetRequest ()
 
@@ -99,7 +100,8 @@ static NetRequest * netequest;
 //    dongHua *DH = [dongHua addDongHua];
     if (showAnimate==YES) {
 //        [DH xianShi:nil];
-        [HWProgressHUD show];
+        [SVProgressHUD show];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     }
 
     netequest = [NetRequest sharedNetworking];
@@ -131,7 +133,7 @@ static NetRequest * netequest;
 
         if (showAnimate==YES) {
 //            [DH yinChang];
-            [HWProgressHUD dismiss];
+            [SVProgressHUD dismiss];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"error=%@",error);
@@ -140,7 +142,8 @@ static NetRequest * netequest;
         }
         if (showAnimate==YES) {
 //            [DH yinChang];
-            [HWProgressHUD dismiss];
+            [SVProgressHUD dismiss];
+            [MyHelper showMessage:@"服务器开小差了~请稍后再试！"];
         }
     }];
 }
@@ -212,7 +215,9 @@ static NetRequest * netequest;
 + (void)uploadWithImage:(UIImage *)image url:(NSString *)url filename:(NSString *)filename name:(NSString *)name params:(NSDictionary *)params progress:(UploadProgress)progress success:(SuccessBlock)success
                    fail:(ErrorBlock)fail{
 
-
+        [SVProgressHUD show];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    
     if (url==nil) {
         return ;
     }
@@ -245,13 +250,16 @@ static NetRequest * netequest;
         if (success) {
             success(responseObject);
         }
+        
+        [SVProgressHUD dismiss];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error=%@",error);
         if (fail) {
             fail(error);
             NSLog(@"网络请求失败");
         }
-
+        [SVProgressHUD dismiss];
     }];
 
 }

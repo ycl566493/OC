@@ -45,9 +45,15 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(GouWuCheShuLiang:) name:@"GouWuCheShuLiang" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ToLogIn) name:@"ToLogIn" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TCDL) name:@"TCDL" object:nil];
+
+    
     
     
     [MyHelper UP_GWCSL];
+}
+- (void)TCDL{
+    self.selectedIndex = 0;
 }
 
 -(void)ToLogIn{

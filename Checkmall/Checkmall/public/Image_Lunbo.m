@@ -227,8 +227,9 @@
     NSInteger TP_C = int_DQ -1;
     //右边图片
     NSInteger  TP_R =  int_DQ == self.arr_data.count ? 0 : int_DQ ;
-    
     if (self.arr_data.count == 0) {
+        return;
+    }else if (self.arr_data.count == 1) {
          [self imageV_JT:imageV_1 string_URL:self.arr_data[0]];
     }else if (self.arr_data.count == 2) {
          [self imageV_JT:imageV_1 string_URL:self.arr_data[0]];
