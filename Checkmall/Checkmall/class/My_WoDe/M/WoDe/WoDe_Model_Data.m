@@ -12,21 +12,21 @@ NSString *const kWoDe_Model_DataCreditCardBalance = @"credit_card_balance";
 NSString *const kWoDe_Model_DataIdField = @"id";
 NSString *const kWoDe_Model_DataScore = @"score";
 NSString *const kWoDe_Model_DataUsername = @"username";
+NSString *const kWoDe_Model_DataPath = @"path";
 
 @interface WoDe_Model_Data ()
 @end
 @implementation WoDe_Model_Data
 
 
-
-
-/**
- * Instantiate the instance using the passed dictionary values to set the properties values
- */
-
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    
+    if(![dictionary[kWoDe_Model_DataPath] isKindOfClass:[NSNull class]]){
+        self.path = dictionary[kWoDe_Model_DataPath];
+    }
+    
 	if(![dictionary[kWoDe_Model_DataCoupon] isKindOfClass:[NSNull class]]){
 		self.coupon = [dictionary[kWoDe_Model_DataCoupon] integerValue];
 	}

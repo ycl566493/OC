@@ -25,12 +25,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDI-bU-vsH">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDI-bU-vsH">
                         <rect key="frame" x="250" y="0.0" width="70" height="140"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="Va6-D0-kCg"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" image="SPLBBF"/>
                         <connections>
                             <action selector="btn_CZ:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LVU-ww-FhC"/>
                         </connections>
@@ -64,4 +64,7 @@
             <point key="canvasLocation" x="-118" y="24"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="SPLBBF" width="20" height="20"/>
+    </resources>
 </document>

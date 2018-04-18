@@ -9,7 +9,7 @@
 
 NSString *const kDiZhiLieBiao_Model_RootClassCode = @"code";
 NSString *const kDiZhiLieBiao_Model_RootClassData = @"data";
-NSString *const kDiZhiLieBiao_Model_RootClassMessage = @"message";
+NSString *const kDiZhiLieBiao_Model_RootClassMessage = @"msg";
 
 @interface DiZhiLieBiao_Model_RootClass ()
 @end

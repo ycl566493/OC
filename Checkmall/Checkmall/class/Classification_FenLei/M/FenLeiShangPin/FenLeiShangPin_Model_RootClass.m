@@ -9,7 +9,7 @@
 
 NSString *const kFenLeiShangPin_Model_RootClassCode = @"code";
 NSString *const kFenLeiShangPin_Model_RootClassData = @"data";
-NSString *const kFenLeiShangPin_Model_RootClassMessage = @"message";
+NSString *const kFenLeiShangPin_Model_RootClassMessage = @"msg";
 NSString *const kFenLeiShangPin_Model_RootClassPage = @"page";
 
 @interface FenLeiShangPin_Model_RootClass ()

@@ -14,6 +14,7 @@
 @property (nonatomic, assign) NSInteger idField;
 @property (nonatomic, assign) NSInteger score;
 @property (nonatomic, strong) NSString * username;
+@property (nonatomic, strong) NSString * path;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

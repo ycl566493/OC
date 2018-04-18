@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>//相机的库
 #import "WenBenShuRu_VC.h"
 
+
 #define AUTHORIZATION_MSG_PHOTO @"请在iPhone的“设置-隐私-相册”中允许访问相册。" //访问权限提示
 
 
@@ -72,8 +73,7 @@
             cell.imageVT.layer.masksToBounds = YES;
             cell.imageVT.layer.cornerRadius = cell.imageVT.height / 2;
             cell.imageV_W.constant = cell.imageVT.height;
-            cell.imageVT.backgroundColor = [UIColor redColor];
-            
+            [cell.imageVT sd_setImageWithURL:[MyHelper imaeg_URL:[kUserDefaults objectForKey:TouXiang] view:cell.imageVT] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
         }else if (indexPath.row == 1){
             [cell SetTitle:@"手机号" NR:[kUserDefaults objectForKey:YongHuMing] ImageV:YES];
         }else if (indexPath.row == 2){
@@ -109,8 +109,9 @@
 
         vc.str_title = @"请输入昵称";
         vc.str_NR = [kUserDefaults objectForKey:NiCheng];
+    }else if (indexPath.row == 3){
+       
     }
-    
 }
 
 - (void)WenBenShuRu_VC_delegate_XX:(NSString *)xx tag:(NSInteger)tag{

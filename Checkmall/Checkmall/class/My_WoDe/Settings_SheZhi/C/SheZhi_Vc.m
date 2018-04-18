@@ -9,6 +9,8 @@
 #import "SheZhi_Vc.h"
 #import "SheZhi_Cell.h"
 #import "GRXX_VC.h"
+#import "XiuGaiMiMa_VC.h"
+#import "ZGGG_VC.h"
 
 @interface SheZhi_Vc ()<UITableViewDelegate,UITableViewDataSource>{
     
@@ -102,8 +104,13 @@
         if (indexPath.row == 0) {
             GRXX_VC *vc = [[GRXX_VC alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
-        }else if (indexPath.row == 2){
-
+        }else if (indexPath.row == 1){
+            ZGGG_VC *vc = [[ZGGG_VC alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row == 2){
+            XiuGaiMiMa_VC *vc = [[XiuGaiMiMa_VC alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {

@@ -119,9 +119,9 @@ static NetRequest * netequest;
             
         }else{
             NSLog(@"dictdata === %@",[responseObject objectForKey:@"msg"]);
-            if ([responseObject[@"msg"] length]>0) {
+//            if ([responseObject[@"msg"] length]>0) {
                 [MyHelper showMessage:responseObject[@"msg"]];
-            }
+//            }
          
         }
         success(responseObject);
@@ -182,16 +182,16 @@ static NetRequest * netequest;
             [kUserDefaults setBool:0 forKey:DengLuZhuangTai];
             
         }else{
-            NSLog(@"dictdata === %@",[responseObject objectForKey:@"Msg"]);
-            if ([responseObject[@"Msg"] length]>0) {
-                [MyHelper showMessage:responseObject[@"Msg"]];
+            NSLog(@"dictdata === %@",[responseObject objectForKey:@"msg"]);
+            if ([responseObject[@"msg"] length]>0) {
+                [MyHelper showMessage:responseObject[@"msg"]];
             }
             
         }
         success(responseObject);
         if (showMsg) {
-            if ([responseObject[@"Msg"] length]>0) {
-                [MyHelper showMessage:responseObject[@"Msg"]];
+            if ([responseObject[@"msg"] length]>0) {
+                [MyHelper showMessage:responseObject[@"msg"]];
             }
         }
         

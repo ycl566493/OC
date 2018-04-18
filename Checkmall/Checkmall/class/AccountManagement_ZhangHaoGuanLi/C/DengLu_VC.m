@@ -333,12 +333,24 @@
 
 #pragma mark- 获取验证码
 - (void)btn_YZM_Action{
-    [btn_YZM setEnabled:NO];
-    int_DJS = 60;
-    [btn_YZM setTitleColor:UIColorFromHex(0x333333) forState:UIControlStateNormal];
+    if (![MyHelper isPhone:txt_SJH.text]){
+        [MyHelper showMessage:@"请输入正确的手机号！"];
+    }else{
+        NSString * str_JM = [RSA_Object encryptString:txt_SJH.text publicKey:RSA_public_key];
+        [NetRequest postWithUrl:message_getIphone params:@{@"iphone":str_JM,@"type":@"login"} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+            
+            NSLog(@"发送验证码===  %@ \n%@",dict,[MyHelper toJson:dict]);
+            if ([dict[@"code"] integerValue] == 1) {
+                [btn_YZM setEnabled:NO];
+                int_DJS = 60;
+                [btn_YZM setTitleColor:UIColorFromHex(0x333333) forState:UIControlStateNormal];
 
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action:) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+                timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action:) userInfo:nil repeats:YES];
+                [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+            }
+        } fail:^(id error) {
+        }];
+    }
 }
 
 - (void)action:(NSTimer *)sender {

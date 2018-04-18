@@ -9,7 +9,7 @@
 
 NSString *const kGouWuChe_Model_RootClassCode = @"code";
 NSString *const kGouWuChe_Model_RootClassData = @"data";
-NSString *const kGouWuChe_Model_RootClassMessage = @"message";
+NSString *const kGouWuChe_Model_RootClassMessage = @"msg";
 
 @interface GouWuChe_Model_RootClass ()
 @end

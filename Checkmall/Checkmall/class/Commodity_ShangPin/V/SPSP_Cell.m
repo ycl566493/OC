@@ -13,15 +13,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    self.lbl_Title.text = @"第一节 哈哈哈哈哈哈哈哈哈哈哈哈";
-    [self.btn_CZ setTitle:@"付款" forState:UIControlStateNormal];
-    [self.btn_CZ setTitleColor:UIColorFromHex(0xff7800) forState:UIControlStateNormal];
+
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+-(void)setModel:(ShiPinLieBiao_Model_Data *)model{
+    _model=  model;
+    self.lbl_Title.text = model.name;
 
-    // Configure the view for the selected state
+
 }
 
 

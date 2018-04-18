@@ -9,7 +9,7 @@
 
 NSString *const kWoDe_Model_RootClassCode = @"code";
 NSString *const kWoDe_Model_RootClassData = @"data";
-NSString *const kWoDe_Model_RootClassMessage = @"message";
+NSString *const kWoDe_Model_RootClassMessage = @"msg";
 
 @interface WoDe_Model_RootClass ()
 @end

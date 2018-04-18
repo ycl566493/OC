@@ -9,7 +9,7 @@
 
 NSString *const kPLLB_Model_RootClassCode = @"code";
 NSString *const kPLLB_Model_RootClassData = @"data";
-NSString *const kPLLB_Model_RootClassMessage = @"message";
+NSString *const kPLLB_Model_RootClassMessage = @"msg";
 NSString *const kPLLB_Model_RootClassPage = @"page";
 
 @interface PLLB_Model_RootClass ()

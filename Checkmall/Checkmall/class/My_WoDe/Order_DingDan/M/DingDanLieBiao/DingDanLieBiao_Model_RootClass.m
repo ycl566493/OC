@@ -9,7 +9,7 @@
 
 NSString *const kDingDanLieBiao_Model_RootClassCode = @"code";
 NSString *const kDingDanLieBiao_Model_RootClassData = @"data";
-NSString *const kDingDanLieBiao_Model_RootClassMessage = @"message";
+NSString *const kDingDanLieBiao_Model_RootClassMessage = @"msg";
 NSString *const kDingDanLieBiao_Model_RootClassPage = @"page";
 
 @interface DingDanLieBiao_Model_RootClass ()

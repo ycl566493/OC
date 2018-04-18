@@ -9,7 +9,7 @@
 
 NSString *const kJLLB_Model_RootClassCode = @"code";
 NSString *const kJLLB_Model_RootClassData = @"data";
-NSString *const kJLLB_Model_RootClassMessage = @"message";
+NSString *const kJLLB_Model_RootClassMessage = @"msg";
 
 @interface JLLB_Model_RootClass ()
 @end

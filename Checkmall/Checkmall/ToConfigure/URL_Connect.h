@@ -56,5 +56,12 @@
 #define User_exitLogin [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/exitLogin"]//退出登录
 #define User_userHeadImage [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/userHeadImage"]//上传头像
 #define User_updateNickname [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/updateNickname"]//修改昵称
+#define User_setModifyPwd [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/setModifyPwd"]//修改密码
+#define User_wxBindStatus [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/wxBindStatus"]//微信绑定状态
+#define User_wxToBind [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/wxToBind"]//微信绑定
+#define Product_videoList [NSString stringWithFormat:@"%@%@",URL_LJ,@"Product/videoList"]//视频列表
+
+
+
 
 #endif /* URL_Connect_h */

@@ -9,7 +9,7 @@
 
 NSString *const kYouHuiJuan_Model_RootClassCode = @"code";
 NSString *const kYouHuiJuan_Model_RootClassData = @"data";
-NSString *const kYouHuiJuan_Model_RootClassMessage = @"message";
+NSString *const kYouHuiJuan_Model_RootClassMessage = @"msg";
 
 @interface YouHuiJuan_Model_RootClass ()
 @end

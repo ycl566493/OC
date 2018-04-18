@@ -127,9 +127,14 @@
         
         NSLog(@"个人信息 == = %@",dict);
         model_WD = [[WoDe_Model_RootClass alloc]initWithDictionary:dict];
-        [kUserDefaults setObject:model_WD.data.creditCardBalance forKey:YuE];
+        if (model_WD.code == 1) {
+            [kUserDefaults setObject:model_WD.data.creditCardBalance forKey:YuE];
+            [kUserDefaults setObject:model_WD.data.username forKey:NiCheng];
+            [kUserDefaults setObject:model_WD.data.path forKey:TouXiang];
 
-        TouBu.model = model_WD;
+            TouBu.model = model_WD;
+        }
+  
     } fail:^(id error) {
         
     }];

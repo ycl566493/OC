@@ -9,7 +9,7 @@
 
 NSString *const kShangPin_Model_RootClassCode = @"code";
 NSString *const kShangPin_Model_RootClassData = @"data";
-NSString *const kShangPin_Model_RootClassMessage = @"message";
+NSString *const kShangPin_Model_RootClassMessage = @"msg";
 
 @interface ShangPin_Model_RootClass ()
 @end

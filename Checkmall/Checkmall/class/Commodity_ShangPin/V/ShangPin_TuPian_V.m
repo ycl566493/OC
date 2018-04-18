@@ -7,7 +7,6 @@
 //
 
 #import "ShangPin_TuPian_V.h"
-#import "SBPlayer.h"
 
 
 @interface ShangPin_TuPian_V()<UIScrollViewDelegate>{
@@ -22,7 +21,6 @@
     UIImageView         *image_SP;//播放视频
 }
 
-@property(nonatomic,strong)SBPlayer *player;
 @end
 
 @implementation ShangPin_TuPian_V
@@ -226,31 +224,11 @@
 
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
     //播放视频
-    self.player.hidden = NO;
-    self.player.frame = image_SP.bounds;
-    [image_SP addSubview:self.player];
-//                self.player.hidden = YES;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(ShangPin_TuPian_V_Delegate_PF)]) {
+        [self.delegate ShangPin_TuPian_V_Delegate_PF];
+    }
 }
 
--(SBPlayer *)player{
-    if (!_player) {
-        _player = [[SBPlayer alloc]initWithUrl:[NSURL URLWithString:self.model.data.video]];
-        //设置标题
-//        [_player setTitle:@"这是一个标题"];
-        //设置播放器背景颜色
-        _player.backgroundColor = [UIColor blackColor];
-        //设置播放器填充模式 默认SBLayerVideoGravityResizeAspectFill，可以不添加此语句
-        _player.mode = SBLayerVideoGravityResizeAspect;
-        //添加播放器到视图
-        //约束，也可以使用Frame
-        //    [self.player mas_makeConstraints:^(MASConstraintMaker *make) {
-        //        make.top.right.left.height.mas_equalTo(self);
-        //        make.height.mas_equalTo(@250);
-        //    }];
-        _player.frame = self.bounds;
-    }
-    return _player;
-}
 
 // 滚动视图滚动, 就会执行
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -285,8 +263,7 @@
 
 
 -(void)dealloc{
-    [self.player pause];
-    [self.player stop];
+
 }
 
 

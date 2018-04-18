@@ -22,6 +22,8 @@
 #import "SPPJ_V.h"
 #import "PingJia_VC.h"//评价列表
 #import "ShangPin_XQ_V.h"//商品描述
+#import "ShiPinLieBiao_Model_RootClass.h"//视频列表
+#import "SPBF_V.h"//视频播放背景
 
 @interface ShangPinXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate,QieHuan_V_Delegate,UITableViewDataSource,UITableViewDelegate,SPPJ_V_Delegate,ShangPin_XQ_V_Delegate>{
     ShangPin_TuPian_V       *TuPian;
@@ -42,8 +44,13 @@
     
     UIView                      *view_XQ;//详情
     UITableView                      *tableV_SP;//视频
+    ShiPinLieBiao_Model_RootClass   *model_SP;//视频列表
     
+    SPBF_V                          *SPBF_BJ;//视频播放背景
 }
+/** 视频播放器 */
+@property (nonatomic, strong) HJVideoPlayerController *shipin;
+
 
 @property (nonatomic,weak) QieHuan_V                 *QH;//切换选择
 @property (nonatomic,weak) SPPJ_V                 *PJ;//评价
@@ -63,6 +70,32 @@
     [self init_UI];
 
     [self init_Data];
+    [self init_Data_SP];
+}
+
+- (void)init_Data_SP{
+    NSDictionary *dic = @{@"gid":@"8423",@"token":[MyHelper toToken]};
+    [NetRequest postWithUrl:Product_videoList params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"视频列表 == %@",dict);
+        model_SP = [[ShiPinLieBiao_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_SP.code ==1) {
+            if (model_SP.data.count == 0) {
+                self.QH.hidden = YES;
+                self.QH.height = 0;
+            }else{
+                self.QH.hidden = NO;
+                self.QH.height = [QieHuan_V get_H:nil];
+            }
+            [tableV_SP reloadData];
+        }else{
+            self.QH.hidden = YES;
+            self.QH.height = 0;
+        }
+        view_XQ.top = self.QH.bottom;
+        tableV_SP.top = self.QH.bottom;
+    } fail:^(id error) {
+        
+    }];
 }
 
 
@@ -157,6 +190,9 @@
 
 #pragma mark- 更新视图
 -(void)UP_UI{
+    
+
+    
     TuPian.model = model_SPXQ;
     self.XinXi.model = model_SPXQ;
     self.XinXi.height = [ShangPin_XinXi_V get_H:model_SPXQ.data.productName];
@@ -220,6 +256,19 @@
 
 #pragma mark- 初始化
 -(void)init_UI{
+    
+    self.shipin = [[HJVideoPlayerController alloc]initWithFrame:CGRectMake(0, (ScreenHeight - ScreenWidth )/ 2, ScreenWidth, ScreenWidth)];
+    self.shipin.view.backgroundColor = [UIColor redColor];
+
+    self.shipin.backBlock = ^{
+        NSLog(@"点击");
+    };
+    SPBF_BJ = [[SPBF_V alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    SPBF_BJ.backgroundColor = RGBA(0, 0, 0, .4);
+//    [self.view addSubview:self.shipin.view];
+//    [self addChildViewController:self.shipin];
+
+    scrollV.contentOffset = CGPointMake(0, 0);
   
     scrollV = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - kStatusBarAndNavigationBarHeight  - 54 - kTabbarSafeBottomMargin)];
     if (@available(iOS 11.0, *)){
@@ -404,7 +453,7 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 20;
+    return model_SP.data.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [SPSP_Cell get_H];
@@ -414,6 +463,8 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle]loadNibNamed:@"SPSP_Cell" owner:self options:nil] lastObject];
     }
+    ShiPinLieBiao_Model_Data *MMMM = model_SP.data[indexPath.row];
+    cell.model = MMMM;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -430,7 +481,12 @@
     return nil;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    ShiPinLieBiao_Model_Data *MMM = model_SP.data[indexPath.row];
+    [self.shipin setUrl:MMM.path];
+    [self.shipin setTitle:MMM.name];
     
+    [self.window addSubview:self.shipin.view];
 }
 
 

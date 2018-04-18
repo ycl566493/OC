@@ -9,7 +9,7 @@
 
 NSString *const kJLLPSP_Model_RootClassCode = @"code";
 NSString *const kJLLPSP_Model_RootClassData = @"data";
-NSString *const kJLLPSP_Model_RootClassMessage = @"message";
+NSString *const kJLLPSP_Model_RootClassMessage = @"msg";
 
 @interface JLLPSP_Model_RootClass ()
 @end

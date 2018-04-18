@@ -34,7 +34,7 @@
 -(void)setModel:(WoDe_Model_RootClass *)model{
     _model = model;
     
-    [imageV_TX sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@""]] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    [imageV_TX sd_setImageWithURL:[NSURL URLWithString:model.data.path] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
     lbl_Name.text = model.data.username;
     lbl_JF.text = [NSString stringWithFormat:@"%li",(long)model.data.score];
     lbl_YHJ.text = [NSString stringWithFormat:@"%li",(long)model.data.coupon];
@@ -53,12 +53,14 @@
     imageV_TX.layer.borderColor = [UIColor whiteColor].CGColor;
     imageV_TX.layer.borderWidth =  .5;
     imageV_TX.layer.cornerRadius = imageV_TX.width / 2;
+    [imageV_TX sd_setImageWithURL:[NSURL URLWithString:[kUserDefaults objectForKey:TouXiang]] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+
     [self addSubview:imageV_TX];
     
     lbl_Name = [[UILabel alloc]initWithFrame:CGRectMake(0, imageV_TX.bottom, ScreenWidth, 45)];
     lbl_Name.font = font15;
     lbl_Name.textColor = UIColorFromHex(0xffffff);
-    lbl_Name.text = @"杨先生";//
+    lbl_Name.text = [kUserDefaults objectForKey:NiCheng];//
     lbl_Name.textAlignment = 1;
     [self addSubview:lbl_Name];
     

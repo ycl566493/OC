@@ -8,7 +8,7 @@
 #import "FenLeiLieBiao_Model_RootClass.h"
 
 NSString *const kFenLeiLieBiao_Model_RootClassData = @"data";
-NSString *const kFenLeiLieBiao_Model_RootClassMessage = @"message";
+NSString *const kFenLeiLieBiao_Model_RootClassMessage = @"msg";
 NSString *const kFenLeiLieBiao_Model_RootClassCode = @"code";
 
 @interface FenLeiLieBiao_Model_RootClass ()
