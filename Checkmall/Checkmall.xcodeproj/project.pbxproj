@@ -167,6 +167,13 @@
 		74B5813D2079B5DC00BF604E /* DuiHuanShangPin_VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B5813B2079B5DC00BF604E /* DuiHuanShangPin_VC.xib */; };
 		74B58141207A108F00BF604E /* DiQuMenDian_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B5813F207A108F00BF604E /* DiQuMenDian_VC.m */; };
 		74B58142207A108F00BF604E /* DiQuMenDian_VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B58140207A108F00BF604E /* DiQuMenDian_VC.xib */; };
+		74B9A4CE20884466003A9025 /* FenXiang_Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B9A4CD20884466003A9025 /* FenXiang_Object.m */; };
+		74B9A4D1208869DE003A9025 /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B9A4D0208869DE003A9025 /* Share.m */; };
+		74B9A4E020889E4A003A9025 /* SelPlaybackControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B9A4D520889E49003A9025 /* SelPlaybackControls.m */; };
+		74B9A4E120889E4A003A9025 /* SelVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B9A4D620889E49003A9025 /* SelVideoPlayer.m */; };
+		74B9A4E220889E4A003A9025 /* UIViewController+PlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B9A4DA20889E49003A9025 /* UIViewController+PlayerRotation.m */; };
+		74B9A4E320889E4A003A9025 /* SelPlayerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B9A4DD20889E49003A9025 /* SelPlayerConfiguration.m */; };
+		74B9A4E420889E4A003A9025 /* SelVideoSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B9A4DF20889E49003A9025 /* SelVideoSlider.m */; };
 		74BF4255206D0683003D77A4 /* SouSuo_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BF4251206D0683003D77A4 /* SouSuo_Model_Data.m */; };
 		74BF4256206D0683003D77A4 /* SouSuo_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BF4252206D0683003D77A4 /* SouSuo_Model_RootClass.m */; };
 		74C890DC2064F6F400898168 /* FenLeiShangPin_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C890D92064F6F400898168 /* FenLeiShangPin_Model_RootClass.m */; };
@@ -376,27 +383,6 @@
 		74DF6BE6208722C600E9B575 /* ZGGG_VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74DF6BE4208722C600E9B575 /* ZGGG_VC.xib */; };
 		74DF6BEC2087349B00E9B575 /* ShiPinLieBiao_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6BE82087349A00E9B575 /* ShiPinLieBiao_Model_Data.m */; };
 		74DF6BED2087349B00E9B575 /* ShiPinLieBiao_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6BEA2087349A00E9B575 /* ShiPinLieBiao_Model_RootClass.m */; };
-		74DF6CF920874A2600E9B575 /* videoImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 74DF6CCC20874A2600E9B575 /* videoImages.bundle */; };
-		74DF6CFA20874A2600E9B575 /* HJVideoAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74DF6CCD20874A2600E9B575 /* HJVideoAssets.xcassets */; };
-		74DF6CFB20874A2600E9B575 /* HJViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CCF20874A2600E9B575 /* HJViewFactory.m */; };
-		74DF6CFC20874A2600E9B575 /* HJVideoTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CD020874A2600E9B575 /* HJVideoTimeUtil.m */; };
-		74DF6CFD20874A2600E9B575 /* UIDevice+HJVideoRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CD220874A2600E9B575 /* UIDevice+HJVideoRotation.m */; };
-		74DF6CFE20874A2600E9B575 /* AppDelegate+HJVideoRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CD620874A2600E9B575 /* AppDelegate+HJVideoRotation.m */; };
-		74DF6CFF20874A2600E9B575 /* HJVideoPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CD820874A2600E9B575 /* HJVideoPlayerUtil.m */; };
-		74DF6D0020874A2600E9B575 /* HJVideoUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CDB20874A2600E9B575 /* HJVideoUIManager.m */; };
-		74DF6D0120874A2600E9B575 /* HJVideoPlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CDE20874A2600E9B575 /* HJVideoPlayManager.m */; };
-		74DF6D0220874A2600E9B575 /* UIImage+getImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CDF20874A2600E9B575 /* UIImage+getImage.m */; };
-		74DF6D0320874A2600E9B575 /* HJVideoConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CE220874A2600E9B575 /* HJVideoConfigModel.m */; };
-		74DF6D0420874A2600E9B575 /* HJVideoPlayTimeRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CE520874A2600E9B575 /* HJVideoPlayTimeRecord.m */; };
-		74DF6D0520874A2600E9B575 /* HJVideoMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CE720874A2600E9B575 /* HJVideoMaskView.m */; };
-		74DF6D0620874A2600E9B575 /* HJFastForwardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CE920874A2600E9B575 /* HJFastForwardView.m */; };
-		74DF6D0720874A2600E9B575 /* HJVideoSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CEC20874A2600E9B575 /* HJVideoSettingView.m */; };
-		74DF6D0820874A2600E9B575 /* HJCircleLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CED20874A2600E9B575 /* HJCircleLoading.m */; };
-		74DF6D0920874A2600E9B575 /* HJVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CEE20874A2600E9B575 /* HJVideoPlayerController.m */; };
-		74DF6D0A20874A2600E9B575 /* HJPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CF020874A2600E9B575 /* HJPlayerView.m */; };
-		74DF6D0B20874A2600E9B575 /* HJBufferSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CF220874A2600E9B575 /* HJBufferSlider.m */; };
-		74DF6D0C20874A2600E9B575 /* HJVideoBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CF420874A2600E9B575 /* HJVideoBottomView.m */; };
-		74DF6D0D20874A2600E9B575 /* HJVideoTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6CF620874A2600E9B575 /* HJVideoTopView.m */; };
 		74DF6D102087658900E9B575 /* SPBF_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6D0F2087658900E9B575 /* SPBF_V.m */; };
 		74E7F7C320849EAC0001BFCC /* ShangPin_XQ_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E7F7C220849EAC0001BFCC /* ShangPin_XQ_V.m */; };
 		74E7F7C520849EB60001BFCC /* ShangPin_XQ_V.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E7F7C420849EB60001BFCC /* ShangPin_XQ_V.xib */; };
@@ -421,6 +407,8 @@
 		74F50128207F5423006063BA /* PTZFCG_Model_Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F50120207F5423006063BA /* PTZFCG_Model_Group.m */; };
 		74F50129207F5423006063BA /* PTZFCG_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F50121207F5423006063BA /* PTZFCG_Model_RootClass.m */; };
 		74F5012A207F5423006063BA /* PTZFCG_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F50122207F5423006063BA /* PTZFCG_Model_Data.m */; };
+		74F937972088C2FE00226B72 /* JieLongWanFa_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F937962088C2FE00226B72 /* JieLongWanFa_V.m */; };
+		74F937992088C30900226B72 /* JieLongWanFa_V.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F937982088C30900226B72 /* JieLongWanFa_V.xib */; };
 		74FA78792084713F00C31866 /* PLLB_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FA78752084713F00C31866 /* PLLB_Model_Data.m */; };
 		74FA787A2084713F00C31866 /* PLLB_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FA78762084713F00C31866 /* PLLB_Model_RootClass.m */; };
 		74FCF0B3206E3BEF007F7BAD /* WeiXinZhiFu_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FCF0AB206E3BEF007F7BAD /* WeiXinZhiFu_Model_Data.m */; };
@@ -714,6 +702,22 @@
 		74B5813E207A108F00BF604E /* DiQuMenDian_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiQuMenDian_VC.h; sourceTree = "<group>"; };
 		74B5813F207A108F00BF604E /* DiQuMenDian_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiQuMenDian_VC.m; sourceTree = "<group>"; };
 		74B58140207A108F00BF604E /* DiQuMenDian_VC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiQuMenDian_VC.xib; sourceTree = "<group>"; };
+		74B9A4CC20884466003A9025 /* FenXiang_Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FenXiang_Object.h; sourceTree = "<group>"; };
+		74B9A4CD20884466003A9025 /* FenXiang_Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FenXiang_Object.m; sourceTree = "<group>"; };
+		74B9A4CF208869DE003A9025 /* Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share.h; sourceTree = "<group>"; };
+		74B9A4D0208869DE003A9025 /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
+		74B9A4D220886B22003A9025 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		74B9A4D320886B22003A9025 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		74B9A4D520889E49003A9025 /* SelPlaybackControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelPlaybackControls.m; sourceTree = "<group>"; };
+		74B9A4D620889E49003A9025 /* SelVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelVideoPlayer.m; sourceTree = "<group>"; };
+		74B9A4D720889E49003A9025 /* SelVideoSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelVideoSlider.h; sourceTree = "<group>"; };
+		74B9A4D820889E49003A9025 /* SelPlaybackControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelPlaybackControls.h; sourceTree = "<group>"; };
+		74B9A4DA20889E49003A9025 /* UIViewController+PlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PlayerRotation.m"; sourceTree = "<group>"; };
+		74B9A4DB20889E49003A9025 /* SelPlayerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelPlayerConfiguration.h; sourceTree = "<group>"; };
+		74B9A4DC20889E49003A9025 /* UIViewController+PlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PlayerRotation.h"; sourceTree = "<group>"; };
+		74B9A4DD20889E49003A9025 /* SelPlayerConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelPlayerConfiguration.m; sourceTree = "<group>"; };
+		74B9A4DE20889E49003A9025 /* SelVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelVideoPlayer.h; sourceTree = "<group>"; };
+		74B9A4DF20889E49003A9025 /* SelVideoSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelVideoSlider.m; sourceTree = "<group>"; };
 		74BF4251206D0683003D77A4 /* SouSuo_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SouSuo_Model_Data.m; sourceTree = "<group>"; };
 		74BF4252206D0683003D77A4 /* SouSuo_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SouSuo_Model_RootClass.m; sourceTree = "<group>"; };
 		74BF4253206D0683003D77A4 /* SouSuo_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SouSuo_Model_Data.h; sourceTree = "<group>"; };
@@ -1161,49 +1165,6 @@
 		74DF6BE92087349A00E9B575 /* ShiPinLieBiao_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiPinLieBiao_Model_RootClass.h; sourceTree = "<group>"; };
 		74DF6BEA2087349A00E9B575 /* ShiPinLieBiao_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiPinLieBiao_Model_RootClass.m; sourceTree = "<group>"; };
 		74DF6BEB2087349A00E9B575 /* ShiPinLieBiao_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiPinLieBiao_Model_Data.h; sourceTree = "<group>"; };
-		74DF6CCA20874A2600E9B575 /* HJVideoPlayerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoPlayerHeader.h; sourceTree = "<group>"; };
-		74DF6CCC20874A2600E9B575 /* videoImages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = videoImages.bundle; sourceTree = "<group>"; };
-		74DF6CCD20874A2600E9B575 /* HJVideoAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HJVideoAssets.xcassets; sourceTree = "<group>"; };
-		74DF6CCF20874A2600E9B575 /* HJViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJViewFactory.m; sourceTree = "<group>"; };
-		74DF6CD020874A2600E9B575 /* HJVideoTimeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoTimeUtil.m; sourceTree = "<group>"; };
-		74DF6CD120874A2600E9B575 /* HJVideoPlayerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoPlayerUtil.h; sourceTree = "<group>"; };
-		74DF6CD220874A2600E9B575 /* UIDevice+HJVideoRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+HJVideoRotation.m"; sourceTree = "<group>"; };
-		74DF6CD320874A2600E9B575 /* HJVideoUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoUIManager.h; sourceTree = "<group>"; };
-		74DF6CD420874A2600E9B575 /* HJVideoConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoConst.h; sourceTree = "<group>"; };
-		74DF6CD520874A2600E9B575 /* HJVideoPlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoPlayManager.h; sourceTree = "<group>"; };
-		74DF6CD620874A2600E9B575 /* AppDelegate+HJVideoRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+HJVideoRotation.m"; sourceTree = "<group>"; };
-		74DF6CD720874A2600E9B575 /* UIImage+getImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+getImage.h"; sourceTree = "<group>"; };
-		74DF6CD820874A2600E9B575 /* HJVideoPlayerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoPlayerUtil.m; sourceTree = "<group>"; };
-		74DF6CD920874A2600E9B575 /* HJVideoTimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoTimeUtil.h; sourceTree = "<group>"; };
-		74DF6CDA20874A2600E9B575 /* HJViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJViewFactory.h; sourceTree = "<group>"; };
-		74DF6CDB20874A2600E9B575 /* HJVideoUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoUIManager.m; sourceTree = "<group>"; };
-		74DF6CDC20874A2600E9B575 /* UIDevice+HJVideoRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+HJVideoRotation.h"; sourceTree = "<group>"; };
-		74DF6CDD20874A2600E9B575 /* HJSingletonService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSingletonService.h; sourceTree = "<group>"; };
-		74DF6CDE20874A2600E9B575 /* HJVideoPlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoPlayManager.m; sourceTree = "<group>"; };
-		74DF6CDF20874A2600E9B575 /* UIImage+getImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+getImage.m"; sourceTree = "<group>"; };
-		74DF6CE020874A2600E9B575 /* AppDelegate+HJVideoRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+HJVideoRotation.h"; sourceTree = "<group>"; };
-		74DF6CE220874A2600E9B575 /* HJVideoConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoConfigModel.m; sourceTree = "<group>"; };
-		74DF6CE320874A2600E9B575 /* HJVideoPlayTimeRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoPlayTimeRecord.h; sourceTree = "<group>"; };
-		74DF6CE420874A2600E9B575 /* HJVideoConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoConfigModel.h; sourceTree = "<group>"; };
-		74DF6CE520874A2600E9B575 /* HJVideoPlayTimeRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoPlayTimeRecord.m; sourceTree = "<group>"; };
-		74DF6CE720874A2600E9B575 /* HJVideoMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoMaskView.m; sourceTree = "<group>"; };
-		74DF6CE820874A2600E9B575 /* HJBufferSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJBufferSlider.h; sourceTree = "<group>"; };
-		74DF6CE920874A2600E9B575 /* HJFastForwardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFastForwardView.m; sourceTree = "<group>"; };
-		74DF6CEA20874A2600E9B575 /* HJPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPlayerView.h; sourceTree = "<group>"; };
-		74DF6CEB20874A2600E9B575 /* HJVideoBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoBottomView.h; sourceTree = "<group>"; };
-		74DF6CEC20874A2600E9B575 /* HJVideoSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoSettingView.m; sourceTree = "<group>"; };
-		74DF6CED20874A2600E9B575 /* HJCircleLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCircleLoading.m; sourceTree = "<group>"; };
-		74DF6CEE20874A2600E9B575 /* HJVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoPlayerController.m; sourceTree = "<group>"; };
-		74DF6CEF20874A2600E9B575 /* HJVideoTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoTopView.h; sourceTree = "<group>"; };
-		74DF6CF020874A2600E9B575 /* HJPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPlayerView.m; sourceTree = "<group>"; };
-		74DF6CF120874A2600E9B575 /* HJFastForwardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFastForwardView.h; sourceTree = "<group>"; };
-		74DF6CF220874A2600E9B575 /* HJBufferSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJBufferSlider.m; sourceTree = "<group>"; };
-		74DF6CF320874A2600E9B575 /* HJVideoMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoMaskView.h; sourceTree = "<group>"; };
-		74DF6CF420874A2600E9B575 /* HJVideoBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoBottomView.m; sourceTree = "<group>"; };
-		74DF6CF520874A2600E9B575 /* HJVideoSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoSettingView.h; sourceTree = "<group>"; };
-		74DF6CF620874A2600E9B575 /* HJVideoTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJVideoTopView.m; sourceTree = "<group>"; };
-		74DF6CF720874A2600E9B575 /* HJCircleLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCircleLoading.h; sourceTree = "<group>"; };
-		74DF6CF820874A2600E9B575 /* HJVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJVideoPlayerController.h; sourceTree = "<group>"; };
 		74DF6D0E2087658900E9B575 /* SPBF_V.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPBF_V.h; sourceTree = "<group>"; };
 		74DF6D0F2087658900E9B575 /* SPBF_V.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPBF_V.m; sourceTree = "<group>"; };
 		74E7F7C120849EAC0001BFCC /* ShangPin_XQ_V.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShangPin_XQ_V.h; sourceTree = "<group>"; };
@@ -1246,6 +1207,9 @@
 		74F50124207F5423006063BA /* PTZFCG_Model_Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTZFCG_Model_Group.h; sourceTree = "<group>"; };
 		74F50125207F5423006063BA /* PTZFCG_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTZFCG_Model_Data.h; sourceTree = "<group>"; };
 		74F50126207F5423006063BA /* PTZFCG_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTZFCG_Model_RootClass.h; sourceTree = "<group>"; };
+		74F937952088C2FE00226B72 /* JieLongWanFa_V.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JieLongWanFa_V.h; sourceTree = "<group>"; };
+		74F937962088C2FE00226B72 /* JieLongWanFa_V.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JieLongWanFa_V.m; sourceTree = "<group>"; };
+		74F937982088C30900226B72 /* JieLongWanFa_V.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JieLongWanFa_V.xib; sourceTree = "<group>"; };
 		74FA78752084713F00C31866 /* PLLB_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLLB_Model_Data.m; sourceTree = "<group>"; };
 		74FA78762084713F00C31866 /* PLLB_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLLB_Model_RootClass.m; sourceTree = "<group>"; };
 		74FA78772084713F00C31866 /* PLLB_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLLB_Model_Data.h; sourceTree = "<group>"; };
@@ -1395,6 +1359,8 @@
 		743759612063B37300752982 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				74B9A4CF208869DE003A9025 /* Share.h */,
+				74B9A4D0208869DE003A9025 /* Share.m */,
 				743759692063BB0C00752982 /* MenDian */,
 				743759622063B37E00752982 /* DiQu */,
 			);
@@ -1966,6 +1932,31 @@
 			path = ZFJG;
 			sourceTree = "<group>";
 		};
+		74B9A4D420889E49003A9025 /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				74B9A4D520889E49003A9025 /* SelPlaybackControls.m */,
+				74B9A4D620889E49003A9025 /* SelVideoPlayer.m */,
+				74B9A4D720889E49003A9025 /* SelVideoSlider.h */,
+				74B9A4D820889E49003A9025 /* SelPlaybackControls.h */,
+				74B9A4D920889E49003A9025 /* Configs */,
+				74B9A4DE20889E49003A9025 /* SelVideoPlayer.h */,
+				74B9A4DF20889E49003A9025 /* SelVideoSlider.m */,
+			);
+			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		74B9A4D920889E49003A9025 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				74B9A4DA20889E49003A9025 /* UIViewController+PlayerRotation.m */,
+				74B9A4DB20889E49003A9025 /* SelPlayerConfiguration.h */,
+				74B9A4DC20889E49003A9025 /* UIViewController+PlayerRotation.h */,
+				74B9A4DD20889E49003A9025 /* SelPlayerConfiguration.m */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		74BF4248206CE44D003D77A4 /* M */ = {
 			isa = PBXGroup;
 			children = (
@@ -2233,7 +2224,9 @@
 		74D74735204E395000DB65FD /* tool */ = {
 			isa = PBXGroup;
 			children = (
-				74DF6CC920874A2600E9B575 /* HJVideoPlayer */,
+				74B9A4D420889E49003A9025 /* VideoPlayer */,
+				74B9A4CC20884466003A9025 /* FenXiang_Object.h */,
+				74B9A4CD20884466003A9025 /* FenXiang_Object.m */,
 				74D7474C204E39B700DB65FD /* dongHua.h */,
 				74D7475A204E39B800DB65FD /* dongHua.m */,
 				74D74748204E39B700DB65FD /* LYWPickerView.h */,
@@ -3019,6 +3012,9 @@
 				74DE774B205FA377006846FC /* TC_JL_Cell.h */,
 				74DE774C205FA377006846FC /* TC_JL_Cell.m */,
 				74DE774D205FA377006846FC /* TC_JL_Cell.xib */,
+				74F937952088C2FE00226B72 /* JieLongWanFa_V.h */,
+				74F937962088C2FE00226B72 /* JieLongWanFa_V.m */,
+				74F937982088C30900226B72 /* JieLongWanFa_V.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -3032,88 +3028,6 @@
 				74DF6BE82087349A00E9B575 /* ShiPinLieBiao_Model_Data.m */,
 			);
 			path = SPLB;
-			sourceTree = "<group>";
-		};
-		74DF6CC920874A2600E9B575 /* HJVideoPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				74DF6CCA20874A2600E9B575 /* HJVideoPlayerHeader.h */,
-				74DF6CCB20874A2600E9B575 /* Resources */,
-				74DF6CCD20874A2600E9B575 /* HJVideoAssets.xcassets */,
-				74DF6CCE20874A2600E9B575 /* Others */,
-				74DF6CE120874A2600E9B575 /* Models */,
-				74DF6CE620874A2600E9B575 /* Views */,
-			);
-			path = HJVideoPlayer;
-			sourceTree = "<group>";
-		};
-		74DF6CCB20874A2600E9B575 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				74DF6CCC20874A2600E9B575 /* videoImages.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		74DF6CCE20874A2600E9B575 /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				74DF6CCF20874A2600E9B575 /* HJViewFactory.m */,
-				74DF6CD020874A2600E9B575 /* HJVideoTimeUtil.m */,
-				74DF6CD120874A2600E9B575 /* HJVideoPlayerUtil.h */,
-				74DF6CD220874A2600E9B575 /* UIDevice+HJVideoRotation.m */,
-				74DF6CD320874A2600E9B575 /* HJVideoUIManager.h */,
-				74DF6CD420874A2600E9B575 /* HJVideoConst.h */,
-				74DF6CD520874A2600E9B575 /* HJVideoPlayManager.h */,
-				74DF6CD620874A2600E9B575 /* AppDelegate+HJVideoRotation.m */,
-				74DF6CD720874A2600E9B575 /* UIImage+getImage.h */,
-				74DF6CD820874A2600E9B575 /* HJVideoPlayerUtil.m */,
-				74DF6CD920874A2600E9B575 /* HJVideoTimeUtil.h */,
-				74DF6CDA20874A2600E9B575 /* HJViewFactory.h */,
-				74DF6CDB20874A2600E9B575 /* HJVideoUIManager.m */,
-				74DF6CDC20874A2600E9B575 /* UIDevice+HJVideoRotation.h */,
-				74DF6CDD20874A2600E9B575 /* HJSingletonService.h */,
-				74DF6CDE20874A2600E9B575 /* HJVideoPlayManager.m */,
-				74DF6CDF20874A2600E9B575 /* UIImage+getImage.m */,
-				74DF6CE020874A2600E9B575 /* AppDelegate+HJVideoRotation.h */,
-			);
-			path = Others;
-			sourceTree = "<group>";
-		};
-		74DF6CE120874A2600E9B575 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				74DF6CE220874A2600E9B575 /* HJVideoConfigModel.m */,
-				74DF6CE320874A2600E9B575 /* HJVideoPlayTimeRecord.h */,
-				74DF6CE420874A2600E9B575 /* HJVideoConfigModel.h */,
-				74DF6CE520874A2600E9B575 /* HJVideoPlayTimeRecord.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		74DF6CE620874A2600E9B575 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				74DF6CE720874A2600E9B575 /* HJVideoMaskView.m */,
-				74DF6CE820874A2600E9B575 /* HJBufferSlider.h */,
-				74DF6CE920874A2600E9B575 /* HJFastForwardView.m */,
-				74DF6CEA20874A2600E9B575 /* HJPlayerView.h */,
-				74DF6CEB20874A2600E9B575 /* HJVideoBottomView.h */,
-				74DF6CEC20874A2600E9B575 /* HJVideoSettingView.m */,
-				74DF6CED20874A2600E9B575 /* HJCircleLoading.m */,
-				74DF6CEE20874A2600E9B575 /* HJVideoPlayerController.m */,
-				74DF6CEF20874A2600E9B575 /* HJVideoTopView.h */,
-				74DF6CF020874A2600E9B575 /* HJPlayerView.m */,
-				74DF6CF120874A2600E9B575 /* HJFastForwardView.h */,
-				74DF6CF220874A2600E9B575 /* HJBufferSlider.m */,
-				74DF6CF320874A2600E9B575 /* HJVideoMaskView.h */,
-				74DF6CF420874A2600E9B575 /* HJVideoBottomView.m */,
-				74DF6CF520874A2600E9B575 /* HJVideoSettingView.h */,
-				74DF6CF620874A2600E9B575 /* HJVideoTopView.m */,
-				74DF6CF720874A2600E9B575 /* HJCircleLoading.h */,
-				74DF6CF820874A2600E9B575 /* HJVideoPlayerController.h */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		74E7F7C62084C4B20001BFCC /* JLXQ */ = {
@@ -3283,7 +3197,6 @@
 				746205B42058C63400802D66 /* PinTuanXuZhi_V.xib in Resources */,
 				74785876205B6D4B00674310 /* PinTuan_ZFCG_V.xib in Resources */,
 				746537632057D4E100CF0D6B /* ShangPinXinXi_Cell.xib in Resources */,
-				74DF6CFA20874A2600E9B575 /* HJVideoAssets.xcassets in Resources */,
 				74313D592080CD5100FD4D44 /* SPPJ_V.xib in Resources */,
 				7465373E2057737E00CF0D6B /* DiZhi_Cell.xib in Resources */,
 				749FDA1A205A879500596F36 /* DanPin_V.xib in Resources */,
@@ -3322,6 +3235,7 @@
 				74C890F520650A3300898168 /* com_loading08@2x.png in Resources */,
 				741543AF205944AA002C1972 /* QueRenDingDan_GWC_VC.xib in Resources */,
 				74662F18205A24F5001A224E /* DingDanLieBiao_VC.xib in Resources */,
+				74F937992088C30900226B72 /* JieLongWanFa_V.xib in Resources */,
 				7465376D2057EAAB00CF0D6B /* PeiSongFangShi_V.xib in Resources */,
 				74C890F320650A3300898168 /* com_loading02@2x.png in Resources */,
 				74785887205BB68D00674310 /* YouHuiJuanCell.xib in Resources */,
@@ -3348,7 +3262,6 @@
 				74DE774A205F923F006846FC /* TC_JL_V.xib in Resources */,
 				74780F82205404EB00E85CCD /* Info.plist in Resources */,
 				749CB003205CD41B00A16260 /* TC_DHJ_V.xib in Resources */,
-				74DF6CF920874A2600E9B575 /* videoImages.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3377,6 +3290,7 @@
 				74D74761204E39B800DB65FD /* NetStateView.m in Sources */,
 				74D74830204E39E400DB65FD /* MKAnnotationView+WebCache.m in Sources */,
 				74A42A482085D20A008CC135 /* SVProgressHUD.m in Sources */,
+				74B9A4CE20884466003A9025 /* FenXiang_Object.m in Sources */,
 				74E7F7C320849EAC0001BFCC /* ShangPin_XQ_V.m in Sources */,
 				74780F81205404EB00E85CCD /* MASViewAttribute.m in Sources */,
 				74D74862204E39E500DB65FD /* SBJsonWriter.m in Sources */,
@@ -3407,6 +3321,7 @@
 				74D74852204E39E400DB65FD /* UIButton+AFNetworking.m in Sources */,
 				74DE7737205F619D006846FC /* TC_KDDZ.m in Sources */,
 				74C890E32064F8F900898168 /* DiZhiLieBiao_Model_RootClass.m in Sources */,
+				74B9A4D1208869DE003A9025 /* Share.m in Sources */,
 				74D7476F204E39B800DB65FD /* TTLayout.m in Sources */,
 				74BF4255206D0683003D77A4 /* SouSuo_Model_Data.m in Sources */,
 				74780F7D205404EB00E85CCD /* NSArray+MASAdditions.m in Sources */,
@@ -3425,7 +3340,6 @@
 				74FA787A2084713F00C31866 /* PLLB_Model_RootClass.m in Sources */,
 				74E7F7E72084C4B20001BFCC /* JLXQ_Model_RootClass.m in Sources */,
 				746537532057A5BF00CF0D6B /* QueRenDingDan_VC.m in Sources */,
-				74DF6CFC20874A2600E9B575 /* HJVideoTimeUtil.m in Sources */,
 				74D74832204E39E400DB65FD /* SDWebImageDecoder.m in Sources */,
 				74A3B544204EBAA1004017DA /* FenLei_H_Title_V.m in Sources */,
 				74653BD5207DF8CA00AFDAA7 /* JieLong_JG_VC.m in Sources */,
@@ -3445,6 +3359,7 @@
 				74D74850204E39E400DB65FD /* AFNetworkActivityIndicatorManager.m in Sources */,
 				74D74845204E39E400DB65FD /* IQTextView.m in Sources */,
 				74D74831204E39E400DB65FD /* SDWebImageManager.m in Sources */,
+				74B9A4E320889E4A003A9025 /* SelPlayerConfiguration.m in Sources */,
 				740D239A206A0F6000666D5C /* QueRenDingDan_Model_Addres.m in Sources */,
 				74780F7A205404EB00E85CCD /* MASCompositeConstraint.m in Sources */,
 				740D239D206A0F6000666D5C /* QueRenDingDan_Model_Data.m in Sources */,
@@ -3464,6 +3379,7 @@
 				74E7F7EA2084C5AD0001BFCC /* ShangPin_Model_Comment.m in Sources */,
 				74CB89C92074CB6800054D6C /* web_VC.m in Sources */,
 				74313D48208095C600FD4D44 /* JLCG_Model_Data.m in Sources */,
+				74F937972088C2FE00226B72 /* JieLongWanFa_V.m in Sources */,
 				742F0564206A4BCE006B28F7 /* GuangGao_Model_RootClass.m in Sources */,
 				742C4DBC2085FD73009FE2F3 /* GRXX_VC.m in Sources */,
 				743EEAC8204FB40B00B7555B /* ZhuanXiang_GG_H.m in Sources */,
@@ -3472,7 +3388,6 @@
 				7437596F2063BB0D00752982 /* MenDian_Model_Data.m in Sources */,
 				74E7F7E52084C4B20001BFCC /* JLXQ_Model_Buyuser.m in Sources */,
 				74D7483E204E39E400DB65FD /* SDImageCacheConfig.m in Sources */,
-				74DF6D0120874A2600E9B575 /* HJVideoPlayManager.m in Sources */,
 				74785886205BB68D00674310 /* YouHuiJuanCell.m in Sources */,
 				74C890DC2064F6F400898168 /* FenLeiShangPin_Model_RootClass.m in Sources */,
 				74785874205B6C4900674310 /* PinTuan_ZFCG_V.m in Sources */,
@@ -3484,12 +3399,12 @@
 				743759682063B37E00752982 /* DiQu_Model_Data.m in Sources */,
 				74708C2F205648ED0029D4AE /* ShangPin_XiaDan_V.m in Sources */,
 				74780F7C205404EB00E85CCD /* MASLayoutConstraint.m in Sources */,
-				74DF6D0A20874A2600E9B575 /* HJPlayerView.m in Sources */,
 				74D74820204E39E400DB65FD /* UIView+MJExtension.m in Sources */,
 				74D748B7204E3C1600DB65FD /* WoDe_VC.m in Sources */,
 				74D7482D204E39E400DB65FD /* MJRefreshAutoFooter.m in Sources */,
 				74CB89C52074967000054D6C /* YinDaoYe_VC.m in Sources */,
 				74D74858204E39E400DB65FD /* AFHTTPSessionManager.m in Sources */,
+				74B9A4E420889E4A003A9025 /* SelVideoSlider.m in Sources */,
 				74D74888204E3A4700DB65FD /* BaseCollectionViewController.m in Sources */,
 				74A3B53E204EAAA5004017DA /* FenLei_ShangPin_Cell.m in Sources */,
 				74D74824204E39E400DB65FD /* MJRefreshAutoStateFooter.m in Sources */,
@@ -3506,16 +3421,15 @@
 				743759762063E05900752982 /* WoDe_Model_Data.m in Sources */,
 				741543AE205944AA002C1972 /* QueRenDingDan_GWC_VC.m in Sources */,
 				74D74839204E39E400DB65FD /* SDImageCache.m in Sources */,
+				74B9A4E120889E4A003A9025 /* SelVideoPlayer.m in Sources */,
 				74D7482F204E39E400DB65FD /* UIImage+WebP.m in Sources */,
 				74DE775C205FDA21006846FC /* ShangPinLieBiao_JL_V.m in Sources */,
 				74D74844204E39E400DB65FD /* IQToolbar.m in Sources */,
 				74D7485A204E39E400DB65FD /* AFURLRequestSerialization.m in Sources */,
 				74780F7F205404EB00E85CCD /* MASConstraint.m in Sources */,
-				74DF6D0420874A2600E9B575 /* HJVideoPlayTimeRecord.m in Sources */,
+				74B9A4E020889E4A003A9025 /* SelPlaybackControls.m in Sources */,
 				7465376B2057EA9F00CF0D6B /* PeiSongFangShi_V.m in Sources */,
 				74973E4C20635ECF00E00E4C /* FenLeiLieBiao_Model_Data.m in Sources */,
-				74DF6CFF20874A2600E9B575 /* HJVideoPlayerUtil.m in Sources */,
-				74DF6CFB20874A2600E9B575 /* HJViewFactory.m in Sources */,
 				74D74826204E39E400DB65FD /* MJRefreshAutoNormalFooter.m in Sources */,
 				74780F78205404EB00E85CCD /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				74D74720204E37C800DB65FD /* AppDelegate.m in Sources */,
@@ -3525,9 +3439,7 @@
 				74780F80205404EB00E85CCD /* MASViewConstraint.m in Sources */,
 				74DE7744205F8502006846FC /* JieLong_Cell.m in Sources */,
 				741543B220594D76002C1972 /* ShangPinLieBiao_QRDD_V.m in Sources */,
-				74DF6D0020874A2600E9B575 /* HJVideoUIManager.m in Sources */,
 				742F0565206A4BCE006B28F7 /* GuangGao_Model_Data.m in Sources */,
-				74DF6CFD20874A2600E9B575 /* UIDevice+HJVideoRotation.m in Sources */,
 				746537472057995800CF0D6B /* SongHuoDiZhi_Cell.m in Sources */,
 				74D748B1204E3BFB00DB65FD /* ShouYe_Cell.m in Sources */,
 				74653BD1207DE48900AFDAA7 /* JLLB_Model_Data.m in Sources */,
@@ -3538,11 +3450,11 @@
 				749FDA18205A878C00596F36 /* DanPin_V.m in Sources */,
 				74D74848204E39E400DB65FD /* IQSegmentedNextPrevious.m in Sources */,
 				741543A9205913F8002C1972 /* QueRenDingDan_PT_VC.m in Sources */,
+				74B9A4E220889E4A003A9025 /* UIViewController+PlayerRotation.m in Sources */,
 				74D74863204E39E500DB65FD /* NSString+SBJSON.m in Sources */,
 				74DE7753205FBD18006846FC /* QueRenDingDan_JL_VC.m in Sources */,
 				746537622057D4E100CF0D6B /* ShangPinXinXi_Cell.m in Sources */,
 				74D74763204E39B800DB65FD /* MyHelper.m in Sources */,
-				74DF6D0920874A2600E9B575 /* HJVideoPlayerController.m in Sources */,
 				74D74861204E39E500DB65FD /* SBJsonBase.m in Sources */,
 				74D7476A204E39B800DB65FD /* UILabel+YBAttributeTextTapAction.m in Sources */,
 				743EEAD1204FB68900B7555B /* ZhuanXiang_ShangPin_Cell.m in Sources */,
@@ -3554,7 +3466,6 @@
 				746527B02053B26E0074CA10 /* ShangPinXiangQing_VC.m in Sources */,
 				74D74880204E3A4700DB65FD /* BaseViewController.m in Sources */,
 				74D74837204E39E400DB65FD /* SDWebImageCompat.m in Sources */,
-				74DF6CFE20874A2600E9B575 /* AppDelegate+HJVideoRotation.m in Sources */,
 				74C890DD2064F6F400898168 /* FenLeiShangPin_Model_Data.m in Sources */,
 				74D7484E204E39E400DB65FD /* UIProgressView+AFNetworking.m in Sources */,
 				743EEDAD208498D700857010 /* ShangPin_Model_Com_Info.m in Sources */,
@@ -3564,7 +3475,6 @@
 				74D74822204E39E400DB65FD /* MJRefreshBackStateFooter.m in Sources */,
 				74BF4256206D0683003D77A4 /* SouSuo_Model_RootClass.m in Sources */,
 				74D7476E204E39B800DB65FD /* SYStickHeaderWaterFallLayout.m in Sources */,
-				74DF6D0820874A2600E9B575 /* HJCircleLoading.m in Sources */,
 				74780F7B205404EB00E85CCD /* MASConstraintMaker.m in Sources */,
 				74E7F7DE2084C4B20001BFCC /* JLXQ_Model_Rule.m in Sources */,
 				749CB00C205D0F9200A16260 /* My_PickerView.m in Sources */,
@@ -3576,7 +3486,6 @@
 				74C8912120651BDB00898168 /* ZhiFuWenJian.m in Sources */,
 				74DE7758205FD7DA006846FC /* ShangPin_JL_Cell.m in Sources */,
 				74653BD0207DE48900AFDAA7 /* JLLB_Model_RootClass.m in Sources */,
-				74DF6D0720874A2600E9B575 /* HJVideoSettingView.m in Sources */,
 				74A3B538204E873C004017DA /* GouWuChe_Cell.m in Sources */,
 				74D74885204E3A4700DB65FD /* BaseNavigationController.m in Sources */,
 				74D74881204E3A4700DB65FD /* MyUIView.m in Sources */,
@@ -3586,7 +3495,6 @@
 				7433637620691ABB007E2766 /* DingDanLieBiao_Model_Data.m in Sources */,
 				74B58141207A108F00BF604E /* DiQuMenDian_VC.m in Sources */,
 				74DC6101206528DB00CF1BC5 /* ShangPin_Model_Data.m in Sources */,
-				74DF6D0B20874A2600E9B575 /* HJBufferSlider.m in Sources */,
 				74ECFA952060F5D400CC018B /* SS_Top_V.m in Sources */,
 				749CB007205CE3AD00A16260 /* TC_TJDZ_V.m in Sources */,
 				74A3B532204E6F89004017DA /* WoDe_ELeMa_V.m in Sources */,
@@ -3611,14 +3519,12 @@
 				7433637720691ABB007E2766 /* DingDanLieBiao_Model_RootClass.m in Sources */,
 				74D74857204E39E400DB65FD /* AFURLResponseSerialization.m in Sources */,
 				74D7482B204E39E400DB65FD /* MJRefreshHeader.m in Sources */,
-				74DF6D0520874A2600E9B575 /* HJVideoMaskView.m in Sources */,
 				74708C38205667FC0029D4AE /* ShangPin_PinTuanXuZhi_V.m in Sources */,
 				74D92A23207B394B007A923B /* MDXZ_TC_V.m in Sources */,
 				74708C322056541E0029D4AE /* ShangPin_XiaDan_Cell.m in Sources */,
 				74D850E82072377600A35455 /* DingDanZhuangTai_Model_RootClass.m in Sources */,
 				74653BDE207E0A0700AFDAA7 /* JLLPSP_Model_Spec.m in Sources */,
 				74785881205BB51800674310 /* YouHuiJuan_VC.m in Sources */,
-				74DF6D0D20874A2600E9B575 /* HJVideoTopView.m in Sources */,
 				74DC6100206528DB00CF1BC5 /* ShangPin_Model_GroupUserInfo.m in Sources */,
 				74D7476C204E39B800DB65FD /* dongHua.m in Sources */,
 				74D7483D204E39E400DB65FD /* NSImage+WebCache.m in Sources */,
@@ -3626,11 +3532,9 @@
 				74D748B3204E3BFB00DB65FD /* ShouYe_H_RX_V.m in Sources */,
 				74D74823204E39E400DB65FD /* MJRefreshBackNormalFooter.m in Sources */,
 				74D7482E204E39E400DB65FD /* MJRefreshComponent.m in Sources */,
-				74DF6D0220874A2600E9B575 /* UIImage+getImage.m in Sources */,
 				74D74843204E39E400DB65FD /* IQUIWindow+Hierarchy.m in Sources */,
 				74DF6BEC2087349B00E9B575 /* ShiPinLieBiao_Model_Data.m in Sources */,
 				74D7483C204E39E400DB65FD /* UIImageView+WebCache.m in Sources */,
-				74DF6D0620874A2600E9B575 /* HJFastForwardView.m in Sources */,
 				74D74766204E39B800DB65FD /* MyButton.m in Sources */,
 				743EEACE204FB66C00B7555B /* ZhuanXiang_Cell.m in Sources */,
 				74D74882204E3A4700DB65FD /* BaseTableViewCell.m in Sources */,
@@ -3640,7 +3544,6 @@
 				74D748BD204E3C3F00DB65FD /* GouWuChe_VC.m in Sources */,
 				74D7485B204E39E400DB65FD /* AFNetworkReachabilityManager.m in Sources */,
 				74DE1201206B38A300E5CEFE /* FenLei_SY_VC.m in Sources */,
-				74DF6D0C20874A2600E9B575 /* HJVideoBottomView.m in Sources */,
 				74F5012A207F5423006063BA /* PTZFCG_Model_Data.m in Sources */,
 				74A42A462085D20A008CC135 /* SVRadialGradientLayer.m in Sources */,
 				74313D4D2080B20100FD4D44 /* QieHuan_V.m in Sources */,
@@ -3651,7 +3554,6 @@
 				74B4E9C7208200CC00433CEA /* JieLongXiangQing_VC.m in Sources */,
 				74C890E72065086200898168 /* HWProgressHUD.m in Sources */,
 				74DE7761205FE370006846FC /* ZhiFuChengGong_JL_VC.m in Sources */,
-				74DF6D0320874A2600E9B575 /* HJVideoConfigModel.m in Sources */,
 				74C8912020651BDB00898168 /* APOrderInfo.m in Sources */,
 				74E7F7E32084C4B20001BFCC /* JLXQ_Model_Data.m in Sources */,
 				74662F0E205A1B6A001A224E /* QueRenDingDan_TG_VC.m in Sources */,
@@ -3675,6 +3577,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				74D74725204E37C800DB65FD /* Base */,
+				74B9A4D220886B22003A9025 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -3683,6 +3586,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				74D7472A204E37C800DB65FD /* Base */,
+				74B9A4D320886B22003A9025 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -3694,6 +3598,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -3749,6 +3654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

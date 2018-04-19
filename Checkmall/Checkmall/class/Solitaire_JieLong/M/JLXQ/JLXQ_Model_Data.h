@@ -33,5 +33,6 @@
 @property (nonatomic, assign) NSInteger taketype;
 @property (nonatomic, strong) NSString * video;
 
+
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

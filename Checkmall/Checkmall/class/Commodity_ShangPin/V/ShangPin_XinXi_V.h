@@ -10,6 +10,14 @@
 #import "ShangPin_Model_RootClass.h"
 #import "JLXQ_Model_RootClass.h"//接龙model
 
+
+@protocol ShangPin_XinXi_V_Delegate <NSObject>
+
+@optional
+-(void)ShangPin_XinXi_V_Delegate_FX;//分享
+
+@end
+
 @interface ShangPin_XinXi_V : MyUIView
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Title;//商品名称
@@ -21,18 +29,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_JG;//商品价格
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_DP;//单品剩余数量
+@property (weak, nonatomic) IBOutlet UILabel *lbl_DPTS;//单品提示
+
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_TG;//团购剩余数量
+@property (weak, nonatomic) IBOutlet UILabel *lbl_TGTS;//团购提示
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_PS;//配送方式
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_SJ;//到货时间
 
-
-
-
-
-
+@property (nonatomic , assign)id <ShangPin_XinXi_V_Delegate>delegate;
 
 @property (nonatomic,copy)NSString  *str_Title;
 

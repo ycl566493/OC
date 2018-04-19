@@ -83,12 +83,33 @@
     [tableV reloadData];
 }
 
+-(void)setModel_JL:(JLXQ_Model_RootClass *)model_JL{
+    _model_JL = model_JL;
+    
+    lbl_XDR.text = [NSString stringWithFormat:@"已有%@人下单,可以直接参与",model_JL.data.sumnum];
+    
+    lbl_JSSJ.text = [NSString stringWithFormat:@"距离结束 %@",[MyHelper time_SFM:[NSString stringWithFormat:@"%li",model_JL.data.surplusTime]]];
+    
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     lbl_JSSJ.text];
+    NSRange range = NSMakeRange(4, [MyHelper time_SFM:[NSString stringWithFormat:@"%li",model_JL.data.surplusTime]].length + 1);
+    // 设置颜色
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0xff7800) range:range];
+    lbl_JSSJ.attributedText = attributedStr;
+    
+    
+    [tableV reloadData];
+}
+
 #pragma mark- tableview代理
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.model.data.groupUserInfo.count;
+    if (self.model) {
+        return self.model.data.groupUserInfo.count;
+    }else{
+        return self.model_JL.data.buyuser.count;
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [ShangPin_XiaDan_Cell get_H:nil];
@@ -99,8 +120,14 @@
         cell = [[ShangPin_XiaDan_Cell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    ShangPin_Model_GroupUserInfo *mmm = self.model.data.groupUserInfo[indexPath.row];
-    cell.model = mmm;
+    if (self.model) {
+        ShangPin_Model_GroupUserInfo *mmm = self.model.data.groupUserInfo[indexPath.row];
+        cell.model = mmm;
+    }else{
+        JLXQ_Model_Buyuser *mmm = self.model_JL.data.buyuser[indexPath.row];
+        cell.model_JLXQ = mmm;
+    }
+
     cell.tag = indexPath.row;
     return cell;
 }

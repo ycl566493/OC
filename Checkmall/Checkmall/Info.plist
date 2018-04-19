@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>使用图片需要访问您的相册</string>
-	<key>NSCameraUsageDescription</key>
-	<string>使用图片需要访问您的的相机</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -29,6 +25,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>QQ41F706C9</string>
 				<string>wxbc8156dc82d2974c</string>
 				<string>com.CKSX.Checkmall</string>
 				<string></string>
@@ -75,6 +72,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>使用图片需要访问您的的相机</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>使用图片需要访问您的相册</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -79,7 +79,6 @@
 
 #pragma mark- 购物车数量
 - (void)GouWuCheShuLiang:(NSNotification*)tion{
-    
     NSInteger SL = [[kUserDefaults objectForKey:GWC_SL] integerValue];
     if (SL == 0) {
         lbl_GWSL.hidden = YES;
@@ -88,7 +87,10 @@
     }
     lbl_GWSL.text = SL < 100 ? [NSString stringWithFormat:@"%li",SL] : @"99+";
     lbl_GWSL.width = [MyHelper strWidth:lbl_GWSL.text andFont:lbl_GWSL.font andHeight:lbl_GWSL.height] + 10;
-    lbl_GWSL.mj_x = btn_4.width - lbl_GWSL.width -10;
+    if (lbl_GWSL.width < lbl_GWSL.height) {
+        lbl_GWSL.width = lbl_GWSL.height;
+    }
+    lbl_GWSL.mj_x = btn_4.width /2 + 10;
 }
     
 #pragma mark 隐藏tabbarviewcontroller

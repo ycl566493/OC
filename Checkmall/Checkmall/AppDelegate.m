@@ -78,9 +78,9 @@
              case SSDKPlatformTypeWechat:
                  [ShareSDKConnector connectWeChat:[WXApi class]];
                  break;
-//             case SSDKPlatformTypeQQ:
-//                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
-//                 break;
+             case SSDKPlatformTypeQQ:
+                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                 break;
              default:
                  break;
          }
@@ -95,11 +95,12 @@
                  [appInfo SSDKSetupWeChatByAppId:@"wxbc8156dc82d2974c"
                                        appSecret:@"cb9067cf4c2c0bedbe6031d9cb4d05b0"];
                  break;
-//             case SSDKPlatformTypeQQ:
-//                 [appInfo SSDKSetupQQByAppId:@"100371282"
-//                                      appKey:@"aed9b0303e3ed1e27bae87c33761161d"
-//                                    authType:SSDKAuthTypeBoth];
-//                 break;
+             case SSDKPlatformTypeQQ:
+                 [appInfo SSDKSetupQQByAppId:@"1106708169"
+                                      appKey:@"MMppGuaeHgctsU0m"
+                                    authType:SSDKAuthTypeBoth];
+
+                 break;
              default:
                  break;
          }

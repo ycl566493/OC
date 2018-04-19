@@ -9,6 +9,7 @@
 #import "ShangPin_Model_Comment.h"
 #import "ShangPin_Model_GroupUserInfo.h"
 #import "ShangPin_Model_SlidsUrlList.h"
+#import "Share.h"
 
 @interface ShangPin_Model_Data : NSObject
 
@@ -35,6 +36,8 @@
 @property (nonatomic, strong) NSString * taketype;
 @property (nonatomic, strong) NSString * video;
 @property (nonatomic, strong) NSString * product_content;
+@property (nonatomic, strong) Share * share;
+
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

@@ -19,7 +19,7 @@
 #import "SPPJ_V.h"
 #import "PingJia_VC.h"//评价列表
 
-@interface JieLongXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate,QieHuan_V_Delegate,UITableViewDataSource,UITableViewDelegate,SPPJ_V_Delegate>{
+@interface JieLongXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate,QieHuan_V_Delegate,UITableViewDataSource,UITableViewDelegate,SPPJ_V_Delegate,ShangPin_TuPian_V_Delegate>{
     ShangPin_TuPian_V       *TuPian;
     ShangPin_XiaDan_V       *XiaDan;//商品下单信息
     ShangPin_MS_V           *MS;//商品描述
@@ -141,11 +141,18 @@
     XiaDan.model_JL = model_SPXQ;
     XiaDan.height = [ShangPin_XiaDan_V get_H:[NSString stringWithFormat:@"%li",model_SPXQ.data.buyuser.count]];
     
+    self.PJ.model_JL = model_SPXQ;
     self.PJ.mj_y = XiaDan.bottom;
     self.PJ.height = [SPPJ_V get_H:nil];
+    
+    if (model_SPXQ.data.comment.comNum == 0) {
+        self.PJ.hidden = YES;
+        self.PJ.height = 0;
+    }
+    
     MS.mj_y = self.PJ.bottom;
     MS.model_JL = model_SPXQ;
-    MS.height = [ShangPin_MS_V get_H:model_SPXQ.data.details];
+    MS.height = [ShangPin_MS_V get_H:model_SPXQ.data.promotion];
     
     
     PinTuan.mj_y = MS.bottom;
@@ -181,10 +188,10 @@
 
     
     TuPian = [[ShangPin_TuPian_V alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [ShangPin_TuPian_V get_H:nil])];
+    TuPian.delegate = self;
     [self.scrollV addSubview:TuPian];
     
     self.QH.frame =CGRectMake(0, TuPian.bottom, ScreenWidth, [QieHuan_V get_H:nil]);
-    self.QH.backgroundColor = [UIColor redColor];
     [self.scrollV addSubview:self.QH];
     
     view_XQ = [[UIView alloc]initWithFrame:CGRectMake(0, self.QH.bottom, ScreenWidth, 0)];
@@ -210,7 +217,6 @@
     
     //下单模块
     XiaDan = [[ShangPin_XiaDan_V alloc]initWithFrame:CGRectMake(0, self.XinXi.bottom, ScreenWidth, [ShangPin_XiaDan_V get_H:nil])];
-    XiaDan.backgroundColor = [UIColor redColor];
     [view_XQ addSubview:XiaDan];
     
     self.PJ.frame = CGRectMake(0, XiaDan.bottom, ScreenWidth, [SPPJ_V get_H:nil]);
@@ -261,6 +267,10 @@
     return nil;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
+- (void)ShangPin_TuPian_V_Delegate{
     
 }
 

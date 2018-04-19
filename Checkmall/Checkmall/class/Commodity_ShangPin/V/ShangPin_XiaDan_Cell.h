@@ -10,6 +10,7 @@
 #import "ShangPin_Model_GroupUserInfo.h"
 #import "PTZFCG_Model_Group.h"//拼团下单model
 #import "JLCG_Model_Group.h"//接龙支付成功
+#import "JLXQ_Model_Buyuser.h"//接龙下单
 
 @interface ShangPin_XiaDan_Cell : BaseTableViewCell
 
@@ -18,5 +19,8 @@
 @property (nonatomic,strong) PTZFCG_Model_Group         *model_PT;
 
 @property (nonatomic,strong) JLCG_Model_Group           *model_JL;//接龙支付成功
+
+@property (nonatomic,strong) JLXQ_Model_Buyuser           *model_JLXQ;//接龙详情支付
+
 
 @end

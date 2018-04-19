@@ -24,8 +24,10 @@
 #import "ShangPin_XQ_V.h"//商品描述
 #import "ShiPinLieBiao_Model_RootClass.h"//视频列表
 #import "SPBF_V.h"//视频播放背景
+#import "SelVideoPlayer.h"//视频播放器
+#import "SelPlayerConfiguration.h"//视频播放配置参数
 
-@interface ShangPinXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate,QieHuan_V_Delegate,UITableViewDataSource,UITableViewDelegate,SPPJ_V_Delegate,ShangPin_XQ_V_Delegate>{
+@interface ShangPinXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate,QieHuan_V_Delegate,UITableViewDataSource,UITableViewDelegate,SPPJ_V_Delegate,ShangPin_XQ_V_Delegate,ShangPin_XinXi_V_Delegate,ShangPin_TuPian_V_Delegate>{
     ShangPin_TuPian_V       *TuPian;
     UIScrollView            *scrollV;//滑动背景
     ShangPin_XiaDan_V       *XiaDan;//商品下单信息
@@ -46,10 +48,10 @@
     UITableView                      *tableV_SP;//视频
     ShiPinLieBiao_Model_RootClass   *model_SP;//视频列表
     
-    SPBF_V                          *SPBF_BJ;//视频播放背景
+//    SPBF_V                          *SPBF_BJ;//视频播放背景
 }
-/** 视频播放器 */
-@property (nonatomic, strong) HJVideoPlayerController *shipin;
+@property (nonatomic, strong) SelVideoPlayer *player;//视频播放器
+
 
 
 @property (nonatomic,weak) QieHuan_V                 *QH;//切换选择
@@ -74,7 +76,7 @@
 }
 
 - (void)init_Data_SP{
-    NSDictionary *dic = @{@"gid":@"8423",@"token":[MyHelper toToken]};
+    NSDictionary *dic = @{@"gid":self.Str_ID,@"token":[MyHelper toToken]};
     [NetRequest postWithUrl:Product_videoList params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"视频列表 == %@",dict);
         model_SP = [[ShiPinLieBiao_Model_RootClass alloc]initWithDictionary:dict];
@@ -116,7 +118,6 @@
         if (model_SPXQ.code == 1) {
             [self UP_UI];
         }
-        
     } fail:^(id error) {
         
     }];
@@ -143,13 +144,18 @@
 //    return _Web_MS;
 //}
 
+#pragma mark- 分享
+-(void)ShangPin_XinXi_V_Delegate_FX{
+    [FenXiang_Object Shar:model_SPXQ.data.share.title str_NR:model_SPXQ.data.share.content image_URL:model_SPXQ.data.share.image str_LJ:model_SPXQ.data.share.path];
+}
+
 #pragma mark- 商品信息
 -(ShangPin_XinXi_V *)XinXi{
     if (!_XinXi) {
         ShangPin_XinXi_V *XinXi = [ShangPin_XinXi_V init_Xib];
         _XinXi = XinXi;
         _XinXi.width =ScreenHeight;
-        
+        _XinXi.delegate = self;
     }
     return _XinXi;
 }
@@ -257,17 +263,7 @@
 #pragma mark- 初始化
 -(void)init_UI{
     
-    self.shipin = [[HJVideoPlayerController alloc]initWithFrame:CGRectMake(0, (ScreenHeight - ScreenWidth )/ 2, ScreenWidth, ScreenWidth)];
-    self.shipin.view.backgroundColor = [UIColor redColor];
-
-    self.shipin.backBlock = ^{
-        NSLog(@"点击");
-    };
-    SPBF_BJ = [[SPBF_V alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    SPBF_BJ.backgroundColor = RGBA(0, 0, 0, .4);
-//    [self.view addSubview:self.shipin.view];
-//    [self addChildViewController:self.shipin];
-
+   
     scrollV.contentOffset = CGPointMake(0, 0);
   
     scrollV = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - kStatusBarAndNavigationBarHeight  - 54 - kTabbarSafeBottomMargin)];
@@ -277,6 +273,7 @@
     [self.view addSubview:scrollV];
     
     TuPian = [[ShangPin_TuPian_V alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [ShangPin_TuPian_V get_H:nil])];
+    TuPian.delegate = self;
     [scrollV addSubview:TuPian];
     
     self.QH.frame =CGRectMake(0, TuPian.bottom, ScreenWidth, [QieHuan_V get_H:nil]);
@@ -483,10 +480,45 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
     ShiPinLieBiao_Model_Data *MMM = model_SP.data[indexPath.row];
-    [self.shipin setUrl:MMM.path];
-    [self.shipin setTitle:MMM.name];
     
-    [self.window addSubview:self.shipin.view];
+    [_player _deallocPlayer];
+    _player = nil;
+    
+    SelPlayerConfiguration *configuration = [[SelPlayerConfiguration alloc]init];
+    configuration.shouldAutoPlay = YES;
+    configuration.supportedDoubleTap = YES;
+    configuration.shouldAutorotate = YES;
+    configuration.repeatPlay = YES;
+    configuration.statusBarHideState = SelStatusBarHideStateFollowControls;
+    configuration.sourceUrl = [NSURL URLWithString:MMM.path];
+    configuration.videoGravity = SelVideoGravityResizeAspect;
+    _player = [[SelVideoPlayer alloc]initWithFrame:TuPian.bounds configuration:configuration];
+    [TuPian addSubview:_player];
+
+}
+
+
+#pragma mark- 播放视频
+- (void)ShangPin_TuPian_V_Delegate_PF{
+    [_player _deallocPlayer];
+    _player = nil;
+    
+    SelPlayerConfiguration *configuration = [[SelPlayerConfiguration alloc]init];
+    configuration.shouldAutoPlay = YES;
+    configuration.supportedDoubleTap = YES;
+    configuration.shouldAutorotate = YES;
+    configuration.repeatPlay = YES;
+    configuration.statusBarHideState = SelStatusBarHideStateFollowControls;
+    configuration.sourceUrl = [NSURL URLWithString:model_SPXQ.data.video];
+    configuration.videoGravity = SelVideoGravityResizeAspect;
+    _player = [[SelVideoPlayer alloc]initWithFrame:TuPian.bounds configuration:configuration];
+    [TuPian addSubview:_player];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [_player _deallocPlayer];
 }
 
 

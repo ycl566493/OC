@@ -37,6 +37,6 @@
 
 #import "RSA_Object.h"
 
-#import "HJVideoPlayerHeader.h"//视频三方
+#import "FenXiang_Object.h"//分享
 
 #endif /* PrefixHeader_pch */

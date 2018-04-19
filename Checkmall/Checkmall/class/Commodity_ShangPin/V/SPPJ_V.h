@@ -8,6 +8,7 @@
 
 #import "MyUIView.h"
 #import "ShangPin_Model_Comment.h"
+#import "JLXQ_Model_RootClass.h"//接龙
 
 @protocol SPPJ_V_Delegate <NSObject>
 
@@ -23,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_HP;//好评率
 
 
+
+@property (nonatomic, strong) JLXQ_Model_RootClass    *model_JL;
 
 @property (nonatomic, strong) ShangPin_Model_Comment    *model;
 

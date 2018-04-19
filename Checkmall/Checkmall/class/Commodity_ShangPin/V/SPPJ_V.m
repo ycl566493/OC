@@ -33,10 +33,19 @@
 }
 
 -(void)setModel:(ShangPin_Model_Comment *)model{
+    _model = model;
     self.PJ.height = [PingJia_Cell get_H:model.comInfo.content row:0];
     self.PJ.model_XQ = model.comInfo;
     
     self.lbl_SL.text = [NSString stringWithFormat:@"商品评价（%@）",model.rate > 1000 ? @"999+" : [NSString stringWithFormat:@"%li",model.rate]];
+}
+
+-(void)setModel_JL:(JLXQ_Model_RootClass *)model_JL{
+    _model_JL = model_JL;
+    self.PJ.height = [PingJia_Cell get_H:model_JL.data.comment.comInfo.content row:0];
+    self.PJ.model_XQ = model_JL.data.comment.comInfo;
+    
+    self.lbl_SL.text = [NSString stringWithFormat:@"商品评价（%@）",model_JL.data.comment.rate > 1000 ? @"999+" : [NSString stringWithFormat:@"%li",model_JL.data.comment.rate]];
 }
 
 - (PingJia_Cell *)PJ{

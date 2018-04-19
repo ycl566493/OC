@@ -56,6 +56,14 @@
     view_FGX.top = lbl_MSXX.bottom + 15;
 }
 
+-(void)setModel_JL:(JLXQ_Model_RootClass *)model_JL{
+    _model_JL = model_JL;
+    lbl_MSXX.text = model_JL.data.promotion;
+    lbl_MSXX.height = [MyHelper getSpaceLabelHeight:lbl_MSXX.text withFont:lbl_MSXX.font withWidth:lbl_MSXX.width Spacing:5];
+    [MyHelper setLabelSpace:lbl_MSXX withValue:lbl_MSXX.text withFont:lbl_MSXX.font Spacing:4];
+    view_FGX.top = lbl_MSXX.bottom + 15;
+}
+
 +(CGFloat)get_H:(id)data{
     
     CGFloat fff = 45 + 15;

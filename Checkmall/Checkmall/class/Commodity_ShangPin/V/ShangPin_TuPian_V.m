@@ -10,7 +10,6 @@
 
 
 @interface ShangPin_TuPian_V()<UIScrollViewDelegate>{
-    UIScrollView        *scrollV;//滑动背景
     
     UIView              *view_SPTP;//视频图片背景
     UIButton            *btn_SP;//视频
@@ -36,18 +35,18 @@
 
 #pragma mark- 初始化
 - (void)init_UI{
-    scrollV= [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [ShangPin_TuPian_V get_H:nil])];
+    self.scrollV= [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, [ShangPin_TuPian_V get_H:nil])];
     // 8. pagingEnabled 按页滚动
-    scrollV.pagingEnabled = YES;
+    self.scrollV.pagingEnabled = YES;
     // 10. showsHorizontalScrollIndicator 是否显示水平滚动指示器
-    scrollV.showsHorizontalScrollIndicator = YES;
+    self.scrollV.showsHorizontalScrollIndicator = YES;
     // 11. showsVerticalScrollIndicator 是否显示垂直滚动的指示器
-    scrollV.showsVerticalScrollIndicator = YES;
-       scrollV.delegate = self;
-    [self addSubview:scrollV];
-    scrollV.contentSize =CGSizeMake(scrollV.width * 9,0);
+    self.scrollV.showsVerticalScrollIndicator = YES;
+       self.scrollV.delegate = self;
+    [self addSubview:self.scrollV];
+    self.scrollV.contentSize =CGSizeMake(self.scrollV.width * 9,0);
     
-    view_SPTP = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth - 130) / 2, scrollV.height - 60, 130, 30)];
+    view_SPTP = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth - 130) / 2, self.scrollV.height - 60, 130, 30)];
     [self addSubview:view_SPTP];
     
     btn_SP = [[UIButton alloc]initWithFrame:CGRectMake((view_SPTP.width - 47*2) / 3, 3, 47, 23)];
@@ -111,17 +110,17 @@
     if (btn_SP == btn) {
         //视频
         bool_SPTP = 0;
-        if (scrollV.contentOffset.x != 0) {
+        if (self.scrollV.contentOffset.x != 0) {
             [UIView animateWithDuration:.3 animations:^{
-                scrollV.contentOffset = CGPointMake(0, 0);
+                self.scrollV.contentOffset = CGPointMake(0, 0);
             }];
         }
     }else{
         //图片
         bool_SPTP = 1;
-        if (scrollV.contentOffset.x != scrollV.width) {
+        if (self.scrollV.contentOffset.x != self.scrollV.width) {
             [UIView animateWithDuration:.3 animations:^{
-                scrollV.contentOffset = CGPointMake(scrollV.width, 0);
+                self.scrollV.contentOffset = CGPointMake(self.scrollV.width, 0);
             }];
         }
     }
@@ -145,7 +144,7 @@
 - (void)UP_lbl{
     if (!self.bool_SP) {
         lbl_Index.hidden = NO;
-        NSInteger iiii = scrollV.contentOffset.x / scrollV.width;
+        NSInteger iiii = self.scrollV.contentOffset.x / self.scrollV.width;
 
         if (self.model) {
             lbl_Index.text = [NSString stringWithFormat:@"%li/%li",iiii+1,self.model.data.slidsUrlList.count];
@@ -155,7 +154,7 @@
         lbl_Index.width = [MyHelper strWidth:lbl_Index.text andFont:lbl_Index.font andHeight:lbl_Index.height] + 15;
         lbl_Index.mj_x = ScreenWidth - 15 - lbl_Index.width;
     }else{
-        NSInteger iiii = scrollV.contentOffset.x / scrollV.width;
+        NSInteger iiii = self.scrollV.contentOffset.x / self.scrollV.width;
 
         if (iiii == 0) {
             lbl_Index.hidden = YES;
@@ -192,7 +191,7 @@
     
     for (NSInteger i = 0; i < arr.count; i ++) {
         
-        UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake(i*scrollV.width, 0, scrollV.width, scrollV.height)];
+        UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake(i * self.scrollV.width, 0, self.scrollV.width, self.scrollV.height)];
         imageV.userInteractionEnabled = YES;
 
         if (self.model) {
@@ -216,8 +215,8 @@
             image_SP = imageV;
             view_SPTP.hidden = NO;
         }
-        [scrollV addSubview:imageV];
-        scrollV.contentSize = CGSizeMake(scrollV.width * arr.count, 0);
+        [self.scrollV addSubview:imageV];
+        self.scrollV.contentSize = CGSizeMake(self.scrollV.width * arr.count, 0);
     }
     [self UP_lbl];
 }

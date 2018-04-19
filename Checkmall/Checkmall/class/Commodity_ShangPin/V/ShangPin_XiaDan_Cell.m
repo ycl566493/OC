@@ -84,7 +84,16 @@
     [imageV_TX sd_setImageWithURL:[MyHelper imaeg_URL:model_JL.path view:imageV_TX] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
     
     lbl_Name.text = model_JL.username;
-    lbl_XDSJ.text = [NSString stringWithFormat:@"%@下单",model_JL.created];
+    lbl_XDSJ.text = [NSString stringWithFormat:@"%@下单",[MyHelper dateChangeToTime:[NSString stringWithFormat:@"%li",model_JL.created]]];
+}
+
+-(void)setModel_JLXQ:(JLXQ_Model_Buyuser *)model_JLXQ{
+    _model_JLXQ = model_JLXQ;
+    
+    [imageV_TX sd_setImageWithURL:[MyHelper imaeg_URL:model_JLXQ.headimgurl view:imageV_TX] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
+    
+    lbl_Name.text = model_JLXQ.nickname;
+    lbl_XDSJ.text = [NSString stringWithFormat:@"%@下单",[MyHelper dateChangeToTime:[NSString stringWithFormat:@"%li",model_JLXQ.created]]];
 }
 
 -(void)setTag:(NSInteger)tag{

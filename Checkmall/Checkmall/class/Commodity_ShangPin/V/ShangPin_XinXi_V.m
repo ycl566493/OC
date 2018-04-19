@@ -58,13 +58,46 @@
     self.lbl_SJ.text = [NSString stringWithFormat:@"%@到", model.data.productArrivalTime];
 }
 
+
+-(void)setModel_JL:(JLXQ_Model_RootClass *)model_JL{
+    _model_JL = model_JL;
+    self.lbl_Title.text = model_JL.data.name;
+    self.lbl_Title_H.constant = [MyHelper strHeight:self.lbl_Title.text andFont:self.lbl_Title.font andWidth:self.lbl_Title.width];
+    
+    self.lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%@",model_JL.data.price,model_JL.data.mprice];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     self.lbl_JG.text];
+    NSRange range = NSMakeRange(model_JL.data.price.length + 1, model_JL.data.mprice.length + 1);
+    // 设置颜色
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0x999999) range:range];
+    // 设置字体大小
+    //    range = NSMakeRange(4, 6);
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:range];
+    //删除线
+    [attributedStr addAttribute:NSStrikethroughStyleAttributeName value:@(1) range:range];
+    [attributedStr addAttribute:NSStrikethroughColorAttributeName value:UIColorFromHex(0x999999) range:range];
+    self.lbl_JG.attributedText = attributedStr;
+    
+    self.lbl_DP.text = [NSString stringWithFormat:@"%li",model_JL.data.stock];
+    self.lbl_DPTS.text = @"接龙剩余";
+    self.lbl_TGTS.hidden = YES;
+    self.lbl_TG.hidden = YES;
+    self.lbl_PS.text = model_JL.data.taketype  == 0 ? @"门店自提" : @"门店自提 + 物流配送";
+    self.lbl_SJ.text = [NSString stringWithFormat:@"%@到", [MyHelper dateChangeToTime:[NSString stringWithFormat:@"%li",model_JL.data.arrivaltime]]];
+}
+
+#pragma mark- 分享
+- (IBAction)btn_FX:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(ShangPin_XinXi_V_Delegate_FX)]) {
+        [self.delegate ShangPin_XinXi_V_Delegate_FX];
+    }
+}
+
+
 + (CGFloat)get_H:(id)data{
     CGFloat fff = 15 + 15 + 25 + 10 + 20 + 10 + 45;
     NSString *str_T = data;
     
     return fff + [MyHelper strHeight:str_T andFont:[UIFont systemFontOfSize:16] andWidth:ScreenWidth - 50 - 30];
-    
-//    [MyHelper getSpaceLabelHeight:str_T withFont:[UIFont systemFontOfSize:16] withWidth:ScreenWidth - 50 - 30 Spacing:4];
 }
 
 @end

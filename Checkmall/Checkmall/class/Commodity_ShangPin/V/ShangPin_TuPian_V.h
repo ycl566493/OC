@@ -27,4 +27,6 @@
 
 @property (nonatomic,assign)id<ShangPin_TuPian_V_Delegate>  delegate;
 
+@property (nonatomic , strong)     UIScrollView        *scrollV;//滑动背景
+
 @end

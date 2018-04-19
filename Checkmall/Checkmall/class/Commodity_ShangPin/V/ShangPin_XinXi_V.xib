@@ -23,6 +23,9 @@
                         <constraint firstAttribute="height" constant="50" id="fsX-As-HKk"/>
                     </constraints>
                     <state key="normal" image="FenXiang"/>
+                    <connections>
+                        <action selector="btn_FX:" destination="iN0-l3-epB" eventType="touchUpInside" id="UYM-W5-S3j"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q48-Ai-r33">
                     <rect key="frame" x="324.5" y="35" width="0.5" height="30"/>
@@ -172,13 +175,16 @@
             <connections>
                 <outlet property="btn_FX" destination="1of-lq-b4N" id="ouM-nD-SEP"/>
                 <outlet property="lbl_DP" destination="lbn-z5-Jrb" id="7Vr-xe-qqR"/>
+                <outlet property="lbl_DPTS" destination="zhz-wd-qgn" id="vBQ-Mx-Rwh"/>
                 <outlet property="lbl_JG" destination="IDF-8l-lYW" id="vSp-Db-dat"/>
                 <outlet property="lbl_PS" destination="Etw-dy-eqa" id="JJm-6F-yO3"/>
                 <outlet property="lbl_SJ" destination="Nx8-xQ-UBP" id="khc-rv-WGs"/>
                 <outlet property="lbl_TG" destination="elY-Kr-sbD" id="ezB-lx-hLI"/>
+                <outlet property="lbl_TGTS" destination="UJa-RT-p3u" id="KM8-iD-4Fz"/>
                 <outlet property="lbl_Title" destination="qGB-aM-lUQ" id="Yvq-5t-4yo"/>
                 <outlet property="lbl_Title_H" destination="Xba-5g-bWm" id="nrh-Gc-vhD"/>
             </connections>
+            <point key="canvasLocation" x="33" y="27"/>
         </view>
     </objects>
     <resources>

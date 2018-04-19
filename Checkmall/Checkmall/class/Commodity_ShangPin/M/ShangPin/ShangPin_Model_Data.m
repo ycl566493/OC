@@ -30,6 +30,7 @@ NSString *const kShangPin_Model_DataSurplusTime = @"surplus_time";
 NSString *const kShangPin_Model_DataTaketype = @"taketype";
 NSString *const kShangPin_Model_DataVideo = @"video";
 NSString *const kShangPin_Model_Dataproduct_content = @"product_content";
+NSString *const kShangPin_Model_DataShare = @"share";
 
 @interface ShangPin_Model_Data ()
 @end
@@ -38,6 +39,11 @@ NSString *const kShangPin_Model_Dataproduct_content = @"product_content";
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    
+    if(![dictionary[kShangPin_Model_DataShare] isKindOfClass:[NSNull class]]){
+        self.share = [[Share alloc] initWithDictionary:dictionary[kShangPin_Model_DataShare]];
+    }
+    
     if(![dictionary[kShangPin_Model_Dataproduct_content] isKindOfClass:[NSNull class]]){
         self.product_content = dictionary[kShangPin_Model_Dataproduct_content];
     }
