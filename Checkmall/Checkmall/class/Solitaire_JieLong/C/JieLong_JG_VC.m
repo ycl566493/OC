@@ -63,23 +63,23 @@
         self.tableV.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     //    tableV下拉刷新
-    WeakSelf(ws);
-    self.tableV.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [ws.tableV.mj_header endRefreshing];
-        
-        //  结束刷新
-        ws.pageIndex =1;
-//        [ws init_Data:YES];
-    }];
+//    WeakSelf(ws);
+//    self.tableV.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        [ws.tableV.mj_header endRefreshing];
+//
+//        //  结束刷新
+//        ws.pageIndex =1;
+////        [ws init_Data:YES];
+//    }];
     // 设置自动切换透明度(在导航栏下面自动隐藏)
     //    self.tableV.mj_header.automaticallyChangeAlpha = YES;
     // tableV上拉加载
-    self.tableV.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [ws.tableV.mj_footer endRefreshing];
-        
-        ws.pageIndex += 1;
-//        [ws init_Data:NO];
-    }];
+//    self.tableV.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+//        [ws.tableV.mj_footer endRefreshing];
+//
+//        ws.pageIndex += 1;
+////        [ws init_Data:NO];
+//    }];
 
 }
 

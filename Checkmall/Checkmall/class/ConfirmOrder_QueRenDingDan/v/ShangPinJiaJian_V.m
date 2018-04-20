@@ -66,7 +66,7 @@
 }
 
 +(CGFloat)get_H{
-    return 52;
+    return 45 ;
 }
 
 @end

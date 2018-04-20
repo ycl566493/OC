@@ -30,6 +30,7 @@
     UILabel * lbl_MS = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, ScreenWidth - 15 * 2, 44)];
     lbl_MS.text = @"商品描述";
     lbl_MS.font = font15;
+    lbl_MS.textColor = UIColorFromHex(0x333333);
     [self addSubview:lbl_MS];
     
     UIView  *view_FFF = [[UIView alloc]initWithFrame:CGRectMake(0, 44, ScreenWidth, .5)];
@@ -38,11 +39,11 @@
     
     lbl_MSXX = [[UILabel alloc]initWithFrame:CGRectMake(15, view_FFF.bottom + 15, ScreenWidth - 15 * 2, 19)];
     lbl_MSXX.numberOfLines = 0;
-    lbl_MSXX.font = font12;
+    lbl_MSXX.font = font13;
     lbl_MSXX.textColor = UIColorFromHex(0x666666);
     [self addSubview:lbl_MSXX];
     
-    view_FGX = [[UIView alloc]initWithFrame:CGRectMake(0, lbl_MSXX.bottom + 15, ScreenWidth - 15 *2, .5)];
+    view_FGX = [[UIView alloc]initWithFrame:CGRectMake(0, lbl_MSXX.bottom + 15, ScreenWidth, .5)];
     view_FGX.backgroundColor = UIColorFromHex(0xeeeeee);
     [self addSubview:view_FGX];
     
@@ -61,15 +62,15 @@
     lbl_MSXX.text = model_JL.data.promotion;
     lbl_MSXX.height = [MyHelper getSpaceLabelHeight:lbl_MSXX.text withFont:lbl_MSXX.font withWidth:lbl_MSXX.width Spacing:5];
     [MyHelper setLabelSpace:lbl_MSXX withValue:lbl_MSXX.text withFont:lbl_MSXX.font Spacing:4];
-    view_FGX.top = lbl_MSXX.bottom + 15;
+    view_FGX.top = lbl_MSXX.bottom + 14.5;
 }
 
 +(CGFloat)get_H:(id)data{
     
-    CGFloat fff = 45 + 15;
+    CGFloat fff = 45 + 15*2;
     NSString *str_T = data;
     
-    return fff + [MyHelper getSpaceLabelHeight:str_T withFont:font12 withWidth:ScreenWidth - 30 Spacing:5];
+    return fff + [MyHelper getSpaceLabelHeight:str_T withFont:font13 withWidth:ScreenWidth - 30 Spacing:5];
 }
 
 @end

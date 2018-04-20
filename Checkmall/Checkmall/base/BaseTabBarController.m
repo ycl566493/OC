@@ -200,7 +200,7 @@
     }
     lbl_GWSL.text = SL < 100 ? [NSString stringWithFormat:@"%li",SL] : @"99+";
     lbl_GWSL.width = [MyHelper strWidth:lbl_GWSL.text andFont:lbl_GWSL.font andHeight:lbl_GWSL.height] + 10;
-    lbl_GWSL.mj_x = btn_4.width - lbl_GWSL.width ;
+    lbl_GWSL.mj_x = btn_4.width /2 + 10;
     [btn_4 addSubview:lbl_GWSL];
     
     btn_5 = [UIButton buttonWithType:UIButtonTypeCustom];

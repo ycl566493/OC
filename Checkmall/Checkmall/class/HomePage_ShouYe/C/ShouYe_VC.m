@@ -44,9 +44,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"首页";
+//    self.title = @"首页";
     self.view.backgroundColor = [UIColor whiteColor];
-    self.view.mj_y = -kStatusBarHeight;
+//    self.view.mj_y = -kStatusBarHeight;
     [self init_UI];
 
     //注册重用View
@@ -140,27 +140,28 @@
 
 - (void)init_UI{
     
-    view_Nav = [[UIView alloc]initWithFrame:CGRectMake(0, 0 + kStatusLiu, ScreenWidth , 64)];
+    view_Nav = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth , 44)];
     view_Nav.backgroundColor = RGBA(0, 0, 0, 0);
-    [self.view addSubview:view_Nav];
+    
+    [self.navigationController.navigationBar addSubview:view_Nav];
     
     //定位
-    UIButton    *btn_DW = [[UIButton alloc]initWithFrame:CGRectMake(15, 20 + 6, 30, 30)];
+    UIButton    *btn_DW = [[UIButton alloc]initWithFrame:CGRectMake(15,  6, 34, 34)];
     [btn_DW setImage:[UIImage imageNamed:@"DingWei"] forState:UIControlStateNormal];
     [view_Nav addSubview:btn_DW];
     
     //消息
-    UIButton    *btn_XX = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth  - 15 - 30, 20 + 6, 30, 30)];
+    UIButton    *btn_XX = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth  - 15 - 34, 6, 34, 34)];
     [btn_XX setImage:[UIImage imageNamed:@"XiaoXi"] forState:UIControlStateNormal];
     [view_Nav addSubview:btn_XX];
     
     //搜索
-    UIButton    *btn_SS = [[UIButton alloc]initWithFrame:CGRectMake( btn_DW.right + 27, 20 + 6, btn_XX.left  - 27*2 - btn_DW.right , 30)];
+    UIButton    *btn_SS = [[UIButton alloc]initWithFrame:CGRectMake( btn_DW.right + 27, 6, btn_XX.left  - 27*2 - btn_DW.right , 34)];
     [btn_SS setImage:[UIImage imageNamed:@"ShouHuoDiZhi"] forState:UIControlStateNormal];
     [btn_SS addTarget:self action:@selector(btn_SS_Action) forControlEvents:UIControlEventTouchUpInside];
     [view_Nav addSubview:btn_SS];
     
-    LB = [[Image_Lunbo alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 170)];
+    LB = [[Image_Lunbo alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 140)];
     LB.delegate = self;
     
     //质量保证
@@ -184,7 +185,7 @@
     self.collectionView.height = ScreenHeight  - kTabbarHeight;
     
     if (!iOS11) {
-        self.collectionView.top = -20;
+//        self.collectionView.top = -20;
         self.collectionView.height = ScreenHeight  + kStatusBarAndNavigationBarHeight - kTabbarHeight;
     }
 
@@ -280,7 +281,7 @@
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return CGSizeMake(ScreenWidth, 170);
+        return CGSizeMake(ScreenWidth, LB.height);
     }
     if (section == 1) {
         return CGSizeMake(ScreenWidth, FL.height);
@@ -358,9 +359,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self FGX:YES];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    
+//    [self FGX:YES];
+//    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    view_Nav.hidden = NO;
+
     [self init_data_GG];
 
 }
@@ -372,9 +374,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    view_Nav.hidden = YES;
 
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [self FGX:NO];
+//    [self.navigationController setNavigationBarHidden:NO animated:NO];
+//    [self FGX:NO];
 
 
 }

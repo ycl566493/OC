@@ -184,6 +184,9 @@
                 break;
             default:{
                 [MyHelper showMessage:@"支付失败"];
+                NSNotification *notification =[NSNotification notificationWithName:@"ZFHD" object:@"微信失败"];
+                //通过通知中心发送通知
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
                 NSLog(@"支付失败，retcode=%d",resp.errCode);
             }
                 break;

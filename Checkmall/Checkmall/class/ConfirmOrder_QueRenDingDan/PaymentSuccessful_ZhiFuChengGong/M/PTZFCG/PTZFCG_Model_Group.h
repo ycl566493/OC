@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSString * path;
 @property (nonatomic, assign) NSInteger ranking;
 @property (nonatomic, assign) NSInteger tel;
-@property (nonatomic, assign) NSString * username;
+@property (nonatomic, strong) NSString * username;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

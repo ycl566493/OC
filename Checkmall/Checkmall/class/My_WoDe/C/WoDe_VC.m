@@ -131,7 +131,7 @@
             [kUserDefaults setObject:model_WD.data.creditCardBalance forKey:YuE];
             [kUserDefaults setObject:model_WD.data.username forKey:NiCheng];
             [kUserDefaults setObject:model_WD.data.path forKey:TouXiang];
-
+            [kUserDefaults setObject:model_WD.data.sex == 1 ? @"1" : @"2" forKey:XingBie];
             TouBu.model = model_WD;
         }
   

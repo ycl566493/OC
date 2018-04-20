@@ -151,7 +151,7 @@
 
 -(void)init_UI{
     
-    btn_QKGWC = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 100, 0, 100, 50)];
+    btn_QKGWC = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 100, 0, 100, 45)];
     [btn_QKGWC setTitle:@"清空购物车" forState:UIControlStateNormal];
     [btn_QKGWC setTitleColor:UIColorFromHex(0xff7800) forState:UIControlStateNormal];
     [btn_QKGWC addTarget:self action:@selector(btn_QKGWC_Action) forControlEvents:UIControlEventTouchUpInside];

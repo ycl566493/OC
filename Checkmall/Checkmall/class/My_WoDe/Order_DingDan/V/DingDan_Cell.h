@@ -47,7 +47,7 @@
 @property (nonatomic,assign)id<DingDan_Cell_Delegate>   delegate;
 
 
-+(CGFloat)get_H;
++(CGFloat)get_H:(BOOL)Y_N;
 
 
 

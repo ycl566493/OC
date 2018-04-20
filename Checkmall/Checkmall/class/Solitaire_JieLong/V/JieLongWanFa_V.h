@@ -7,7 +7,14 @@
 //
 
 #import "MyUIView.h"
+#import "JLXQ_Model_RootClass.h"//接龙详情
 
 @interface JieLongWanFa_V : MyUIView
+
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrV;
+
+
+@property (nonatomic , strong) JLXQ_Model_RootClass *model;
 
 @end

@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSString * sprice;
 @property (nonatomic, strong) NSString * path;
 @property (nonatomic, assign) NSInteger  og_status;
+@property (nonatomic, assign) NSInteger  group_type;
 
 
 

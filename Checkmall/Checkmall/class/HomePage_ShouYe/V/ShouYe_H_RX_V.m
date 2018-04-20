@@ -27,17 +27,17 @@
     
     self.backgroundColor = [UIColor whiteColor];
     
-    UIButton *btn_RX = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 35)];
+    UIButton *btn_RX = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
     [btn_RX setImage:[UIImage imageNamed:@"ReXiao"] forState:UIControlStateNormal];
     [self addSubview:btn_RX];
     
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 34, ScreenWidth, 1)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 39.5, ScreenWidth, .5)];
     view.backgroundColor =UIColorFromHex(0xf2f2f2);
     [self addSubview:view];
 }
 
 + (CGFloat)get_H:(id)data{
-    return 35;
+    return 40;
 }
 
 @end

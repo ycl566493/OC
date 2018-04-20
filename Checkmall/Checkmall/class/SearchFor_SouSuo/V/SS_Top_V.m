@@ -20,6 +20,8 @@
 }
 
 -(void)init_UI{
+    
+    
     self.View_BJ.layer.masksToBounds = YES;
     self.View_BJ.layer.cornerRadius = self.View_BJ.height / 2;
     

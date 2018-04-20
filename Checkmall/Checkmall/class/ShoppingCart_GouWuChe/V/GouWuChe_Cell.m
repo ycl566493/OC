@@ -44,7 +44,7 @@
     [self addSubview:btn_XZ];
     
     view_FGX = [[UIView alloc]initWithFrame:CGRectMake(0, 109.5, ScreenWidth, .5)];
-    view_FGX.backgroundColor = RGBA(219, 215, 215, 1);
+    view_FGX.backgroundColor = UIColorFromHex(0xf2f2f2);
     [self addSubview:view_FGX];
     
     imageV_TP = [[UIImageView alloc]initWithFrame:CGRectMake(btn_XZ.right + 5, (110 - 85) / 2, 85, 85)];

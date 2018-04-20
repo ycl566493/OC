@@ -16,9 +16,9 @@
     JLCG_Model_RootClass    *model;//接龙支付成功
 }
 
-@property (nonatomic,weak) JL_SPXX_V *SPXX;//商品信息
+@property (nonatomic,strong) JL_SPXX_V         *SPXX;//商品信息
 
-@property (nonatomic,weak) JL_ZFCG_V        *JLXX;///接龙信息
+@property (nonatomic,strong) JL_ZFCG_V        *JLXX;///接龙信息
 @end
 
 @implementation ZhiFuChengGong_JL_VC
@@ -26,15 +26,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.pageIndex = 1;
     self.title = @"支付成功";
     [self init_UI];
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self init_Data];
+    [self init_FX];
 }
 
+- (void)init_FX{
+    NSDictionary *dic = @{@"order_sn":self.str_DDID,@"sid":self.str_JLID};
+    [NetRequest postWithUrl:Order_paySuccessShare params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"接龙分享 = =%@",dict);
 
+        
+    } fail:^(id error) {
+        
+    }];
+}
 
 - (void)init_Data{
     NSDictionary *dic = @{@"order_sn":self.str_DDID,@"soid":self.str_JLID};
@@ -53,13 +62,14 @@
 - (void)UP_UI{
     self.SPXX.model = model;
     self.JLXX.model = model;
+    
+    [self.tableview reloadData];
 }
 
 #pragma mark- 接龙信息
 -(JL_ZFCG_V *)JLXX{
     if (!_JLXX) {
-        JL_ZFCG_V *JLXX = [JL_ZFCG_V init_Xib];
-        _JLXX = JLXX;
+        _JLXX = [JL_ZFCG_V init_Xib];
         _JLXX.frame = CGRectMake(0, 0, ScreenWidth, [JL_ZFCG_V get_H:nil]);
     }
     return _JLXX;
@@ -68,8 +78,7 @@
 #pragma mark- 商品信息
 -(JL_SPXX_V *)SPXX{
     if (!_SPXX) {
-        JL_SPXX_V *SPXX = [JL_SPXX_V init_Xib];
-        _SPXX = SPXX;
+        _SPXX = [JL_SPXX_V init_Xib];
         _SPXX.backgroundColor = [UIColor whiteColor];
         _SPXX.frame = CGRectMake(0, 0, ScreenWidth, [JL_SPXX_V get_H:nil]);
     }
@@ -107,6 +116,7 @@
         cell = [[ShangPin_XiaDan_Cell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
     JLCG_Model_Group *mmmm = model.data.group[indexPath.row];
     cell.model_JL = mmmm;
     cell.tag = indexPath.row;

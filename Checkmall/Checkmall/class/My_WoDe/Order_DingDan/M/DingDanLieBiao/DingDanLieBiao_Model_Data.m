@@ -27,6 +27,7 @@ NSString *const kDingDanLieBiao_Model_DataPrice = @"price";
 NSString *const kDingDanLieBiao_Model_DataSprice = @"sprice";
 NSString *const kDingDanLieBiao_Model_DataPath = @"path";
 NSString *const kDingDanLieBiao_Model_DataOg_status = @"og_status";
+NSString *const kDingDanLieBiao_Model_Datagroup_type = @"group_type";
 
 @interface DingDanLieBiao_Model_Data ()
 @end
@@ -35,6 +36,9 @@ NSString *const kDingDanLieBiao_Model_DataOg_status = @"og_status";
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    if(![dictionary[kDingDanLieBiao_Model_Datagroup_type] isKindOfClass:[NSNull class]]){
+        self.group_type = [dictionary[kDingDanLieBiao_Model_Datagroup_type] integerValue];
+    }
     if(![dictionary[kDingDanLieBiao_Model_DataOg_status] isKindOfClass:[NSNull class]]){
         self.og_status = [dictionary[kDingDanLieBiao_Model_DataOg_status] integerValue];
     }

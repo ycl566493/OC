@@ -40,12 +40,14 @@
     lbl_Name = [[UILabel alloc]initWithFrame:CGRectMake(imageV_TX.right + 10,  imageV_TX.top,200, imageV_TX.height  )];
     lbl_Name.font = font15;
     lbl_Name.text = @"";
+    lbl_Name.textColor = UIColorFromHex(0x333333);
     [self addSubview:lbl_Name];
     
     lbl_XDSJ = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth - 15 - 200, imageV_TX.top+4, 200, 20)];
     lbl_XDSJ.font = font13;
     lbl_XDSJ.textAlignment = 2;
     lbl_XDSJ.text = @"2月14日";
+    lbl_XDSJ.textColor = UIColorFromHex(0x333333);
     [self addSubview:lbl_XDSJ];
     
     lbl_XDSL = [[UILabel alloc]initWithFrame:CGRectMake(lbl_XDSJ.left, lbl_XDSJ.bottom, lbl_XDSJ.width, lbl_XDSJ.height)];

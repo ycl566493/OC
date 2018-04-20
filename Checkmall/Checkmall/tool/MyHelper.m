@@ -18,8 +18,8 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 
 +(NSURL *)imaeg_URL:(NSString*)image_url view:(UIView *)view{
 //     NSString *imgUrl = [image_url  stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "]];
-    
-    return [NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",image_url,view.width * 2]];
+     NSString *imgUrl = [image_url  stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_%.0f",imgUrl,view.width * 2]];
 }
 
 #pragma mark- 把秒速转换为

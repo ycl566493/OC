@@ -60,6 +60,8 @@
 #define User_wxBindStatus [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/wxBindStatus"]//微信绑定状态
 #define User_wxToBind [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/wxToBind"]//微信绑定
 #define Product_videoList [NSString stringWithFormat:@"%@%@",URL_LJ,@"Product/videoList"]//视频列表
+#define User_updateSex [NSString stringWithFormat:@"%@%@",URL_LJ,@"User/updateSex"]//性别修改
+#define Order_paySuccessShare [NSString stringWithFormat:@"%@%@",URL_LJ,@"Order/paySuccessShare"]//分享
 
 
 

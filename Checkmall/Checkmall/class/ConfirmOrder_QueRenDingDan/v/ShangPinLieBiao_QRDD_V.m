@@ -78,9 +78,9 @@
 
 +(CGFloat)get_H:(id)data{
     if ([data integerValue] <3) {
-        return 55.5 + [ShangPinXinXi_Cell get_H] *[data integerValue];
+        return 50.5 + [ShangPinXinXi_Cell get_H] *[data integerValue];
     }else{
-        return 55.5 + [ShangPinXinXi_Cell get_H] *2.5;
+        return 50.5 + [ShangPinXinXi_Cell get_H] *2.5;
     }
 }
 @end

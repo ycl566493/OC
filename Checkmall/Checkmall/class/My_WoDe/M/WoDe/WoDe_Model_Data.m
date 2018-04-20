@@ -13,6 +13,8 @@ NSString *const kWoDe_Model_DataIdField = @"id";
 NSString *const kWoDe_Model_DataScore = @"score";
 NSString *const kWoDe_Model_DataUsername = @"username";
 NSString *const kWoDe_Model_DataPath = @"path";
+NSString *const kWoDe_Model_Dataconum = @"conum";
+NSString *const kWoDe_Model_Datasex = @"sex";
 
 @interface WoDe_Model_Data ()
 @end
@@ -22,6 +24,15 @@ NSString *const kWoDe_Model_DataPath = @"path";
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    
+    if(![dictionary[kWoDe_Model_Datasex] isKindOfClass:[NSNull class]]){
+        self.sex = [dictionary[kWoDe_Model_Datasex] integerValue];
+    }
+    
+    if(![dictionary[kWoDe_Model_Dataconum] isKindOfClass:[NSNull class]]){
+        self.conum = [dictionary[kWoDe_Model_Dataconum] integerValue];
+    }
+
     
     if(![dictionary[kWoDe_Model_DataPath] isKindOfClass:[NSNull class]]){
         self.path = dictionary[kWoDe_Model_DataPath];

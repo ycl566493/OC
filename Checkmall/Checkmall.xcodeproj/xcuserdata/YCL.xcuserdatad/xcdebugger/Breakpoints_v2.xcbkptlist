@@ -64,7 +64,7 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
-                  timestampString = "545833622.086082"
+                  timestampString = "545917977.399945"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
@@ -79,7 +79,7 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
-                  timestampString = "545833622.088273"
+                  timestampString = "545917977.401827"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
@@ -94,7 +94,7 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
-                  timestampString = "545833622.090537"
+                  timestampString = "545917977.403679"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
@@ -127,11 +127,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Checkmall/class/My_WoDe/Order_DingDan/C/DingDanLieBiao_VC.m"
-            timestampString = "545127217.305853"
+            timestampString = "545917977.271669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -155,48 +155,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Checkmall/class/ConfirmOrder_QueRenDingDan/C/QueRenDingDan_PT_VC.m"
-            timestampString = "545296195.41968"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
-            landmarkName = "-ZF_ACtion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Checkmall/class/ConfirmOrder_QueRenDingDan/C/QueRenDingDan_PT_VC.m"
-            timestampString = "545296195.419763"
+            timestampString = "545917977.271777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
-            landmarkName = "-PinTuanXuZhi_V_Delegate_Action"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Checkmall/class/ConfirmOrder_QueRenDingDan/C/QueRenDingDan_JL_VC.m"
-            timestampString = "545313307.971881"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-UP_DD"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "-PTXZ_V"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -239,11 +207,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Checkmall/class/My_WoDe/Settings_SheZhi/C/GRXX_VC.m"
-            timestampString = "545745790.083702"
+            timestampString = "545917977.271899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "GRXX_VC"
             landmarkType = "3">
          </BreakpointContent>
@@ -255,11 +223,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Checkmall/class/My_WoDe/Settings_SheZhi/C/GRXX_VC.m"
-            timestampString = "545745790.0837491"
+            timestampString = "545917977.27195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
             landmarkType = "7">
          </BreakpointContent>
@@ -271,11 +239,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Checkmall/class/My_WoDe/Settings_SheZhi/C/GRXX_VC.m"
-            timestampString = "545745790.083791"
+            timestampString = "545917977.271996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
             landmarkType = "7">
          </BreakpointContent>
@@ -318,62 +286,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Checkmall/class/My_WoDe/Settings_SheZhi/C/GRXX_VC.m"
-            timestampString = "545745790.083907"
+            filePath = "Checkmall/class/ShoppingCart_GouWuChe/C/GouWuChe_VC.m"
+            timestampString = "545917977.27211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-WenBenShuRu_VC_delegate_XX:tag:"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "-GouWuChe_DiBu_V_Delegate_Action"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[GRXX_VC WenBenShuRu_VC_delegate_XX:tag:]"
+                  symbolName = "-[GouWuChe_VC GouWuChe_DiBu_V_Delegate_Action]"
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/My_WoDe/Settings_SheZhi/C/GRXX_VC.m"
-                  timestampString = "545833622.13483"
+                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/ShoppingCart_GouWuChe/C/GouWuChe_VC.m"
+                  timestampString = "545917977.436512"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "112">
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "1484">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__42-[GRXX_VC WenBenShuRu_VC_delegate_XX:tag:]_block_invoke"
+                  symbolName = "__46-[GouWuChe_VC GouWuChe_DiBu_V_Delegate_Action]_block_invoke"
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/My_WoDe/Settings_SheZhi/C/GRXX_VC.m"
-                  timestampString = "545833622.136503"
+                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/ShoppingCart_GouWuChe/C/GouWuChe_VC.m"
+                  timestampString = "545917977.438318"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "120"
-                  endingLineNumber = "120"
-                  offsetFromSymbolStart = "64">
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.241"
+                  moduleName = "Checkmall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/ShoppingCart_GouWuChe/C/GouWuChe_VC.m"
+                  timestampString = "545917977.4400541"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Checkmall/class/My_WoDe/Settings_SheZhi/C/GRXX_VC.m"
-            timestampString = "545745790.083948"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-WenBenShuRu_VC_delegate_XX:tag:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

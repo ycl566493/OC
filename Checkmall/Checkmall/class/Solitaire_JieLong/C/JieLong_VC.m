@@ -35,7 +35,7 @@
     
     [NetRequest postWithUrl:Solitaire_lists params:@{@"page":[NSString stringWithFormat:@"%li",self.pageIndex]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"接龙列表 ==  %@",dict);
-        if (YES) {
+        if (Y_N) {
             model = [[JLLB_Model_RootClass alloc]initWithDictionary:dict];
         }else{
             [model Add_Dictionary:dict];
@@ -76,6 +76,25 @@
     if (!iOS11) {
         self.tableview.height = ScreenHeight ;
     }
+    WeakSelf(ws);
+        self.tableview.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [ws.tableview.mj_header endRefreshing];
+    
+            //  结束刷新
+            ws.pageIndex =1;
+            [ws init_data:YES];
+        }];
+//     设置自动切换透明度(在导航栏下面自动隐藏)
+//        self.tableV.mj_header.automaticallyChangeAlpha = YES;
+//     tableV上拉加载
+        self.tableview.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            [ws.tableview.mj_footer endRefreshing];
+    
+            ws.pageIndex += 1;
+            [ws init_data:NO];
+        }];
+
+    
 }
 
 #pragma mark- 提交订单

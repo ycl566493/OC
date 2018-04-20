@@ -55,12 +55,16 @@
     [self UP_UI];
     
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ZFHD) name:@"ZFHD" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ZFHD:) name:@"ZFHD" object:nil];
 }
 
 #pragma mark- 支付回调
-- (void)ZFHD{
-    [self UP_DD];
+- (void)ZFHD:(NSNotification *)notification;{
+    if ([notification.object isEqualToString:@"微信"]) {
+        [self UP_DD];
+    }else if ([notification.object isEqualToString:@"微信失败"]){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{

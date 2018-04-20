@@ -59,17 +59,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mdq-Xb-cqQ">
-                    <rect key="frame" x="0.0" y="65" width="375" height="10"/>
+                    <rect key="frame" x="0.0" y="60" width="375" height="5"/>
                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="10" id="Pc7-zy-o4N"/>
+                        <constraint firstAttribute="height" constant="5" id="Pc7-zy-o4N"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Mdq-Xb-cqQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0Fc-8o-Yua"/>
-                <constraint firstItem="Mdq-Xb-cqQ" firstAttribute="top" secondItem="P5s-O3-cfU" secondAttribute="bottom" constant="15" id="0PZ-Kd-Pjl"/>
+                <constraint firstItem="Mdq-Xb-cqQ" firstAttribute="top" secondItem="P5s-O3-cfU" secondAttribute="bottom" constant="10" id="0PZ-Kd-Pjl"/>
                 <constraint firstItem="RNu-6P-12q" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="NZZ-21-mzE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3iP-Tc-wEf" secondAttribute="trailing" priority="750" constant="15" id="gTb-Zq-UVs"/>
                 <constraint firstItem="Mdq-Xb-cqQ" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gZf-ob-Gpd"/>

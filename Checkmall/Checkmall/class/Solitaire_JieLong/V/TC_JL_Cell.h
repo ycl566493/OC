@@ -36,6 +36,10 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *txt_SL;//购买数量
 
+@property (weak, nonatomic) IBOutlet UILabel *lbl_YJL;//已接龙
+
+
+
 @property (nonatomic, assign) id<TC_JL_Cell_Delegate>   delegate;
 
 @property (nonatomic, strong)JLLPSP_Model_Data  *model;

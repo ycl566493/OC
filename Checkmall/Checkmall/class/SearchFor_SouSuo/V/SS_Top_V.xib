@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,17 +17,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCZ-Vt-muu">
-                    <rect key="frame" x="15" y="27" width="295" height="30"/>
+                    <rect key="frame" x="15" y="25" width="295" height="34"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTH-Gc-6GU">
-                            <rect key="frame" x="8" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="8" y="0.0" width="30" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="JRS-8b-gbg"/>
                             </constraints>
                             <state key="normal" image="SSTB"/>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入商品关键词" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eug-VJ-0hO">
-                            <rect key="frame" x="43" y="0.0" width="244" height="30"/>
+                            <rect key="frame" x="43" y="0.0" width="244" height="34"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -40,7 +40,7 @@
                         <constraint firstItem="fTH-Gc-6GU" firstAttribute="top" secondItem="vCZ-Vt-muu" secondAttribute="top" id="FPc-r4-U6K"/>
                         <constraint firstAttribute="trailing" secondItem="Eug-VJ-0hO" secondAttribute="trailing" constant="8" id="GAo-v3-xMM"/>
                         <constraint firstItem="fTH-Gc-6GU" firstAttribute="leading" secondItem="vCZ-Vt-muu" secondAttribute="leading" constant="8" id="iJY-ga-SWC"/>
-                        <constraint firstAttribute="height" constant="30" id="p7h-hS-hye"/>
+                        <constraint firstAttribute="height" constant="34" id="p7h-hS-hye"/>
                         <constraint firstAttribute="bottom" secondItem="fTH-Gc-6GU" secondAttribute="bottom" id="rdZ-bX-5kw"/>
                         <constraint firstItem="Eug-VJ-0hO" firstAttribute="leading" secondItem="fTH-Gc-6GU" secondAttribute="trailing" constant="5" id="tff-oR-D7J"/>
                     </constraints>
@@ -63,13 +63,13 @@
             <constraints>
                 <constraint firstItem="vCZ-Vt-muu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="8xF-CI-NAD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IC7-AY-qu7" secondAttribute="trailing" constant="5" id="Jkj-Ga-Bhn"/>
-                <constraint firstItem="vCZ-Vt-muu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="PNH-cg-5h3"/>
+                <constraint firstItem="vCZ-Vt-muu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="PNH-cg-5h3"/>
                 <constraint firstItem="IC7-AY-qu7" firstAttribute="leading" secondItem="vCZ-Vt-muu" secondAttribute="trailing" constant="5" id="Rim-Cf-kd2"/>
                 <constraint firstItem="IC7-AY-qu7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="jkV-ba-YwU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="View_BJ" destination="fTH-Gc-6GU" id="DLy-gW-TfR"/>
+                <outlet property="View_BJ" destination="vCZ-Vt-muu" id="6BO-c0-wg8"/>
                 <outlet property="btn_QX" destination="IC7-AY-qu7" id="p33-wV-Gwd"/>
                 <outlet property="txtF" destination="Eug-VJ-0hO" id="4Q6-xJ-C3E"/>
             </connections>

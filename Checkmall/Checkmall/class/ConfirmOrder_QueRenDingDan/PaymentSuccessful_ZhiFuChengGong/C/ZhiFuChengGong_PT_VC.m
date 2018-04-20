@@ -66,7 +66,8 @@
     self.ZFXX.height = [PinTuan_ZFCG_V get_H:[NSString stringWithFormat:@"%li",model_PTCG.data.group.count]];
     self.ZFXX.index_Row = model_PTCG.data.group.count;
     self.ZFXX.model = model_PTCG;
-    
+    self.PTXZ.height = [PinTuanXuZhi_V get_H:nil];
+
     [self.collectionView reloadData];
 }
 
@@ -133,6 +134,8 @@
         _PTXZ.width = ScreenWidth;
         [_PTXZ.btn_PT setImage:[UIImage imageNamed:@"YaoQingChanTuan"] forState:UIControlStateNormal];
     }
+    _PTXZ.height = [PinTuanXuZhi_V get_H:nil];
+
     return _PTXZ;
 }
 

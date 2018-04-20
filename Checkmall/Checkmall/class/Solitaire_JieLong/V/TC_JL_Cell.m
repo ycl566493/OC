@@ -57,18 +57,25 @@
     _model = model;
     
     self.txt_SL.text = model.str_SL;
-    
+    NSLog(@"连接 == %@",[MyHelper imaeg_URL:model.imgpath view:self.image_V]);
     [self.image_V sd_setImageWithURL:[MyHelper imaeg_URL:model.imgpath view:self.image_V] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
     
     self.lbl_Name.text = model.name;
     self.lbl_JG.text = [NSString stringWithFormat:@"￥%@",model.sprice];
     self.lbl_SY.text = [NSString stringWithFormat:@"剩余 %ld",(long)model.amount];
-    
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     self.lbl_SY.text];
     NSRange range = NSMakeRange(2, [NSString stringWithFormat:@"%li",model.amount].length + 1);
     // 设置颜色
     [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0xffa555) range:range];
     self.lbl_SY.attributedText = attributedStr;
+    
+    self.lbl_YJL.text = [NSString stringWithFormat:@"已接龙 %ld",(long)model.buynum];
+    NSMutableAttributedString *attributedStr2 = [[NSMutableAttributedString alloc] initWithString:     self.lbl_YJL.text];
+    range = NSMakeRange(3, [NSString stringWithFormat:@"%li",model.buynum].length+1);
+    // 设置颜色
+    [attributedStr2 addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0xffa555) range:range];
+    self.lbl_YJL.attributedText = attributedStr2;
+    
     
     self.lbl_MB.hidden = YES;
     self.image_MB.hidden = YES;

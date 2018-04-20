@@ -79,7 +79,8 @@
         }else if (indexPath.row == 2){
             [cell SetTitle:@"昵称" NR:[kUserDefaults objectForKey:NiCheng] ImageV:YES];
         }else if (indexPath.row == 3){
-            [cell SetTitle:@"性别" NR:[kUserDefaults objectForKey:XingBie] ImageV:YES];
+            NSInteger IIIII =[[kUserDefaults objectForKey:XingBie] integerValue];
+            [cell SetTitle:@"性别" NR:IIIII == 1 ? @"男" : @"女" ImageV:YES];
         }
   
     return cell;
@@ -110,14 +111,47 @@
         vc.str_title = @"请输入昵称";
         vc.str_NR = [kUserDefaults objectForKey:NiCheng];
     }else if (indexPath.row == 3){
-       
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"选择性别" message:nil preferredStyle: UIAlertControllerStyleActionSheet];
+    
+        [alert addAction:[UIAlertAction actionWithTitle:@"男" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self UP_XB:YES];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"女" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self UP_XB:NO];
+        }]];
+        
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+
+        }]];
+        //弹出提示框；
+        [self presentViewController:alert animated:true completion:nil];
     }
+}
+
+#pragma mark-性别 yes 男 no 女
+- (void)UP_XB:(BOOL)Y_N{
+    NSDictionary *dic = @{@"sex":Y_N ? @"1" : @"2",@"token":[MyHelper toToken]};
+    [NetRequest postWithUrl:User_updateSex params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        
+        if ([dict[@"code"] integerValue] == 1) {
+            [kUserDefaults setObject:Y_N ? @"1" : @"2" forKey:XingBie];
+            [self.tableV reloadData];
+        }
+        
+    } fail:^(id error) {
+        
+    }];
 }
 
 - (void)WenBenShuRu_VC_delegate_XX:(NSString *)xx tag:(NSInteger)tag{
 
     [NetRequest postWithUrl:User_updateNickname params:@{@"nickname":xx,@"token":[MyHelper toToken]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"昵称 == %@",dict);
+        if ([dict[@"code"] integerValue] == 1) {
+            [kUserDefaults setObject:xx forKey:NiCheng];
+            [self.tableV reloadData];
+        }
     } fail:^(id error) {
         
     }];
@@ -237,6 +271,10 @@
         NSDictionary *dic = @{@"file":[Base64codeFunc base64EncodedStringFrom:H_Data],@"token":[MyHelper toToken]};
         [NetRequest postWithUrl:User_userHeadImage params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
             NSLog(@"上传结果 == %@",dict);
+            if ([dict[@"code"] integerValue] == 1) {
+                [kUserDefaults setObject:dict[@"data"] forKey:TouXiang];
+                [self.tableV reloadData];
+            }
         } fail:^(id error) {
             
         }];

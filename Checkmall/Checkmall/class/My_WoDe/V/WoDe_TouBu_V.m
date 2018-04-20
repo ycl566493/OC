@@ -37,7 +37,7 @@
     [imageV_TX sd_setImageWithURL:[NSURL URLWithString:model.data.path] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
     lbl_Name.text = model.data.username;
     lbl_JF.text = [NSString stringWithFormat:@"%li",(long)model.data.score];
-    lbl_YHJ.text = [NSString stringWithFormat:@"%li",(long)model.data.coupon];
+    lbl_YHJ.text = [NSString stringWithFormat:@"%li",(long)model.data.conum];
     lbl_JE.text = [NSString stringWithFormat:@"%@",model.data.creditCardBalance];
 }
 
@@ -45,6 +45,11 @@
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 284)];
     imageV.image = [UIImage imageNamed:@"WoDeBeiJing"];
     [self addSubview:imageV];
+    
+    UIView *view_MC = [[UIView alloc]initWithFrame:imageV.bounds];
+    view_MC.backgroundColor = RGBA(0, 0, 0, .5);
+    view_MC.height =imageV.height - 70;
+    [imageV addSubview:view_MC];
     
     imageV_TX = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth - 68) / 2, 39, 68, 68)];
     imageV_TX.contentMode = UIViewContentModeScaleAspectFill;

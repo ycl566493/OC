@@ -12,33 +12,41 @@
 #import "ShangPin_XiaDan_V.h"//商品下单
 #import "ShangPin_MS_V.h"//商品描述
 #import "ShangPin_PinTuanXuZhi_V.h"//拼团须知
-#import "TC_PTXZ_V.h"//拼团须知
+#import "JieLongWanFa_V.h"//拼团须知
 #import "JLXQ_Model_RootClass.h"
 #import "QieHuan_V.h"//切换
 #import "SPSP_Cell.h"
 #import "SPPJ_V.h"
 #import "PingJia_VC.h"//评价列表
+#import "ShiPinLieBiao_Model_RootClass.h"//视频model
+#import "SPBF_V.h"//视频播放背景
+#import "SelVideoPlayer.h"//视频播放器
+#import "SelPlayerConfiguration.h"//视频播放配置参数
+#import "QueRenDingDan_Model_RootClass.h"//确认订单
+#import "QueRenDingDan_JL_VC.h"//确认订单
 
-@interface JieLongXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate,QieHuan_V_Delegate,UITableViewDataSource,UITableViewDelegate,SPPJ_V_Delegate,ShangPin_TuPian_V_Delegate>{
+@interface JieLongXiangQing_VC ()<ShangPin_PinTuanXuZhi_V_Delegate,QieHuan_V_Delegate,UITableViewDataSource,UITableViewDelegate,SPPJ_V_Delegate,ShangPin_TuPian_V_Delegate,ShangPin_XinXi_V_Delegate>{
     ShangPin_TuPian_V       *TuPian;
     ShangPin_XiaDan_V       *XiaDan;//商品下单信息
     ShangPin_MS_V           *MS;//商品描述
-    ShangPin_PinTuanXuZhi_V *PinTuan;//拼团
     
     
     JLXQ_Model_RootClass    *model_SPXQ;//商品详情model
+    ShiPinLieBiao_Model_RootClass   *model_SP;
+    QueRenDingDan_Model_RootClass   *model_QRDD;
     
     UIView                      *view_XQ;//详情
     UITableView                      *tableV_SP;//视频
     
 }
+@property (nonatomic, strong) SelVideoPlayer *player;//视频播放器
 
 @property (nonatomic,weak) QieHuan_V                 *QH;//切换选择
 @property (nonatomic,weak) SPPJ_V                 *PJ;//评价
 
-@property (nonatomic , assign) ShangPin_XinXi_V        *XinXi;//商品信息
+@property (nonatomic , weak) ShangPin_XinXi_V        *XinXi;//商品信息
 
-@property(weak,nonatomic)TC_PTXZ_V          *PTXZ;//拼团须知
+@property(weak,nonatomic)JieLongWanFa_V          *JLXZ;//拼团须知
 
 @end
 
@@ -46,12 +54,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.view.backgroundColor = UIColorFromHex(0xeeeeee);
 
     self.title = @"商品详情";
     [self init_UI];
     
     [self init_Data];
+    [self init_Data_SP];
+}
+
+
+- (void)init_Data_SP{
+    NSDictionary *dic = @{@"gid":self.str_SPID,@"token":[MyHelper toToken]};
+    [NetRequest postWithUrl:Product_videoList params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"视频列表 == %@",dict);
+        model_SP = [[ShiPinLieBiao_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_SP.code ==1) {
+            if (model_SP.data.count == 0) {
+                self.QH.hidden = YES;
+                self.QH.height = 0;
+            }else{
+                self.QH.hidden = NO;
+                self.QH.height = [QieHuan_V get_H:nil];
+            }
+            [tableV_SP reloadData];
+        }else{
+            self.QH.hidden = YES;
+            self.QH.height = 0;
+        }
+        view_XQ.top = self.QH.bottom;
+        tableV_SP.top = self.QH.bottom;
+    } fail:^(id error) {
+        
+    }];
 }
 
 -(void)dealloc{
@@ -84,12 +119,18 @@
     return _QH;
 }
 
+-(void)ShangPin_XinXi_V_Delegate_FX{
+    [FenXiang_Object Shar:model_SPXQ.data.share.title str_NR:model_SPXQ.data.share.content image_URL:model_SPXQ.data.share.image str_LJ:model_SPXQ.data.share.path];
+
+}
+
 #pragma mark- 商品信息
 -(ShangPin_XinXi_V *)XinXi{
     if (!_XinXi) {
         ShangPin_XinXi_V *XinXi = [ShangPin_XinXi_V init_Xib];
         _XinXi = XinXi;
         _XinXi.width =ScreenHeight;
+        _XinXi.delegate = self;
         
     }
     return _XinXi;
@@ -99,7 +140,7 @@
     if (!_PJ) {
         SPPJ_V *pj = [SPPJ_V init_Xib];
         _PJ = pj;
-        _PJ.backgroundColor = [UIColor yellowColor];
+        _PJ.backgroundColor = [UIColor whiteColor];
         _PJ.delegate = self;
     }
     return _PJ;
@@ -154,9 +195,10 @@
     MS.model_JL = model_SPXQ;
     MS.height = [ShangPin_MS_V get_H:model_SPXQ.data.promotion];
     
-    
-    PinTuan.mj_y = MS.bottom;
-    view_XQ.height = PinTuan.bottom;
+    self.JLXZ.model = model_SPXQ;
+    self.JLXZ.mj_y = MS.bottom;
+    self.JLXZ.height = [JieLongWanFa_V get_H:nil];
+    view_XQ.height = self.JLXZ.bottom;
     
     self.scrollV.contentSize = CGSizeMake(0, view_XQ.bottom );
     
@@ -164,19 +206,14 @@
     
 }
 
--(TC_PTXZ_V *)PTXZ{
-    if (!_PTXZ) {
-        TC_PTXZ_V* PTXZ = [TC_PTXZ_V init_Xib];
-        [self.view addSubview:PTXZ];
-        _PTXZ = PTXZ;
-        _PTXZ.frame = self.window.bounds;
+-(JieLongWanFa_V *)JLXZ{
+    if (!_JLXZ) {
+        JieLongWanFa_V* JLXZ = [JieLongWanFa_V init_Xib];
+        [self.view addSubview:JLXZ];
+        _JLXZ = JLXZ;
+        _JLXZ.frame = CGRectMake(0, 0, ScreenWidth, [JieLongWanFa_V get_H:nil]);
     }
-    return _PTXZ;
-}
-
-#pragma mark- 拼团须知
--(void)ShangPin_PinTuanXuZhi_V_Delegate_PTXZ{
-    [self.window addSubview:self.PTXZ];
+    return _JLXZ;
 }
 
 #pragma mark- 初始化
@@ -227,11 +264,9 @@
     MS.backgroundColor = [UIColor whiteColor];
     [view_XQ addSubview:MS];
     
-    PinTuan = [[ShangPin_PinTuanXuZhi_V alloc]initWithFrame:CGRectMake(0, MS.bottom, ScreenWidth, [ShangPin_PinTuanXuZhi_V get_H:nil])];
-    PinTuan.delegate = self;
-    [view_XQ addSubview:PinTuan];
+    [view_XQ addSubview:self.JLXZ];
     
-    view_XQ.height = PinTuan.bottom;
+    view_XQ.height = self.JLXZ.bottom;
     self.scrollV.contentSize = CGSizeMake(0, view_XQ.bottom );
 
 }
@@ -241,7 +276,7 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 20;
+    return model_SP.data.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [SPSP_Cell get_H];
@@ -251,6 +286,8 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle]loadNibNamed:@"SPSP_Cell" owner:self options:nil] lastObject];
     }
+    ShiPinLieBiao_Model_Data *MMMM = model_SP.data[indexPath.row];
+    cell.model = MMMM;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -267,11 +304,37 @@
     return nil;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ShiPinLieBiao_Model_Data *MMM = model_SP.data[indexPath.row];
     
+    [_player _deallocPlayer];
+    _player = nil;
+    
+    SelPlayerConfiguration *configuration = [[SelPlayerConfiguration alloc]init];
+    configuration.shouldAutoPlay = YES;
+    configuration.supportedDoubleTap = YES;
+    configuration.shouldAutorotate = YES;
+    configuration.repeatPlay = YES;
+    configuration.statusBarHideState = SelStatusBarHideStateFollowControls;
+    configuration.sourceUrl = [NSURL URLWithString:MMM.path];
+    configuration.videoGravity = SelVideoGravityResizeAspect;
+    _player = [[SelVideoPlayer alloc]initWithFrame:TuPian.bounds configuration:configuration];
+    [TuPian addSubview:_player];
 }
 
-- (void)ShangPin_TuPian_V_Delegate{
+- (void)ShangPin_TuPian_V_Delegate_PF{
+    [_player _deallocPlayer];
+    _player = nil;
     
+    SelPlayerConfiguration *configuration = [[SelPlayerConfiguration alloc]init];
+    configuration.shouldAutoPlay = YES;
+    configuration.supportedDoubleTap = YES;
+    configuration.shouldAutorotate = YES;
+    configuration.repeatPlay = YES;
+    configuration.statusBarHideState = SelStatusBarHideStateFollowControls;
+    configuration.sourceUrl = [NSURL URLWithString:model_SPXQ.data.video];
+    configuration.videoGravity = SelVideoGravityResizeAspect;
+    _player = [[SelVideoPlayer alloc]initWithFrame:TuPian.bounds configuration:configuration];
+    [TuPian addSubview:_player];
 }
 
 
@@ -279,6 +342,38 @@
 #pragma mark- 接龙列表
 - (IBAction)btn_JL:(id)sender {
     
+    
+    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+        [self QuDeLu];
+        return;
+    }
+    
+    NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
+
+    NSMutableDictionary *dic_DDDDDD = [[NSMutableDictionary alloc]init];
+    [dic_DDDDDD setObject:[NSString stringWithFormat:@"%@",self.str_SPID] forKey:@"goodsid"];
+    [dic_DDDDDD setObject:model_SPXQ.data.price forKey:@"price"];
+    [dic_DDDDDD setObject:[NSString stringWithFormat:@"1"] forKey:@"num"];
+    [arr_Data addObject:[MyHelper toJson:dic_DDDDDD]];
+
+    if (arr_Data.count == 0) {
+        return;
+    }
+    //       type 商品类型 1 拼团 2 开团 3 单独购买 4今日团购 5兑换 6接龙
+    NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"6"};
+    [NetRequest postWithUrl:order_getOrderDesc params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"确认订单 == %@",dict);
+        model_QRDD = [[QueRenDingDan_Model_RootClass alloc]initWithDictionary:dict];
+        if (model_QRDD.code == 1) {
+            QueRenDingDan_JL_VC    *VC = [[QueRenDingDan_JL_VC alloc]init];
+            VC.model = model_QRDD;
+            VC.str_JLID = self.str_SPID;
+            [self.navigationController pushViewController:VC animated:YES];
+            
+        }
+    } fail:^(id error) {
+        
+    }];
 }
 
 @end

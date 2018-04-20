@@ -103,8 +103,11 @@
     // Configure the view for the selected state
 }
 
-+(CGFloat)get_H{
-    return 218;
++(CGFloat)get_H:(BOOL)Y_N{
+    if (Y_N) {
+        return 214- 40 - 5;
+    }
+    return 214 - 5;
 }
 
 @end

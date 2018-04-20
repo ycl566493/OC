@@ -35,13 +35,16 @@
     _model =  model;
     
     self.lbl_Title.text = model.data.productName;
+    self.lbl_Title.numberOfLines = 0;
+    
     self.lbl_Title_H.constant = [MyHelper strHeight:self.lbl_Title.text andFont:self.lbl_Title.font andWidth:self.lbl_Title.width];
+    self.lbl_Title.height = self.lbl_Title_H.constant;
 //    [MyHelper getSpaceLabelHeight:self.lbl_Title.text withFont:self.lbl_Title.font withWidth:self.lbl_Title.width Spacing:4];
 //    [MyHelper setLabelSpace:self.lbl_Title withValue:self.lbl_Title.text withFont:self.lbl_Title.font Spacing:4];
     
-    self.lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%@",model.data.productSprice,model.data.productMarketPrice];
+    self.lbl_JG.text = [NSString stringWithFormat:@"￥%@ ￥%@",model.data.productSprice,model.data.productMarketPrice];
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     self.lbl_JG.text];
-    NSRange range = NSMakeRange(model.data.productSprice.length + 1, model.data.productMarketPrice.length + 1);
+    NSRange range = NSMakeRange(model.data.productSprice.length + 2, model.data.productMarketPrice.length + 1);
     // 设置颜色
     [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0x999999) range:range];
     // 设置字体大小
@@ -62,11 +65,12 @@
 -(void)setModel_JL:(JLXQ_Model_RootClass *)model_JL{
     _model_JL = model_JL;
     self.lbl_Title.text = model_JL.data.name;
+    self.lbl_Title.numberOfLines = 0;
     self.lbl_Title_H.constant = [MyHelper strHeight:self.lbl_Title.text andFont:self.lbl_Title.font andWidth:self.lbl_Title.width];
     
-    self.lbl_JG.text = [NSString stringWithFormat:@"￥%@￥%@",model_JL.data.price,model_JL.data.mprice];
+    self.lbl_JG.text = [NSString stringWithFormat:@"￥%@ ￥%@",model_JL.data.price,model_JL.data.mprice];
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:     self.lbl_JG.text];
-    NSRange range = NSMakeRange(model_JL.data.price.length + 1, model_JL.data.mprice.length + 1);
+    NSRange range = NSMakeRange(model_JL.data.price.length + 2, model_JL.data.mprice.length + 1);
     // 设置颜色
     [attributedStr addAttribute:NSForegroundColorAttributeName value:UIColorFromHex(0x999999) range:range];
     // 设置字体大小

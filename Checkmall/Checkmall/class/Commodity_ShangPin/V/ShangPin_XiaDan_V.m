@@ -33,6 +33,7 @@
 -(void)init_UI{
     lbl_XDR = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, 250, 45)];
     lbl_XDR.font = font15;
+    lbl_XDR.textColor = UIColorFromHex(0x333333);
     lbl_XDR.text = @"已有0人下单,可以直接参与";
     [self addSubview:lbl_XDR];
     

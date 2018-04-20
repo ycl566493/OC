@@ -27,21 +27,19 @@ NSString *const kJLXQ_Model_DataSumnum = @"sumnum";
 NSString *const kJLXQ_Model_DataSurplusTime = @"surplus_time";
 NSString *const kJLXQ_Model_DataTaketype = @"taketype";
 NSString *const kJLXQ_Model_DataVideo = @"video";
+NSString *const kJLXQ_Model_Datashare = @"share";
 
 @interface JLXQ_Model_Data ()
 @end
 @implementation JLXQ_Model_Data
 
-
-
-
-/**
- * Instantiate the instance using the passed dictionary values to set the properties values
- */
-
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
+    if(![dictionary[kJLXQ_Model_Datashare] isKindOfClass:[NSNull class]]){
+        self.share = [[Share alloc]initWithDictionary:dictionary[kJLXQ_Model_Datashare]];
+    }
+    
 	if(![dictionary[kJLXQ_Model_DataAmount] isKindOfClass:[NSNull class]]){
 		self.amount = [dictionary[kJLXQ_Model_DataAmount] integerValue];
 	}

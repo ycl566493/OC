@@ -26,7 +26,7 @@
 
 #pragma mark- 初始化
 - (void)init_UI{
-    image_ELM = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
+    image_ELM = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, self.height)];
 //    image_ELM.image = [UIImage imageNamed:@""];
 //    image_ELM.backgroundColor = [UIColor redColor];
     image_ELM.contentMode = UIViewContentModeScaleAspectFill;
@@ -52,7 +52,7 @@
 }
 
 + (CGFloat)get_H:(id)data{
-    return 100;
+    return 140;
 }
 
 @end

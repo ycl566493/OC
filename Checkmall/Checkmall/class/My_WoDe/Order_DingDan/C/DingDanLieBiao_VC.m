@@ -35,7 +35,7 @@
     [self init_UI];
     [self init_Data:YES];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ZFHD) name:@"ZFHD" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ZFHD:) name:@"ZFHD" object:nil];
 
 }
 
@@ -49,8 +49,12 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void)ZFHD{
-    [self UP_DD];
+- (void)ZFHD:(NSNotification *)notification;{
+    if ([notification.object isEqualToString:@"微信"]) {
+        [self UP_DD];
+    }else if ([notification.object isEqualToString:@"微信失败"]){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 
@@ -170,8 +174,9 @@
                 return;
             }
             
-            NSDictionary *dic = @{@"order_sn":MMMM.orderSn,@"gid":[NSString stringWithFormat:@"%li",MMMM.gid],@"token":[MyHelper toToken],@"paytype":@"2",@"paymode":@"1"};
+            NSDictionary *dic = @{@"order_sn":MMMM.orderSn,@"gid":[NSString stringWithFormat:@"%li",MMMM.gid],@"token":[MyHelper toToken],@"paytype":@"2",@"paymode":@"1",@"type":[NSString stringWithFormat:@"%li",MMMM.group_type]};
             str_DDID =MMMM.orderSn;
+            
             [NetRequest postWithUrl:Order_goToPayment params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
                 NSLog(@"取消订单 == %@",dict);
                 model_WX = [[WeiXinZhiFu_Model_RootClass alloc]initWithDictionary:dict];
@@ -336,7 +341,12 @@
     return model_DD.data.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [DingDan_Cell get_H];
+    DingDanLieBiao_Model_Data   *MMMM = model_DD.data[indexPath.row];
+
+    if (MMMM.og_status == 2) {
+        return [DingDan_Cell get_H:YES];
+    }
+    return [DingDan_Cell get_H:NO];
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DingDan_Cell *cell = (DingDan_Cell *)[tableView dequeueReusableCellWithIdentifier:@"DingDan_Cell"];
@@ -351,7 +361,7 @@
     cell.delegate = self;
     cell.model = MMMM;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+ 
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

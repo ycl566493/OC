@@ -124,7 +124,7 @@
     slide.tag = 0;
     slide.init_Selected = 0;
     [self.view addSubview:slide];
-    
+    self.tableview.backgroundColor = UIColorFromHex(0xf2f2f2);
     self.tableview.top = slide.bottom;
     if (@available(iOS 11.0, *)){
         self.tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

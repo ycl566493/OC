@@ -59,7 +59,7 @@
 }
 
 +(CGFloat)get_H:(id)data{
-    return 204;
+    return 178.5;
 }
 
 @end

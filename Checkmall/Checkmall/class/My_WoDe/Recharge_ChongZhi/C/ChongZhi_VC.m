@@ -44,11 +44,13 @@
     self.title = @"充值中心";
     [self init_UI];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ZFHS) name:@"ZFHD" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ZFHS:) name:@"ZFHD" object:nil];
 }
 
--(void)ZFHS{
-    [self UP_DD];
+- (void)ZFHD:(NSNotification *)notification;{
+    if ([notification.object isEqualToString:@"微信"]) {
+        [self UP_DD];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -93,7 +95,7 @@
             model = [[DingDanZhuangTai_Model_RootClass alloc]initWithDictionary:dict];
             if (model.data.sta) {
                 [kUserDefaults setObject:model.data.money forKey:YuE];
-                lbl_YE.text = [NSString stringWithFormat:@"%@￥",model.data.money];
+                lbl_YE.text = [NSString stringWithFormat:@"￥%@",model.data.money];
                 [self.window addSubview:self.DHJ];
                 [self.DHJ.imageV_TP sd_setImageWithURL:[MyHelper imaeg_URL:model.data.path view:self.DHJ.imageV_TP] placeholderImage:[UIImage imageNamed:@"MoRenTu"]];
                 self.DHJ.lbl_LBMC.text = model.data.name;
@@ -156,7 +158,7 @@
     lbl_YE = [[UILabel alloc]initWithFrame:CGRectMake(image_BJ.width - 210, 39, 200, 60)];
     lbl_YE.font = [UIFont systemFontOfSize:26];
     lbl_YE.textColor = UIColorFromHex(0x333333);
-    lbl_YE.text = [NSString stringWithFormat:@"%@￥",[kUserDefaults objectForKey:YuE]];
+    lbl_YE.text = [NSString stringWithFormat:@"￥%@",[kUserDefaults objectForKey:YuE]];
     lbl_YE.textAlignment = 2;
     [image_BJ addSubview:lbl_YE];
     

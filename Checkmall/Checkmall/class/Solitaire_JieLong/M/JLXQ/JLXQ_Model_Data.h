@@ -9,6 +9,7 @@
 #import "JLXQ_Model_Buyuser.h"
 #import "ShangPin_Model_Comment.h"
 #import "JLXQ_Model_Rule.h"
+#import "Share.h"
 
 @interface JLXQ_Model_Data : NSObject
 
@@ -32,6 +33,7 @@
 @property (nonatomic, assign) NSInteger surplusTime;
 @property (nonatomic, assign) NSInteger taketype;
 @property (nonatomic, strong) NSString * video;
+@property (nonatomic, strong) Share * share;
 
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;

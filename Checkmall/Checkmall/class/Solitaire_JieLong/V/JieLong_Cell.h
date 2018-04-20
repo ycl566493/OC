@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageV_TP;//图片
 
 @property (nonatomic, strong) JLLB_Model_Data   *model;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_TJ;//条件
 
 //返回高度
 +(CGFloat)get_H;

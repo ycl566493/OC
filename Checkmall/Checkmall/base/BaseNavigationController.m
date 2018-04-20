@@ -60,7 +60,7 @@
 -(UIView *)view_FGX{
     if (!_view_FGX) {
         _view_FGX = [[UIView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight - .5, ScreenWidth, .5)];
-        _view_FGX.backgroundColor = RGBA(0, 0, 0, .3);
+        _view_FGX.backgroundColor = RGBA(0, 0, 0, .2);
     }
     return _view_FGX;
 }

@@ -24,7 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *txtF;//输入框
 
-@property (weak, nonatomic) IBOutlet UIButton *View_BJ;//滑动背景
+@property (weak, nonatomic) IBOutlet UIView *View_BJ;//滑动背景
 
 @property (nonatomic, assign )id<SS_Top_V_Delegate>         delegate;
 

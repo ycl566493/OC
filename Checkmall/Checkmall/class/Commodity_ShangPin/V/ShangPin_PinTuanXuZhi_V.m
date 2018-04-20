@@ -34,6 +34,7 @@
     
     lbl_title = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, ScreenWidth - 15* 2 - 90, 44)];
     lbl_title.font = font15;
+    lbl_title.textColor = UIColorFromHex(0x333333);
     lbl_title.text = @"拼团须知";
     [self addSubview:lbl_title];
     

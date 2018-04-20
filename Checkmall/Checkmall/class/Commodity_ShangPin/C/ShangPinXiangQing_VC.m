@@ -227,8 +227,8 @@
 
     scrollV.contentSize = CGSizeMake(0, view_XQ.bottom );
 
-    lbl_GM.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
-    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n马上参团",model_SPXQ.data.productPrice];
+//    lbl_GM.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
+//    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n马上参团",model_SPXQ.data.productPrice];
     
 //    lbl_GM.text = [NSString stringWithFormat:@"加入购物车"];
 //    lbl_PT.text = [NSString stringWithFormat:@"￥%@\n单独购买",model_SPXQ.data.productSprice];
@@ -342,7 +342,7 @@
     lbl_PT = [[UILabel alloc]initWithFrame:btn_GM.bounds];
     lbl_PT.numberOfLines = 2;
     lbl_PT.textAlignment = 1;
-    lbl_PT.text = @"￥0\n马上参团";
+    lbl_PT.text = @"马上参团";
     lbl_PT.textColor = [UIColor whiteColor];
     lbl_PT.font = [UIFont systemFontOfSize:17];
     [btn_PT addSubview:lbl_PT];
@@ -414,35 +414,57 @@
 
 #pragma mark- 购买btn_GM_Action
 -(void)btn_GM_Action{
-    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
-        [self QuDeLu];
-        return;
-    }
+//    if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+//        [self QuDeLu];
+//        return;
+//    }
+//
+//    NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
+//
+//    NSMutableDictionary *dic_DDDDDD = [[NSMutableDictionary alloc]init];
+//    [dic_DDDDDD setObject:[NSString stringWithFormat:@"%li",model_SPXQ.data.productId] forKey:@"goodsid"];
+//    [dic_DDDDDD setObject:model_SPXQ.data.productSprice forKey:@"price"];
+//    [dic_DDDDDD setObject:[NSString stringWithFormat:@"1"] forKey:@"num"];
+//
+//    [arr_Data addObject:[MyHelper toJson:dic_DDDDDD]];
+//
+//    //       type 商品类型 1 拼团 2 开团 3 单独购买 4今日团购 5兑换 6接龙
+//    NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"3"};
+//    [NetRequest postWithUrl:order_getOrderDesc params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+//        NSLog(@"确认订单 == %@",dict);
+//        model_QRDD = [[QueRenDingDan_Model_RootClass alloc]initWithDictionary:dict];
+//        if (model_QRDD.code == 1 && model_QRDD.data.arr.count > 0) {
+//            QueRenDingDan_VC *VC= [[QueRenDingDan_VC alloc]init];
+//            VC.model = model_QRDD;
+//            [self.navigationController pushViewController:VC animated:YES];
+//        }
+//    } fail:^(id error) {
+//
+//    }];
     
-    NSMutableArray  *arr_Data = [[NSMutableArray alloc]init];
-   
-    NSMutableDictionary *dic_DDDDDD = [[NSMutableDictionary alloc]init];
-    [dic_DDDDDD setObject:[NSString stringWithFormat:@"%li",model_SPXQ.data.productId] forKey:@"goodsid"];
-    [dic_DDDDDD setObject:model_SPXQ.data.productSprice forKey:@"price"];
-    [dic_DDDDDD setObject:[NSString stringWithFormat:@"1"] forKey:@"num"];
     
-    [arr_Data addObject:[MyHelper toJson:dic_DDDDDD]];
-
-    //       type 商品类型 1 拼团 2 开团 3 单独购买 4今日团购 5兑换 6接龙
-    NSDictionary *dic = @{@"token":[MyHelper toToken],@"car":arr_Data,@"type":@"3"};
-    [NetRequest postWithUrl:order_getOrderDesc params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
-        NSLog(@"确认订单 == %@",dict);
-        model_QRDD = [[QueRenDingDan_Model_RootClass alloc]initWithDictionary:dict];
-        if (model_QRDD.code == 1 && model_QRDD.data.arr.count > 0) {
-            QueRenDingDan_VC *VC= [[QueRenDingDan_VC alloc]init];
-            VC.model = model_QRDD;
-            [self.navigationController pushViewController:VC animated:YES];
+        if (![kUserDefaults boolForKey:DengLuZhuangTai]) {
+            [self QuDeLu];
+            return;
         }
-    } fail:^(id error) {
-        
-    }];
     
- 
+        NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",model_SPXQ.data.productId],@"num":@"1"};
+    
+        [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
+    
+    
+            NSLog(@"添加购物车 = = =%@",dict);
+            if ([dict[@"code"] integerValue] == 1) {
+    
+                [MyHelper showMessage:@"添加购物车成功"];
+    
+                [MyHelper UP_GWCSL];
+            }
+        } fail:^(id error) {
+    
+    
+        }];
+    
 }
 
 #pragma mark- tableview代理

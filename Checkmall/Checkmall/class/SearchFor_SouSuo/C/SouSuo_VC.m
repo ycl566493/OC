@@ -144,8 +144,10 @@
     }
     if (arr_data.count == 0) {
         self.LSJL.hidden = YES;
+        btn_QKSSJL.hidden = YES;
     }else{
         self.LSJL.hidden = NO;
+        btn_QKSSJL.hidden = NO;
     }
     self.LSJL.arr_Data = arr_data;
     

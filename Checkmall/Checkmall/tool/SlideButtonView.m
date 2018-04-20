@@ -85,7 +85,7 @@
     [scrollV addSubview:view_SplitLine];
     
     UIView *view_FGX = [[UIView alloc]initWithFrame:CGRectMake(0, view_Height - .5, view_Width, .5)];
-    view_FGX.backgroundColor  = RGBA(223, 223, 223, 1);
+    view_FGX.backgroundColor  = UIColorFromHex(0xf2f2f2);
     [self addSubview:view_FGX];
 }
 #pragma mark //修改滑动条颜色

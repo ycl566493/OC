@@ -34,6 +34,7 @@
     self.lbl_NR.text = model.desc;
     NSString *str_SJ = [NSString stringWithFormat:@" %@到货 ",[MyHelper dateChangeToTime:[NSString stringWithFormat:@"%li",model.endtime]]];
     self.lbl_SJ.text = str_SJ;
+    self.lbl_TJ.text = [NSString stringWithFormat:@"满%li件接龙成功",model.sendnumber];
 
 }
 

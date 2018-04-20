@@ -15,6 +15,12 @@
 @property (nonatomic, assign) NSInteger score;
 @property (nonatomic, strong) NSString * username;
 @property (nonatomic, strong) NSString * path;
+@property (nonatomic, assign) NSInteger  sex;
+
+
+
+@property (nonatomic, assign) NSInteger conum;
+
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

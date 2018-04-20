@@ -21,7 +21,7 @@
 
 
 +(CGFloat)get_H:(id)data{
-    return 135;
+    return 130;
 }
 
 @end
