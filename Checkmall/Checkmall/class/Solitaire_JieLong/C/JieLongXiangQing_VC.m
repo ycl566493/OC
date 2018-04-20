@@ -367,7 +367,7 @@
         if (model_QRDD.code == 1) {
             QueRenDingDan_JL_VC    *VC = [[QueRenDingDan_JL_VC alloc]init];
             VC.model = model_QRDD;
-            VC.str_JLID = self.str_SPID;
+            VC.str_JLID = self.Str_JLID;
             [self.navigationController pushViewController:VC animated:YES];
             
         }

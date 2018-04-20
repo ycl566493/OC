@@ -13,6 +13,7 @@
 @optional
 - (void)DanPin_V_Delegate_Action_FH;//返回
 - (void)DanPin_V_Delegate_Action_DD;//订单
+- (void)DanPin_V_Delegate_Action_FX;//分享
 
 @end
 

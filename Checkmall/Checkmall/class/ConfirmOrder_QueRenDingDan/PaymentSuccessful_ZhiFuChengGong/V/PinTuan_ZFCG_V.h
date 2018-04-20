@@ -8,6 +8,12 @@
 
 #import "MyUIView.h"
 #import "PTZFCG_Model_RootClass.h"
+@protocol PinTuan_ZFCG_V_Delegate <NSObject>
+
+@optional
+-(void)PinTuan_ZFCG_V_Delegate_FX;//分享
+
+@end
 
 @interface PinTuan_ZFCG_V : MyUIView
 @property (weak, nonatomic) IBOutlet UIView *View_TX;//头像背景
@@ -30,7 +36,7 @@
 
 @property (nonatomic, strong) PTZFCG_Model_RootClass    *model;
 
-
+@property (nonatomic , assign)id<PinTuan_ZFCG_V_Delegate>   delegate;
 
 
 

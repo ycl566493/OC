@@ -14,11 +14,13 @@
 #import "CollectionReusableView_H.h"
 #import "ShouYe_Model_RootClass.h"//首页的数据modle
 #import "DingDanLieBiao_VC.h"
+#import "CGFX_Model_RootClass.h"
 
 @interface ZhiFuChengGong_VC ()<ShouYe_Cell_Delegate_GWC,DanPin_V_Delegate>{
     ShouYe_H_RX_V           *RX;
     UIButton                *btn_GWC;//购物车
     ShouYe_Model_RootClass  *model;
+    CGFX_Model_RootClass        *model_FX;
 }
 
 @property (weak,nonatomic)DanPin_V      *DP;
@@ -34,6 +36,25 @@
     [self setLeftItemWithIcon:nil title:nil selector:nil];
     self.pageIndex = 1;
     [self init_Data:YES];
+    [self init_FX];
+}
+
+- (void)init_FX{
+    NSDictionary *dic = @{@"order_sn":self.str_DDID};
+    [NetRequest postWithUrl:Order_paySuccessShare params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"接龙分享 = =%@",dict);
+        model_FX = [[CGFX_Model_RootClass alloc]initWithDictionary:dict];
+    } fail:^(id error) {
+        
+    }];
+}
+
+
+- (void)DanPin_V_Delegate_Action_FX{
+    if (!model_FX) {
+        return;
+    }
+    [FenXiang_Object Shar:model_FX.data.name str_NR:model_FX.data.promotion image_URL:model_FX.data.image str_LJ:model_FX.data.path];
 }
 
 -(void)init_UI{

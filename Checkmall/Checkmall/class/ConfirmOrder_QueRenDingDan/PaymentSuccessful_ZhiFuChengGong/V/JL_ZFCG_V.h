@@ -9,6 +9,13 @@
 #import "MyUIView.h"
 #import "JLCG_Model_RootClass.h"
 
+@protocol JL_ZFCG_V_Delegate <NSObject>
+
+@optional
+- (void)JL_ZFCG_V_Delegate_FX;//分享
+
+@end
+
 @interface JL_ZFCG_V : MyUIView
 
 @property (weak, nonatomic) IBOutlet UIView *View_TX;//头像背景
@@ -25,5 +32,6 @@
 
 @property (nonatomic,strong)JLCG_Model_RootClass    *model;
 
+@property (nonatomic , assign) id <JL_ZFCG_V_Delegate> delegate;
 
 @end

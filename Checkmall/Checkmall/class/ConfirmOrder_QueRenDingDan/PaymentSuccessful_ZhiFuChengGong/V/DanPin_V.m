@@ -18,6 +18,11 @@
 -(void)init_UI{
     
 }
+- (IBAction)btn_FX:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(DanPin_V_Delegate_Action_FX)]) {
+        [self.delegate DanPin_V_Delegate_Action_FX];
+    }
+}
 
 #pragma mark- //查看订单
 - (IBAction)btn_DD_Action:(id)sender {
@@ -36,7 +41,7 @@
 
 
 +(CGFloat)get_H:(id)data{
-    return 167;
+    return 247;
 }
 
 @end

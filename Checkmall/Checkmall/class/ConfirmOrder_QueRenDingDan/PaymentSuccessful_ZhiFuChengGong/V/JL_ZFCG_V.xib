@@ -57,6 +57,9 @@
                     <state key="normal" title="分享给好友">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="btn_FX:" destination="iN0-l3-epB" eventType="touchUpInside" id="PhD-0Y-2tj"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已经下单的1999人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMk-fA-Xov">
                     <rect key="frame" x="128" y="204" width="118.5" height="15"/>

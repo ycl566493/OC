@@ -93,6 +93,7 @@
                 JG = model.data.paidAmount;
                 ZhiFuChengGong_VC *vc = [[ZhiFuChengGong_VC alloc]init];
                 vc.str_JG = JG;
+                vc.str_DDID = str_DDID;
                 [ws.navigationController pushViewController:vc animated:YES];
                 
                 NSMutableArray *marr = [[NSMutableArray alloc]initWithArray:ws.navigationController.viewControllers];
@@ -171,6 +172,7 @@
                     [MyHelper showMessage:@"支付成功！"];
                     ZhiFuChengGong_VC *vc = [[ZhiFuChengGong_VC alloc]init];
                     vc.str_JG = dict[@"data"][@"fee"];
+                    vc.str_DDID = dict[@"data"][@"order_sn"];
                     [ws.navigationController pushViewController:vc animated:YES];
                     
                     NSMutableArray *marr = [[NSMutableArray alloc]initWithArray:ws.navigationController.viewControllers];

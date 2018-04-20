@@ -64,7 +64,7 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
-                  timestampString = "545917977.399945"
+                  timestampString = "545930591.18479"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
@@ -79,7 +79,7 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
-                  timestampString = "545917977.401827"
+                  timestampString = "545930591.186326"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
@@ -94,7 +94,7 @@
                   moduleName = "Checkmall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/AccountManagement_ZhangHaoGuanLi/C/BangDingShouJi_VC.m"
-                  timestampString = "545917977.403679"
+                  timestampString = "545930591.1880389"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
@@ -278,69 +278,6 @@
             endingLineNumber = "236"
             landmarkName = "+uploadWithImage:url:filename:name:params:progress:success:fail:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Checkmall/class/ShoppingCart_GouWuChe/C/GouWuChe_VC.m"
-            timestampString = "545917977.27211"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "-GouWuChe_DiBu_V_Delegate_Action"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[GouWuChe_VC GouWuChe_DiBu_V_Delegate_Action]"
-                  moduleName = "Checkmall"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/ShoppingCart_GouWuChe/C/GouWuChe_VC.m"
-                  timestampString = "545917977.436512"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "201"
-                  endingLineNumber = "201"
-                  offsetFromSymbolStart = "1484">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__46-[GouWuChe_VC GouWuChe_DiBu_V_Delegate_Action]_block_invoke"
-                  moduleName = "Checkmall"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/ShoppingCart_GouWuChe/C/GouWuChe_VC.m"
-                  timestampString = "545917977.438318"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "201"
-                  endingLineNumber = "201"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.241"
-                  moduleName = "Checkmall"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/YCL/Desktop/Git_YCL/Checkmall/Checkmall/class/ShoppingCart_GouWuChe/C/GouWuChe_VC.m"
-                  timestampString = "545917977.4400541"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "201"
-                  endingLineNumber = "201"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

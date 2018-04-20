@@ -55,6 +55,8 @@
 		743EEAD1204FB68900B7555B /* ZhuanXiang_ShangPin_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 743EEAD0204FB68900B7555B /* ZhuanXiang_ShangPin_Cell.m */; };
 		743EEAD4204FBA0E00B7555B /* ZhuanXiang_DiBu_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 743EEAD3204FBA0E00B7555B /* ZhuanXiang_DiBu_V.m */; };
 		743EEDAD208498D700857010 /* ShangPin_Model_Com_Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 743EEDAB208498D700857010 /* ShangPin_Model_Com_Info.m */; };
+		744CC4A7208A306D0001A2E7 /* CGFX_Model_RootClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 744CC4A3208A306C0001A2E7 /* CGFX_Model_RootClass.m */; };
+		744CC4A8208A306D0001A2E7 /* CGFX_Model_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 744CC4A5208A306C0001A2E7 /* CGFX_Model_Data.m */; };
 		74603DB02050DAA200C2381E /* DengLu_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74603DAF2050DAA200C2381E /* DengLu_VC.m */; };
 		746205B22058C5EE00802D66 /* PinTuanXuZhi_V.m in Sources */ = {isa = PBXBuildFile; fileRef = 746205B12058C5EE00802D66 /* PinTuanXuZhi_V.m */; };
 		746205B42058C63400802D66 /* PinTuanXuZhi_V.xib in Resources */ = {isa = PBXBuildFile; fileRef = 746205B32058C63400802D66 /* PinTuanXuZhi_V.xib */; };
@@ -504,6 +506,10 @@
 		743EEAD3204FBA0E00B7555B /* ZhuanXiang_DiBu_V.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuanXiang_DiBu_V.m; sourceTree = "<group>"; };
 		743EEDAB208498D700857010 /* ShangPin_Model_Com_Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShangPin_Model_Com_Info.m; sourceTree = "<group>"; };
 		743EEDAC208498D700857010 /* ShangPin_Model_Com_Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShangPin_Model_Com_Info.h; sourceTree = "<group>"; };
+		744CC4A3208A306C0001A2E7 /* CGFX_Model_RootClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGFX_Model_RootClass.m; sourceTree = "<group>"; };
+		744CC4A4208A306C0001A2E7 /* CGFX_Model_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGFX_Model_Data.h; sourceTree = "<group>"; };
+		744CC4A5208A306C0001A2E7 /* CGFX_Model_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGFX_Model_Data.m; sourceTree = "<group>"; };
+		744CC4A6208A306C0001A2E7 /* CGFX_Model_RootClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGFX_Model_RootClass.h; sourceTree = "<group>"; };
 		74603DAE2050DAA200C2381E /* DengLu_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DengLu_VC.h; sourceTree = "<group>"; };
 		74603DAF2050DAA200C2381E /* DengLu_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DengLu_VC.m; sourceTree = "<group>"; };
 		746205B02058C5EE00802D66 /* PinTuanXuZhi_V.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinTuanXuZhi_V.h; sourceTree = "<group>"; };
@@ -1400,6 +1406,17 @@
 			path = WoDe;
 			sourceTree = "<group>";
 		};
+		744CC4A2208A306C0001A2E7 /* CGFX */ = {
+			isa = PBXGroup;
+			children = (
+				744CC4A3208A306C0001A2E7 /* CGFX_Model_RootClass.m */,
+				744CC4A4208A306C0001A2E7 /* CGFX_Model_Data.h */,
+				744CC4A5208A306C0001A2E7 /* CGFX_Model_Data.m */,
+				744CC4A6208A306C0001A2E7 /* CGFX_Model_RootClass.h */,
+			);
+			path = CGFX;
+			sourceTree = "<group>";
+		};
 		74603DAA2050DA7C00C2381E /* AccountManagement_ZhangHaoGuanLi */ = {
 			isa = PBXGroup;
 			children = (
@@ -1865,6 +1882,7 @@
 		749FDA0B205A79E300596F36 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				744CC4A2208A306C0001A2E7 /* CGFX */,
 				74313D3E208095C600FD4D44 /* JLCG */,
 				74F5011E207F5423006063BA /* PTZFCG */,
 				74B2170320739D2100A166BD /* ZFJG */,
@@ -3322,6 +3340,7 @@
 				74DE7737205F619D006846FC /* TC_KDDZ.m in Sources */,
 				74C890E32064F8F900898168 /* DiZhiLieBiao_Model_RootClass.m in Sources */,
 				74B9A4D1208869DE003A9025 /* Share.m in Sources */,
+				744CC4A7208A306D0001A2E7 /* CGFX_Model_RootClass.m in Sources */,
 				74D7476F204E39B800DB65FD /* TTLayout.m in Sources */,
 				74BF4255206D0683003D77A4 /* SouSuo_Model_Data.m in Sources */,
 				74780F7D205404EB00E85CCD /* NSArray+MASAdditions.m in Sources */,
@@ -3362,6 +3381,7 @@
 				74B9A4E320889E4A003A9025 /* SelPlayerConfiguration.m in Sources */,
 				740D239A206A0F6000666D5C /* QueRenDingDan_Model_Addres.m in Sources */,
 				74780F7A205404EB00E85CCD /* MASCompositeConstraint.m in Sources */,
+				744CC4A8208A306D0001A2E7 /* CGFX_Model_Data.m in Sources */,
 				740D239D206A0F6000666D5C /* QueRenDingDan_Model_Data.m in Sources */,
 				74D74865204E39E500DB65FD /* MBProgressHUD+Add.m in Sources */,
 				74D748AF204E3BFB00DB65FD /* ShouYe_H_BZ_V.m in Sources */,

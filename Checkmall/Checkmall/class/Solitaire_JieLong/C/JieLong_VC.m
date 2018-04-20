@@ -13,10 +13,13 @@
 #import "QueRenDingDan_JL_VC.h"//接龙确认订单页
 #import "JLLB_Model_RootClass.h"
 #import "JieLong_JG_VC.h"
+#import "KBY_View.h"
 
 @interface JieLong_VC ()<UITableViewDelegate,UITableViewDataSource>{
     JLLB_Model_RootClass    *model;
 }
+@property (nonatomic,weak)  KBY_View        *KBY;
+
 //@property (nonatomic,weak)TC_JL_V       *JLTC;//接龙弹出窗口
 
 @end
@@ -31,6 +34,8 @@
     [self init_data:YES];
 }
 
+
+
 - (void)init_data:(BOOL)Y_N{
     
     [NetRequest postWithUrl:Solitaire_lists params:@{@"page":[NSString stringWithFormat:@"%li",self.pageIndex]} showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
@@ -43,9 +48,29 @@
         if (model.code == 1) {
             [self.tableview reloadData];
         }
+        [self if_KBY];
     } fail:^(id error) {
         
     }];
+}
+
+- (void)if_KBY{
+    if (model.data.count == 0) {
+        self.KBY.hidden = 0;
+    }else{
+        self.KBY.hidden = 1;
+    }
+}
+
+-(KBY_View *)KBY{
+    if (!_KBY) {
+        KBY_View *kby = [KBY_View init_Xib];
+        _KBY = kby;
+        _KBY.width = ScreenWidth;
+        _KBY.hidden = YES;
+        _KBY.height = self.view.height;
+    }
+    return _KBY;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -94,7 +119,8 @@
             [ws init_data:NO];
         }];
 
-    
+    self.KBY.frame = self.tableview.bounds;
+    [self.tableview addSubview:self.KBY];
 }
 
 #pragma mark- 提交订单

@@ -21,6 +21,13 @@
 
 }
 
+#pragma mark- 分享
+- (IBAction)btn_FX:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(JL_ZFCG_V_Delegate_FX)]) {
+        [self.delegate JL_ZFCG_V_Delegate_FX];
+    }
+}
+
 -(void)setModel:(JLCG_Model_RootClass *)model{
     _model = model;
     for (UIView *vvvv in self.View_TX.subviews) {

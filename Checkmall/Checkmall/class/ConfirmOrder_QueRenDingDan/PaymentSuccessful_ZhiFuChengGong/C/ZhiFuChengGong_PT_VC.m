@@ -17,12 +17,15 @@
 #import "PTZFCG_Model_RootClass.h"//model
 
 #import "ShouYe_Model_RootClass.h"//商品列表
+#import "CGFX_Model_RootClass.h"//分享model
 
-@interface ZhiFuChengGong_PT_VC ()<ShouYe_Cell_Delegate_GWC>{
+@interface ZhiFuChengGong_PT_VC ()<ShouYe_Cell_Delegate_GWC,PinTuan_ZFCG_V_Delegate>{
     ShouYe_H_RX_V           *RX;
 //    UIButton                *btn_GWC;
     PTZFCG_Model_RootClass  *model_PTCG;
     ShouYe_Model_RootClass  *model_SP;
+    
+    CGFX_Model_RootClass      *model_FX;
 }
 
 @property (nonatomic,weak)ShangPinXinXi_Cell *SP;//商品信息
@@ -44,7 +47,28 @@
     
     [self init_Data];
     [self init_Data:YES];
+    
+    [self init_FX];
 }
+
+- (void)init_FX{
+    NSDictionary *dic = @{@"order_sn":self.str_DDID};
+    [NetRequest postWithUrl:Order_paySuccessShare params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
+        NSLog(@"接龙分享 = =%@",dict);
+        model_FX = [[CGFX_Model_RootClass alloc]initWithDictionary:dict];
+    } fail:^(id error) {
+        
+    }];
+}
+
+- (void)PinTuan_ZFCG_V_Delegate_FX{
+    if (!model_FX) {
+        return;
+    }
+    [FenXiang_Object Shar:model_FX.data.name str_NR:model_FX.data.promotion image_URL:model_FX.data.image str_LJ:model_FX.data.path];
+    
+}
+
 
 - (void)init_Data{
     NSDictionary *dic = @{@"order_sn":self.str_DDID,@"gid":self.str_SPID};
@@ -146,7 +170,7 @@
         ZFXX.width = self.view.width;
         [self.view addSubview:ZFXX];
         _ZFXX = ZFXX;
-
+        _ZFXX.delegate = self;
         _ZFXX.height = [PinTuan_ZFCG_V get_H:@"4"];
         _ZFXX.width = ScreenWidth;
         _ZFXX.index_Row = 4;

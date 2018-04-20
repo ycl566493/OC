@@ -12,4 +12,6 @@
 
 @property (nonatomic,strong) NSString       *str_JG;//商品价格
 
+@property (nonatomic,strong) NSString       *str_DDID;//订单id
+
 @end

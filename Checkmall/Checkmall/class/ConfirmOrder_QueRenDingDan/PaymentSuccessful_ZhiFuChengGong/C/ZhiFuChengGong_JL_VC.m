@@ -11,9 +11,11 @@
 #import "JL_ZFCG_V.h"//接龙支付成功
 #import "ShangPin_XiaDan_Cell.h"
 #import "JLCG_Model_RootClass.h"//接龙支付成功信息
+#import "CGFX_Model_RootClass.h"//成功分享model
 
-@interface ZhiFuChengGong_JL_VC ()<UITableViewDelegate,UITableViewDataSource>{
+@interface ZhiFuChengGong_JL_VC ()<UITableViewDelegate,UITableViewDataSource,JL_ZFCG_V_Delegate>{
     JLCG_Model_RootClass    *model;//接龙支付成功
+    CGFX_Model_RootClass    *model_FX;//分享
 }
 
 @property (nonatomic,strong) JL_SPXX_V         *SPXX;//商品信息
@@ -38,11 +40,15 @@
     NSDictionary *dic = @{@"order_sn":self.str_DDID,@"sid":self.str_JLID};
     [NetRequest postWithUrl:Order_paySuccessShare params:dic showAnimate:YES showMsg:YES vc:self success:^(NSDictionary *dict) {
         NSLog(@"接龙分享 = =%@",dict);
-
-        
+        model_FX = [[CGFX_Model_RootClass alloc]initWithDictionary:dict];
     } fail:^(id error) {
         
     }];
+}
+- (void)JL_ZFCG_V_Delegate_FX{
+    
+    [FenXiang_Object Shar:model_FX.data.name str_NR:model_FX.data.promotion image_URL:model_FX.data.image str_LJ:model_FX.data.path];
+    
 }
 
 - (void)init_Data{
@@ -66,11 +72,14 @@
     [self.tableview reloadData];
 }
 
+
+
 #pragma mark- 接龙信息
 -(JL_ZFCG_V *)JLXX{
     if (!_JLXX) {
         _JLXX = [JL_ZFCG_V init_Xib];
         _JLXX.frame = CGRectMake(0, 0, ScreenWidth, [JL_ZFCG_V get_H:nil]);
+        _JLXX.delegate = self;
     }
     return _JLXX;
 }

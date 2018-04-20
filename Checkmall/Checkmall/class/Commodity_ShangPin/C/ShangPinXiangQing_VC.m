@@ -448,7 +448,7 @@
             return;
         }
     
-        NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",model_SPXQ.data.productId],@"num":@"1"};
+    NSDictionary *dic = @{@"token":[MyHelper toToken],@"goods_id":[NSString stringWithFormat:@"%li",(long)model_SPXQ.data.productId],@"num":@"1"};
     
         [NetRequest postWithUrl:goodscar_addGoodsToCar params:dic showAnimate:NO showMsg:NO vc:self success:^(NSDictionary *dict) {
     

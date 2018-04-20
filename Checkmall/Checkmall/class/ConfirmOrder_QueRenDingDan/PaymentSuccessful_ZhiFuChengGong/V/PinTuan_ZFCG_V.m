@@ -22,6 +22,7 @@
     [self init_UI];
 }
 
+
 #pragma mark- 初始化
 -(void)init_UI{
     
@@ -40,6 +41,13 @@
 
     
 }
+
+- (IBAction)btn_FX:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(PinTuan_ZFCG_V_Delegate_FX)]) {
+        [self.delegate PinTuan_ZFCG_V_Delegate_FX];
+    }
+}
+
 
 -(void)setModel:(PTZFCG_Model_RootClass *)model{
     _model = model;
