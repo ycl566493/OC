@@ -47,7 +47,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ZFHS:) name:@"ZFHD" object:nil];
 }
 
-- (void)ZFHD:(NSNotification *)notification;{
+- (void)ZFHS:(NSNotification *)notification;{
     if ([notification.object isEqualToString:@"微信"]) {
         [self UP_DD];
     }
@@ -168,8 +168,10 @@
     lbl_TS.text = @"账户支付超快捷呦!";
     [image_BJ addSubview:lbl_TS];
     
-    for (NSInteger i =0 ; i < 6; i ++) {
-        UIButton    *btn_AN = [[UIButton alloc]initWithFrame:CGRectMake(15 + i%3 * ((ScreenWidth - 15* 2 -10*2) / 3 + 10), (image_BJ.bottom + 15) + ( 10 + 65) * (i / 3), (ScreenWidth - 15* 2 -10*2) / 3, 65)];
+    for (NSInteger i =0 ; i < 2; i ++) {
+//        UIButton    *btn_AN = [[UIButton alloc]initWithFrame:CGRectMake(15 + i%3 * ((ScreenWidth - 15* 2 -10*2) / 3 + 10), (image_BJ.bottom + 15) + ( 10 + 65) * (i / 3), (ScreenWidth - 15* 2 -10*2) / 3, 65)];
+        UIButton    *btn_AN = [[UIButton alloc]initWithFrame:CGRectMake(15 + i * ((ScreenWidth - 15* 2 - 10) / 2 + 10), (image_BJ.bottom + 15) , (ScreenWidth - 15* 2 -10) / 2, 65)];
+
         [btn_AN setBackgroundImage:[UIImage imageNamed:@"CZWXZ"] forState:UIControlStateNormal];
         [btn_AN setBackgroundImage:[UIImage imageNamed:@"CZXZ"] forState:UIControlStateSelected];
         btn_AN.tag = i;
@@ -183,17 +185,9 @@
         lbl.textColor = UIColorFromHex(0x999999);
 
         if (i==0) {
-             lbl.text = @"50元";
+             lbl.text = @"1000元";
         }else if (i==1) {
-            lbl.text = @"100元";
-        }else if (i==2) {
-            lbl.text = @"200元";
-        }else if (i==3) {
-            lbl.text = @"500元";
-        }else if (i==4) {
-            lbl.text = @"1000元";
-        }else if (i==5) {
-            lbl.text = @"其他金额";
+            lbl.text = @"2000元";
         }
         
         [btn_AN addSubview:lbl];
